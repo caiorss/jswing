@@ -1,0 +1,9 @@
+bin/
+lib/*
+*.jar
+*.war
+*.zip
+*.tgz
+*.exe
+*.bin
+*.o
