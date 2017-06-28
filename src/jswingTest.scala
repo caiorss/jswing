@@ -1,4 +1,5 @@
 import jswing.JUtils
+import jswing.guis.ListView
 
 object Main extends {
   def listFiles(path: String) = {
@@ -8,7 +9,8 @@ object Main extends {
   }
 
   def main(args: Array[String]){
-    val lview = new jswing.ListView(
+
+    val lview = new ListView(
       title       = "File selector"
      ,visible     = true
      ,exitOnClose = true
