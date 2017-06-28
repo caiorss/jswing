@@ -1,3 +1,11 @@
+/** 
+  * GUI Building blocks for Java Swing GUI toolkit.
+  * 
+  *  This package provides GUI building blocks simple 
+  *  and ready to use such as GUI to display list data, 
+  *  display tables and pictures.
+  *  
+  */
 package jswing.guis
 
 import jswing.Widgets

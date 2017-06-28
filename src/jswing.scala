@@ -1,3 +1,7 @@
+/** Jswing - Scala wrapper for Java Swing with GUI-building blocks.
+  * 
+  *  @author: Caio Rodrigues
+  */
 package jswing
 
 import javax.swing.JOptionPane
