@@ -189,6 +189,17 @@ object Widgets {
         (x, y)
       }
 
+
+      def onClick(handler: => Unit) = {
+        this.addMouseListener( new java.awt.event.MouseAdapter {
+          override def mouseClicked(arg: java.awt.event.MouseEvent){
+            handler
+          }
+        }
+        )
+      }
+
+
     } // --- End of Class Picturebox --- //
 
 
