@@ -60,16 +60,53 @@ object JUtils{
 
 }
 
+// Custom widgets 
+object Widgets {
 
+    class PictureBox extends javax.swing.JLabel {
+      //init()
 
-
-
-
-
-
-
+      private def scaleImage(image: java.awt.image.BufferedImage, height: Int) = {
+        val w = image.getWidth().toFloat
+        val h = image.getHeight().toFloat
+        val width = (height.toFloat / h * w).toInt
+        image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT)
       }
 
 
+      def setImageFromFile(file: String) {
+        val image  = javax.imageio.ImageIO.read(new java.io.File(file))
+        val ico = new javax.swing.ImageIcon(image)
+        this.setIcon(ico)
+      }
+
+      def setImageFromFile(file: String, height: Int) {
+        val image0  = javax.imageio.ImageIO.read(new java.io.File(file))
+        val image   = scaleImage(image0, height)
+        val ico = new javax.swing.ImageIcon(image)
+        this.setIcon(ico)
+      }
+
+      def setImage(image: java.awt.image.BufferedImage){
+        val ico = new javax.swing.ImageIcon(image)
+        this.setIcon(ico)    
+      }
+
+      def setImage(image: java.awt.Image){
+        val ico = new javax.swing.ImageIcon(image)
+        this.setIcon(ico)    
+      }
+
+      def getImageSize() = {
+        val ico = this.getIcon()
+        val x = ico.getIconWidth()
+        val y = ico.getIconHeight()
+        (x, y)
+      }
+
+    } // --- End of Class Picturebox --- //
+
+
+}
 
 
