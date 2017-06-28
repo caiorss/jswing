@@ -80,7 +80,12 @@ class ListView(
     elemList.foreach(model.addElement)
   }
 
-  def clear() = model.clear()
+  def clear() = {
+    selectionEventFlag = false
+    model.clear()
+    selectionEventFlag = true 
+  }
+  
 
   def enableSelectionEvent(flag: Boolean){
     selectionEventFlag = flag 
