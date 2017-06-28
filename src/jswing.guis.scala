@@ -2,7 +2,8 @@ package jswing.guis
 
 import jswing.Widgets
 
-
+/**  Simple GUI building-block for displaying pictures. 
+ */     
 class PictureFrame(
       title:       String   = "Picture Box"
      ,exitOnClose: Boolean  = false
@@ -28,8 +29,12 @@ class PictureFrame(
 
   def getPictureBox() = pbox
 
+  /** Set picture from file */
   def setImageFromFile(file: String)                = pbox.setImageFromFile(file)
+
+  /** Set picture from file scaling to a height*/
   def setImageFromFile(file: String, height: Int)   = pbox.setImageFromFile(file, height)
+
   def setImage(image: java.awt.image.BufferedImage) = pbox.setImage(image)
   def setImage(image: java.awt.Image)               = pbox.setImage(image)
 

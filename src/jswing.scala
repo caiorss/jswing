@@ -48,6 +48,10 @@ object Dialog {
     Option(fch.getSelectedFile()).map(_.getPath())
   }
 
+
+  /** Custom directory selection dialog. 
+  * 
+  */    
   class DirChooser(
         current: String     = "."
        ,title: String       = "Select a directory"
@@ -57,13 +61,17 @@ object Dialog {
 
     init()
 
-    def init(){
+    private def init(){
       fch.setCurrentDirectory(new java.io.File(current))
       fch.setDialogTitle("Select a directory")
       fch.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY)
       fch.setFileHidingEnabled(!showHidden)
     }
 
+   /**  Run file selection dialog and returning 
+    *  the selected directory or None if no directory 
+    *  is selected.
+    */         
     def run() = {
       fch.showOpenDialog(null)
       Option(fch.getSelectedFile()).map(_.getPath())
@@ -150,6 +158,10 @@ object Widgets {
     } // ----- End of class ListView ------- //
 
 
+   /** Widget to show pictures and with facilitate to 
+     * manipulate and display image.
+     * 
+     */  
     class PictureBox extends javax.swing.JLabel {
       //init()
 
@@ -160,7 +172,9 @@ object Widgets {
         image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT)
       }
 
-
+    /** Set image from file. 
+      *
+      */
       def setImageFromFile(file: String) {
         val image  = javax.imageio.ImageIO.read(new java.io.File(file))
         val ico = new javax.swing.ImageIcon(image)
