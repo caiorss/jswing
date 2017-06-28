@@ -31,18 +31,20 @@ object Dialog {
      )
   }
 
-  def chooseFile(path: String = ".") = {
+  def chooseFile(path: String = ".", showHidden: Boolean = true) = {
     val fch = new javax.swing.JFileChooser()
     fch.showOpenDialog(null)
+    fch.setFileHidingEnabled(showHidden)
     Option(fch.getSelectedFile()).map(_.getPath())
   }
 
-  def chooseDir(path: String = ".") = {
+  def chooseDir(path: String = ".", showHidden: Boolean = true) = {
     val fch = new javax.swing.JFileChooser()
     fch.setCurrentDirectory(new java.io.File("."))
     fch.setDialogTitle("Select a directory")
     fch.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY)
-    fch.showOpenDialog(null)
+    fch.setFileHidingEnabled(false)
+    fch.showOpenDialog(null)   
     Option(fch.getSelectedFile()).map(_.getPath())
   }
 
