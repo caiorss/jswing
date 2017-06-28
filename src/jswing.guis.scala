@@ -26,6 +26,8 @@ class PictureFrame(
 
   }
 
+  def getPictureBox() = pbox
+
   def setImageFromFile(file: String)                = pbox.setImageFromFile(file)
   def setImageFromFile(file: String, height: Int)   = pbox.setImageFromFile(file, height)
   def setImage(image: java.awt.image.BufferedImage) = pbox.setImage(image)
