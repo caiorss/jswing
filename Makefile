@@ -17,7 +17,7 @@ load: lib
 	scala -cp $(lib)
 
 $(demo): lib src/jswingTest.scala
-	$(CC) -nocompdaemon -cp $(lib) src/jswingTest.scala -d $(demo)
+	$(CC) -cp $(lib)  src/jswingTest.scala -d $(demo)
 
 run: demo
 	scala -cp $(lib) $(demo)
