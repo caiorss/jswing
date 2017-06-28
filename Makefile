@@ -11,7 +11,7 @@ lib:  $(lib)
 demo: $(demo)
 
 $(lib): src/jswing.scala src/jswing.guis.scala 
-	$(CC) -nocompdaemon $(libsrc) -d $(lib)
+	$(CC) $(libsrc) -d $(lib)
 
 load: lib
 	scala -cp $(lib)
