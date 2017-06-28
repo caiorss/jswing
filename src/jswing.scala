@@ -45,6 +45,28 @@ object Dialog {
     fch.showOpenDialog(null)
     Option(fch.getSelectedFile()).map(_.getPath())
   }
+
+  class DirChooser(
+        current: String     = "."
+       ,title: String       = "Select a directory"
+       ,showHidden: Boolean = true
+  ){
+    private val fch = new javax.swing.JFileChooser()
+
+    init()
+
+    def init(){
+      fch.setCurrentDirectory(new java.io.File(current))
+      fch.setDialogTitle("Select a directory")
+      fch.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY)
+      fch.setFileHidingEnabled(!showHidden)
+    }
+
+    def run() = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).map(_.getPath())
+    }
+  }
   
 
 }
