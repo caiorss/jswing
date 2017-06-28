@@ -22,8 +22,14 @@ $(demo): lib src/jswingTest.scala
 run: demo
 	scala -cp $(lib) $(demo)
 
+doc:
+	scaladoc $(libsrc) -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -d ./docs 
+
 clean:
 	rm -rf bin/*.jar 
+
+clean-doc:
+	rm -rf doc/*
 
 # Shutdown scala compilation daemon 
 fsc-shutdown:

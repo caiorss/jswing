@@ -7,3 +7,5 @@ lib/*
 *.exe
 *.bin
 *.o
+doc/*
+docs/*
