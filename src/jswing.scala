@@ -85,6 +85,69 @@ object JUtils{
 // Custom widgets 
 object Widgets {
 
+
+
+    class ListBox extends javax.swing.JList {
+      private val model  = new javax.swing.DefaultListModel[String]()
+      private val jlist  = new javax.swing.JList(model)
+      private val scroll = new javax.swing.JScrollPane(jlist)
+
+      // This flag avoids firing the event when an item is removed.
+      // it also allows temporarily disabling events.
+      //
+      private var selectionEventFlag = true
+
+      init()
+
+      def init(){
+      }
+
+      // def getModel() = model
+      def addTo(wdg: javax.swing.JComponent) = scroll.add(this)
+
+      def addElement(elem: String) = model.addElement(elem)
+
+      def addElements(elemList: Array[String])  = {
+        elemList.foreach(model.addElement)
+      }
+
+      def clear() = model.clear()
+
+      def enableSelectionEvent(flag: Boolean){
+        selectionEventFlag = flag
+      }
+
+
+      def removeItemAt(idx: Int){
+        selectionEventFlag = false
+        model.removeElementAt(idx)
+        selectionEventFlag = true
+      }
+
+      def removeAtSelected(){
+        selectionEventFlag = false
+        model.removeElementAt(this.getSelectedIndex())
+        selectionEventFlag = true
+      }
+
+      /// Event that happens when user selects an item
+      def onSelect(handler: => Unit) = {
+        val listener = new javax.swing.event.ListSelectionListener(){
+          def valueChanged(args: javax.swing.event.ListSelectionEvent){
+            if (selectionEventFlag) handler
+          }
+        }
+
+        this.addListSelectionListener(listener)
+
+        // Return function that removes listener
+        () => { this.removeListSelectionListener(listener) }
+
+      } // End of onSelect
+
+    } // ----- End of class ListView ------- //
+
+
     class PictureBox extends javax.swing.JLabel {
       //init()
 
