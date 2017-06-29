@@ -102,7 +102,15 @@ object JUtils{
     )
   } // End of invokeLater
 
-}
+  def invokeAndWait(handler: => Unit) = {
+    javax.swing.SwingUtilities.invokeAndWait(
+      new Runnable(){
+        def run() = handler
+      }
+    )
+  }
+
+} // ------ End of Module JUtils ------ // 
 
 /** Provides functions to manipulate Java Swing event handlers */
 object Event{
