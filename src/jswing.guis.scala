@@ -46,6 +46,10 @@ class PictureFrame(
   def setImage(image: java.awt.image.BufferedImage) = pbox.setImage(image)
   def setImage(image: java.awt.Image)               = pbox.setImage(image)
 
+  def onClick(handler: => Unit){
+    pbox.onClick{handler}
+  }
+
 } // End of class PictureFrame //
 
 
