@@ -220,6 +220,31 @@ object Widgets {
       entry 
     }
 
+    def makeNumberEntry[A](init: A, precision: Int = 3, columns: Int = 10) = {
+      val fmt = java.text.NumberFormat.getNumberInstance()
+      fmt.setMinimumFractionDigits(precision)    
+      val entry = new javax.swing.JFormattedTextField(fmt)
+      entry.setValue(init)
+      entry.setColumns(columns)
+      entry 
+    }
+
+    def makeFloatEntry[A](init: Double, precision: Int = 3, columns: Int = 10) = {
+      val entry = new javax.swing.JFormattedTextField()
+      entry.setValue(init)
+      entry.setColumns(columns)
+      entry 
+    }
+
+    def makeFloatDisplay(init: Double, precision: Int = 3, columns: Int = 10) = {
+      val entry = new javax.swing.JFormattedTextField()
+      entry.setValue(init)
+      entry.setColumns(columns)
+      entry.setEditable(false)
+      entry 
+    }
+
+
 
     class ListBox extends javax.swing.JList {
       private val model  = new javax.swing.DefaultListModel[String]()
