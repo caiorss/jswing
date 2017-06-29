@@ -133,6 +133,19 @@ object Event{
     () => entry.getDocument().removeDocumentListener(listener)
   }
 
+
+  /** Subscribe to JFormattedTextField value change event. */
+  def onValueChange(entry: javax.swing.JFormattedTextField)(handler: => Unit): Dispose = {
+    val listener = new java.beans.PropertyChangeListener{
+      def propertyChange(evt: java.beans.PropertyChangeEvent){
+        handler     
+      }
+    }
+    entry.addPropertyChangeListener("value", listener)
+    () => entry.removePropertyChangeListener("value", listener)
+  }
+
+
   def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): Dispose = {
       val listener = new java.awt.event.WindowAdapter(){
           override def windowClosing(evt: java.awt.event.WindowEvent) = {
