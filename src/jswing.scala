@@ -68,6 +68,57 @@ object Dialog {
     }
   }
 
+
+  class FileChooser(
+        current:    String   = "."
+       ,title:      String   = "Select a directory"
+       ,showHidden: Boolean  = true
+  ){
+    private val fch = new javax.swing.JFileChooser()
+
+    init()
+
+    private def init(){
+      fch.setCurrentDirectory(new java.io.File(current))
+      fch.setDialogTitle(title)
+      fch.setFileHidingEnabled(!showHidden)
+    }
+
+    def setFileFilter(filter: javax.swing.filechooser.FileFilter){
+      fch.setFileFilter(filter)
+    }
+
+    def addFileFilter(filter: javax.swing.filechooser.FileFilter){
+      fch.addChoosableFileFilter(filter)
+    }
+
+    def withImageFilter() = {
+      val imgFilter = makeFileFilter(
+        "Image Files",
+        Array(".png", ".tiff", ".tif", ".jpeg", ".jpg", ".bmp")
+      )
+      this.setFileFilter(imgFilter)
+      this
+    }
+
+    def withFilter(description: String, extList: Array[String]) = {
+      val filter = makeFileFilter(description, extList)
+      this.setFileFilter(filter)
+      this
+    }
+
+   /**  Run file selection dialog and returning
+    *  the selected directory or None if no directory
+    *  is selected.
+    */
+    def run() = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).map(_.getPath())
+    }
+
+  } // End of class DirChooser
+
+
   /**
   *  Dialog to select directories.
   *
