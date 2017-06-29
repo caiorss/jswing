@@ -86,6 +86,9 @@ object Dialog {
 }
 
 object JUtils{
+
+  def getColor(color: String) = java.awt.Color.getColor(color)
+
   def invokeLater(handler: () => Unit) = {
     javax.swing.SwingUtilities.invokeLater(
       new Runnable(){
