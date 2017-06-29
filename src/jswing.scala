@@ -1,4 +1,5 @@
-/** Jswing - Scala wrapper for Java Swing with GUI-building blocks.
+/** 
+  *  Jswing - Scala wrapper for Java Swing with GUI-building blocks.
   * 
   *  @author: Caio Rodrigues
   */
@@ -60,11 +61,29 @@ object Dialog {
 
   /**
   *  Dialog to select directories.
+  *
+  * Example: 
+  * 
+  * {{{
+  *  scala> val chooser = new jswing.Dialog.DirChooser()
+  * 
+  *  scala> chooser.run()
+  *  res0: Option[String] = Some(/home/archbox/Projects)
+  * 
+  *  scala> chooser.run()
+  *  res1: Option[String] = Some(/home/archbox/Projects)
+  *  }}}
+  *    
+  *   
+  *  @param current     Current directory 
+  *  @param title       Dialog title
+  *  @param showHidden  Flag that if set to true show hidden files.
+  * 
   */    
   class DirChooser(
-        current: String     = "."
-       ,title: String       = "Select a directory"
-       ,showHidden: Boolean = true
+        current:    String   = "."
+       ,title:      String   = "Select a directory"
+       ,showHidden: Boolean  = true
   ){
     private val fch = new javax.swing.JFileChooser()
 
