@@ -178,6 +178,21 @@ object Event{
 object Widgets {
 
 
+    def makeDateFormat(format: String = "yyyy-mm-dd") = new java.text.SimpleDateFormat(format)
+
+    def makeNumberFormat(precision: Int = 4) = {
+      val fmt = java.text.NumberFormat.getNumberInstance()
+      fmt.setMinimumFractionDigits(precision)
+      fmt
+    }
+
+    def makeFormattedEntry[A](init: A, format: java.text.Format = null, columns: Int = 10) = {
+      val entry = new javax.swing.JFormattedTextField(format)
+      entry.setValue(init)
+      entry.setColumns(columns)
+      entry 
+    }
+
 
     class ListBox extends javax.swing.JList {
       private val model  = new javax.swing.DefaultListModel[String]()
