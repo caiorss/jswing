@@ -137,6 +137,34 @@ class ListView(
 
 /** 
   * GUI for displaying text. 
+  *
+  * Relevant methods: 
+  *
+  *  -  append(text: String): Unit 
+  *  -  appendLine(text: String): Unit 
+  *  -  getText(): String 
+  *  -  setText(text: String): Unit 
+  *  -  clear(): Unit 
+  *  -  setAutoScroll(flag: Boolean): Unit 
+  *  -  scrollToBottom(): Unit 
+  *  -  scrollToTop(): Unit 
+  * 
+  * Example:
+  * 
+  *  {{{
+  *      val tarea = new jswing.guis.TextView(visible = true, autoScroll = true, exitOnClose = true)      
+  *      val text = scala.io.Source.fromFile("/etc/protocols").mkString
+  *      tarea.append(text)
+  *  }}}
+  *   
+  * 
+  * 
+  * @param title        TextView window title 
+  * @param exitOnclose  If true, ends the program execution when user closes the window.
+  * @param visible      If true, makes the TextView visible when it is created.
+  * @param autoScroll   If true, the TextView auto scrolls when new text is appended. 
+  * @param editable     If true, makes the text entry editable.  
+  * 
   * 
   */
 class TextView(
