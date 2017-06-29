@@ -6,6 +6,9 @@ package jswing
 
 import javax.swing.JOptionPane
 
+
+
+/** Java swing dialogs (aka Message boxes) to display information or warnings. */
 object Dialog {
 
   def plainMsg(title: String, message: String){
@@ -17,6 +20,7 @@ object Dialog {
      )
   }
 
+  /** Displays an information dialog */
   def informationMsg(title: String, message: String){
     JOptionPane.showMessageDialog(
          null
@@ -26,6 +30,7 @@ object Dialog {
      )
   }
 
+  /** Displays an error dialog */
   def errorMsg(title: String, message: String){
     JOptionPane.showMessageDialog(
          null
@@ -53,8 +58,8 @@ object Dialog {
   }
 
 
-  /** Custom directory selection dialog. 
-  * 
+  /**
+  *  Dialog to select directories.
   */    
   class DirChooser(
         current: String     = "."
