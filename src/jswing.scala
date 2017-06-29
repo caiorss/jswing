@@ -122,7 +122,17 @@ object Event{
     () => button.removeActionListener(listener)
     }
 
-  
+  /** Event fired when text is changed or user type something in a text field. */ 
+  def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : Dispose = {
+    val listener = new javax.swing.event.DocumentListener(){
+      def changedUpdate(arg: javax.swing.event.DocumentEvent) = handler
+      def insertUpdate (arg: javax.swing.event.DocumentEvent) = handler
+      def removeUpdate (arg: javax.swing.event.DocumentEvent) = handler
+    }
+    entry.getDocument().addDocumentListener(listener)       
+    () => entry.getDocument().removeDocumentListener(listener)
+  }
+
   def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): Dispose = {
       val listener = new java.awt.event.WindowAdapter(){
           override def windowClosing(evt: java.awt.event.WindowEvent) = {
