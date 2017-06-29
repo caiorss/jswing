@@ -59,6 +59,15 @@ object Dialog {
   }
 
 
+  def makeFileFilter(description: String, extList: Array[String]) = {
+    new javax.swing.filechooser.FileFilter{
+      def accept(f: java.io.File) = {
+        f.isDirectory() || extList.exists(e => f.getName().endsWith(e))
+      }
+      def getDescription() = description
+    }
+  }
+
   /**
   *  Dialog to select directories.
   *
