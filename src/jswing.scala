@@ -151,7 +151,7 @@ object Dialog {
 
     private def init(){
       fch.setCurrentDirectory(new java.io.File(current))
-      fch.setDialogTitle("Select a directory")
+      fch.setDialogTitle(title)
       fch.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY)
       fch.setFileHidingEnabled(!showHidden)
     }
@@ -164,7 +164,7 @@ object Dialog {
       fch.showOpenDialog(null)
       Option(fch.getSelectedFile()).map(_.getPath())
     }
-  }
+  } // End of class DirChooser
   
 
 }
