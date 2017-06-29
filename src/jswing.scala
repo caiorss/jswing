@@ -94,10 +94,10 @@ object JUtils{
 
   def getColor(color: String) = java.awt.Color.getColor(color)
 
-  def invokeLater(handler: () => Unit) = {
+  def invokeLater(handler: => Unit) = {
     javax.swing.SwingUtilities.invokeLater(
       new Runnable(){
-        def run() = handler()
+        def run() = handler
       }
     )
   } // End of invokeLater
