@@ -67,7 +67,7 @@ class ListView(
 
   init()
 
-  def init(){
+  private def init(){
     this.setTitle(title)
     this.add(scroll)
     this.setSize(300, 400)
@@ -135,4 +135,82 @@ class ListView(
 } // ----- End of class ListView ------- // 
 
 
+/** 
+  * GUI for displaying text. 
+  * 
+  */
+class TextView(
+      title:       String = "Text View"
+     ,exitOnClose: Boolean = false
+     ,visible:     Boolean = false
+     ,autoScroll:  Boolean = false
+     ,editable:    Boolean = true
+    ) extends javax.swing.JFrame {
 
+  private val tarea          = new javax.swing.JTextArea()
+  private var autoScrollFlag = false
+
+  init()
+
+  private def init(){
+    val scroll = new javax.swing.JScrollPane(tarea)
+    this.setTitle(title)
+    this.add(scroll)
+    this.setSize(300, 400)
+
+    if (exitOnClose)
+    this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+
+    tarea.setEditable(editable)
+
+    this.add(scroll)
+    this.setVisible(visible)    
+
+   
+    autoScrollFlag = autoScroll
+  }
+
+  def getTextArea() = tarea
+
+  def getText() = tarea.getText()
+
+  def setText(text: String) = {
+    tarea.setText(text)
+    if (this.autoScroll) this.scrollToBottom()
+  }
+
+  /** Append text */
+  def append(text: String) = {
+    tarea.append(text)
+    if (this.autoScrollFlag) this.scrollToBottom()    
+  }
+
+  /** Append new line to text area */
+  def appendLine(text: String) = {
+    tarea.append("\n" + text)
+    if (this.autoScrollFlag) this.scrollToBottom()
+  }
+
+  /** Clear text area content */
+  def clear() = tarea.setText("")
+
+  /** When set to true the text area auto scroll every time a new text
+    * is appended. 
+    */ 
+  def setAutoScroll(flag: Boolean) = { autoScrollFlag = flag }
+
+  /** Scroll to bottom of text area */ 
+  def scrollToBottom() = tarea.setCaretPosition(tarea.getDocument().getLength())
+
+  /** Scroll to top of text area */
+  def scrollToTop()    = tarea.setCaretPosition(0)
+
+  def setEditable(flag: Boolean) = tarea.setEditable(flag)
+
+  def setLineWrap(flag: Boolean) = tarea.setLineWrap(flag)
+
+  def setTextColor(color: java.awt.Color) = tarea.setForeground(color)
+
+  def setBgColor(color: java.awt.Color) = tarea.setBackground(color)
+
+}
