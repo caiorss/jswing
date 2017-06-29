@@ -104,6 +104,53 @@ object JUtils{
 
 }
 
+/** Provides functions to manipulate Java Swing event handlers */
+object Event{
+
+  /** Function that when executed disposes the removes the event handler */
+  type Dispose = () => Unit
+
+  /** Subscribes to button click event */
+  def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        handler
+      }
+    }
+    button.addActionListener(listener)
+    // Returns function that when executed disposes the event handler 
+    () => button.removeActionListener(listener)
+    }
+
+  
+  def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): Dispose = {
+      val listener = new java.awt.event.WindowAdapter(){
+          override def windowClosing(evt: java.awt.event.WindowEvent) = {
+            handler
+          }
+      }
+      frame.addWindowListener(listener)
+      () => frame.removeWindowListener(listener)
+  }
+
+  /** Subscribes to JList selection event that is fired when user selects some item. */
+  def onListSelect[A](jlist: javax.swing.JList[A]) (handler: => Unit): Dispose = {
+    val listener = new javax.swing.event.ListSelectionListener(){
+      def valueChanged(args: javax.swing.event.ListSelectionEvent){
+        handler
+      }
+    }
+
+    jlist.addListSelectionListener(listener)
+
+    // Return function that removes listener
+    () => { jlist.removeListSelectionListener(listener) }
+  }
+
+
+} // ------ End of object Event ------- // 
+
+
 // Custom widgets 
 object Widgets {
 
