@@ -1,6 +1,10 @@
 import jswing.Dialog.FileChooser
 
-val chooser = new FileChooser(title="Select an image").withImageFilter()
+val chooser = new FileChooser(title="Select an image")
+  .withHome()
+  .withImageFilter()
+
+
 val viwer = new jswing.guis.PictureFrame(
   visible     = true
  ,exitOnClose = true   
