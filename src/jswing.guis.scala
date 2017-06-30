@@ -53,7 +53,32 @@ class PictureFrame(
 } // End of class PictureFrame //
 
 
-
+/** 
+  *  GUI for displaying list data or array data. 
+  *
+  * Example: 
+  * 
+  * {{{
+  *     scala -cp bin/jswing.jar
+  * 
+  *    val lview = new jswing.guis.ListView(
+  *        title       = "Sample ListView",
+  *        visible     = true,
+  *        exitOnClose = true 
+  *    )
+  * 
+  *    val files = new java.io.File("/").listFiles().map(_.toString)
+  * 
+  *    // Whenever the user click at some item, it will print this message.
+  *    lview.onSelect { println("You selected item: = " + lview.getSelectedValue())}
+  * 
+  *    // Fill the list view executing it at the Java Swing thread.
+  *    jswing.JUtils.invokeLater{ lview.addElements(files) }
+  * 
+  *   
+  * }}} 
+  * 
+  */
 class ListView(
       title:       String = "List View"
      ,exitOnClose: Boolean = false
