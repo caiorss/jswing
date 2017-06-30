@@ -1,11 +1,41 @@
+#  Instructions: 
+#
+# * Load the library jswing.jar in the REPL.
+#
+#   $ make load 
+#
+# * Compile the library jswing.jar 
+#
+#  $ make lib
+#
+# * Build documentation 
+#
+#  $ make doc
+#
+# * Clean project
+#  
+# $ make clean 
+#
+# * Clean documentation
+#
+# $ make clean-doc
+#
+#-------------- Project Settings  ------------#
 
-CC	 := scalac 
+# Scala home path 
 SCALA_HOME := $(HOME)/opt/scala-2.11.8
 
-libsrc := src/jswing.scala src/jswing.guis.scala
+# Scala compiler 
+CC	       := scalac 
 
+# Library sources 
+libsrc := src/jswing.scala src/jswing.guis.scala
+# Compiled library name.
 lib	 := bin/jswing.jar
 
+#------------------  ---------------------------#
+
+# Path to scala library 
 scalalib := bin/scala-library.jar
 
 demo := bin/jtest.jar 
@@ -21,13 +51,7 @@ $(lib): src/jswing.scala src/jswing.guis.scala
 load: lib
 	scala -cp $(lib)
 
-$(demo): lib src/jswingTest.scala
-	$(CC) -cp $(lib)  src/jswingTest.scala -d $(demo)
-
-run: demo
-	scala -cp $(lib) $(demo)
-
-doc:
+doc: $(libsrc)
 	scaladoc $(libsrc) -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -d ./docs 
 
 $(scalalib): $(SCALA_HOME)/lib/scala-library.jar
