@@ -69,10 +69,10 @@ run-imageApp:
 	java -cp bin/scala-library.jar:bin/jswing.jar:bin/pframe.jar Main
 
 clean:
-	rm -rf bin/*.jar 
+	rm -v -rf bin/*.jar 
 
 clean-doc:
-	rm -rf doc/*
+	rm -v -rf doc/*
 
 # Shutdown scala compilation daemon 
 fsc-shutdown:
