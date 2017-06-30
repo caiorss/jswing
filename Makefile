@@ -72,7 +72,7 @@ clean:
 	rm -v -rf bin/*.jar 
 
 clean-doc:
-	rm -v -rf doc/*
+	rm -v -rf docs/*
 
 # Shutdown scala compilation daemon 
 fsc-shutdown:
