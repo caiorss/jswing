@@ -165,6 +165,14 @@ object Dialog {
       fch.setFileHidingEnabled(!showHidden)
     }
 
+    def withHome() = {
+      val home = javax.swing.filechooser.FileSystemView
+        .getFileSystemView()
+        .getHomeDirectory()
+      fch.setCurrentDirectory(home)
+      this
+    }
+
    /**  Run file selection dialog and returning 
     *  the selected directory or None if no directory 
     *  is selected.
