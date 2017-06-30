@@ -97,7 +97,7 @@ object Dialog {
         "Image Files",
         Array(".png", ".tiff", ".tif", ".jpeg", ".jpg", ".bmp")
       )
-      this.setFileFilter(imgFilter)
+      fch.setFileFilter(imgFilter)
       this
     }
 
@@ -111,7 +111,6 @@ object Dialog {
       val home = javax.swing.filechooser.FileSystemView
         .getFileSystemView()
         .getHomeDirectory()
-
       fch.setCurrentDirectory(home)
       this
     }
