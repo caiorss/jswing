@@ -1,0 +1,94 @@
+* JSwing - Java Swing GUI Components and building blocks for Scala 
+** Overview 
+*** What is it?
+
+Jswing is a higher level Scala library to build Java-swing GUIs.
+
+Features: 
+
+ - Scala friendly GUI building blocks. Classes ready to use for
+   displaying pictures, text table and data visualization.
+
+ - Higher order functions to add event handlers to Java Swing widgets.
+
+ - Jswing abstracts over many Java swing implementation details making
+   it easier to use. 
+
+*** Goals 
+
+  - Simplify the creation of GUI with Java Swing. 
+
+  - Provide a Scala/Functional Programming friendly event handling.
+
+  - Provide GUI Building blocks. It is a flexible, small and reusable
+    GUI for specific tasks such as display pictures, text, files and
+    etc. 
+
+  - Make data vizulization easier with java swing.
+
+** Ideas 
+** Building Instructions 
+*** Compile with GNU make and Scalac 
+
+1. Edit the Makefile 
+
+2. Run =$ make lib= to build the jswing library.
+
+#+BEGIN_SRC sh 
+$ make lib
+scalac  src/jswing.scala src/jswing.guis.scala -d bin/jswing.jar
+
+# To open documentation
+$ firefox docs/index.html 
+#+END_SRC
+
+3. Run =$ make doc= to build the package documentation. 
+
+#+BEGIN_SRC sh 
+$ make doc
+scaladoc src/jswing.scala src/jswing.guis.scala -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -d ./docs 
+model contains 14 documentable templates
+
+#+END_SRC
+
+4. Test the library in the REPL.  Run =$ scala -cp bin/jswing.jar= and
+   paste the code below.
+
+#+BEGIN_SRC sh 
+$ scala -cp bin/jswing.jar
+Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_20).
+Type in expressions for evaluation. Or try :help.
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+
+val lview = new jswing.guis.ListView(
+    title       = "Sample ListView",
+    visible     = true,
+    exitOnClose = true
+)
+
+val files = new java.io.File("/").listFiles().map(_.toString)
+
+// Whenever the user click at some item, it will print this message.
+lview.onSelect { println("You selected item: = " + lview.getSelectedValue())}
+
+// Fill the list view executing it at the Java Swing thread.
+jswing.JUtils.invokeLater{ lview.addElements(files) }
+
+
+// Exiting paste mode, now interpreting.
+
+lview: jswing.guis.ListView = jswing.guis.ListView[frame0,0,0,300x400,layout=java.awt.BorderLayout,title=Sample ListView,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,1,24,298x375,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+files: Array[String] = Array(/home, /var, /bin, /usr, /root, /Applications, /proc, /boot, /dev, /opt, /etc, /mnt, /tmp, /run, /desktopfs-pkgs.txt, /lib, /.manjaro-tools, /srv, /lib64, /rootfs-pkgs.txt, /sys, /sbin, /lost+found)
+
+scala> You selected item: = /usr
+You selected item: = /usr
+You selected item: = /etc
+You selected item: = /etc
+You selected item: = /srv
+You selected item: = /srv
+You selected item: = /sbin
+You selected item: = /sbin
+#+END_SRC
