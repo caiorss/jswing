@@ -225,6 +225,20 @@ object Event{
     () => button.removeActionListener(listener)
     }
 
+
+  /** Subscribes to checkbox click event notifications */
+  def onCheckboxClick(chbox: javax.swing.JCheckBox) (handler: => Unit) = {
+      val listener = new java.awt.event.ActionListener(){
+        def actionPerformed(evt: java.awt.event.ActionEvent) = {
+          handler
+        }
+      }
+      chbox.addActionListener(listener)
+      // Returns function that when executed disposes the event handler
+      () => chbox.removeActionListener(listener)
+  }
+
+
   /** Event fired when text is changed or user type something in a text field. */ 
   def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : Dispose = {
     val listener = new javax.swing.event.DocumentListener(){
