@@ -81,6 +81,68 @@ class Button(
 }
 
 
+/**
+  * Enhanced JFrame class that provides better initialization.
+  *
+  * Example:
+  *
+  * It creates a window with title 'Hello World', not resizable, initially visible and ends
+  * the application when the user close the window. It also prints a message when the window
+  * is closed.
+  *
+  * {{{
+  *     val frame = new jswing.widgets.Frame(
+  *       title       = "Hello World",
+  *       resizable   = false,
+  *       visible     = true,
+  *       exitOnClose = true
+  *      )
+  *
+  *     frame.onWindowClose{ println("I was closed") }
+  * }}}
+  *
+  *
+  */
+class Frame(
+  title:     String     = "",
+  size:      (Int, Int) = (300, 400),
+  visible:   Boolean    = false,
+  resizable: Boolean    = true,
+  enabled:   Boolean    = true,
+  exitOnClose: Boolean  = false
+
+) extends javax.swing.JFrame {
+
+  init()
+
+  private def init(){
+    this.setSize(size._1, size._2)
+    this.setTitle(title)
+    this.setResizable(resizable)
+    this.setEnabled(enabled)
+    this.setVisible(visible)
+
+    if (exitOnClose)
+    this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+  }
+
+  /** Subscribe to window close event notifications */
+  def onWindowClose(handler: => Unit){
+    val listener = new java.awt.event.WindowAdapter(){
+      override def windowClosing(evt: java.awt.event.WindowEvent){
+        handler
+      }
+    }
+
+    this.addWindowListener(listener)
+
+    // Return lambda function that removes the listener
+    // or the event handler when executed.
+    () => this.removeWindowListener(listener)
+  }
+
+}
+
 
 class ListBox extends javax.swing.JList {
   private val model  = new javax.swing.DefaultListModel[String]()
