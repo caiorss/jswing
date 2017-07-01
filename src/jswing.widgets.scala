@@ -59,10 +59,18 @@ class Button(
   private def init(){
     this.setText(text)
     this.setEnabled(enabled)
+
+
+
     if (bgColor != null) this.setBackground(bgColor)
     if (fgColor != null) this.setForeground(fgColor)
-    if (bgName != null)  this.setBackground(java.awt.Color.getColor(bgName))
-    if (fgName != null)  this.setBackground(java.awt.Color.getColor(fgName))
+
+    if (bgName != null)
+    jswing.JUtils.invokeLater{ this.setBackground(jswing.JUtils.getColorOrNull(bgName))}
+
+    if (fgName != null)
+    jswing.JUtils.invokeLater { this.setForeground(jswing.JUtils.getColorOrNull(fgName))}
+
     this.onClick{ onClick }
   }
 
