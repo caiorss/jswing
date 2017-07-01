@@ -128,8 +128,12 @@ class Frame(
     this.setTitle(title)
     this.setResizable(resizable)
     this.setEnabled(enabled)
-    this.setVisible(visible)
+    
+    // Center frame on screen 
+    this.setLocationRelativeTo(null)
 
+    this.setVisible(visible)
+    
     if (exitOnClose)
     this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
   }
