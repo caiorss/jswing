@@ -397,7 +397,55 @@ object Widgets {
     } // ----- End of class ListView ------- //
 
 
-   /** Widget to show pictures and with facilitate to 
+   /**
+     * Enhanced Java swing checkbox.
+     *
+     */
+    class CheckBox(
+      label: String,
+      value: Boolean = false
+    ) extends javax.swing.JCheckBox {
+
+      init()
+
+      private def init(){
+        this.setText(label)
+        this.setSelected(value)
+      }
+
+      /** Synonym to method is selected. Returns the checkbox status. */
+      def getValue() = {
+        this.isSelected()
+      }
+
+      /** Subscribes to checkbox click event notifications. */
+      def onClick(handler: => Unit){
+        val listener = new java.awt.event.ActionListener(){
+          def actionPerformed(evt: java.awt.event.ActionEvent) = {
+            handler
+          }
+        }
+        this.addActionListener(listener)
+        // Returns function that when executed disposes the event handler
+        () => this.removeActionListener(listener)
+      }
+
+
+      def onClick(handler: CheckBox => Unit){
+        val listener = new java.awt.event.ActionListener(){
+          def actionPerformed(evt: java.awt.event.ActionEvent) = {
+            handler(evt.getSource().asInstanceOf[CheckBox])
+          }
+        }
+        this.addActionListener(listener)
+        // Returns function that when executed disposes the event handler
+        () => this.removeActionListener(listener)
+      }
+    }
+
+
+   /**
+     * Widget to show pictures and with facilitate to
      * manipulate and display image.
      * 
      */  
