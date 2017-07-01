@@ -45,7 +45,7 @@ lib:  $(lib)
 demo: $(demo)
 scalalib: $(scalalib)
 
-$(lib): src/jswing.scala src/jswing.guis.scala 
+$(lib): $(libsrc)
 	$(CC) $(libsrc) -d $(lib)
 
 load: lib
