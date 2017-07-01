@@ -44,6 +44,43 @@ object WidgetUtils {
 }
 
 
+class Button(
+  text:    String,
+  enabled: Boolean        = true,
+  bgColor: java.awt.Color = null,
+  fgColor: java.awt.Color = null,
+  bgName:  String         = null,
+  fgName:  String         = null,
+  onClick: => Unit        = ()
+) extends javax.swing.JButton {
+
+  init()
+
+  private def init(){
+    this.setText(text)
+    this.setEnabled(enabled)
+    if (bgColor != null) this.setBackground(bgColor)
+    if (fgColor != null) this.setForeground(fgColor)
+    if (bgName != null)  this.setBackground(java.awt.Color.getColor(bgName))
+    if (fgName != null)  this.setBackground(java.awt.Color.getColor(fgName))
+    this.onClick{ onClick }
+  }
+
+
+  /** Subscribes to button click event */
+  def onClick (handler: => Unit)  = {
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        handler
+      }
+    }
+    this.addActionListener(listener)
+    // Returns function that when executed disposes the event handler
+    () => this.removeActionListener(listener)
+  }
+}
+
+
 
 class ListBox extends javax.swing.JList {
   private val model  = new javax.swing.DefaultListModel[String]()
