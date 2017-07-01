@@ -8,8 +8,6 @@
   */
 package jswing.guis
 
-import jswing.Widgets
-
 /**  Simple GUI building-block for displaying pictures. 
  */     
 class PictureFrame(
@@ -18,7 +16,7 @@ class PictureFrame(
      ,visible:     Boolean  = false
      ,size:      (Int, Int) = (300, 400)
 ) extends javax.swing.JFrame {
-  private val pbox = new Widgets.PictureBox()
+  private val pbox = new jswing.widgets.PictureBox()
 
   init()
 
