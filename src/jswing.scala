@@ -187,7 +187,22 @@ object Dialog {
 
 object JUtils{
 
-  def getColor(color: String) = java.awt.Color.getColor(color)
+  def getColorOrNull(color: String) = color match {
+    case "blue"    => java.awt.Color.blue
+    case "cyan"    => java.awt.Color.cyan      
+    case "red"     => java.awt.Color.red
+    case "green"   => java.awt.Color.green
+    case "yellow"  => java.awt.Color.yellow
+    case "white"   => java.awt.Color.white
+    case "pink"    => java.awt.Color.pink
+    case "black"   => java.awt.Color.black
+    case "magenta" => java.awt.Color.magenta
+    case "orange"  => java.awt.Color.orange
+    case "gray"    => java.awt.Color.gray
+    case  _        => null
+  }
+
+  def getColor(color: String) = Option(getColorOrNull(color))
 
   def invokeLater(handler: => Unit) = {
     javax.swing.SwingUtilities.invokeLater(
