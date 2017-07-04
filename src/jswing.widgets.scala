@@ -492,9 +492,16 @@ frame.setVisible(true)
  */
 class MTableModel[A](
   columns:   Array[String],
-  columnsFn: (A, Int) => Object
+  columnsFn: (A, Int) => Object,
+  items:     Seq[A]   = Seq()
 )extends javax.swing.table.AbstractTableModel {
   val data = scala.collection.mutable.ListBuffer[A]()
+
+  init()
+
+  private def init(){
+    this.addItems(items)
+  }
 
   // Required by  AbstractTableModel  
   def getRowCount() = data.length
