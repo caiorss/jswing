@@ -330,6 +330,98 @@ class ListBox extends javax.swing.JList {
 
 
 /** 
+Extension of JTable widget with better initialization  
+
+Example: 
+
+  {{{
+import jswing.widgets.Table
+import javax.swing.{JFrame, JScrollPane}
+import javax.swing.table.DefaultTableModel
+
+val model = new DefaultTableModel()
+
+Array("Name", "Price", "Quantity") foreach model.addColumn
+
+model.addRow(Array("Sugar", 1.50, 100).asInstanceOf[Array[Object]])
+model.addRow(Array("Milk",  2.00, 200).asInstanceOf[Array[Object]])
+model.addRow(Array("Wine",  3.25, 300).asInstanceOf[Array[Object]])
+
+val table = new Table(
+  model         = model,
+  editable      = false,
+  showGrid      = false,
+  cellSelection = false,
+  focusable     = false,
+  bgColor       = java.awt.Color.green,
+  headerColor   = java.awt.Color.blue
+)
+
+val frame = new JFrame("Inventory list")
+frame.setSize(300, 400)
+frame.add(new JScrollPane(table))
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+frame.setVisible(true)
+
+  }}}
+
+
+ @param  model         - Table modle 
+ @param  editable      - (Default true) If this flag is set makes the cells editable.
+ @param  cellSelection - (Default true) If true the cells can be selected.
+ @param  focusable     - (Default true) If true the celss can be focused.
+ @param  showGrid      - (Default true) If true shows the table grid.
+ @param  toolTip       - (Default null) Sets the tooltip text. 
+ @param  bgcolor       - (Default null) Sets the table background color. 
+ @param  fgColor       - (Default null) Sets the table foreground color.
+ @param  headercolor   - (Default null) Sets the header background color. 
+
+*/
+class Table(
+  model:         javax.swing.table.AbstractTableModel = null,
+  editable:      Boolean        = true,
+  focusable:     Boolean        = true,
+  cellSelection: Boolean        = true,
+  showGrid:      Boolean        = true,
+  toolTip:       String         = null,
+  bgColor:       java.awt.Color = null,
+  fgColor:       java.awt.Color = null,
+  headerColor:   java.awt.Color = null
+  ) extends javax.swing.JTable {
+  private var cellEditable = editable
+
+  init()
+
+  private def init(){
+
+    this.setFocusable(focusable)
+    this.setCellSelectionEnabled(cellSelection)
+    this.setShowGrid(showGrid)
+
+    if (model != null) this.setModel(model)
+    if (toolTip != null) this.setToolTipText(toolTip)
+    if (bgColor != null) this.setBackground(bgColor)
+    if (fgColor != null) this.setForeground(fgColor)
+    if (headerColor != null) this.getTableHeader().setBackground(headerColor)
+    
+  }
+
+  def setHeaderColor(color: java.awt.Color){
+     this.getTableHeader().setBackground(color) 
+  }
+
+  def setCellEditable(flag: Boolean)    = { cellEditable = flag }
+  def setBgColor(color: java.awt.Color) = { this.setBackground(color) }
+  def setFgColor(color: java.awt.Color) = { this.setForeground(color) }
+
+  override def isCellEditable(arg0: Int, arg1: Int) = cellEditable
+
+} // -------- End of class Table ---------- // 
+
+
+
+
+/** 
 Useful table JTable model (AbstractTableModel) useful for displaying
 Scala Case classes or algebraic data types.
  
