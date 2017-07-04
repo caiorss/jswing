@@ -328,3 +328,116 @@ class ListBox extends javax.swing.JList {
 } // --- End of Class Picturebox --- //
 
 
+
+/** 
+Useful table JTable model (AbstractTableModel) useful for displaying
+Scala Case classes or algebraic data types.
+ 
+Important methods: 
+ 
+ - .addItem(A): Unit
+
+ - .addItems(Seq[A]): Unit
+
+ - .clear(): Unit 
+
+Example:   
+
+    {{{ 
+import jswing.widgets.MTableModel
+import javax.swing.{JFrame, JPanel, JTable, JScrollPane}
+
+
+case class InventoryItem(name: String, price: Double, number: Int)
+
+val products = Array(
+  InventoryItem("Sugar", 1.20, 100),
+  InventoryItem("Milk",  2.50, 200),
+  InventoryItem("Coca Cola", 4.00, 300),
+  InventoryItem("Beans", 5.0, 600)
+)
+
+
+def itemToCol(item: InventoryItem, col: Int) = col match {
+  case 0 => item.name.asInstanceOf[Object]
+  case 1 => item.price.asInstanceOf[Object]
+  case 2 => item.number.asInstanceOf[Object]
+  case _ => error("Error: Column number out of range.")
+}
+
+val tableModel = new MTableModel[InventoryItem](
+  columns   = Array("Name", "Price", "Quantity"),
+  columnsFn = itemToCol
+)
+
+tableModel.addItems(products)
+
+val table = new JTable(tableModel)
+val frame = new JFrame("Inventory list")
+frame.setSize(300, 400)
+frame.add(new JScrollPane(table))
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+frame.setVisible(true)
+
+     }}}
+ 
+     It will display a table like this: 
+
+  {{{
+
+| Name      | Price | Quantity |
+|-----------+-------+----------|
+| Sugar     |   1.2 |      100 |
+| Milk      |   2.5 |      200 |
+| Coca Cola |   4.0 |      300 |
+| Beans     |   5.0 |      600 |
+
+  }}}
+ 
+     @param columns    - Array containing the column names.
+     @param columnsFn  - Function that maps the algebraic data type into the column.
+  *  
+ */
+class MTableModel[A](
+  columns:   Array[String],
+  columnsFn: (A, Int) => Object
+)extends javax.swing.table.AbstractTableModel {
+  val data = scala.collection.mutable.ListBuffer[A]()
+
+  // Required by  AbstractTableModel  
+  def getRowCount() = data.length
+
+  // Required by  AbstractTableModel
+  def getColumnCount = columns.length
+
+  // Required by  AbstractTableModel
+  def getValueAt(row: Int, col: Int): Object =  {
+    columnsFn(data(row), col)
+  }
+  
+  override def getColumnName(col: Int) = {
+    columns(col)
+  }
+
+  /** Add row to the table model. */
+  def addItem(item: A) = {
+    data.append(item)
+    //this.fireTableChanged()
+  }
+
+  /** Add rows to the table model. */
+  def addItems(items: Seq[A]) {
+    //for (i < - items) { data.append(i) }
+    items foreach (i => data.append(i) )
+    this.fireTableDataChanged()
+  }
+
+  /** Removes all items. */
+  def clear() = {
+    data.clear()
+    this.fireTableDataChanged()
+  }
+
+  override def isCellEditable(row: Int, col: Int) = false
+}
+
