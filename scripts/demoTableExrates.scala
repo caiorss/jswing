@@ -1,5 +1,11 @@
 import scala.xml._
 import jswing.widgets.{Table, MTableModel}
+import jswing.Event
+import scala.concurrent.Future
+import concurrent.ExecutionContext.Implicits.global
+
+
+type RowType = (String, Double)
 
 /** Get exchange rates against U.S. dollar from European Central Bank */
 def getExchangeRates() = {
@@ -7,22 +13,20 @@ def getExchangeRates() = {
   val rates = (xml.child \\ "@rate").map(_.text.toDouble)
   val currencies = (xml.child \\ "@currency").map(_.text)
   val usdRate = currencies.zip(rates).find(t => t._1 == "USD").get._2
-
   currencies.zip(rates).map(t => (t._1, t._2 / usdRate))
 }
 
 
-
-def itemToCol(item: (String, Double), col: Int) = col match {
+def itemToCol(item: RowType, col: Int) = col match {
   case 0 => item._1.asInstanceOf[Object]
   case 1 => item._2.formatted("%.3f").asInstanceOf[Object]
   case _ => error("Error: Column number out of range")
 }
 
-val model = new MTableModel(
+val model = new MTableModel[RowType](
   columns   = Array("Currency", "Exchange Rate"),
-  columnsFn = itemToCol,
-  items     = getExchangeRates()
+  columnsFn = itemToCol
+  //items     = getExchangeRates()
 )
 
 val table = new Table(
@@ -35,7 +39,31 @@ val table = new Table(
 )
 
 val frame = new javax.swing.JFrame("Exchange Rates")
-frame.add(new javax.swing.JScrollPane(table))
-frame.setSize(300, 400)
+val panel = new javax.swing.JPanel()
+val statusLabel = new javax.swing.JLabel("Status:")
+val buttonUpdate = new javax.swing.JButton("Update")
+
+//frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))
+panel.add(new javax.swing.JScrollPane(table))
+panel.add(statusLabel)
+panel.add(buttonUpdate)
+frame.add(panel)
+
+frame.setSize(500, 500)
+frame.setResizable(false)
 frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
 frame.setVisible(true)
+
+def updateRates() = { 
+  val rates = Future { getExchangeRates() }
+  statusLabel.setText("Update exchange rates ...")
+  rates onSuccess { case r =>
+    model.addItems(r)
+    statusLabel.setText("Last update " + new java.util.Date())
+    println("Exchange rates updated")
+  }
+}
+
+Event.onButtonClick(buttonUpdate){ updateRates() }
+
+updateRates()
