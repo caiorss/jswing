@@ -1,0 +1,316 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>widgets - Jswing - Java Swing Wrapper 1.0 - jswing.widgets</title>
+          <meta name="description" content="widgets - Jswing - Java Swing Wrapper 1.0 - jswing.widgets" />
+          <meta name="keywords" content="widgets Jswing Java Swing Wrapper 1.0 jswing.widgets" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'jswing.widgets.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="jswing">jswing</a></p>
+        <h1>widgets</h1><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">widgets</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="jswing.widgets.Button" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ButtonextendsJButton"></a>
+      <a id="Button:Button"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Button.html"><span class="name">Button</span></a><span class="result"> extends <span class="extype" name="javax.swing.JButton">JButton</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@ButtonextendsJButton" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.CheckBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CheckBoxextendsJCheckBox"></a>
+      <a id="CheckBox:CheckBox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CheckBox.html"><span class="name">CheckBox</span></a><span class="result"> extends <span class="extype" name="javax.swing.JCheckBox">JCheckBox</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@CheckBoxextendsJCheckBox" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enhanced Java swing checkbox.</p>
+    </li><li name="jswing.widgets.Frame" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FrameextendsJFrame"></a>
+      <a id="Frame:Frame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Frame.html"><span class="name">Frame</span></a><span class="result"> extends <span class="extype" name="javax.swing.JFrame">JFrame</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@FrameextendsJFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Enhanced JFrame class that provides better initialization.</p><div class="fullcomment"><div class="comment cmt"><p>Enhanced JFrame class that provides better initialization.</p><p>Example:</p><p>It creates a window with title 'Hello World', not resizable, initially visible and ends
+the application when the user close the window. It also prints a message when the window
+is closed.</p><pre><span class="kw">val</span> frame = <span class="kw">new</span> jswing.widgets.Frame(
+  title       = <span class="lit">"Hello World"</span>,
+  resizable   = <span class="kw">false</span>,
+  visible     = <span class="kw">true</span>,
+  exitOnClose = <span class="kw">true</span>
+ )
+
+frame.onWindowClose{ println(<span class="lit">"I was closed"</span>) }</pre></div></div>
+    </li><li name="jswing.widgets.ListBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ListBoxextendsJList[Nothing]"></a>
+      <a id="ListBox:ListBox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ListBox.html"><span class="name">ListBox</span></a><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@ListBoxextendsJList[Nothing]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.MTableModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MTableModel[A]extendsAbstractTableModel"></a>
+      <a id="MTableModel[A]:MTableModel[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="MTableModel.html"><span class="name">MTableModel</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.table.AbstractTableModel">AbstractTableModel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@MTableModel[A]extendsAbstractTableModel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Useful table JTable model (AbstractTableModel) useful for displaying
+Scala Case classes or algebraic data types.</p><div class="fullcomment"><div class="comment cmt"><p>Useful table JTable model (AbstractTableModel) useful for displaying
+Scala Case classes or algebraic data types.</p><p>Important methods:</p><ul><li>.addItem(A): Unit</li><li>.addItems(Seq[A]): Unit</li><li>.clear(): Unit</li></ul><p>Example:</p><pre><span class="kw">import</span> jswing.widgets.MTableModel
+<span class="kw">import</span> javax.swing.{JFrame, JPanel, JTable, JScrollPane}
+
+
+<span class="kw">case</span> <span class="kw">class</span> InventoryItem(name: <span class="std">String</span>, price: <span class="std">Double</span>, number: <span class="std">Int</span>)
+
+<span class="kw">val</span> products = <span class="std">Array</span>(
+  InventoryItem(<span class="lit">"Sugar"</span>, <span class="num">1.20</span>, <span class="num">100</span>),
+  InventoryItem(<span class="lit">"Milk"</span>,  <span class="num">2.50</span>, <span class="num">200</span>),
+  InventoryItem(<span class="lit">"Coca Cola"</span>, <span class="num">4.00</span>, <span class="num">300</span>),
+  InventoryItem(<span class="lit">"Beans"</span>, <span class="num">5.0</span>, <span class="num">600</span>)
+)
+
+
+<span class="kw">def</span> itemToCol(item: InventoryItem, col: <span class="std">Int</span>) = col <span class="kw">match</span> {
+  <span class="kw">case</span> <span class="num">0</span> <span class="kw">=&gt;</span> item.name.asInstanceOf[<span class="std">Object</span>]
+  <span class="kw">case</span> <span class="num">1</span> <span class="kw">=&gt;</span> item.price.asInstanceOf[<span class="std">Object</span>]
+  <span class="kw">case</span> <span class="num">2</span> <span class="kw">=&gt;</span> item.number.asInstanceOf[<span class="std">Object</span>]
+  <span class="kw">case</span> _ <span class="kw">=&gt;</span> error(<span class="lit">"Error: Column number out of range."</span>)
+}
+
+<span class="kw">val</span> tableModel = <span class="kw">new</span> MTableModel[InventoryItem](
+  columns   = <span class="std">Array</span>(<span class="lit">"Name"</span>, <span class="lit">"Price"</span>, <span class="lit">"Quantity"</span>),
+  columnsFn = itemToCol
+)
+
+tableModel.addItems(products)
+
+<span class="kw">val</span> table = <span class="kw">new</span> JTable(tableModel)
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Inventory list"</span>)
+frame.setSize(<span class="num">300</span>, <span class="num">400</span>)
+frame.add(<span class="kw">new</span> JScrollPane(table))
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a table like this:</p><pre>| Name      | Price | Quantity |
+|-----------+-------+----------|
+| Sugar     |   <span class="num">1.2</span> |      <span class="num">100</span> |
+| Milk      |   <span class="num">2.5</span> |      <span class="num">200</span> |
+| Coca Cola |   <span class="num">4.0</span> |      <span class="num">300</span> |
+| Beans     |   <span class="num">5.0</span> |      <span class="num">600</span> |</pre></div></div>
+    </li><li name="jswing.widgets.PictureBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PictureBoxextendsJLabel"></a>
+      <a id="PictureBox:PictureBox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PictureBox.html"><span class="name">PictureBox</span></a><span class="result"> extends <span class="extype" name="javax.swing.JLabel">JLabel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@PictureBoxextendsJLabel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Widget to show pictures and with facilitate to
+manipulate and display image.</p>
+    </li><li name="jswing.widgets.Table" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TableextendsJTable"></a>
+      <a id="Table:Table"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Table.html"><span class="name">Table</span></a><span class="result"> extends <span class="extype" name="javax.swing.JTable">JTable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@TableextendsJTable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extension of JTable widget with better initialization</p><div class="fullcomment"><div class="comment cmt"><p>Extension of JTable widget with better initialization</p><p>Example:</p><pre><span class="kw">import</span> jswing.widgets.Table
+<span class="kw">import</span> javax.swing.{JFrame, JScrollPane}
+<span class="kw">import</span> javax.swing.table.DefaultTableModel
+
+<span class="kw">val</span> model = <span class="kw">new</span> DefaultTableModel()
+
+<span class="std">Array</span>(<span class="lit">"Name"</span>, <span class="lit">"Price"</span>, <span class="lit">"Quantity"</span>) foreach model.addColumn
+
+model.addRow(<span class="std">Array</span>(<span class="lit">"Sugar"</span>, <span class="num">1.50</span>, <span class="num">100</span>).asInstanceOf[<span class="std">Array</span>[<span class="std">Object</span>]])
+model.addRow(<span class="std">Array</span>(<span class="lit">"Milk"</span>,  <span class="num">2.00</span>, <span class="num">200</span>).asInstanceOf[<span class="std">Array</span>[<span class="std">Object</span>]])
+model.addRow(<span class="std">Array</span>(<span class="lit">"Wine"</span>,  <span class="num">3.25</span>, <span class="num">300</span>).asInstanceOf[<span class="std">Array</span>[<span class="std">Object</span>]])
+
+<span class="kw">val</span> table = <span class="kw">new</span> Table(
+  model         = model,
+  editable      = <span class="kw">false</span>,
+  showGrid      = <span class="kw">false</span>,
+  cellSelection = <span class="kw">false</span>,
+  focusable     = <span class="kw">false</span>,
+  bgColor       = java.awt.Color.green,
+  headerColor   = java.awt.Color.blue
+)
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Inventory list"</span>)
+frame.setSize(<span class="num">300</span>, <span class="num">400</span>)
+frame.add(<span class="kw">new</span> JScrollPane(table))
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+frame.setVisible(<span class="kw">true</span>)</pre></div></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="jswing.widgets.WidgetUtils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WidgetUtils"></a>
+      <a id="WidgetUtils:WidgetUtils"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WidgetUtils$.html"><span class="name">WidgetUtils</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@WidgetUtils" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
