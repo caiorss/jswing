@@ -12,31 +12,66 @@ import javax.swing.JOptionPane
 /** Java swing dialogs (aka Message boxes) to display information or warnings. */
 object Dialog {
 
-  def plainMsg(title: String, message: String){
+  /** 
+       Display a message dialog
+     
+       - JOptionPane.WARNING_MESSAGE
+
+       Example:
+
+    {{{
+        jswing.Dialog.showAlert("title","Message body")
+    }}}
+      
+   */
+  def showAlert(title: String, message: String){
     JOptionPane.showMessageDialog(
          null
-        ,title
         ,message
+        ,title
         ,JOptionPane.WARNING_MESSAGE
      )
   }
 
-  /** Displays an information dialog */
-  def informationMsg(title: String, message: String){
+  /** 
+       Displays an information dialog 
+
+       - JOptionPane.INFORMATION_MESSAGE
+
+
+       Example:
+
+    {{{
+        jswing.Dialog.showInfo("title","Message body")
+    }}}
+    */
+  def showInfo(title: String, message: String){
     JOptionPane.showMessageDialog(
          null
-        ,title
         ,message
+        ,title
         ,JOptionPane.INFORMATION_MESSAGE
      )
   }
 
-  /** Displays an error dialog */
-  def errorMsg(title: String, message: String){
+  /** 
+       Displays an error dialog 
+
+       - JOptionPane.ERROR_MESSAGE
+
+
+       Example:
+
+    {{{
+        jswing.Dialog.showInfo("title","Message body")
+    }}}
+
+    */
+  def showError(title: String, message: String){
     JOptionPane.showMessageDialog(
          null
-        ,title
         ,message
+        ,title
         ,JOptionPane.ERROR_MESSAGE
      )
   }
