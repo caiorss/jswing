@@ -83,6 +83,7 @@ def updateRates() = {
 }
 
 Event.onButtonClick(buttonUpdate){ updateRates() }
+updateRates()
 
 /// Update exchange rate every 10 seconds 
 // runEvery(10000){ updateRates() }
