@@ -65,8 +65,14 @@ object XmlLayout {
       attr("name")  foreach frame.setName
       setColorFn(attr("bgColor"), frame.setBackground)
       setColorFn(attr("fgColor"), frame.setForeground)
-
       setBoolProp(attr("resizable"), frame.setResizable)
+
+      attr("exitOnClose") match  {
+        case Some("true")
+            => frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+        case Some("false") => ()
+        case _             => error("Invalid boolean value")
+      }
 
       val h = attr("height").map(_.toInt)
       val w = attr("width").map(_.toInt)
