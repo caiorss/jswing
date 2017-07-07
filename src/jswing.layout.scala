@@ -61,6 +61,8 @@ def makeJFrame(
 
   attr("title") foreach frame.setTitle
   attr("name")  foreach frame.setName
+  setColorFn(attr("bgColor"), frame.setBackground)
+  setColorFn(attr("fgColor"), frame.setForeground)
 
   setBoolProp(attr("resizable"), frame.setResizable)
 
