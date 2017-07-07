@@ -72,6 +72,7 @@ private object XmlLayout {
         case Some("true")
             => frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
         case Some("false") => ()
+        case None          => ()
         case _             => error("Invalid boolean value")
       }
 
