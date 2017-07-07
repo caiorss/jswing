@@ -233,27 +233,39 @@ object Builder {
   }
 
 
-    def getJButton(
-      hmap: scala.collection.mutable.Map[String, java.awt.Component],
-      name: String
-    ) =  {
-      hmap(name).asInstanceOf[javax.swing.JButton]
-    }
-
-    def getJLabel(
-      hmap: scala.collection.mutable.Map[String, java.awt.Component],
-      name: String
-    ) =  {
-      hmap(name).asInstanceOf[javax.swing.JLabel]
-    }
+  def makeFromFile(file: String) = {
+    val xml = scala.xml.XML.loadFile(file)
+    makeFromXML(xml)
+  }
 
 
-    def getJFrame(
-      hmap: scala.collection.mutable.Map[String, java.awt.Component],
-      name: String
-    ) =  {
-      hmap(name).asInstanceOf[javax.swing.JFrame]
-    }
+  def makeFromString(xmlstr: String) = {
+    val xml = scala.xml.XML.loadString(xmlstr)
+    makeFromXML(xml)
+  }
+
+  def getJButton(
+    hmap: scala.collection.mutable.Map[String, java.awt.Component],
+    name: String
+  ) =  {
+    hmap(name).asInstanceOf[javax.swing.JButton]
+  }
+
+  def getJLabel(
+    hmap: scala.collection.mutable.Map[String, java.awt.Component],
+    name: String
+  ) =  hmap(name).asInstanceOf[javax.swing.JLabel]
+
+  def getJFrame(
+    hmap: scala.collection.mutable.Map[String, java.awt.Component],
+    name: String
+  ) =  {
+    hmap(name).asInstanceOf[javax.swing.JFrame]
+  }
+
+}
+
+
 
 }
 
