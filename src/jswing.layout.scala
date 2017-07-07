@@ -218,19 +218,19 @@ object XmlLayout {
 
 object Builder {
 
-    def makeJswing(node: scala.xml.Node) = {
-      if (node.label != "jswing")
-        error("Error: invalid jswing xml layout Expected jswing tag.")
+  def makeFromXML(node: scala.xml.Node) = {
+    if (node.label != "jswing")
+      error("Error: invalid jswing xml layout Expected jswing tag.")
 
-      val hmap =  scala.collection.mutable.Map[String, java.awt.Component]()
+    val hmap =  scala.collection.mutable.Map[String, java.awt.Component]()
 
-      val frames =  XmlLayout.getNodeChild(node) map { n =>
-        XmlLayout.makeJFrame(n,  XmlLayout.createComponent)
-      }
-
-      frames foreach (fr =>  XmlLayout.getAllComponents(fr, hmap))
-      hmap
+    val frames =  XmlLayout.getNodeChild(node) map { n =>
+      XmlLayout.makeJFrame(n,  XmlLayout.createComponent)
     }
+
+    frames foreach (fr =>  XmlLayout.getAllComponents(fr, hmap))
+    hmap
+  }
 
 
     def getJButton(
