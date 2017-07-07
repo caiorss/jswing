@@ -1,5 +1,6 @@
+package jswing.layout
 
-object XmlLayout {
+private object XmlLayout {
 
     def getAttr(mdata: scala.xml.MetaData) =
         (name: String) => mdata.get(name).map(_.text)
@@ -237,7 +238,6 @@ object Builder {
     frames foreach (fr =>  XmlLayout.getAllComponents(fr, hmap))
     hmap
   }
-
 
   def makeFromFile(file: String) = {
     val xml = scala.xml.XML.loadFile(file)
