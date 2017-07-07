@@ -9,7 +9,7 @@ object XmlLayout {
       node.child.filterNot(_.label == "#PCDATA")
     }
 
-    def setBoolProp(value: Option[String], boolFn: Boolean => Unit) = 
+    def setBoolProp(value: Option[String], boolFn: Boolean => Unit) =
         value match {
           case Some("true")  => boolFn(true)
           case Some("false") => boolFn(false)
@@ -25,7 +25,7 @@ object XmlLayout {
           case "south"  => frame.add(comp, java.awt.BorderLayout.SOUTH)
           case "west"   => frame.add(comp, java.awt.BorderLayout.WEST)
           case "east"   => frame.add(comp, java.awt.BorderLayout.EAST)
-          case "center" => frame.add(comp, java.awt.BorderLayout.CENTER)            
+          case "center" => frame.add(comp, java.awt.BorderLayout.CENTER)
           case _        => error("Error: Invalid layout position")
         }
 
@@ -56,7 +56,7 @@ object XmlLayout {
     def makeJFrame(
       node: scala.xml.Node,
       cont: scala.xml.Node => javax.swing.JComponent
-    ) = {      
+    ) = {
 
       val attr  = getAttr(node.attributes)
       val frame = new javax.swing.JFrame()
@@ -79,13 +79,13 @@ object XmlLayout {
 
       (h, w) match {
         case (Some(x), Some(y)) => frame.setSize(x, y)
-        case _                  => () 
+        case _                  => ()
       }
 
       attr("layout") match {
         case Some("flow")   => frame.setLayout(new java.awt.FlowLayout())
         case Some("border") => frame.setLayout(new java.awt.BorderLayout())
-        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))  
+        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))
         case None           => ()
         case _              => error("Error: Invalid layout format")
       }
@@ -98,8 +98,8 @@ object XmlLayout {
 
         // Set layout position
         n.attributes.get("pos").map(_.text) match {
-          case None      => frame.add(comp)      
-          case Some(pos) => setCompPosJFrame(frame, comp, pos) 
+          case None      => frame.add(comp)
+          case Some(pos) => setCompPosJFrame(frame, comp, pos)
         }
       }
 
@@ -115,9 +115,9 @@ object XmlLayout {
       attr("name") foreach comp.setName
       attr("tooltip") foreach comp.setToolTipText
       setColorFn(attr("bgColor"), comp.setBackground)
-      setColorFn(attr("fgColor"), comp.setForeground)  
+      setColorFn(attr("fgColor"), comp.setForeground)
       setBoolProp(attr("visible"), comp.setVisible)
-      setBoolProp(attr("enabled"), comp.setEnabled)  
+      setBoolProp(attr("enabled"), comp.setEnabled)
     }
 
 
@@ -125,7 +125,7 @@ object XmlLayout {
     def makeJLabel(node: scala.xml.Node) = {
       val attr = getAttr(node.attributes)
       val comp = new javax.swing.JLabel()
-      setJCompProp(node, comp)    
+      setJCompProp(node, comp)
       attr("text") foreach comp.setText
       comp
     }
@@ -133,7 +133,7 @@ object XmlLayout {
     def makeJButton(node: scala.xml.Node) = {
       val attr = getAttr(node.attributes)
       val comp = new javax.swing.JButton()
-      setJCompProp(node, comp)      
+      setJCompProp(node, comp)
       attr("text") foreach comp.setText
       attr("name") foreach comp.setName
       comp
@@ -142,7 +142,7 @@ object XmlLayout {
     def makeJTextArea(node: scala.xml.Node) = {
       val attr = getAttr(node.attributes)
       val comp = new javax.swing.JTextArea()
-      setJCompProp(node, comp)      
+      setJCompProp(node, comp)
       attr("text") foreach comp.setText
       comp
     }
@@ -154,7 +154,7 @@ object XmlLayout {
       attr("name") foreach comp.setName
       attr("tooltip") foreach comp.setToolTipText
       setColorFn(attr("bgColor"), comp.setBackground)
-      setColorFn(attr("fgColor"), comp.setForeground)  
+      setColorFn(attr("fgColor"), comp.setForeground)
       setBoolProp(attr("visible"), comp.setVisible)
       setBoolProp(attr("enabled"), comp.setEnabled)
       setBoolProp(attr("editable"), comp.setEditable)
@@ -162,13 +162,13 @@ object XmlLayout {
     }
 
 
-    def makeJScrollPane(node: scala.xml.Node, cont: scala.xml.Node => javax.swing.JComponent) = {  
+    def makeJScrollPane(node: scala.xml.Node, cont: scala.xml.Node => javax.swing.JComponent) = {
       new javax.swing.JScrollPane(cont(node.child.head))
     }
 
     def makeContainer(
-      node: scala.xml.Node,  
-      comp: javax.swing.JComponent, 
+      node: scala.xml.Node,
+      comp: javax.swing.JComponent,
       cont: scala.xml.Node => javax.swing.JComponent
     ) = {
       val attr  = getAttr(node.attributes)
@@ -179,14 +179,14 @@ object XmlLayout {
       attr("layout") match {
         case Some("flow")   => comp.setLayout(new java.awt.FlowLayout())
         case Some("border") => comp.setLayout(new java.awt.BorderLayout())
-        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))  
+        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))
         case None           => ()
         case _              => error("Error: Invalid layout format")
       }
 
       getNodeChild(node) foreach {c => comp.add(cont(c))}
 
-      comp 
+      comp
     } // End of makeContainer
 
 
@@ -200,7 +200,7 @@ object XmlLayout {
         case "jtextArea"  => makeJTextArea(node)
         case "jpanel"     => makeContainer(node, new javax.swing.JPanel(), createComponent)
         case "jscroll"    => makeJScrollPane(node, createComponent)
-        case _            => error("Invalid java jswing component: " + node.label )  
+        case _            => error("Invalid java jswing component: " + node.label )
       }
     }
 
@@ -270,9 +270,3 @@ object Builder {
   }
 
 }
-
-
-
-}
-
-
