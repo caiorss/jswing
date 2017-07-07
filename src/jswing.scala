@@ -289,7 +289,21 @@ object Event{
     button.addActionListener(listener)
     // Returns function that when executed disposes the event handler 
     () => button.removeActionListener(listener)
+  }
+
+
+  /** Subscribes to button click event */
+  def onButtonClickAction(button: javax.swing.JButton) (handler: String => Unit) : Dispose = {
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        handler(evt.getActionCommand())        
+      }
     }
+
+    button.addActionListener(listener)
+    // Returns function that when executed disposes the event handler 
+    () => button.removeActionListener(listener)        
+  }
 
 
   /** Subscribes to checkbox click event notifications */
