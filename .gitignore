@@ -11,3 +11,9 @@ doc/*
 docs/*
 out/*
 *.html
+*.class
+*.jar
+*.war
+*.zip
+*.tgz
+*.exe
