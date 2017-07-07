@@ -223,6 +223,31 @@ private object XmlLayout {
 
 }
 
+
+private class BuilderGUI(xmlBuilder: String => Unit) {
+  val buttonRun = new javax.swing.JButton("Run XML")
+  val entry  = new javax.swing.JTextArea()
+  val scroll = new javax.swing.JScrollPane(entry)
+  val frame = new javax.swing.JFrame("Jswing XML Builder")
+
+  init()
+
+  def init(){
+    frame.setLayout(new java.awt.BorderLayout())
+    frame.add(entry,     java.awt.BorderLayout.CENTER)
+    frame.add(buttonRun, java.awt.BorderLayout.SOUTH)
+    frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+    frame.setSize(600, 400)
+
+    jswing.Event.onButtonClick(buttonRun){
+      xmlBuilder(entry.getText())
+    }
+  }
+
+  def setVisible(flag: Boolean) = frame.setVisible(flag)
+}
+
+
 object Builder {
 
   def makeFromXML(node: scala.xml.Node) = {
