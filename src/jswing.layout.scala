@@ -259,6 +259,9 @@ object Builder {
   def getJButton(hmap: CompMap, name: String) =
     getJComponent[javax.swing.JLabel](hmap, name)
 
+  def getJToggleButton(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JToggleButton](hmap, name)
+
   def getJLabel(hmap: CompMap, name: String) =
     getJComponent[javax.swing.JLabel](hmap, name)
 
@@ -273,5 +276,27 @@ object Builder {
 
   def getJTextArea(hmap: CompMap, name: String) =
     getJComponent[javax.swing.JTextArea](hmap, name)
+
+  def getJList[A](hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JList[A]](hmap, name)
+
+  def getJSlider(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JSlider](hmap, name)
+
+  def getJSpinner(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JSpinner](hmap, name)
+
+  def getJCheckBox(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JCheckBox](hmap, name)
+
+  def getJRadioButton(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JRadioButton](hmap, name)
+
+  def getJFormattedTextField(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JFormattedTextField](hmap, name)
+
+  def getPasswordField(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JPasswordField](hmap, name)
+
 
 }
