@@ -225,45 +225,6 @@ private object XmlLayout {
 }
 
 
-private class BuilderGUI(xmlBuilder: String => Unit) {
-  val entry  = new javax.swing.JTextArea()
-  val scroll = new javax.swing.JScrollPane(entry)
-  val frame = new javax.swing.JFrame("Jswing XML Builder")
-  val dialog = new jswing.Dialog.FileChooser()
-
-
-  init()
-
-
-  def readFile(file: String) = scala.io.Source.fromFile(file).mkString
-
-  def init(){
-    val panel = new javax.swing.JPanel()
-    val buttonRun = new javax.swing.JButton("Build GUI")
-    val buttonOpen = new javax.swing.JButton("Open XML")
-
-    panel.add(buttonRun)
-    panel.add(buttonOpen)
-
-    frame.setLayout(new java.awt.BorderLayout())
-    frame.add(scroll, java.awt.BorderLayout.CENTER)
-    frame.add(panel,  java.awt.BorderLayout.SOUTH)
-    frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
-    frame.setSize(600, 400)
-
-    jswing.Event.onButtonClick(buttonRun){
-      xmlBuilder(entry.getText())
-    }
-
-    jswing.Event.onButtonClick(buttonOpen){
-      dialog.run() map(this.readFile) foreach entry.setText
-    }
-  }
-
-  def setVisible(flag: Boolean) = frame.setVisible(flag)
-}
-
-
 object Builder {
 
   type CompMap = scala.collection.mutable.Map[String, java.awt.Component]
