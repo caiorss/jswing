@@ -46,11 +46,10 @@ object Main{
     // makeFromFile(args(0))
     val gui = new GUIBuilder(jswing.layout.Builder.makeFromString)
 
-    args match {
-      case Array()                     => println("Error: invalid option.")
+    args match {      
       case Array("-layout-file", file) => jswing.layout.Builder.makeFromFile(file)
       case Array("-layout-gui")        => gui.setVisible(true)
-
+      case _                           => println("Error: invalid option.")
     }  
           
   }
