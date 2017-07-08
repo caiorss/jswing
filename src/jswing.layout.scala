@@ -120,6 +120,7 @@ private object XmlLayout {
       setColorFn(attr("fgColor"), comp.setForeground)
       setBoolProp(attr("visible"), comp.setVisible)
       setBoolProp(attr("enabled"), comp.setEnabled)
+      comp 
     }
 
 
@@ -195,14 +196,16 @@ private object XmlLayout {
     def createComponent(node: scala.xml.Node): javax.swing.JComponent = {
       println("--> Creating node = " + node)
       node.label match {
-        //case "jframe"  => makeJFrame(node, createComponent)
-        case "jbutton"    => makeJButton(node)
-        case "jlabel"     => makeJLabel(node)
-        case "jtextField" => new javax.swing.JTextField(10)
-        case "jtextArea"  => makeJTextArea(node)
-        case "jpanel"     => makeContainer(node, new javax.swing.JPanel(), createComponent)
-        case "jscroll"    => makeJScrollPane(node, createComponent)
-        case _            => error("Invalid java jswing component: " + node.label )
+        case "jbutton"        => makeJButton(node)
+        case "jlabel"         => makeJLabel(node)
+        case "jtextField"     => new javax.swing.JTextField(10)
+        case "jpasswordField" => setJCompProp(node, new javax.swing.JPasswordField())
+        case "jtable"         => setJCompProp(node, new javax.swing.JTable())
+        case "jslider"        => setJCompProp(node, new javax.swing.JSlider())
+        case "jtextArea"      => makeJTextArea(node)
+        case "jpanel"         => makeContainer(node, new javax.swing.JPanel(), createComponent)
+        case "jscroll"        => makeJScrollPane(node, createComponent)          
+        case _                => error("Invalid java jswing component: " + node.label )
       }
     }
 
