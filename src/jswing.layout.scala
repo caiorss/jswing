@@ -266,6 +266,8 @@ private class BuilderGUI(xmlBuilder: String => Unit) {
 
 object Builder {
 
+  type CompMap = scala.collection.mutable.Map[String, java.awt.Component]
+
   def makeFromXML(node: scala.xml.Node) = {
     if (node.label != "jswing")
       error("Error: invalid jswing xml layout Expected jswing tag.")
@@ -291,23 +293,24 @@ object Builder {
     makeFromXML(xml)
   }
 
-  def getJButton(
-    hmap: scala.collection.mutable.Map[String, java.awt.Component],
-    name: String
-  ) =  {
-    hmap(name).asInstanceOf[javax.swing.JButton]
-  }
+  def getJComponent[A](hmap:CompMap, name: String) = hmap(name).asInstanceOf[A]
 
-  def getJLabel(
-    hmap: scala.collection.mutable.Map[String, java.awt.Component],
-    name: String
-  ) =  hmap(name).asInstanceOf[javax.swing.JLabel]
+  def getJButton(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JLabel](hmap, name)
 
-  def getJFrame(
-    hmap: scala.collection.mutable.Map[String, java.awt.Component],
-    name: String
-  ) =  {
-    hmap(name).asInstanceOf[javax.swing.JFrame]
-  }
+  def getJLabel(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JLabel](hmap, name)
+
+  def getJFrame(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JFrame](hmap, name)
+
+  def getJTable(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JTable](hmap, name)
+
+  def getJTextField(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JTextField](hmap, name)
+
+  def getJTextArea(hmap: CompMap, name: String) =
+    getJComponent[javax.swing.JTextArea](hmap, name)
 
 }
