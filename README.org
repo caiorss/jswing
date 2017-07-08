@@ -1,4 +1,4 @@
-#+TITLE: Jswing - Java Swing GUI Components and building blocks for Scala 
+#+TITLE: Jswing - SCala tool to build Java Swing GUIs
 #+AUTHOR: Caio Rodrigues
 #+STARTUP: showall 
 
@@ -6,8 +6,8 @@
 ** Overview 
 *** What is it?
 
-Jswing is a higher level Scala library to build Java-swing GUIs in
-easy and declarative way.
+Jswing is SCala library to build Java Swing user interfaces in a
+easier, declarative and high level way.
 
 Features: 
 
@@ -17,7 +17,9 @@ Features:
  - Higher order functions to add event handlers to Java Swing widgets.
 
  - Jswing abstracts over many Java swing implementation details making
-   it easier to use. 
+   it easier to use.
+
+ - XML Layout engine to build Java Swing UI from XML files.
 
 *** Goals 
 
