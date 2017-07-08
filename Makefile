@@ -29,7 +29,7 @@ SCALA_HOME := $(HOME)/opt/scala-2.11.8
 CC	       := scalac 
 
 # Library sources 
-libsrc := src/jswing.scala src/jswing.widgets.scala src/jswing.layout.scala src/jswing.guis.scala
+libsrc := src/jswing.scala src/jswing.widgets.scala src/jswing.layout.scala src/jswing.guis.scala src/jswing.main.scala
 # Compiled library name.
 lib	 := bin/jswing.jar
 
