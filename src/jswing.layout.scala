@@ -246,6 +246,9 @@ private object XmlLayout {
       hmap: scala.collection.mutable.Map[String, java.awt.Component]
     ) {
       def transverse(con: java.awt.Container): Unit = {
+
+        if (con.getName != null) { hmap += con.getName -> con }
+
         con.getComponents() foreach { c =>
           val name = c.getName()
           if (name != null) { hmap += name -> c }
