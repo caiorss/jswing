@@ -196,7 +196,8 @@ private object XmlLayout {
 
 
     def makeJScrollPane(node: scala.xml.Node, cont: scala.xml.Node => javax.swing.JComponent) = {
-      new javax.swing.JScrollPane(cont(node.child.head))
+      val n = getNodeChild(node).head 
+      new javax.swing.JScrollPane(cont(n))
     }
 
     def makeContainer(
