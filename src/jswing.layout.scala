@@ -53,6 +53,36 @@ private object XmlLayout {
       color flatMap getColor foreach colorFn
     }
 
+    // Regex pattern to extract number from tuple "200,300" -> 200 and 300.
+    val tupleIntRe = """\s*(\d+)\s*,\s*(\d+)\s*""".r
+    val gridLayoutRe = """grid\(\s*(\d+)\s*,\s*(\d+)\s*\)""".r
+
+    def setLayout(layout: String, container: java.awt.Container) =
+      layout match {
+        case "flow"
+            => {
+              container.setLayout(new java.awt.FlowLayout())
+              //println("flow layout")
+            }
+
+
+        case "border"
+            => {
+              container.setLayout(new java.awt.BorderLayout())
+              //println("Border layout")
+            }
+
+        case gridLayoutRe(r, c)
+            => {
+              val layouta = new java.awt.GridLayout(r.toInt, c.toInt)
+              layouta.setHgap(10)
+              layouta.setVgap(10)
+              container.setLayout(layouta)
+              //println("Grid layout")
+            }
+      }
+
+
 
     def makeJFrame(
       node: scala.xml.Node,
