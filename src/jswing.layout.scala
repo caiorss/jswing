@@ -260,7 +260,7 @@ object Builder {
   def getJComponent[A](hmap:CompMap, name: String) = hmap(name).asInstanceOf[A]
 
   def getJButton(hmap: CompMap, name: String) =
-    getJComponent[javax.swing.JLabel](hmap, name)
+    getJComponent[javax.swing.JButton](hmap, name)
 
   def getJToggleButton(hmap: CompMap, name: String) =
     getJComponent[javax.swing.JToggleButton](hmap, name)
