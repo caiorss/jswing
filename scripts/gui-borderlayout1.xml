@@ -1,0 +1,28 @@
+<jswing>
+  <jframe width="300"
+          height="400"
+          name="frame1"
+          resizable="false"
+          visible="true"
+          layout="border"
+          title="hello world"
+          exitOnClose="true"
+          >
+    
+    <jlabel  name="display" text="hello world" pos="north" /> 
+
+    <jscroll pos="center">
+      <jtextArea name="entry1" bgColor="gray" fgColor="cyan"/>
+    </jscroll>
+
+    <jpanel bgColor="green" pos="south">
+
+      <jbutton name="btn1" text="Button1" bgColor="blue" />  
+
+      <jbutton name="btn2" text="Button2" bgColor="cyan" />  
+
+    </jpanel>
+
+  </jframe>
+
+</jswing>

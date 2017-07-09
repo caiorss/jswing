@@ -1,0 +1,15 @@
+<jswing>
+  <jframe name="mainframe"
+          title="Java swing example"
+          size="500, 600"
+          visible="true"
+          exitOnClose="true"
+          >
+    <jpanel name="panel1" layout="grid(4, 0)" size="300, 300">
+      <jbutton   name="btn1" text="Button 1" bgColor="blue" />
+      <jscroll><jtextArea name="tarea1" /></jscroll>
+      <jslider   name="jslider1"/>
+      <jlist     name="list1" />
+    </jpanel>
+  </jframe>
+</jswing>
