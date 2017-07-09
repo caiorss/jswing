@@ -114,13 +114,9 @@ private object XmlLayout {
         case _                  => ()
       }
 
-      attr("layout") match {
-        case Some("flow")   => frame.setLayout(new java.awt.FlowLayout())
-        case Some("border") => frame.setLayout(new java.awt.BorderLayout())
-        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))
-        case None           => ()
-        case _              => error("Error: Invalid layout format")
       }
+
+      attr("layout") foreach { p => setLayout(p, frame)}
 
       getNodeChild(node) foreach {n =>
         println("Adding component ---> " + n)
@@ -209,12 +205,8 @@ private object XmlLayout {
       setColorFn(attr("bgColor"), comp.setBackground)
       setColorFn(attr("fgColor"), comp.setForeground)
 
-      attr("layout") match {
-        case Some("flow")   => comp.setLayout(new java.awt.FlowLayout())
-        case Some("border") => comp.setLayout(new java.awt.BorderLayout())
-        //case Some("box")    => frame.setLayout(new javax.swing.BoxLayout(frame, javax.swing.BoxLayout.Y_AXIS))
-        case None           => ()
-        case _              => error("Error: Invalid layout format")
+      attr("layout") foreach { p => setLayout(p, comp)}
+
       }
 
       getNodeChild(node) foreach {c => comp.add(cont(c))}
