@@ -232,6 +232,7 @@ private object XmlLayout {
         case "jpasswordField" => setJCompProp(node, new javax.swing.JPasswordField())
         case "jtable"         => setJCompProp(node, new javax.swing.JTable())
         case "jslider"        => setJCompProp(node, new javax.swing.JSlider())
+        case "jlist"          => setJCompProp(node, new javax.swing.JList())
         case "jtextArea"      => makeJTextArea(node)
         case "jpanel"         => makeContainer(node, new javax.swing.JPanel(), createComponent)
         case "jscroll"        => makeJScrollPane(node, createComponent)          
