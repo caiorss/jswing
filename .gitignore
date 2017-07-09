@@ -17,3 +17,6 @@ out/*
 *.zip
 *.tgz
 *.exe
+dev/*
+/DevNotes.org
+dev-notes-images/*
