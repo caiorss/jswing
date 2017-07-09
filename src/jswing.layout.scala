@@ -114,6 +114,10 @@ private object XmlLayout {
         case _                  => ()
       }
 
+      attr("size") match {
+        case Some(tupleIntRe(h, w)) => frame.setSize(w.toInt, h.toInt)
+        case None                   => ()
+        case _                      => error("Error: invalid size")
       }
 
       attr("layout") foreach { p => setLayout(p, frame)}
@@ -207,6 +211,10 @@ private object XmlLayout {
 
       attr("layout") foreach { p => setLayout(p, comp)}
 
+      attr("size") match {
+        case Some(tupleIntRe(h, w)) => comp.setSize(w.toInt, h.toInt)
+        case None                   => ()
+        case _                      => error("Error: invalid size")
       }
 
       getNodeChild(node) foreach {c => comp.add(cont(c))}
