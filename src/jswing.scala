@@ -306,6 +306,13 @@ object Event{
     }
   }
 
+  /** Add listener to button */
+  def addButtonListener(comp: javax.swing.JButton)(handler: String => Unit) = {
+    val listener = makeActionListener(handler)
+    comp.addActionListener(listener)
+      () => comp.removeActionListener(listener)
+  }
+
   /** Subscribes to button click event */
   def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
     val listener = new java.awt.event.ActionListener(){
