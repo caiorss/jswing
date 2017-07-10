@@ -285,7 +285,7 @@ object JUtils{
   /** Save a screenshot of jswing component such as JFrame to a PNG file. */  
   def saveScreenShot(component: java.awt.Component)(file: String){
     val img = getScreenShot(component)
-    java.imageio.ImageIO.write(img, "png", new java.io.File(file))
+    javax.imageio.ImageIO.write(img, "png", new java.io.File(file))
   }
   
 
