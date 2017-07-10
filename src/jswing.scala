@@ -313,6 +313,14 @@ object Event{
       () => comp.removeActionListener(listener)
   }
 
+  /** Add listener to combo box */
+  def addComboListener[A](comp: javax.swing.JComboBox[A])(handler: String => Unit) = {
+    val listener = makeActionListener(handler)
+    comp.addActionListener(listener)
+      () => comp.removeActionListener(listener)
+  }
+
+
   /** Subscribes to button click event */
   def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
     val listener = new java.awt.event.ActionListener(){
