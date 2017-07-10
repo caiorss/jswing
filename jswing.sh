@@ -34,7 +34,7 @@ case "$1" in
 
     # Run a jswing demonstration script
     -run)
-        scala -cp bin/jswing.jar -save $2
+        scala -cp bin/jswing.jar -save $2 ${@:3}
         ;;
 
     # Build a GUI from the file gui1.xml and show it.
