@@ -73,6 +73,8 @@ def updateRates() = {
     model.addItems(r)
     statusLabel.setText("Last update " + new java.util.Date())
     println("Exchange rates updated")
+    
+    jswing.JUtils.saveScreenShotArgs(frame, "images/demoTableExrates.png")(args)
   }
 
   rates onFailure { case ex =>
@@ -84,6 +86,8 @@ def updateRates() = {
 
 Event.onButtonClick(buttonUpdate){ updateRates() }
 updateRates()
+
+
 
 /// Update exchange rate every 10 seconds 
 // runEvery(10000){ updateRates() }

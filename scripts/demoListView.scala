@@ -13,4 +13,6 @@ val lview = new ListView(
  ,exitOnClose = true
 )
 
-lview.addElements(listFiles("/"))
+JUtils.invokeLater{ lview.addElements(listFiles("/")) }
+
+JUtils.saveScreenShotArgs(lview, "images/demoListView.png")(args)
