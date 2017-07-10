@@ -16,7 +16,8 @@ Event.onButtonClick(btnClear){ tarea.setText("") }
 
 Event.onButtonClick(btnOpen){
   fchooser.run() foreach { file => tarea.setText(readFile(file))}
+  jswing.JUtils.saveScreenShotArgs(frame, "images/demoGUILayout-editor.png")(args)
 }
 
-jswing.JUtils.saveScreenShotArgs(frame, "images/demoGUILayout-editor.png")(args)
+
 
