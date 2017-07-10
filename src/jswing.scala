@@ -271,6 +271,20 @@ object JUtils{
     timer
   }
 
+  /* Run some action after a delay with java swing Timer a single time. */ 
+  def runDelay(period: Int)(action: => Unit) {
+    var timer: javax.swing.Timer = null
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(ev: java.awt.event.ActionEvent) = {
+        action
+        timer.stop()
+      }
+      }
+      timer = new javax.swing.Timer(period, listener)
+      timer.start()
+  }
+
+
   /** Get screenshot of jswing component such as JFrame */
   def getScreenShot(component: java.awt.Component) = {
     val image = new java.awt.image.BufferedImage(
