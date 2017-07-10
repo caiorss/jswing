@@ -112,12 +112,13 @@ class Button(
   *
   */
 class Frame(
-  title:     String     = "",
-  size:      (Int, Int) = (300, 400),
-  visible:   Boolean    = false,
-  resizable: Boolean    = true,
-  enabled:   Boolean    = true,
-  exitOnClose: Boolean  = false
+  title:     String          = "",
+  size:      (Int, Int)      = (300, 400),
+  visible:   Boolean         = false,
+  resizable: Boolean         = true,
+  enabled:   Boolean         = true,
+  layout:    java.awt.LayoutManager = null, 
+  exitOnClose: Boolean       = false
 
 ) extends javax.swing.JFrame {
 
@@ -128,7 +129,7 @@ class Frame(
     this.setTitle(title)
     this.setResizable(resizable)
     this.setEnabled(enabled)
-    
+    this.setLayout(layout)
     // Center frame on screen 
     this.setLocationRelativeTo(null)
 
