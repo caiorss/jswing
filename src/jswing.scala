@@ -332,7 +332,11 @@ object JUtils{
     }
   }
 
-
+  /** Returns screen dimensions in pixels width x height */
+  def getScreenSize() = {
+    val dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize()
+    (dim.getWidth(), dim.getHeight())
+  }
 
 } // ------ End of Module JUtils ------ // 
 
