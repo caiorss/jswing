@@ -290,6 +290,11 @@ object Builder {
     makeFromXML(xml)
   }
 
+  /** Load GUI layout from file and make all frames visible. */
+  def makeFromFileShow(file: String) = {
+    val xml = scala.xml.XML.loadFile(file)
+    makeFromXML(xml, showFrames = true )
+  }
 
   def makeFromString(xmlstr: String) = {
     val xml = scala.xml.XML.loadString(xmlstr)
