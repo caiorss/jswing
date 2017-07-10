@@ -267,14 +267,18 @@ object Builder {
 
   type CompMap = scala.collection.mutable.Map[String, java.awt.Component]
 
-  def makeFromXML(node: scala.xml.Node) = {
+  def makeFromXML(node: scala.xml.Node, showFrames: Boolean = false) = {
     if (node.label != "jswing")
       error("Error: invalid jswing xml layout Expected jswing tag.")
 
     val hmap =  scala.collection.mutable.Map[String, java.awt.Component]()
 
     val frames =  XmlLayout.getNodeChild(node) map { n =>
-      XmlLayout.makeJFrame(n,  XmlLayout.createComponent)
+      val frame = XmlLayout.makeJFrame(n,  XmlLayout.createComponent)
+
+      if (showFrames) frame.setVisible(showFrames)
+
+      frame
     }
 
     frames foreach (fr =>  XmlLayout.getAllComponents(fr, hmap))
