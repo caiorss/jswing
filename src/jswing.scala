@@ -271,6 +271,24 @@ object JUtils{
     timer
   }
 
+  /** Get screenshot of jswing component such as JFrame */
+  def getScreenShot(component: java.awt.Component) = {
+    val image = new java.awt.image.BufferedImage(
+      component.getWidth(),
+      component.getHeight(),
+      java.awt.image.BufferedImage.TYPE_INT_RGB
+    )
+    component.paint(image.getGraphics())
+    image
+  }
+
+  /** Save a screenshot of jswing component such as JFrame to a PNG file. */  
+  def saveScreenShot(component: java.awt.Component)(file: String){
+    val img = getScreenShot(component)
+    java.imageio.ImageIO.write(img, "png", new java.io.File(file))
+  }
+  
+
 } // ------ End of Module JUtils ------ // 
 
 /** Provides functions to manipulate Java Swing event handlers */
