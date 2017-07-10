@@ -22,7 +22,7 @@ case "$1" in
 
         scala -cp bin/jswing.jar -save $2
 
-        SCRIPT_JAR="${1%.*}.jar"
+        SCRIPT_JAR="${2%.*}.jar"
         OUTPUT_JAR=out/$(basename "${SCRIPT_JAR%.*}.jar")
 
         build-fat-jar.sh -scala $OUTPUT_JAR \
