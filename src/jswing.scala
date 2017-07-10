@@ -297,6 +297,15 @@ object Event{
   /** Function that when executed disposes the removes the event handler */
   type Dispose = () => Unit
 
+  /** Create an action listener from a function that actionCommand (type String)  as parameter. */
+  def makeActionListener(handler: String => Unit) = {
+    new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        handler(event.getActionCommand())
+      }
+    }
+  }
+
   /** Subscribes to button click event */
   def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
     val listener = new java.awt.event.ActionListener(){
