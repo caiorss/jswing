@@ -396,6 +396,19 @@ object Event{
     () => button.removeActionListener(listener)        
   }
 
+    /** Subscribes to button click event */
+  def onMenuClickAction(menu: java.awt.MenuItem) (handler: String => Unit) : Dispose = {
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        handler(evt.getActionCommand())
+      }
+    }
+
+    menu.addActionListener(listener)
+    // Returns function that when executed disposes the event handler
+    () => menu.removeActionListener(listener)
+  }
+
 
   /** Subscribes to checkbox click event notifications */
   def onCheckboxClick(chbox: javax.swing.JCheckBox) (handler: => Unit) = {
