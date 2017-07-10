@@ -328,7 +328,8 @@ object JUtils{
             jswing.JUtils.saveScreenShot(comp, filen)
           }
 
-      case _               => ()
+      case _
+          => ()
     }
   }
 
