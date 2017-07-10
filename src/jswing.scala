@@ -289,6 +289,27 @@ object JUtils{
   }
   
 
+
+  def saveScreenShotArgs(comp: java.awt.Component, file: String = null)(args: Array[String]) = {
+    args match{
+      case Array("-image")
+          => {
+            println("Saving image to file: " + file)
+            jswing.JUtils.saveScreenShot(comp, file)
+          }
+
+      case Array("-image", filen)
+          => {
+            println("Saving image to file: " + filen)
+            jswing.JUtils.saveScreenShot(comp, filen)
+          }
+
+      case _               => ()
+    }
+  }
+
+
+
 } // ------ End of Module JUtils ------ // 
 
 /** Provides functions to manipulate Java Swing event handlers */
