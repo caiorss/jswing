@@ -541,3 +541,85 @@ class MTableModel[A](
   override def isCellEditable(row: Int, col: Int) = false
 }
 
+
+
+class TrayIcon(
+  file: String,
+  toolTip: String = "Tray Icon app",
+  offset: Int     = 0
+) {
+  private val tray = java.awt.SystemTray.getSystemTray()
+  private val toolkit = java.awt.Toolkit.getDefaultToolkit()
+  private val image  = toolkit.getImage(file)
+  private val popuMenu = new java.awt.PopupMenu()
+  private val icon   = new java.awt.TrayIcon(image)
+  private val frame = new javax.swing.JFrame("")
+  private var offsetY = offset
+
+  init()
+
+  private def init(){
+
+    icon.setToolTip(toolTip)
+    icon.setImageAutoSize(true)
+
+    frame.setUndecorated(true)
+    frame.setResizable(false)
+    frame.setVisible(true)  
+    frame.setVisible(true)
+    frame.add(popuMenu)
+
+
+    icon.addMouseListener(new java.awt.event.MouseAdapter(){
+      override def mouseClicked(evt: java.awt.event.MouseEvent){
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+          popuMenu.show(frame, evt.getXOnScreen(), evt.getYOnScreen() - offsetY)          
+        }
+      }
+    })
+
+  }
+
+  //def setOffset(offset: Int) = { offsetY = offset } 
+
+  def onClick(handler: => Unit) = {
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        handler 
+      }
+    }
+    icon.addActionListener(listener)
+  }
+
+  def addMenuItem(label: String)(action: => Unit){
+    val menuItem = new java.awt.MenuItem(label)
+    val listener = jswing.Event.makeActionListener(() => action)
+    menuItem.addActionListener(listener)
+    popuMenu.add(menuItem)
+    offsetY = offsetY + 20
+  }
+
+  def setVisible(flag: Boolean){
+    if(flag)
+      tray.add(icon)
+    else
+      tray.remove(icon)
+  }
+
+  def show() = tray.add(icon)
+
+  def hide() = tray.remove(icon)
+
+  def showInfo(title: String, message: String){
+    icon.displayMessage(title, message,  java.awt.TrayIcon.MessageType.INFO)
+  }
+
+  def showError(title: String, message: String){
+    icon.displayMessage(title, message,  java.awt.TrayIcon.MessageType.ERROR)
+  }
+
+  def showWarning(title: String, message: String){
+    icon.displayMessage(title, message,  java.awt.TrayIcon.MessageType.WARNING)
+  }
+
+}
