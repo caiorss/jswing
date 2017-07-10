@@ -249,6 +249,12 @@ object JUtils{
 
   def getColor(color: String) = Option(getColorOrNull(color))
 
+  /** 
+      Get the name of current scala script being run as $ scala /path/script.scala.
+      It will return /path/script.scala 
+    */
+  def getScriptName() = System.getProperty("sun.java.command").split(" ")(1)
+
   def invokeLater(handler: => Unit) = {
     javax.swing.SwingUtilities.invokeLater(
       new Runnable(){
