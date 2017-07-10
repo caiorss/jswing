@@ -356,6 +356,17 @@ object Event{
     }
   }
 
+
+  def makeActionListener(handler: () => Unit) = {
+    new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        handler()
+      }
+    }
+  }
+
+
+
   /** Add listener to button */
   def addButtonListener(comp: javax.swing.JButton)(handler: String => Unit) = {
     val listener = makeActionListener(handler)
