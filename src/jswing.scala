@@ -229,6 +229,8 @@ object Dialog {
   */
 object JUtils{
 
+  private val rgbRegex = """rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)""".r
+
   def getColorOrNull(color: String) = color match {
     case "blue"    => java.awt.Color.blue
     case "cyan"    => java.awt.Color.cyan      
@@ -241,6 +243,7 @@ object JUtils{
     case "magenta" => java.awt.Color.magenta
     case "orange"  => java.awt.Color.orange
     case "gray"    => java.awt.Color.gray
+    case rgbRegex(r, g, b) => new java.awt.Color(r.toInt, g.toInt, b.toInt)
     case  _        => null
   }
 
