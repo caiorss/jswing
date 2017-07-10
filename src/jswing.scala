@@ -220,6 +220,13 @@ object Dialog {
 
 }
 
+
+/**
+  * General utilities for Java Swing. It provide functions to pick
+  * color, run actions on java swing thread, run actions periodically
+  * or with delay and etc.
+  *
+  */
 object JUtils{
 
   def getColorOrNull(color: String) = color match {
