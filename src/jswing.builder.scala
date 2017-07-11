@@ -185,6 +185,7 @@ private object XmlLayout {
       val comp = new javax.swing.JTextField()
       attr("text") foreach comp.setText
       attr("name") foreach comp.setName
+      attr("col").map(_.toInt) foreach comp.setColumns
       attr("tooltip") foreach comp.setToolTipText
       setColorFn(attr("bgColor"), comp.setBackground)
       setColorFn(attr("fgColor"), comp.setForeground)
