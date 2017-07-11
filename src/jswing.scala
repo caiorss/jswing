@@ -285,20 +285,29 @@ object JUtils{
     }
     val timer = new javax.swing.Timer(period, listener)
     timer.start()
-    timer
+    () => timer.stop()
   }
 
-  /* Run some action after a delay with java swing Timer a single time. */ 
-  def runDelay(period: Int)(action: => Unit) {
+
+  /**
+     Run an action a single-time after a milliseconds delay with java
+     swing Timer.
+
+     @param  delay - Period in milliseconds (seconds x 1000)
+     @param  action - Code block that will be run after a delay.
+     @return - Function that when executed stops the timer.
+    */
+  def runDelay(delay: Int)(action: => Unit) = {
     var timer: javax.swing.Timer = null
     val listener = new java.awt.event.ActionListener(){
       def actionPerformed(ev: java.awt.event.ActionEvent) = {
         action
         timer.stop()
       }
-      }
-      timer = new javax.swing.Timer(period, listener)
-      timer.start()
+    }
+    timer = new javax.swing.Timer(delay, listener)
+    timer.start()
+    () => timer.stop()
   }
 
 
