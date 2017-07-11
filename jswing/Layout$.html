@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>Event - Jswing - Java Swing Wrapper 1.0 - jswing.Event</title>
-          <meta name="description" content="Event - Jswing - Java Swing Wrapper 1.0 - jswing.Event" />
-          <meta name="keywords" content="Event Jswing Java Swing Wrapper 1.0 jswing.Event" />
+          <title>Layout - Jswing - Java Swing Wrapper 1.0 - jswing.Layout</title>
+          <meta name="description" content="Layout - Jswing - Java Swing Wrapper 1.0 - jswing.Layout" />
+          <meta name="keywords" content="Layout Jswing Java Swing Wrapper 1.0 jswing.Layout" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
-            var hash = 'jswing.Event$';
+            var hash = 'jswing.Layout$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -30,10 +30,10 @@
       <div id="definition">
         <img alt="Object" src="../lib/object_big.png" />
         <p id="owner"><a href="package.html" class="extype" name="jswing">jswing</a></p>
-        <h1>Event</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>Layout</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="jswing">package jswing</a>
           </div></span></h3><span class="permalink">
-      <a href="../index.html#jswing.Event$" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -45,11 +45,11 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Event</span>
+        <span class="name">Layout</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides functions to manipulate Java Swing event handlers</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -69,7 +69,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="jswing.Event"><span>Event</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="jswing.Layout"><span>Layout</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -90,23 +90,54 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="jswing.Event.Dispose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Dispose=()=&gt;Unit"></a>
-      <a id="Dispose:Dispose"></a>
+              <ol><li name="jswing.Layout.FormLayout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FormLayoutextendsAnyRef"></a>
+      <a id="FormLayout:FormLayout"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">type</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Dispose</span><span class="result"> = () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+        <a href="Layout$$FormLayout.html"><span class="name">FormLayout</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@Dispose=()=&gt;Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@FormLayoutextendsAnyRef" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Function that when executed disposes the removes the event handler</p>
+      <p class="shortcomment cmt">      Wrapper over GridBagLayout to make forms</p><div class="fullcomment"><div class="comment cmt"><p>      Wrapper over GridBagLayout to make forms</p><p>       Example:</p><pre><span class="kw">import</span> javax.swing.{JFrame, JSpinner, JTextField}
+<span class="kw">import</span> jswing.Layout.FormLayout
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame()
+<span class="cmt">//frame.setSize(400, 500)</span>
+
+<span class="kw">val</span> cont = <span class="kw">new</span> FormLayout(frame)
+
+<span class="kw">val</span> field1 = <span class="kw">new</span> JTextField(<span class="num">20</span>)
+<span class="kw">val</span> spinner1 = <span class="kw">new</span> javax.swing.JSpinner()
+<span class="kw">val</span> spinner2 = <span class="kw">new</span> javax.swing.JSpinner()
+spinner1.setValue(<span class="num">0</span>)
+
+cont.addForm(<span class="lit">"Label 1"</span>, field1)
+cont.addForm(<span class="lit">"Label 2"</span>, spinner1)
+cont.addForm(<span class="lit">"Label 3"</span>, spinner2)
+
+frame.setVisible(<span class="kw">true</span>)
+frame.pack()</pre><p>  It creates a form like this:</p><pre>+---------------------------------+
+|                                 |
+|           +----------------+    |
+|  Label <span class="num">1</span>  |                |    |
+|           +----------------+    |
+|                                 |
+|           +----------------+    |
+|  Label <span class="num">2</span>  |                |    |
+|           +----------------+    |
+|                                 |
+|           +----------------+    |
+|  Label <span class="num">3</span>  |                |    |
+|           +----------------+    |
++---------------------------------+</pre></div></div>
     </li></ol>
             </div>
 
@@ -126,7 +157,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -143,7 +174,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@##():Int" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@##():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -160,45 +191,11 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="jswing.Event#addButtonListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addButtonListener(comp:javax.swing.JButton)(handler:String=&gt;Unit):()=&gt;Unit"></a>
-      <a id="addButtonListener(JButton)((String)⇒Unit):()⇒Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addButtonListener</span><span class="params">(<span name="comp">comp: <span class="extype" name="javax.swing.JButton">JButton</span></span>)</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@addButtonListener(comp:javax.swing.JButton)(handler:String=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Add listener to button</p>
-    </li><li name="jswing.Event#addComboListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addComboListener[A](comp:javax.swing.JComboBox[A])(handler:String=&gt;Unit):()=&gt;Unit"></a>
-      <a id="addComboListener[A](JComboBox[A])((String)⇒Unit):()⇒Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addComboListener</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="comp">comp: <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<span class="extype" name="jswing.Event.addComboListener.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@addComboListener[A](comp:javax.swing.JComboBox[A])(handler:String=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Add listener to combo box</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -211,7 +208,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -228,7 +225,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@clone():Object" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@clone():Object" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -251,7 +248,7 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -268,7 +265,7 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -285,7 +282,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@finalize():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@finalize():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -308,7 +305,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -325,7 +322,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@hashCode():Int" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@hashCode():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -342,45 +339,11 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="jswing.Event#makeActionListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="makeActionListener(handler:()=&gt;Unit):java.awt.event.ActionListener"></a>
-      <a id="makeActionListener(()⇒Unit):ActionListener"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">makeActionListener</span><span class="params">(<span name="handler">handler: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="java.awt.event.ActionListener">ActionListener</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@makeActionListener(handler:()=&gt;Unit):java.awt.event.ActionListener" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="jswing.Event#makeActionListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="makeActionListener(handler:String=&gt;Unit):java.awt.event.ActionListener"></a>
-      <a id="makeActionListener((String)⇒Unit):ActionListener"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">makeActionListener</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="java.awt.event.ActionListener">ActionListener</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@makeActionListener(handler:String=&gt;Unit):java.awt.event.ActionListener" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Create an action listener from a function that actionCommand (type String)  as parameter.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -393,7 +356,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -410,7 +373,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@notify():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@notify():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -427,147 +390,11 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="jswing.Event#onButtonClick" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onButtonClick(JButton)(⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onButtonClick</span><span class="params">(<span name="button">button: <span class="extype" name="javax.swing.JButton">JButton</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribes to button click event</p>
-    </li><li name="jswing.Event#onButtonClickAction" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onButtonClickAction(button:javax.swing.JButton)(handler:String=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onButtonClickAction(JButton)((String)⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onButtonClickAction</span><span class="params">(<span name="button">button: <span class="extype" name="javax.swing.JButton">JButton</span></span>)</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onButtonClickAction(button:javax.swing.JButton)(handler:String=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribes to button click event</p>
-    </li><li name="jswing.Event#onCheckboxClick" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):()=&gt;Unit"></a>
-      <a id="onCheckboxClick(JCheckBox)(⇒Unit):()⇒Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onCheckboxClick</span><span class="params">(<span name="chbox">chbox: <span class="extype" name="javax.swing.JCheckBox">JCheckBox</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribes to checkbox click event notifications</p>
-    </li><li name="jswing.Event#onListSelect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onListSelect[A](JList[A])(⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onListSelect</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="jlist">jlist: <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="jswing.Event.onListSelect.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribes to JList selection event that is fired when user selects some item.</p>
-    </li><li name="jswing.Event#onMenuClickAction" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onMenuClickAction(menu:java.awt.MenuItem)(handler:String=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onMenuClickAction(MenuItem)((String)⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onMenuClickAction</span><span class="params">(<span name="menu">menu: <span class="extype" name="java.awt.MenuItem">MenuItem</span></span>)</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onMenuClickAction(menu:java.awt.MenuItem)(handler:String=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribes to button click event</p>
-    </li><li name="jswing.Event#onTextChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onTextChange(JTextField)(⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onTextChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JTextField">JTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Event fired when text is changed or user type something in a text field.</p>
-    </li><li name="jswing.Event#onValueChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onValueChange(JFormattedTextField)(⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onValueChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JFormattedTextField">JFormattedTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Subscribe to JFormattedTextField value change event.</p>
-    </li><li name="jswing.Event#onWindowExit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onWindowExit(JFrame)(⇒Unit):Dispose"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">onWindowExit</span><span class="params">(<span name="frame">frame: <span class="extype" name="javax.swing.JFrame">JFrame</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -580,7 +407,7 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -597,7 +424,7 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@toString():String" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@toString():String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -614,7 +441,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@wait():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@wait():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -637,7 +464,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -660,7 +487,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Layout$@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

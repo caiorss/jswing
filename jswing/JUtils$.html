@@ -329,6 +329,25 @@ or with delay and etc.</p></div><div class="toggleContainer block">
       </a>
     </span>
       <p class="shortcomment cmt">Returns screen dimensions in pixels width x height</p>
+    </li><li name="jswing.JUtils#getScriptName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getScriptName():String"></a>
+      <a id="getScriptName():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getScriptName</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.JUtils$@getScriptName():String" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">      Get the name of current scala script being run as $ scala /path/script.scala.</p><div class="fullcomment"><div class="comment cmt"><p>      Get the name of current scala script being run as $ scala /path/script.scala.
+      It will return /path/script.scala
+</p></div></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -448,42 +467,46 @@ or with delay and etc.</p></div><div class="toggleContainer block">
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="jswing.JUtils#runDelay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="runDelay(period:Int)(action:=&gt;Unit):Unit"></a>
-      <a id="runDelay(Int)(⇒Unit):Unit"></a>
+    </li><li name="jswing.JUtils#runDelay" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runDelay(delay:Int)(action:=&gt;Unit):()=&gt;Unit"></a>
+      <a id="runDelay(Int)(⇒Unit):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">runDelay</span><span class="params">(<span name="period">period: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">runDelay</span><span class="params">(<span name="delay">delay: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.JUtils$@runDelay(period:Int)(action:=&gt;Unit):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.JUtils$@runDelay(delay:Int)(action:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">     Run an action a single-time after a milliseconds delay with java
+     swing Timer.</p><div class="fullcomment"><div class="comment cmt"><p>     Run an action a single-time after a milliseconds delay with java
+     swing Timer.
+</p></div><dl class="paramcmts block"><dt class="param">delay</dt><dd class="cmt"><p>- Period in milliseconds (seconds x 1000)</p></dd><dt class="param">action</dt><dd class="cmt"><p>- Code block that will be run after a delay.</p></dd><dt>returns</dt><dd class="cmt"><p>- Function that when executed stops the timer.</p></dd></dl></div>
     </li><li name="jswing.JUtils#runEvery" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="runEvery(period:Int)(action:=&gt;Unit):javax.swing.Timer"></a>
-      <a id="runEvery(Int)(⇒Unit):Timer"></a>
+      <a id="runEvery(period:Int)(action:=&gt;Unit):()=&gt;Unit"></a>
+      <a id="runEvery(Int)(⇒Unit):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">runEvery</span><span class="params">(<span name="period">period: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="javax.swing.Timer">Timer</span></span>
+        <span class="name">runEvery</span><span class="params">(<span name="period">period: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.JUtils$@runEvery(period:Int)(action:=&gt;Unit):javax.swing.Timer" title="Permalink" target="_top">
+      <a href="../index.html#jswing.JUtils$@runEvery(period:Int)(action:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">     Java Swing Timer run an action every x milliseconds
-</p><div class="fullcomment"><div class="comment cmt"><p>     Java Swing Timer run an action every x milliseconds
-</p></div><dl class="paramcmts block"><dt class="param">period</dt><dd class="cmt"><p>- Period in milliseconds (seconds x 1000)</p></dd><dt class="param">action</dt><dd class="cmt"><p>- Code block that will be run periodically.</p></dd><dt>returns</dt><dd class="cmt"><p>java swing timer object</p></dd></dl></div>
+      <p class="shortcomment cmt">     Run an action every a milliseconds period with java
+     swing Timer.</p><div class="fullcomment"><div class="comment cmt"><p>     Run an action every a milliseconds period with java
+     swing Timer.
+</p></div><dl class="paramcmts block"><dt class="param">period</dt><dd class="cmt"><p>- Period in milliseconds (seconds x 1000)</p></dd><dt class="param">action</dt><dd class="cmt"><p>- Code block that will be run periodically.</p></dd><dt>returns</dt><dd class="cmt"><p>- Function that when executed stops the timer.</p></dd></dl></div>
     </li><li name="jswing.JUtils#saveScreenShot" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="saveScreenShot(component:java.awt.Component,file:String):Unit"></a>
       <a id="saveScreenShot(Component,String):Unit"></a>
