@@ -504,3 +504,97 @@ object Event{
 
 
 
+
+
+object Layout {
+
+  /**
+      Wrapper over GridBagLayout to make forms
+
+       Example:
+
+{{{
+
+    import javax.swing.{JFrame, JSpinner, JTextField}
+    import jswing.Layout.FormLayout
+
+    val frame = new JFrame()
+    //frame.setSize(400, 500)
+
+    val cont = new FormLayout(frame)
+
+    val field1 = new JTextField(20)
+    val spinner1 = new javax.swing.JSpinner()
+    val spinner2 = new javax.swing.JSpinner()
+    spinner1.setValue(0)
+
+    cont.addForm("Label 1", field1)
+    cont.addForm("Label 2", spinner1)
+    cont.addForm("Label 3", spinner2)
+
+    frame.setVisible(true)
+    frame.pack()
+
+}}}
+
+
+  It creates a form like this:
+
+  {{{
+
+    +---------------------------------+
+    |                                 |
+    |           +----------------+    |
+    |  Label 1  |                |    |
+    |           +----------------+    |
+    |                                 |
+    |           +----------------+    |
+    |  Label 2  |                |    |
+    |           +----------------+    |
+    |                                 |
+    |           +----------------+    |
+    |  Label 3  |                |    |
+    |           +----------------+    |
+    +---------------------------------+
+
+  }}}
+  */
+  class FormLayout(container: java.awt.Container){
+    private var r = 0
+    private val c = new java.awt.GridBagConstraints()
+
+    init()
+
+    private def init(){
+      container.setLayout(new java.awt.GridBagLayout())
+
+      c.fill = java.awt.GridBagConstraints.HORIZONTAL
+      c.insets = new java.awt.Insets(10, 10, 10, 10)
+    }
+
+    def addForm(left: java.awt.Component, right: java.awt.Component){
+      c.gridx  = 0
+      c.gridy  = r
+      container.add(left, c)
+
+      c.gridx  = 1
+      c.gridy  = r
+      container.add(right, c)
+      r = r + 1
+    }
+
+    def addForm(left: String, right: java.awt.Component){
+      c.gridx  = 0
+      c.gridy  = r
+      container.add(new javax.swing.JLabel(left), c)
+
+      c.gridx  = 1
+      c.gridy  = r
+      container.add(right, c)
+      r = r + 1
+    }
+  }
+
+
+
+}
