@@ -7,9 +7,7 @@ private class GUIBuilder(xmlBuilder: String => Unit) {
   private val frame = new javax.swing.JFrame("Jswing XML Builder")
   private val dialog = new jswing.Dialog.FileChooser()
 
-
   init()
-
 
   def readFile(file: String) = scala.io.Source.fromFile(file).mkString
 
@@ -44,10 +42,10 @@ object Main{
 
   def main(args: Array[String]){
     // makeFromFile(args(0))
-    val gui = new GUIBuilder(jswing.layout.Builder.makeFromString)
+    val gui = new GUIBuilder(jswing.builder.Builder.makeFromString)
 
     args match {      
-      case Array("-layout-file", file) => jswing.layout.Builder.makeFromFileShow(file)
+      case Array("-layout-file", file) => jswing.builder.Builder.makeFromFileShow(file)
       case Array("-layout-gui")        => gui.setVisible(true)
       case _                           => println("Error: invalid option.")
     }  

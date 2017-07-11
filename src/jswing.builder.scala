@@ -1,4 +1,4 @@
-package jswing.layout
+package jswing.builder
 
 private object XmlLayout {
 

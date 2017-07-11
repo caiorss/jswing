@@ -1,4 +1,4 @@
-import jswing.layout.Builder
+import jswing.builder.Builder
 import jswing.Event
 
 val gui      = Builder.makeFromFile("scripts/gui-borderlayout1.xml")
