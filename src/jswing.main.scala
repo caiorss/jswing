@@ -118,12 +118,9 @@ object Main{
   def main(args: Array[String]){
     // makeFromFile(args(0))
 
-
-
     args match {      
       case Array("-layout-file", file)
-          => jswing.builder.Builder.makeFromFileShow(file)
-
+          => jswing.builder.Builder.makeFromFileShow(file, exitOnClose = true)
 
       case Array("-layout-gui")
           => {
