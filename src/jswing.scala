@@ -272,11 +272,12 @@ object JUtils{
   }
 
   /** 
-     Java Swing Timer run an action every x milliseconds 
+     Run an action every a milliseconds period with java
+     swing Timer.
       
      @param  period - Period in milliseconds (seconds x 1000)
      @param  action - Code block that will be run periodically. 
-     @return java swing timer object        
+     @return - Function that when executed stops the timer.
     */
   def runEvery(period: Int)(action: => Unit) = {
     val listener = new java.awt.event.ActionListener(){
