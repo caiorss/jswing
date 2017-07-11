@@ -1,0 +1,8 @@
+<jswing>
+  <jframe name="mainFrame" title="GUI 1 Example" resizable="false" bgColor="white" size="300, 500" layout="flow">
+    <jlabel name="display" text="A label"/>
+    <jtextField name="entry1" col="20" editable="false" bgColor="blue" text="Hello world"/>
+    <jbutton name="bt1"  text="Open"/>
+    <jbutton name="bt2"  text="Save"/>        
+  </jframe>
+</jswing>  
