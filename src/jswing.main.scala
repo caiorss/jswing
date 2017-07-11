@@ -117,12 +117,28 @@ object Main{
 
   def main(args: Array[String]){
     // makeFromFile(args(0))
-    val gui = new GUIBuilder(jswing.builder.Builder.makeFromString)
+
+
 
     args match {      
-      case Array("-layout-file", file) => jswing.builder.Builder.makeFromFileShow(file)
-      case Array("-layout-gui")        => gui.setVisible(true)
-      case _                           => println("Error: invalid option.")
+      case Array("-layout-file", file)
+          => jswing.builder.Builder.makeFromFileShow(file)
+
+
+      case Array("-layout-gui")
+          => {
+            val gui = new GUIBuilder(jswing.builder.Builder.makeFromString)
+            gui.setVisible(true)
+          }
+
+      case Array("-examples")
+          => {
+            val gui = new GUIRunExamples("./scripts")
+            gui.show()
+          }
+
+      case _
+          => println("Error: invalid option.")
     }  
           
   }
