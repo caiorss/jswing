@@ -37,6 +37,10 @@ case "$1" in
         scala -cp bin/jswing.jar -save $2 ${@:3}
         ;;
 
+    -examples)
+        scala bin/jswing.jar -examples
+       ;;
+    
     # Build a GUI from the file gui1.xml and show it.
     -layout-file)
         scala bin/jswing.jar -layout-file $2
@@ -66,6 +70,11 @@ jswing - Helper Script
  + Open the Jswing XML layout GUI
 
     * ./$(basename $0) -layout-gui
+
+ + Open the Jswing GUI to run examples in ./scripts/ directory.
+
+    * ./$(basename $0) -examples
+
 EOF
 
         ;;
