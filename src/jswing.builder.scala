@@ -230,7 +230,7 @@ private object XmlLayout {
       node.label match {
         case "jbutton"        => makeJButton(node)
         case "jlabel"         => makeJLabel(node)
-        case "jtextField"     => new javax.swing.JTextField(10)
+        case "jtextField"     => makeJTextField(node)
         case "jpasswordField" => setJCompProp(node, new javax.swing.JPasswordField())
         case "jtable"         => setJCompProp(node, new javax.swing.JTable())
         case "jslider"        => setJCompProp(node, new javax.swing.JSlider())
