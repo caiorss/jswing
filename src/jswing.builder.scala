@@ -268,7 +268,11 @@ object Builder {
 
   type CompMap = scala.collection.mutable.Map[String, java.awt.Component]
 
-  def makeFromXML(node: scala.xml.Node, showFrames: Boolean = false) = {
+  def makeFromXML(
+    node: scala.xml.Node,
+    showFrames: Boolean = false,
+    exitOnClose: Boolean = false
+  ) = {
     if (node.label != "jswing")
       error("Error: invalid jswing xml layout Expected jswing tag.")
 
@@ -277,7 +281,11 @@ object Builder {
     val frames =  XmlLayout.getNodeChild(node) map { n =>
       val frame = XmlLayout.makeJFrame(n,  XmlLayout.createComponent)
 
-      if (showFrames) frame.setVisible(showFrames)
+      if (showFrames)
+        frame.setVisible(showFrames)
+
+      if (exitOnClose)
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
 
       frame
     }
@@ -292,9 +300,9 @@ object Builder {
   }
 
   /** Load GUI layout from file and make all frames visible. */
-  def makeFromFileShow(file: String) = {
+  def makeFromFileShow(file: String, exitOnClose: Boolean = false) = {
     val xml = scala.xml.XML.loadFile(file)
-    makeFromXML(xml, showFrames = true )
+    makeFromXML(xml, showFrames = true, exitOnClose = exitOnClose )
   }
 
   def makeFromString(xmlstr: String) = {
