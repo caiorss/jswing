@@ -134,13 +134,13 @@ class Frame(
     this.setLayout(layout)
     // Center frame on screen 
     this.setLocationRelativeTo(null)
-
-    if (pack) this.pack()
-    
+   
     if (exitOnClose)
       this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
 
     if (pane != null) this.setContentPane(pane)
+
+    if (pack) this.pack()
 
     this.setVisible(visible)
   }
