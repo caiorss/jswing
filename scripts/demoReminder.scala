@@ -87,12 +87,8 @@ val frame = new Frame(
  // size        = (600, 500),
   pane        = form.getPanel(),
   pack        = true,
-  visible     = true,
-  exitOnClose = true
+  visible     = true
+  //exitOnClose = true
 )
-
-// frame.add(form)
-// frame.setContentPane(form.getPanel())
-//frame.add(form)
 
 
