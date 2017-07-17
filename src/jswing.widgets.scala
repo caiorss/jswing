@@ -112,13 +112,15 @@ class Button(
   *
   */
 class Frame(
-  title:     String          = "",
-  size:      (Int, Int)      = (300, 400),
-  visible:   Boolean         = false,
-  resizable: Boolean         = true,
-  enabled:   Boolean         = true,
-  layout:    java.awt.LayoutManager = null, 
-  exitOnClose: Boolean       = false
+  title:     String                 = "",
+  size:      (Int, Int)             = (300, 400),
+  visible:   Boolean                = false,
+  resizable: Boolean                = true,
+  enabled:   Boolean                = true,
+  layout:    java.awt.LayoutManager = null,
+  pack:      Boolean                = false,
+  pane:      java.awt.Container     = null,
+  exitOnClose: Boolean              = false
 
 ) extends javax.swing.JFrame {
 
@@ -133,10 +135,14 @@ class Frame(
     // Center frame on screen 
     this.setLocationRelativeTo(null)
 
-    this.setVisible(visible)
+    if (pack) this.pack()
     
     if (exitOnClose)
-    this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+      this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
+
+    if (pane != null) this.setContentPane(pane)
+
+    this.setVisible(visible)
   }
 
   /** Subscribe to window close event notifications */
@@ -787,9 +793,9 @@ class FormBuilder{
     panel
   }
 
-  def addRowComponents(
-    ipadx: Int = 0,
-    items: Array[javax.swing.JComponent] = Array()
+  def addRowComponents(    
+    items: Array[javax.swing.JComponent] = Array(),
+    ipadx: Int = 0
   ) = {
 
     val ipx = c.ipadx
