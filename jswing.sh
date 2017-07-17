@@ -18,7 +18,7 @@
 case "$1" in 
 
     ## Build jswing script
-    -buid-script)
+    -build-script)
 
         scala -cp bin/jswing.jar -save $2
 
