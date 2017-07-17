@@ -623,3 +623,186 @@ class TrayIcon(
   }
 
 }
+
+
+
+/** 
+    Class to build forms like JGoodies. It leverages the GridbagLayout
+    hiding implementation details and providing an easy and high level
+    interface to the application developer.
+
+  */
+class FormBuilder{
+  private val panel = new javax.swing.JPanel()
+  private val c = new java.awt.GridBagConstraints()
+  private var x: Int = 0
+  private var y: Int = 0
+  private var xMax: Int = -1
+
+  init()
+
+  private def init(){  
+    panel.setLayout(new java.awt.GridBagLayout())
+    c.fill = java.awt.GridBagConstraints.HORIZONTAL
+    c.insets = new java.awt.Insets(10, 10, 10, 10)
+  }
+ 
+  def getPanel() = panel
+
+  def getC() = c
+
+  /** Add the JPanel created to a JFrame */
+  def addToFrame(frame: javax.swing.JFrame){
+    frame.setContentPane(panel)
+  }
+
+  /** Advance to next line. */
+  def nextRow() = {
+    x = 0
+    y = y + 1
+  }
+
+  def nextCol() = {
+    x = x + 1
+    xMax = xMax max x 
+  }
+
+  /** Add a new JComponent widget advancing one column to the right */
+  def add(item:  javax.swing.JComponent, w: Int = 1, h: Int = 1){
+    c.gridx = x 
+    c.gridy = y
+    c.gridwidth = w
+    c.gridheight = h
+    x = x + 1
+    xMax = x max xMax
+    panel.add(item, c)
+  }
+
+  /** 
+     Add a label and a new JComponent widget advancing two columns to
+     the right 
+    */
+  def add(label: String, item:  javax.swing.JComponent){
+    val lbl = new javax.swing.JLabel(label)
+
+    c.gridx = x
+    c.gridy = y 
+    panel.add(lbl, c)
+
+    c.gridx = x + 1
+    c.gridy = y
+    x = x + 2
+    xMax = x max xMax
+    panel.add(item, c)
+  }
+
+
+  def addButton(label: String) = {
+    val item = new javax.swing.JButton(label)
+    this.add(item)
+    item 
+  }
+
+  /** 
+      Add new label with a separator and advances one line. 
+    */
+  def addRowLabel(label: String, w: Int = 1) = {
+    val lbl = new javax.swing.JLabel(label)
+    c.fill = java.awt.GridBagConstraints.BOTH
+    val sep = new javax.swing.JSeparator()
+    this.add(lbl)
+    this.add(sep, w = w)
+    this.nextRow()
+    lbl
+  }
+
+  /** Add a text field with a label at the left side. */ 
+  def addTextField(label: String, w: Int = 1, columns: Int = 10) = {
+    val tf = new javax.swing.JTextField(columns)
+    val wo = c.gridwidth
+    c.gridwidth = w 
+    this.add(label, tf)
+    c.gridwidth = wo
+    tf 
+  }
+
+  /** Add a text field with a label at the left side advancing a new line. */
+  def addTextFieldRow(label: String, columns: Int = 10) = {
+    val tf = new javax.swing.JTextField(columns)
+    this.add(label, tf)
+    this.nextRow()
+    tf 
+  }
+
+  /** Add a formatted text field with a label */
+  def addFTextField[A](label: String, value: A = null, columns: Int = 10) = {
+    val tf = new javax.swing.JFormattedTextField()
+    tf.setColumns(columns)
+    if (value != null) { tf.setValue(value) }
+    this.add(label, tf)
+    tf 
+  }
+
+  /** Add a formatted text field with a label advancing a new line. */  
+  def addFTextFieldRow[A](label: String, value: A = null, columns: Int = 10) = {
+    val tf = new javax.swing.JFormattedTextField()
+    tf.setColumns(columns)
+    if (value != null) { tf.setValue(value) }
+    this.add(label, tf)
+    this.nextRow()
+    tf 
+  }   
+
+  /** Add a checkbox with a label */
+  def addCheckBox(label: String, value: Boolean = false) = {
+    val item = new javax.swing.JCheckBox()
+    item.setSelected(value)
+    this.add(label, item)
+    item
+  }
+
+  /** Add new ComboBox item */
+  def addComboBox(label: String, values: Array[String] = Array()) = {
+    val item = new javax.swing.JComboBox(values)
+    this.add(label, item)
+    item
+  }
+
+  /** Add a scroll pane */
+  def addScrollPane(item: javax.swing.JComponent){
+    val sc = new javax.swing.JScrollPane(item)
+    val fill = c.fill 
+    c.fill = java.awt.GridBagConstraints.BOTH
+    c.weightx = 1.0
+    c.weighty = 1.0
+    this.nextRow()
+    this.add(sc, w = 4)
+    c.fill = fill
+  }
+
+  def addPanel() = {
+    val panel = new javax.swing.JPanel()
+    this.add(panel)
+    this.nextRow()
+    panel
+  }
+
+  def addRowComponents(
+    ipadx: Int = 0,
+    items: Array[javax.swing.JComponent] = Array()
+  ) = {
+
+    val ipx = c.ipadx
+    c.ipadx = ipadx
+
+    val panel = new javax.swing.JPanel()
+    items foreach panel.add
+    this.add(panel)
+
+    c.ipadx = ipx
+
+    this.nextRow()    
+    panel
+  }
+
+} 
