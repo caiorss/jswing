@@ -483,14 +483,21 @@ object Event{
 
 
   /** Event fired when text is changed or user type something in a text field. */ 
-  def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : Dispose = {
+  def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : EventDispose = {
+    var enabled = true
     val listener = new javax.swing.event.DocumentListener(){
-      def changedUpdate(arg: javax.swing.event.DocumentEvent) = handler
-      def insertUpdate (arg: javax.swing.event.DocumentEvent) = handler
-      def removeUpdate (arg: javax.swing.event.DocumentEvent) = handler
+      def changedUpdate(arg: javax.swing.event.DocumentEvent) = if (enabled) handler
+      def insertUpdate (arg: javax.swing.event.DocumentEvent) = if (enabled) handler
+      def removeUpdate (arg: javax.swing.event.DocumentEvent) = if (enabled) handler
     }
-    entry.getDocument().addDocumentListener(listener)       
-    () => entry.getDocument().removeDocumentListener(listener)
+
+    entry.getDocument().addDocumentListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => entry.getDocument().removeDocumentListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
