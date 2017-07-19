@@ -357,6 +357,21 @@ object JUtils{
 
 } // ------ End of Module JUtils ------ // 
 
+
+/** 
+    @param run        - Function that runs the event handler.
+    @param dispose    - Dispose event handler, remove event listener.
+    @param setEnabled - Enabled/disable event.
+  */
+case class EventDispose(
+  /** Execute event handler */ 
+  run:        () => Unit,
+  /** Dispose event handler */
+  dispose:    () => Unit,
+  setEnabled: Boolean => Unit
+)
+
+
 /** Provides functions to manipulate Java Swing event handlers */
 object Event{
 
@@ -390,24 +405,42 @@ object Event{
       () => comp.removeActionListener(listener)
   }
 
+
   /** Add listener to combo box */
-  def addComboListener[A](comp: javax.swing.JComboBox[A])(handler: String => Unit) = {
-    val listener = makeActionListener(handler)
+  def onComboBoxSelect [A](comp: javax.swing.JComboBox[A])(handler: => Unit) = {
+    var enabled = true
+
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        if (enabled) handler
+      }
+    }
+
     comp.addActionListener(listener)
-      () => comp.removeActionListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => comp.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
   /** Subscribes to button click event */
-  def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
+  def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : EventDispose = {
+    var enabled = true
     val listener = new java.awt.event.ActionListener(){
       def actionPerformed(evt: java.awt.event.ActionEvent) = {
-        handler
+        if (enabled) handler
       }
     }
     button.addActionListener(listener)
     // Returns function that when executed disposes the event handler 
-    () => button.removeActionListener(listener)
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => button.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
@@ -440,63 +473,93 @@ object Event{
 
   /** Subscribes to checkbox click event notifications */
   def onCheckboxClick(chbox: javax.swing.JCheckBox) (handler: => Unit) = {
-      val listener = new java.awt.event.ActionListener(){
-        def actionPerformed(evt: java.awt.event.ActionEvent) = {
-          handler
-        }
+    var enabled = true
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        if (enabled) handler
       }
-      chbox.addActionListener(listener)
-      // Returns function that when executed disposes the event handler
-      () => chbox.removeActionListener(listener)
+    }
+    chbox.addActionListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => chbox.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
   /** Event fired when text is changed or user type something in a text field. */ 
-  def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : Dispose = {
+  def onTextChange(entry: javax.swing.JTextField)(handler: => Unit) : EventDispose = {
+    var enabled = true
     val listener = new javax.swing.event.DocumentListener(){
-      def changedUpdate(arg: javax.swing.event.DocumentEvent) = handler
-      def insertUpdate (arg: javax.swing.event.DocumentEvent) = handler
-      def removeUpdate (arg: javax.swing.event.DocumentEvent) = handler
+      def changedUpdate(arg: javax.swing.event.DocumentEvent) = if (enabled) handler
+      def insertUpdate (arg: javax.swing.event.DocumentEvent) = if (enabled) handler
+      def removeUpdate (arg: javax.swing.event.DocumentEvent) = if (enabled) handler
     }
-    entry.getDocument().addDocumentListener(listener)       
-    () => entry.getDocument().removeDocumentListener(listener)
+
+    entry.getDocument().addDocumentListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => entry.getDocument().removeDocumentListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
   /** Subscribe to JFormattedTextField value change event. */
-  def onValueChange(entry: javax.swing.JFormattedTextField)(handler: => Unit): Dispose = {
+  def onValueChange(entry: javax.swing.JFormattedTextField)(handler: => Unit): EventDispose = {
+    var enabled = true
     val listener = new java.beans.PropertyChangeListener{
       def propertyChange(evt: java.beans.PropertyChangeEvent){
-        handler     
+        if (enabled) handler
       }
     }
     entry.addPropertyChangeListener("value", listener)
-    () => entry.removePropertyChangeListener("value", listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => entry.removePropertyChangeListener("value", listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
-  def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): Dispose = {
-      val listener = new java.awt.event.WindowAdapter(){
+  def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): EventDispose = {
+    var enabled = true
+    val listener = new java.awt.event.WindowAdapter(){
           override def windowClosing(evt: java.awt.event.WindowEvent) = {
-            handler
+            if (enabled) handler
           }
-      }
-      frame.addWindowListener(listener)
-      () => frame.removeWindowListener(listener)
+    }
+    frame.addWindowListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => frame.removeWindowListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
   /** Subscribes to JList selection event that is fired when user selects some item. */
-  def onListSelect[A](jlist: javax.swing.JList[A]) (handler: => Unit): Dispose = {
+  def onListSelect[A](jlist: javax.swing.JList[A]) (handler: => Unit): EventDispose = {
+
+    var enabled = true
+
     val listener = new javax.swing.event.ListSelectionListener(){
       def valueChanged(args: javax.swing.event.ListSelectionEvent){
-        handler
+        if (enabled) handler
       }
     }
 
     jlist.addListSelectionListener(listener)
 
-    // Return function that removes listener
-    () => { jlist.removeListSelectionListener(listener) }
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => { jlist.removeListSelectionListener(listener) },
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
