@@ -398,11 +398,24 @@ object Event{
       () => comp.removeActionListener(listener)
   }
 
+
   /** Add listener to combo box */
-  def addComboListener[A](comp: javax.swing.JComboBox[A])(handler: String => Unit) = {
-    val listener = makeActionListener(handler)
+  def onComboBoxSelect [A](comp: javax.swing.JComboBox[A])(handler: => Unit) = {
+    var enabled = true
+
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        if (enabled) handler
+      }
+    }
+
     comp.addActionListener(listener)
-      () => comp.removeActionListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => comp.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
