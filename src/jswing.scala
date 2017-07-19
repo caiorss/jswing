@@ -358,8 +358,15 @@ object JUtils{
 } // ------ End of Module JUtils ------ // 
 
 
+/** 
+    @param run        - Function that runs the event handler.
+    @param dispose    - Dispose event handler, remove event listener.
+    @param setEnabled - Enabled/disable event.
+  */
 case class EventDispose(
+  /** Execute event handler */ 
   run:        () => Unit,
+  /** Dispose event handler */
   dispose:    () => Unit,
   setEnabled: Boolean => Unit
 )
