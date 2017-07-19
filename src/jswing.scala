@@ -420,15 +420,20 @@ object Event{
 
 
   /** Subscribes to button click event */
-  def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : Dispose = {
+  def onButtonClick(button: javax.swing.JButton) (handler: => Unit) : EventDispose = {
+    var enabled = true
     val listener = new java.awt.event.ActionListener(){
       def actionPerformed(evt: java.awt.event.ActionEvent) = {
-        handler
+        if (enabled) handler
       }
     }
     button.addActionListener(listener)
     // Returns function that when executed disposes the event handler 
-    () => button.removeActionListener(listener)
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => button.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
