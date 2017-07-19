@@ -632,6 +632,49 @@ class TrayIcon(
 
 
 
+/** Modified JPanel with BorderPanel */
+class BorderPanel extends javax.swing.JPanel {
+  init()
+
+  private def init(){
+    this.setLayout(new java.awt.BorderLayout())    
+  }
+
+  def addTop(comp: java.awt.Component){
+    this.add(comp,  java.awt.BorderLayout.NORTH)
+  }
+
+  def addBottom(comp: java.awt.Component){
+    this.add(comp,  java.awt.BorderLayout.SOUTH)
+  }
+
+  def addRight(comp: java.awt.Component){
+    this.add(comp,  java.awt.BorderLayout.EAST)
+  }
+
+  def addLeft(comp: java.awt.Component){
+    this.add(comp,  java.awt.BorderLayout.WEST)
+  }
+
+  def addCenter(comp: java.awt.Component){
+    this.add(comp,  java.awt.BorderLayout.CENTER)
+  }
+  
+  def addStatusBar() = {
+    val label = new javax.swing.JLabel()
+    this.addBottom(label)
+    label
+  }
+
+  def addCenterScrollPane(comp: java.awt.Component){
+    val scroll = new javax.swing.JScrollPane(comp)
+    this.addCenter(scroll)    
+  }
+
+}
+
+
+
 /** 
     Class to build forms like JGoodies. It leverages the GridbagLayout
     hiding implementation details and providing an easy and high level
