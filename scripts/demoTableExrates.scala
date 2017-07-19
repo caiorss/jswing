@@ -64,9 +64,15 @@ def runEvery(period: Int)(action: => Unit) = {
   timer
 }
 
+var clickDisp: jswing.EventDispose = null
+
 def updateRates() = { 
   val rates = Future { getExchangeRates() }
   statusLabel.setText("Update exchange rates ...")
+
+  println("Fetching exchange rates ...")
+
+  clickDisp.setEnabled(false)
 
   rates onSuccess { case r =>
     model.clear()
@@ -75,16 +81,21 @@ def updateRates() = {
     println("Exchange rates updated")
     
     jswing.JUtils.saveScreenShotArgs(frame, "images/demoTableExrates.png")(args)
+
+    clickDisp.setEnabled(true)
   }
 
   rates onFailure { case ex =>
     println("Error: Couldn't fetch exchange rates")
     println("Error: " + ex)
     jswing.Dialog.showError("Error report.", "Error: Couldn't fetch exchange rates\nError: " + ex)
+    statusLabel.setText("Error: Could not fetch exchange rates")
+
+    clickDisp.setEnabled(true)
   }
 }
 
-Event.onButtonClick(buttonUpdate){ updateRates() }
+clickDisp = Event.onButtonClick(buttonUpdate){ updateRates() }
 updateRates()
 
 
