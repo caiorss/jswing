@@ -182,23 +182,6 @@
       </a>
     </span>
       <p class="shortcomment cmt">Add listener to button</p>
-    </li><li name="jswing.Event#addComboListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addComboListener[A](comp:javax.swing.JComboBox[A])(handler:String=&gt;Unit):()=&gt;Unit"></a>
-      <a id="addComboListener[A](JComboBox[A])((String)⇒Unit):()⇒Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addComboListener</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="comp">comp: <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<span class="extype" name="jswing.Event.addComboListener.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@addComboListener[A](comp:javax.swing.JComboBox[A])(handler:String=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Add listener to combo box</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -433,18 +416,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="jswing.Event#onButtonClick" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onButtonClick(JButton)(⇒Unit):Dispose"></a>
+      <a id="onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onButtonClick(JButton)(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onButtonClick</span><span class="params">(<span name="button">button: <span class="extype" name="javax.swing.JButton">JButton</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
+        <span class="name">onButtonClick</span><span class="params">(<span name="button">button: <span class="extype" name="javax.swing.JButton">JButton</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -467,35 +450,52 @@
     </span>
       <p class="shortcomment cmt">Subscribes to button click event</p>
     </li><li name="jswing.Event#onCheckboxClick" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):()=&gt;Unit"></a>
-      <a id="onCheckboxClick(JCheckBox)(⇒Unit):()⇒Unit"></a>
+      <a id="onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onCheckboxClick(JCheckBox)(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onCheckboxClick</span><span class="params">(<span name="chbox">chbox: <span class="extype" name="javax.swing.JCheckBox">JCheckBox</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">onCheckboxClick</span><span class="params">(<span name="chbox">chbox: <span class="extype" name="javax.swing.JCheckBox">JCheckBox</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onCheckboxClick(chbox:javax.swing.JCheckBox)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Subscribes to checkbox click event notifications</p>
-    </li><li name="jswing.Event#onListSelect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onListSelect[A](JList[A])(⇒Unit):Dispose"></a>
+    </li><li name="jswing.Event#onComboBoxSelect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onComboBoxSelect[A](comp:javax.swing.JComboBox[A])(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onComboBoxSelect[A](JComboBox[A])(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onListSelect</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="jlist">jlist: <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="jswing.Event.onListSelect.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
+        <span class="name">onComboBoxSelect</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="comp">comp: <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<span class="extype" name="jswing.Event.onComboBoxSelect.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onComboBoxSelect[A](comp:javax.swing.JComboBox[A])(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Add listener to combo box</p>
+    </li><li name="jswing.Event#onListSelect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onListSelect[A](JList[A])(⇒Unit):EventDispose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onListSelect</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="jlist">jlist: <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="jswing.Event.onListSelect.A">A</span>]</span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.Event$@onListSelect[A](jlist:javax.swing.JList[A])(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -517,53 +517,70 @@
       </a>
     </span>
       <p class="shortcomment cmt">Subscribes to button click event</p>
-    </li><li name="jswing.Event#onTextChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onTextChange(JTextField)(⇒Unit):Dispose"></a>
+    </li><li name="jswing.Event#onSpinnerChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onSpinnerChange(spinner:javax.swing.JSpinner)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onSpinnerChange(JSpinner)(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onTextChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JTextField">JTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
+        <span class="name">onSpinnerChange</span><span class="params">(<span name="spinner">spinner: <span class="extype" name="javax.swing.JSpinner">JSpinner</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onSpinnerChange(spinner:javax.swing.JSpinner)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.Event#onTextChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onTextChange(JTextField)(⇒Unit):EventDispose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onTextChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JTextField">JTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.Event$@onTextChange(entry:javax.swing.JTextField)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Event fired when text is changed or user type something in a text field.</p>
     </li><li name="jswing.Event#onValueChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onValueChange(JFormattedTextField)(⇒Unit):Dispose"></a>
+      <a id="onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onValueChange(JFormattedTextField)(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onValueChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JFormattedTextField">JFormattedTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
+        <span class="name">onValueChange</span><span class="params">(<span name="entry">entry: <span class="extype" name="javax.swing.JFormattedTextField">JFormattedTextField</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onValueChange(entry:javax.swing.JFormattedTextField)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Subscribe to JFormattedTextField value change event.</p>
     </li><li name="jswing.Event#onWindowExit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.Event.Dispose"></a>
-      <a id="onWindowExit(JFrame)(⇒Unit):Dispose"></a>
+      <a id="onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onWindowExit(JFrame)(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onWindowExit</span><span class="params">(<span name="frame">frame: <span class="extype" name="javax.swing.JFrame">JFrame</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Dispose=()=&gt;Unit" class="extmbr" name="jswing.Event.Dispose">Dispose</a></span>
+        <span class="name">onWindowExit</span><span class="params">(<span name="frame">frame: <span class="extype" name="javax.swing.JFrame">JFrame</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Event$@onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.Event.Dispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.Event$@onWindowExit(frame:javax.swing.JFrame)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
