@@ -502,14 +502,20 @@ object Event{
 
 
   /** Subscribe to JFormattedTextField value change event. */
-  def onValueChange(entry: javax.swing.JFormattedTextField)(handler: => Unit): Dispose = {
+  def onValueChange(entry: javax.swing.JFormattedTextField)(handler: => Unit): EventDispose = {
+    var enabled = true
     val listener = new java.beans.PropertyChangeListener{
       def propertyChange(evt: java.beans.PropertyChangeEvent){
-        handler     
+        if (enabled) handler
       }
     }
     entry.addPropertyChangeListener("value", listener)
-    () => entry.removePropertyChangeListener("value", listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => entry.removePropertyChangeListener("value", listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
