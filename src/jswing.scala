@@ -466,14 +466,19 @@ object Event{
 
   /** Subscribes to checkbox click event notifications */
   def onCheckboxClick(chbox: javax.swing.JCheckBox) (handler: => Unit) = {
-      val listener = new java.awt.event.ActionListener(){
-        def actionPerformed(evt: java.awt.event.ActionEvent) = {
-          handler
-        }
+    var enabled = true
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(evt: java.awt.event.ActionEvent) = {
+        if (enabled) handler
       }
-      chbox.addActionListener(listener)
-      // Returns function that when executed disposes the event handler
-      () => chbox.removeActionListener(listener)
+    }
+    chbox.addActionListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => chbox.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
