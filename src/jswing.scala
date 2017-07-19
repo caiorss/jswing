@@ -519,14 +519,20 @@ object Event{
   }
 
 
-  def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): Dispose = {
-      val listener = new java.awt.event.WindowAdapter(){
+  def onWindowExit(frame: javax.swing.JFrame) (handler: => Unit): EventDispose = {
+    var enabled = true
+    val listener = new java.awt.event.WindowAdapter(){
           override def windowClosing(evt: java.awt.event.WindowEvent) = {
-            handler
+            if (enabled) handler
           }
-      }
-      frame.addWindowListener(listener)
-      () => frame.removeWindowListener(listener)
+    }
+    frame.addWindowListener(listener)
+
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => frame.removeWindowListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
   /** Subscribes to JList selection event that is fired when user selects some item. */
