@@ -563,5 +563,21 @@ object Event{
   }
 
 
+  def onSpinnerChange(spinner: javax.swing.JSpinner)(handler: => Unit) = {
+    var enabled = true
+    val listener = new javax.swing.event.ChangeListener{
+      def stateChanged(evt: javax.swing.event.ChangeEvent){
+        if (enabled) handler
+      }
+    }
+    spinner.addChangeListener(listener)
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => spinner.removeChangeListener(listener),
+      setEnabled = (flag: Boolean) => { enabled = flag }
+    )
+  }
+    
+
 } // ------ End of object Event ------- // 
 
