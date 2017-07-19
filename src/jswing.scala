@@ -536,17 +536,23 @@ object Event{
   }
 
   /** Subscribes to JList selection event that is fired when user selects some item. */
-  def onListSelect[A](jlist: javax.swing.JList[A]) (handler: => Unit): Dispose = {
+  def onListSelect[A](jlist: javax.swing.JList[A]) (handler: => Unit): EventDispose = {
+
+    var enabled = true
+
     val listener = new javax.swing.event.ListSelectionListener(){
       def valueChanged(args: javax.swing.event.ListSelectionEvent){
-        handler
+        if (enabled) handler
       }
     }
 
     jlist.addListSelectionListener(listener)
 
-    // Return function that removes listener
-    () => { jlist.removeListSelectionListener(listener) }
+    EventDispose(
+      run        = () => handler,
+      dispose    = () => { jlist.removeListSelectionListener(listener) },
+      setEnabled = flag => { enabled = flag }
+    )
   }
 
 
