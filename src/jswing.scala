@@ -357,6 +357,14 @@ object JUtils{
 
 } // ------ End of Module JUtils ------ // 
 
+
+case class EventDispose(
+  run:        () => Unit,
+  dispose:    () => Unit,
+  setEnabled: Boolean => Unit
+)
+
+
 /** Provides functions to manipulate Java Swing event handlers */
 object Event{
 
