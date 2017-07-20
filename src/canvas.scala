@@ -26,6 +26,52 @@ object DrawUtils {
     (point._1 + origin._1, -1 * point._2 + origin._2)
   }
 
+
+
+  def coordRangeToScreen(
+    pmin:   Point,  // Point min (xmin, ymin) of real coordinates
+    pmax:   Point,  // Point max (xmax, ymax) of real coordinates
+    origin: (Int, Int),        // Origin position at the screen relative to the top
+    size:   (Int, Int),        // Screen size - width x height
+    offset: Int
+  ) = {
+
+    val (xrmin, yrmin) = pmin
+    val (xrmax, yrmax) = pmax
+
+    val w = size._1
+    val h = size._2
+
+    val (xo, yo) = origin
+
+    val ax = (w.toDouble - 2 * offset) / (xrmax - xrmin)
+    val ay = (h.toDouble - 2 * offset) / (yrmax - yrmin)
+
+
+    (p: Point) => {
+
+      val (xr, yr) = p
+
+      // val x =  ax * (xr - xrmin) + xo
+      // val y =  h + yo - (ay * (yr - yrmin))
+      val xx = ax * (xr - xrmin)
+      val yy = ay * (yr - yrmin)
+
+      val x = xx  + xo
+      val y =  yo - yy
+
+      // println(s"===> size = ${size} pmin = ${pmin} pmax = ${pmax}")
+      // println(s"===> xr = ${xr} yr = ${yr} / xx = ${xx} yy = ${yy} x = ${x} y = ${y}" )
+      // println(s"===> h = ${h}  w = ${w}    / ax = ${ax} ay = ${ay} / xo = ${xo} yo = ${yo}")
+      // println("-----------------------------------------------------")
+
+      (x.toInt, y.toInt)
+    }
+  }
+
+
+
+
   def forAngleStep(step: Double, angleDraw: Double => G2D => Unit) = (g: G2D) => {
     var angle = 0.0
     while (angle <= 360){
