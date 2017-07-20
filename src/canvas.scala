@@ -199,9 +199,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     val w   = comp.getSize().width
     val h   = comp.getSize().height 
     (p._1 + offset, -1 * p._2 + h - offset)
-  }  
   }
-
 
   def coordRangeToScreen = (p: Point) => {
     val origin = this.getCoordBottomLeft()
