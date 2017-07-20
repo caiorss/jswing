@@ -11,6 +11,13 @@ type Point = (Double, Double)
 
 type PointInt = (Int, Int)
 
+case class DrawRange(pmin: (Double, Double), pmax: (Double, Double))
+
+abstract sealed class OriginType
+case class OriginXY(x: Int, y: Int)  extends OriginType
+case       object OriginBL           extends OriginType
+case       object OriginC            extends OriginType
+
 
 object DrawUtils {
 
@@ -36,11 +43,6 @@ object DrawUtils {
     }
 
 }
-
-abstract sealed class OriginType
-case class OriginXY(x: Int, y: Int)  extends OriginType
-case       object OriginBL           extends OriginType
-case       object OriginC            extends OriginType
 
 
 class DrawParams(comp: java.awt.Component, offs: Int = 0){
