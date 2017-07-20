@@ -54,6 +54,10 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     origin = o
   }
 
+  /** Set origin of screen coordinate system at its bottom left */
+  def setOriginBottomLeft() = {
+    origin = OriginBL
+  }
   // Get coordinate of bottom left screen
   /**
      Get coordinates of bottom left screen in screen coordinates (upper left) corner. */
