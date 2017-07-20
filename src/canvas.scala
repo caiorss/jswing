@@ -122,6 +122,11 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     origin = OriginC
   }
 
+  def setRange(xmin: Double, ymin: Double, xmax: Double, ymax: Double) {
+    pmin = (xmin, ymin)
+    pmax = (xmax,  ymax)
+  }
+
   // Get coordinate of bottom left screen
   /**
      Get coordinates of bottom left screen in screen coordinates (upper left) corner. */
