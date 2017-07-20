@@ -233,6 +233,21 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     g.setColor(col)
   }
 
+  def drawHLineXY(y: Double) = (g: G2D) => {
+    val (_, yy) = this.coordRangeToScreen((0.0, y))
+    g.drawLine(offset, yy, comp.getWidth() - offset, yy)
+  }
+
+  def drawVLineXY(x: Double) = (g: G2D) => {
+    val (xx, _) = this.coordRangeToScreen((x, 0.0))
+    g.drawLine(xx, offset, xx, comp.getHeight() - offset)
+  }
+
+  def drawHVLineXY(x: Double, y: Double) = (g: G2D) => {
+    drawVLineXY(x: Double)(g)
+    drawHLineXY(y: Double)(g)
+  }
+
 
 
   def drawLine(pMin: PointInt,pMax: PointInt) = (g: G2D) => {
