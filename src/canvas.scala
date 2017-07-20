@@ -17,6 +17,8 @@ object DrawUtils {
     (point._1 + origin._1, -1 * point._2 + origin._2)
   }
 
+
+
   def withColor(color: java.awt.Color) = (action: G2D => Unit) => 
     (g: G2D) => { 
       val col = g.getColor()
@@ -156,7 +158,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
 
   def drawString(p: PointInt, msg: String) = (g: G2D) => {
     val (x, y) = this.coordOriginToScreen(p)
-    println(s"Draw String s = '${msg}'\t\t\tx = ${x} y = ${y} ")
+    //println(s"Draw String s = '${msg}'\t\t\tx = ${x} y = ${y} ")
     g.drawString(msg, x, y)
   }
 
