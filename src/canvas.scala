@@ -197,6 +197,20 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     val h   = comp.getSize().height 
     (p._1 + offset, -1 * p._2 + h - offset)
   }  
+  }
+
+
+  def coordRangeToScreen = (p: Point) => {
+    val origin = this.getCoordBottomLeft()
+    val size   = (comp.getWidth(), comp.getHeight())
+    DrawUtils.coordRangeToScreen(this.pmin, this.pmax, origin, size, offset)(p._1, p._2)
+  }
+
+  def coordRangeToScreen2(pmin: Point, pmax: Point) = {
+    val origin = this.getCoordBottomLeft()
+    val size   = (comp.getWidth(), comp.getHeight())
+    DrawUtils.coordRangeToScreen(pmin, pmax, origin, size, offset)
+  }
   
 
   def drawLine(pMin: PointInt,pMax: PointInt) = (g: G2D) => {
