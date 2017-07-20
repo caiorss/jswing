@@ -46,11 +46,15 @@ object DrawUtils {
 
 
 class DrawParams(comp: java.awt.Component, offs: Int = 0){
+  // Border offset from left and top
   private var offset = offs
 
   // Origin of chart - Relative to the bottom left of drawing screen  
   private var origin: OriginType = OriginBL
 
+  // Range to plot
+  private var pmin = (-50.0, -50.0)
+  private var pmax = (50.0, 50.0)
 
   def getOrigin() = origin
 
