@@ -108,6 +108,10 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     origin = o
   }
 
+  def setOriginCoord(x: Int, y: Int) = {
+    origin = OriginXY(x, y)
+  }
+
   /** Set origin of screen coordinate system at its bottom left */
   def setOriginBottomLeft() = {
     origin = OriginBL
