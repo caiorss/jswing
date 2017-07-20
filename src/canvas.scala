@@ -17,7 +17,13 @@ object DrawUtils {
     (point._1 + origin._1, -1 * point._2 + origin._2)
   }
 
-
+  def forAngleStep(step: Double, angleDraw: Double => G2D => Unit) = (g: G2D) => {
+    var angle = 0.0
+    while (angle <= 360){
+      angleDraw(angle)(g)
+      angle = angle + step
+    }
+  }
 
   def withColor(color: java.awt.Color) = (action: G2D => Unit) => 
     (g: G2D) => { 
