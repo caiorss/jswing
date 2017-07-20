@@ -63,7 +63,10 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     (offset, h -  offset)
   }
 
-  def getOriginToCenter() = {
+  /**
+      Get coordinates of center of screen in screen coordinates (upper left) corner.
+    */
+  def getCoordCenter() = {
     val x = comp.getWidth()  / 2 
     val y = comp.getHeight() / 2  
     (x, y)
