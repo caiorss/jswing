@@ -7,6 +7,8 @@ type DrawCmd = java.awt.Graphics2D => Unit
 
 type G = java.awt.Graphics
 
+type Point = (Double, Double)
+
 type PointInt = (Int, Int)
 
 
