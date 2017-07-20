@@ -98,28 +98,34 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
   def getWidth()  = comp.getWidth()
 
 
-  /** 
-       Converts coordinate centered at some origin (x - positive from left to right, y - positive upward) 
-       to screen's coordinates with origin at top left and  (x - positive from left to right and y 
-       positive downward.
-
-    */
-  def coordOriginToScreen(p: PointInt): PointInt = origin match { 
+  def getOriginCoord() = origin match {
     case OriginXY(xo, yo)
-        => DrawUtils.coordToScreen((xo, yo), p)
+        => (xo, yo)
 
     case OriginBL
         => {
           val xo = offset
           val yo = comp.getHeight() - offset
-          DrawUtils.coordToScreen((xo, yo), p)
+          (xo, yo)
         }
     case OriginC
         => {
           val xo = comp.getWidth()  / 2
           val yo = comp.getHeight() / 2
-          DrawUtils.coordToScreen((xo, yo), p)
+          (xo, yo)
         }
+  }
+
+
+  /**
+       Converts coordinate centered at some origin (x - positive from left to right, y - positive upward)
+       to screen's coordinates with origin at top left and  (x - positive from left to right and y
+       positive downward.
+
+    */
+  def coordOriginToScreen(p: PointInt): PointInt = {
+    val o = this.getOriginCoord()
+    DrawUtils.coordToScreen(o, p)
   }
   
   /** Converts coordinate with origin at bottom left to screen's coordinate */
