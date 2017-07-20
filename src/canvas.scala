@@ -212,18 +212,6 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
 }
 
 
-/** Set drawing coordinates at bottom of screen instead of the top */
-def setCoordBottom(height: Int, offset: Int, g: G2D) = {
-  //val at = new java.awt.geom.AffineTransform()
-  //val at = g2d.getTransform()
-  //at.setToScale(1.0, -1.0)
-  //at.setToTranslation(offset, height - offset)
-  //g.transform(at)
-
-  g.translate(offset, height - offset)
-  g.scale(1, -1)
-}
-
 
 class Canvas extends JPanel {
   private var offset   = 10
