@@ -54,7 +54,9 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     origin = o
   }
 
-  // Get coordinate of bottom left screen 
+  // Get coordinate of bottom left screen
+  /**
+     Get coordinates of bottom left screen in screen coordinates (upper left) corner. */
   def getCoordBottomLeft() = {
     val w   = comp.getWidth()
     val h   = comp.getSize().height 
