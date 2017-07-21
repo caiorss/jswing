@@ -301,7 +301,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     g.drawString(msg, x, y)
   }
 
-  def drawPointXY(x: Double, y: Double) = (g: G2D) => {
+  def plotPoint(x: Double, y: Double) = (g: G2D) => {
     val radius = this.pointMarkSize
     val (xx, yy) = this.coordRangeToScreen((x, y))
     g.drawString(s"(${x}, ${y})", xx, yy)
