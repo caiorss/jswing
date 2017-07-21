@@ -322,9 +322,9 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     g.drawLine(xx, offset, xx, comp.getHeight() - offset)
   }
 
-  def drawHVLineXY(x: Double, y: Double) = (g: G2D) => {
-    drawVLineXY(x: Double)(g)
-    drawHLineXY(y: Double)(g)
+  def plotHVLine(x: Double, y: Double) = (g: G2D) => {
+    plotVLine(x: Double)(g)
+    plotHLine(y: Double)(g)
   }
 
 
