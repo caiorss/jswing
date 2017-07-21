@@ -471,12 +471,12 @@ class Canvas extends JPanel {
 
   def drawList(draws: (G2D => Unit)*) = {
     drawCmdList appendAll draws
-    this.repaint()
+    this.refresh()
   }
 
   def draw(draw: G2D => Unit) = {
     drawCmdList += draw
-    this.repaint()
+    this.refresh()
   }
 
   /** Clear canvas */
@@ -544,7 +544,6 @@ class Canvas extends JPanel {
     val col = if (color == null) plotColor else color
     val cmd = DrawUtils.withColor(col){ ctx.plotFun(fn) }
     this.draw(cmd)
-    this.refresh()
   }
 
   def plotFunRange(
@@ -565,27 +564,22 @@ class Canvas extends JPanel {
 
   def plotPoint(x: Double, y: Double){
     this.draw(ctx.plotPoint(x, y))
-    this.refresh()
   }
 
   def plotPointList(plist: Seq[Point]){
     this.draw(ctx.plotPointList(plist))
-    this.refresh()
   }
 
   def plotHLine(y: Double){
     this.draw(ctx.plotHLine(y))
-    this.refresh()
   }
 
   def plotVLine(x: Double){
     this.draw(ctx.plotVLine(x))
-    this.refresh()
   }
 
   def plotHVLine(x: Double, y: Double){
     this.draw(ctx.plotHVLine(x, y))
-    this.refresh()
   }
 
   def getImage() = {
