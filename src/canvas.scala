@@ -288,6 +288,11 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
   }
 
 
+  def plotFun(fn: Double => Double) = {
+    val (xmin, ymin) = this.pmin
+    val (xmax, ymax) = this.pmax
+    plotFunRange(fn, xmin, xmax, this.step, false)
+  }
   
 
 
