@@ -3,30 +3,31 @@ import scala.collection.mutable.ListBuffer
 
 type G2D = java.awt.Graphics2D
 
-type DrawCmd = java.awt.Graphics2D => Unit 
+/** Drawing Command executed by class Canvas paint method. */
+type DrawCmd = java.awt.Graphics2D => Unit
 
 type G = java.awt.Graphics
 
+/** 2D Point */
 type Point = (Double, Double)
 
 type PointInt = (Int, Int)
 
 case class DrawRange(pmin: (Double, Double), pmax: (Double, Double))
 
+/** Strategy to set the origin of Canvas coordinate system */
 abstract sealed class OriginType
 case class OriginXY(x: Int, y: Int)  extends OriginType
 case       object OriginBL           extends OriginType
 case       object OriginC            extends OriginType
 
 
+/** General drawing helper functions. */
 object DrawUtils {
 
-
-  def coordToScreen(origin: PointInt, point: PointInt) = { 
+  def coordToScreen(origin: PointInt, point: PointInt) = {
     (point._1 + origin._1, -1 * point._2 + origin._2)
   }
-
-
 
   def coordRangeToScreen(
     pmin:   Point,  // Point min (xmin, ymin) of real coordinates
@@ -68,9 +69,6 @@ object DrawUtils {
       (x.toInt, y.toInt)
     }
   }
-
-
-
 
   def forAngleStep(step: Double, angleDraw: Double => G2D => Unit) = (g: G2D) => {
     var angle = 0.0
@@ -254,15 +252,20 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
   /** Get origin coordinate relative to top left corner of screen */
   def getOriginCoord() = origin match {
+
+    // Origin specified by user
     case OriginXY(xo, yo)
         => (xo, yo)
 
+    // Origin at screen's bottom left.
     case OriginBL
         => {
           val xo = offset
           val yo = comp.getHeight() - offset
           (xo, yo)
         }
+
+    // Origin at screen's center
     case OriginC
         => {
           val xo = comp.getWidth()  / 2
