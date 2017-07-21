@@ -317,7 +317,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     g.drawLine(offset, yy, comp.getWidth() - offset, yy)
   }
 
-  def drawVLineXY(x: Double) = (g: G2D) => {
+  def plotVLine(x: Double) = (g: G2D) => {
     val (xx, _) = this.coordRangeToScreen((x, 0.0))
     g.drawLine(xx, offset, xx, comp.getHeight() - offset)
   }
