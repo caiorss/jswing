@@ -636,7 +636,8 @@ class Canvas extends JPanel {
   }
 
 
-  override def paint(g: java.awt.Graphics){  
+  override def paint(g: java.awt.Graphics){
+    val offset = this.ctx.getOffset()
 
     // Set background color 
     g.setColor(bgColor)        
