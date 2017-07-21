@@ -411,6 +411,61 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
 
+  def plotAxisLines = (g: G2D) => {
+    val (xmin, ymin) = this.pmin
+    val (xmax, ymax) = this.pmax
+
+    val ticks = 10
+
+
+    var y    = ymin
+    var ystep = (ymax - ymin) / ticks.toDouble
+
+
+    while (y <= ymax) {
+        DrawUtils.withContextA(g, 0.5, java.awt.Color.GRAY){
+          this.plotHLine(y)(g)
+        }
+
+        this.plotString((xmin, y), "%.2f".format(y))(g)
+        y = y + ystep
+      }
+
+    var x    = xmin
+    var xstep = (xmax - xmin) / ticks.toDouble
+
+
+    while (x <= xmax) {
+      DrawUtils.withContextA(g, 0.5, java.awt.Color.GRAY){
+        this.plotVLine(x)(g)
+      }
+
+      //this.plotString((x, ymin), "%.2f".format(x))(g)
+
+      this.plotStringAngle((x, ymin), 90.0, "%.2f".format(x), offsetXY = (-10, -30))(g)
+
+      // DrawUtils.withRoationA(g, 90.0){
+      //   this.plotString((x, ymin), "%.2f".format(x))(g)
+      // }
+
+        x = x + xstep
+    }
+
+
+    // Draw axis at bottom left
+    //
+    val xo = offset
+    val yo = comp.getHeight() - offset
+
+    DrawUtils.withContextA(g, 1.5, java.awt.Color.BLUE){
+      // draw horizontal line
+      g.drawLine(offset, yo, comp.getWidth() - offset, yo)
+
+      // draw vertical line
+      g.drawLine(offset, offset, offset, yo)
+    }
+  }
+
 
   def drawLine(pMin: PointInt,pMax: PointInt) = (g: G2D) => {
     val (xmin, ymin) = pMin
