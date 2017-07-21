@@ -573,14 +573,13 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
 
 class Canvas extends JPanel {
-  private var offset   = 10
   private var bgColor  = java.awt.Color.WHITE
   private var fgColor  = java.awt.Color.BLACK
 
   private var plotColor = java.awt.Color.BLACK
 
   private var autoRepaint = true
-  private val ctx      = new DrawCtx(this, offset)
+  private val ctx      = new DrawCtx(this, 20)
 
   private val drawCmdList =  ListBuffer[G2D => Unit]()
 
