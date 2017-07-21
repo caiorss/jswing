@@ -527,6 +527,11 @@ class Canvas extends JPanel {
     this.refresh()
   }
 
+  def plotPointList(plist: Seq[Point]){
+    this.draw(ctx.plotPointList(plist))
+    this.refresh()
+  }
+
   override def paint(g: java.awt.Graphics){  
 
     // Set background color 
