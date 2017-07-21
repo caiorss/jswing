@@ -522,6 +522,11 @@ class Canvas extends JPanel {
     this.refresh()
   }
 
+  def plotPoint(x: Double, y: Double){
+    this.draw(ctx.plotPoint(x, y))
+    this.refresh()
+  }
+
   override def paint(g: java.awt.Graphics){  
 
     // Set background color 
