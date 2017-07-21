@@ -129,7 +129,8 @@ object DrawUtils {
 } // ----- End of module DrawUtils --------------- //
 
 
-class DrawParams(comp: java.awt.Component, offs: Int = 0){
+
+class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   // Border offset from left and top
   private var offset = offs
 
