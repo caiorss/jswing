@@ -661,11 +661,6 @@ class Canvas extends JPanel {
 
   } // -------- End of paint() -------------- //
 
-  def getScreenSize() = {
-    val w = this.getSize().width  - 2 * offset
-    val h = this.getSize().height - 2 * offset
-    (w, h)
-  }
 
   def setBgColor(col: java.awt.Color) = {
     bgColor = col
