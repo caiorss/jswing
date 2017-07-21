@@ -450,6 +450,8 @@ class Canvas extends JPanel {
     autoRepaint = flag
   }
 
+  def getDrawContext() = ctx
+
   def drawList(draws: (G2D => Unit)*) = {
     drawCmdList appendAll draws
     this.repaint()
