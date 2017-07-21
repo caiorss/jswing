@@ -493,58 +493,7 @@ class Canvas extends JPanel {
     val h   = this.getSize().height
     (x + offset, h - y - offset)
   }
-
-}
-
-
-
-val canvas = new Canvas() 
-
-val frame = new JFrame("Canvas App")
-frame.setSize(500, 400)
-frame.add(canvas)
-frame.setVisible(true)
-
-
-val g= canvas.getGraphics()
-val g2 = g.asInstanceOf[java.awt.Graphics2D]
-
-val gfx = new DrawParams(canvas, offs = 10)
-gfx.setOrigin(OriginBL)
-
-val withBlue = DrawUtils.withColor(java.awt.Color.BLUE)
-val withGreen = DrawUtils.withColor(java.awt.Color.GREEN)
-
-canvas.drawList(
-  gfx.pointMark2(0, 0),
-  gfx.pointMark2(10, 10),
-  gfx.pointMark((100, 200)),
-
-  withGreen{ gfx.drawLine((0, 0), (100, 200)) },
-
-  withBlue{ gfx.fillCircle((200, 300), 40)},
-
-  DrawUtils.withColor(java.awt.Color.GREEN){ gfx.fillRect((100, 200), 50, 150) },
-
-  withBlue{ gfx.drawCenterLines },
-
-  gfx.drawRect((100, 200), 100, 200)  
-
-
-)
   
+} // ----- End of class Canvas -------- //
 
 
-
-//canvas.draw{ gw => gw.transform(at)  }
-
-// canvas.draw{ gw => gw.drawOval(100, 100, 100, 100)}
-// canvas.draw(drawString("Hello world", 10, 10))
-
-// canvas.draw(gfx.drawLineTo(0, 0, 100, 200))
-
-// canvas.draw(gfx.drawPointMark(0, 0))
-// canvas.draw(gfx.drawPointMark(100, 200))
-// canvas.draw(gfx.drawCircle(100, 200, 50))
-
-// canvas.draw(gfx.fillCircle(100, 200, 15, java.awt.Color.RED))
