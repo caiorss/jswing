@@ -583,6 +583,21 @@ class Canvas extends JPanel {
     this.draw(ctx.plotHVLine(x, y))
     this.refresh()
   }
+
+  def getImage() = {
+    val image = new java.awt.image.BufferedImage(
+      this.getWidth(),
+      this.getHeight(),
+      java.awt.image.BufferedImage.TYPE_INT_RGB
+    )
+    this.paint(image.getGraphics())
+    image
+  }
+
+  def saveImage(file: String) = {
+    val img = this.getImage()
+    javax.imageio.ImageIO.write(img, "png", new java.io.File(file))
+  }
   
   
 } // ----- End of class Canvas -------- //
