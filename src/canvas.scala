@@ -88,6 +88,44 @@ object DrawUtils {
       g.setColor(col)
     }
 
+
+  /**
+      Find the minimum and maximum points of a function in a given range
+      by iterating over all possible discrete points in this range.
+
+      @param xmin - Minimum value x in the interval
+      @param ymin - Maximum value x in the interval
+      @param step - Step size that the interval will be iterated.
+      @param fn   - Function that will be iterated in the interval.
+      @return - Minimum and maximum value of the fuction.
+    */
+  def findYbounds(
+    xmin: Double,
+    xmax: Double,
+    step: Double = 0.001,
+    fn:   Double => Double
+  ) = {
+
+    assert(xmax >= xmin, "It should be xmax > xmin")
+    assert(step > 0, "It should be step > 0")
+
+    var ymin = Double.PositiveInfinity
+    var ymax = Double.NegativeInfinity
+    var x = xmin
+    var y = 0.0
+
+    while (x <= xmax) {
+      y = fn(x)
+
+      if (y < ymin) { ymin = y}
+      if (y > ymax) { ymax = y}
+      x = x + step
+    }
+    (ymin, ymax)
+
+  } // ---- End of findYbounds ------ /
+
+
 }
 
 
