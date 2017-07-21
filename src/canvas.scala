@@ -467,6 +467,7 @@ class Canvas extends JPanel {
     this.repaint()
   }
 
+  /** Clear canvas */
   def clear() = {
     drawCmdList.clear()
     this.repaint()
