@@ -196,6 +196,8 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     offset = offs
   }
 
+  def getOffset() = offset
+
   def getOrigin() = origin
 
   def setOrigin(o: OriginType) = {
