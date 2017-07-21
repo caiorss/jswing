@@ -343,9 +343,14 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
   
 
-  def plotString(p: Point, msg: String) = (g: G2D) => {
+  def plotString(
+    p: Point,
+    msg: String,
+    offsetXY: (Int, Int) = (0, 0)
+  ) = (g: G2D) => {
+
     val (x, y) = this.coordRangeToScreen(p)
-    g.drawString(msg, x, y)
+    g.drawString(msg, x + offsetXY._1, y + offsetXY._2)
   }
 
   /**
