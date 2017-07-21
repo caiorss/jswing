@@ -494,6 +494,21 @@ class Canvas extends JPanel {
     this.refresh()
   }
 
+  def plotFunRange(
+    fn: Double => Double,
+    xmin: Double = -10.0,
+    xmax: Double = 10.0,
+    step: Double = 0.1,
+    autoRange: Boolean = true,
+    color: java.awt.Color = null
+  ) = {
+    val col = if (color == null) plotColor else color
+    val cmd = DrawUtils.withColor(col){
+      ctx.plotFunRange(fn, xmin, xmax, step, autoRange)
+    }
+    this.draw(cmd)
+    this.refresh()
+  }
 
   override def paint(g: java.awt.Graphics){  
 
