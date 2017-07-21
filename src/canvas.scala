@@ -251,6 +251,43 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
     val size   = (comp.getWidth(), comp.getHeight())
     DrawUtils.coordRangeToScreen(pmin, pmax, origin, size, offset)
   }
+
+
+  /** Plot a function setting the range automatically. */
+  def plotFunRange(
+    fn: Double => Double,
+    xmin: Double = -10.0,
+    xmax: Double = 10.0,
+    step: Double = 0.1,
+    autoRange: Boolean = false
+  ) = {
+
+    assert(step > 0,    "It should be step > 0")
+    assert(xmax > xmin, "It should be xmax > xmin")
+
+    val (ymin, ymax) = DrawUtils.findYbounds(xmin, xmax, step, fn)
+
+    if (autoRange) this.setRange(xmin, ymin, xmax , ymax)
+
+    (g: G2D) => {
+      var x  = xmin
+      var p1 = this.coordRangeToScreen((x, fn(x)))
+      var p2 = this.coordRangeToScreen((x + step, fn(x + step)))
+
+      while (x < xmax) {
+        //println(s"p1 = ${p1} p2 = ${p2}")
+
+        g.drawLine(p1._1, p1._2, p2._1, p2._2)
+        x = x + step
+        //println(s"x = ${x} y = ${fn(x)}")
+
+        p1 = p2
+        p2 = this.coordRangeToScreen((x + step, fn(x + step)))
+      }
+    }
+  }
+
+
   
 
 
