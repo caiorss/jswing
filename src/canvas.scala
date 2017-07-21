@@ -88,6 +88,25 @@ object DrawUtils {
       g.setColor(col)
     }
 
+  def withContext(
+    strokeSize: Double,
+    color: java.awt.Color = null
+  )(action: G2D => Unit) = (g: G2D) => {
+
+    // save context
+    val st  = g.getStroke()
+    val col = g.getColor()
+    val s = new java.awt.BasicStroke(strokeSize.toFloat)
+      .asInstanceOf[java.awt.Stroke]
+
+    g.setColor(color)
+    g.setStroke(s)
+    action(g)
+    // restore context
+    g.setColor(col)
+    g.setStroke(st)
+  }
+
 
   /**
       Find the minimum and maximum points of a function in a given range
