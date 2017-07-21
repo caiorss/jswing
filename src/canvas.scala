@@ -532,6 +532,21 @@ class Canvas extends JPanel {
     this.refresh()
   }
 
+  def plotHLine(y: Double){
+    this.draw(ctx.plotHLine(y))
+    this.refresh()
+  }
+
+  def plotVLine(x: Double){
+    this.draw(ctx.plotVLine(x))
+    this.refresh()
+  }
+
+  def plotHVLine(x: Double, y: Double){
+    this.draw(ctx.plotHVLine(x, y))
+    this.refresh()
+  }
+
   override def paint(g: java.awt.Graphics){  
 
     // Set background color 
