@@ -496,6 +496,43 @@ class Canvas extends JPanel {
     this.repaint()
   }
 
+
+  override def paint(g: java.awt.Graphics){  
+
+    // Set background color 
+    g.setColor(bgColor)        
+    g.fillRect(
+      offset,
+      offset,
+      this.getSize().width  - 2 * offset - 1,
+      this.getSize().height - 2 * offset -1
+    )
+
+    // Set foreground color 
+    g.setColor(fgColor)    
+    val g2d = g.asInstanceOf[java.awt.Graphics2D]
+
+    drawCmdList foreach {cmd => cmd(g2d)}
+
+  } // -------- End of paint() -------------- //
+
+  def getScreenSize() = {
+    val w = this.getSize().width  - 2 * offset
+    val h = this.getSize().height - 2 * offset
+    (w, h)
+  }
+
+  def setBgColor(col: java.awt.Color) = {
+    bgColor = col
+    this.repaint()
+  }
+
+  def setFgColor(col: java.awt.Color) = {
+    fgColor = col
+    this.repaint()
+  }
+
+
   def plotFun(
     fn: Double => Double,
     color: java.awt.Color = null
@@ -546,41 +583,7 @@ class Canvas extends JPanel {
     this.draw(ctx.plotHVLine(x, y))
     this.refresh()
   }
-
-  override def paint(g: java.awt.Graphics){  
-
-    // Set background color 
-    g.setColor(bgColor)        
-    g.fillRect(
-      offset,
-      offset,
-      this.getSize().width  - 2 * offset - 1,
-      this.getSize().height - 2 * offset -1
-    )
-
-    // Set foreground color 
-    g.setColor(fgColor)    
-    val g2d = g.asInstanceOf[java.awt.Graphics2D]
-
-    drawCmdList foreach {cmd => cmd(g2d)}
-
-  } // -------- End of paint() -------------- //
-
-  def getScreenSize() = {
-    val w = this.getSize().width  - 2 * offset
-    val h = this.getSize().height - 2 * offset
-    (w, h)
-  }
-
-  def setBgColor(col: java.awt.Color) = {
-    bgColor = col
-    this.repaint()
-  }
-
-  def setFgColor(col: java.awt.Color) = {
-    fgColor = col
-    this.repaint()
-  }
+  
   
 } // ----- End of class Canvas -------- //
 
