@@ -581,11 +581,6 @@ class Canvas extends JPanel {
     fgColor = col
     this.repaint()
   }
-
-  def coord2BottomScreen(x: Int, y: Int) = {
-    val h   = this.getSize().height
-    (x + offset, h - y - offset)
-  }
   
 } // ----- End of class Canvas -------- //
 
