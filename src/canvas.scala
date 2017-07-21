@@ -126,6 +126,14 @@ object DrawUtils {
     g.setStroke(st)
   }
 
+  def withRoationA(g: G2D, x: Int, y: Int, angle: Double)(action: => Unit) =  {
+    val angleRad = Math.toRadians(angle)
+    val t = g.getTransform()
+    g.rotate(angleRad, x, y)
+    action
+    g.setTransform(t)
+  }
+
 
   /**
       Find the minimum and maximum points of a function in a given range
