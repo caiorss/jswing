@@ -446,6 +446,8 @@ class Canvas extends JPanel {
 
   }
 
+  def setAutoRepaint(flag: Boolean){
+    autoRepaint = flag
   }
 
   def drawList(draws: (G2D => Unit)*) = {
