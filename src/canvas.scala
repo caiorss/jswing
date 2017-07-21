@@ -139,6 +139,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
   // Range to plot
   private var pmin = (-50.0, -50.0)
   private var pmax = (50.0, 50.0)
+  private var step = 0.1
 
   private var pointMarkSize: Int = 3
   private var pointMarkColor = java.awt.Color.BLUE
