@@ -169,6 +169,14 @@ object DrawUtils {
 
   } // ---- End of findYbounds ------ /
 
+  /** Get font size in pixels */
+  def getTextSize(g: G2D, text: String): (Int, Int) = {
+    val font = g.getFont()
+    val fm   = font.getStringBounds(text, g.getFontRenderContext())
+    val w    = fm.getWidth()
+    val h    = fm.getHeight()
+    (w.toInt, h.toInt)
+  }
 
 } // ----- End of module DrawUtils --------------- //
 
