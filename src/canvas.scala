@@ -485,6 +485,10 @@ class Canvas extends JPanel {
     this.repaint()
   }
 
+  def undo() = if (drawCmdList.size > 0) {
+    drawCmdList.remove(drawCmdList.size - 1)
+    this.refresh()
+  }
 
   /** Set default plot color */
   def setPlotColor(color: java.awt.Color){
