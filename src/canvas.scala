@@ -259,12 +259,12 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
   }
 
   def drawPointXY(x: Double, y: Double) = (g: G2D) => {
-    val radius = 3
+    val radius = this.pointMarkSize
     val (xx, yy) = this.coordRangeToScreen((x, y))
     g.drawString(s"(${x}, ${y})", xx, yy)
 
     val col = g.getColor()
-    g.setColor(java.awt.Color.RED)
+    g.setColor(this.pointMarkColor)
     g.fillOval(xx - radius, yy - radius, 2 * radius, 2 * radius)
     g.setColor(col)
   }
