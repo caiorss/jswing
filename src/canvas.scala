@@ -591,7 +591,7 @@ class Canvas extends JPanel {
     autoRepaint = flag
   }
 
-  def getDrawContext() = ctx
+  def getDrawCtx() = ctx
 
   /** Refresh screen if the private autoRepaint parameter is true. */
   def refresh() {
