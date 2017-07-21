@@ -474,6 +474,9 @@ class Canvas extends JPanel {
   }
 
 
+  /** Set default plot color */
+  def setPlotColor(color: java.awt.Color){
+    plotColor = color
   }
 
 
