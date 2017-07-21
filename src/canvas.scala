@@ -626,6 +626,11 @@ class Canvas extends JPanel {
     plotColor = color
   }
 
+  def setOffset(offset: Int) = {
+    this.ctx.setOffset(offset)
+    this.refresh()
+  }
+
   def setRange(xmin: Double, ymin: Double, xmax: Double, ymax: Double) {
     ctx.setRange(xmin, ymin, xmax, ymax)
     this.repaint()
