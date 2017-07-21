@@ -585,6 +585,12 @@ class Canvas extends JPanel {
     g.setColor(fgColor)    
     val g2d = g.asInstanceOf[java.awt.Graphics2D]
 
+    g2d.setRenderingHint(
+      java.awt.RenderingHints.KEY_ANTIALIASING,
+      java.awt.RenderingHints.VALUE_ANTIALIAS_ON
+    )
+
+
     drawCmdList foreach {cmd => cmd(g2d)}
 
   } // -------- End of paint() -------------- //
