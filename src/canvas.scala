@@ -452,6 +452,11 @@ class Canvas extends JPanel {
 
   def getDrawContext() = ctx
 
+  /** Refresh screen if the private autoRepaint parameter is true. */
+  def refresh() {
+    if (this.autoRepaint) this.repaint()
+  }
+
   def drawList(draws: (G2D => Unit)*) = {
     drawCmdList appendAll draws
     this.repaint()
