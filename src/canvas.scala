@@ -434,6 +434,11 @@ class Canvas extends JPanel {
   private var bgColor  = java.awt.Color.WHITE
   private var fgColor  = java.awt.Color.BLACK
 
+  private var plotColor = java.awt.Color.BLACK
+
+  private var autoRepaint = true
+  private val ctx      = new DrawCtx(this, offset)
+
   private val drawCmdList =  ListBuffer[G2D => Unit]()
 
   def draw(draw: G2D => Unit) = {
