@@ -343,10 +343,33 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
   
 
-
   def plotString(p: Point, msg: String) = (g: G2D) => {
     val (x, y) = this.coordRangeToScreen(p)
     g.drawString(msg, x, y)
+  }
+
+  /**
+     Plot a string at point (X, Y) in user coordinates
+     rotating around this point by an angle in degrees.
+    */
+  def plotStringAngle(
+    p: Point,
+    angle: Double,
+    msg: String,
+    offsetXY: (Int, Int) = (0, 0)
+  ) = (g: G2D) => {
+    val angleRad = Math.toRadians(angle)
+    // Save context
+    val t = g.getTransform()
+    // Get screen coordinates
+    val (x, y) = this.coordRangeToScreen(p)
+    val xx = x + offsetXY._1
+    val yy = y + offsetXY._2
+    // Rotate around the (x, y) point
+    g.rotate(angleRad, xx, yy)
+    g.drawString(msg, xx, yy)
+    // Restore context
+    g.setTransform(t)
   }
 
   def plotPoint(x: Double, y: Double) = (g: G2D) => {
