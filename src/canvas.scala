@@ -424,7 +424,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
     val ticks = 10
 
-
     var y    = ymin
     var ystep = (ymax - ymin) / ticks.toDouble
 
@@ -434,7 +433,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
           this.plotHLine(y)(g)
         }
 
-        this.plotString((xmin, y), "%.2f".format(y))(g)
+        this.plotString((xmin, y), "%.2f".format(y), offsetXY = (-40, 0))(g)
         y = y + ystep
       }
 
@@ -449,7 +448,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
       //this.plotString((x, ymin), "%.2f".format(x))(g)
 
-      this.plotStringAngle((x, ymin), 90.0, "%.2f".format(x), offsetXY = (-10, -30))(g)
+      this.plotStringAngle((x, ymin), 90.0, "%.2f".format(x), offsetXY = (-20, 10))(g)
 
       // DrawUtils.withRoationA(g, 90.0){
       //   this.plotString((x, ymin), "%.2f".format(x))(g)
