@@ -76,6 +76,13 @@ object Dialog {
      )
   }
 
+   /** Opens a JColorChooser color choosing dialog.  */
+   def chooseColor(msg: String = "Choose a color", default: java.awt.Color = null) = {
+    val col = javax.swing.JColorChooser.showDialog(null, msg, default)
+    Option(col)
+  }
+
+
   def chooseFile(path: String = ".", showHidden: Boolean = true) = {
     val fch = new javax.swing.JFileChooser()
     fch.showOpenDialog(null)
