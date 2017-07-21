@@ -441,13 +441,15 @@ class Canvas extends JPanel {
 
   private val drawCmdList =  ListBuffer[G2D => Unit]()
 
-  def draw(draw: G2D => Unit) = {
-    drawCmdList += draw
-    this.repaint()
   }
 
   def drawList(draws: (G2D => Unit)*) = {
     drawCmdList appendAll draws
+    this.repaint()
+  }
+
+  def draw(draw: G2D => Unit) = {
+    drawCmdList += draw
     this.repaint()
   }
 
