@@ -126,7 +126,7 @@ object DrawUtils {
   } // ---- End of findYbounds ------ /
 
 
-}
+} // ----- End of module DrawUtils --------------- //
 
 
 class DrawParams(comp: java.awt.Component, offs: Int = 0){
