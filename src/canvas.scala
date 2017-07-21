@@ -145,6 +145,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   private var pointMarkSize: Int = 3
   private var pointMarkColor = java.awt.Color.BLUE
 
+  // def setGraphics(graphics: java.awt.Graphics) = { g = graphics}
+  def setOffset(offs: Int){
+    offset = offs
+  }
+
   def getOrigin() = origin
 
   def setOrigin(o: OriginType) = {
@@ -188,10 +193,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     (x, y)
   }
 
-  // def setGraphics(graphics: java.awt.Graphics) = { g = graphics}
-  def setOffset(offs: Int){
-    offset = offs
-  }
 
   def getSize() = {
     val w = comp.getSize().width  - 2 * offset
