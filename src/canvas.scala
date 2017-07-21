@@ -296,7 +296,7 @@ class DrawParams(comp: java.awt.Component, offs: Int = 0){
   
 
 
-  def drawStringXY(p: Point, msg: String) = (g: G2D) => {
+  def plotString(p: Point, msg: String) = (g: G2D) => {
     val (x, y) = this.coordRangeToScreen(p)
     g.drawString(msg, x, y)
   }
