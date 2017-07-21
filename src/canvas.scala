@@ -479,6 +479,11 @@ class Canvas extends JPanel {
     plotColor = color
   }
 
+  def setRange(xmin: Double, ymin: Double, xmax: Double, ymax: Double) {
+    ctx.setRange(xmin, ymin, xmax, ymax)
+    this.repaint()
+  }
+
 
   override def paint(g: java.awt.Graphics){  
 
