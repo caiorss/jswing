@@ -484,6 +484,16 @@ class Canvas extends JPanel {
     this.repaint()
   }
 
+  def plotFun(
+    fn: Double => Double,
+    color: java.awt.Color = null
+  ){
+    val col = if (color == null) plotColor else color
+    val cmd = DrawUtils.withColor(col){ ctx.plotFun(fn) }
+    this.draw(cmd)
+    this.refresh()
+  }
+
 
   override def paint(g: java.awt.Graphics){  
 
