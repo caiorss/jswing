@@ -438,20 +438,20 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def drawStringHCenter(
     p:         Point,
     text:      String,
-    angle:     Double = 0,
-    offsetXY:  (Int, Int) = (0, 0)
-
+    color:     java.awt.Color = null,
+    size:      Int            = -10
   ) = (g: G2D) => {
-    val angleRad = Math.toRadians(angle)
-    val t = g.getTransform()
+    val col = g.getColor()
+    val font = g.getFont()
+    g.setColor(color)
+    if (size > 0) g.setFont(font.deriveFont(size.toFloat))
     val (w, h) = DrawUtils.getTextSize(g, text)
     val (x, y) = p //this.coordBottomToScreen(p)
-    val xx = x - w/2 + offsetXY._1
-    val yy = y + h/2 + offsetXY._2
-    g.rotate(angleRad, xx, yy)
+    val xx = x - w/2
+    val yy = y + h/2
     g.drawString(text, xx.toFloat, yy.toFloat)
-    // Restore context
-    g.setTransform(t)
+    g.setColor(col)
+    g.setFont(font)
   }
 
   /** Draw a vertical string setting is position around its center */
