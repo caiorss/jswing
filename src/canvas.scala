@@ -802,8 +802,28 @@ class Canvas extends JPanel {
 
   private val drawCmdList =  ListBuffer[G2D => Unit]()
 
+  init()
 
   private def init(){
+
+    val canvas = this
+
+    this.addMouseMotionListener(
+      new java.awt.event.MouseMotionAdapter(){
+
+        override def mouseDragged(me: java.awt.event.MouseEvent){
+          //printf("(%d, %d)\n",me.getX(), me.getY())
+        }
+
+        override def mouseMoved(me: java.awt.event.MouseEvent){
+          //mousePositon = (me.getX(), me.getY())
+          ctx.setMousePosition(me.getX(), me.getY())
+          canvas.repaint()
+          //println(s"Mouse Positon Screen(x, y) = ${x} y = ${y} " )
+          //println(s"Mouse Real Positon p = " + ctx.coordScreenToReal((x, y)))
+      }
+
+    })
 
   }
 
