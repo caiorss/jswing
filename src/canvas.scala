@@ -202,6 +202,20 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   private var pointMarkSize: Int = 3
   private var pointMarkColor = java.awt.Color.BLUE
 
+
+  def setMargins(left: Int, right: Int, top: Int, bottom: Int) = {
+    marginL = left
+    marginR = right
+    marginT = top
+    marginB = bottom
+  }
+
+  def setMarginLeft(size: Int)    = { marginL = size }
+  def setMarginRight(size: Int)   = { marginR = size }
+  def setMarginTop(size: Int)     = { marginT = size }
+  def setMarginBottom(size: Int)  = { marginB = size }
+
+
   // def setGraphics(graphics: java.awt.Graphics) = { g = graphics}
   def setOffset(offs: Int){
     offset = offs
