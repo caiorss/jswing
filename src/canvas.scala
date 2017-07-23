@@ -578,11 +578,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
   def drawHLine(y: Int) = (g: G2D) => {    
-    drawLine2(0, y, comp.getWidth() - marginL - marginR, y)(g)
+    drawLine2(0, y, comp.getWidth(), y)(g)
   }
 
   def drawVLine(x: Int) = (g: G2D) => {
-    drawLine2(x, 0, x, comp.getHeight() - marginT - marginB)(g)
+    drawLine2(x, 0, x, comp.getHeight())(g)
   }
 
   /** Draw horizontal line at screen's center from screen's left border to the right border. 
