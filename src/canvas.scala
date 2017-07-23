@@ -423,8 +423,8 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     */
   def plotStringAngle(
     p: Point,
+    text: String,
     angle: Double,
-    msg: String,
     offsetXY: (Int, Int) = (0, 0)
   ) = (g: G2D) => {
     val angleRad = Math.toRadians(angle)
@@ -436,7 +436,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     val yy = y + offsetXY._2
     // Rotate around the (x, y) point
     g.rotate(angleRad, xx, yy)
-    g.drawString(msg, xx, yy)
+    g.drawString(text, xx.toFloat, yy.toFloat)
     // Restore context
     g.setTransform(t)
   }
