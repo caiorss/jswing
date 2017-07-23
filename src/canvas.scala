@@ -557,7 +557,22 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
 
-  def drawLine(pMin: PointInt,pMax: PointInt) = (g: G2D) => {
+  def drawPlotArea(g: G2D) {
+    // @TODO: Change hardcoded color
+    //val col = g.getColor()
+    g.setColor(java.awt.Color.GREEN)
+    g.fillRect(0, 0, comp.getWidth(), comp.getHeight())
+
+    g.setColor(java.awt.Color.WHITE)
+    g.fillRect(
+      this.marginR,  // x from top
+      this.marginT,  // y
+      comp.getWidth() - this.marginR - this.marginL,
+      comp.getHeight() - this.marginB - this.marginT
+    )
+    g.setColor(java.awt.Color.BLACK)
+  }
+
 
   def drawLine(pMin: Point,pMax: Point) = (g: G2D) => {
     val (xmin, ymin) = pMin
