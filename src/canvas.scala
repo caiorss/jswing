@@ -414,7 +414,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   ) = (g: G2D) => {
 
     val (x, y) = this.coordRangeToScreen(p)
-    g.drawString(msg, x + offsetXY._1, y + offsetXY._2)
+    g.drawString(msg, (x + offsetXY._1).toFloat, (y + offsetXY._2).toFloat)
   }
 
   /**
