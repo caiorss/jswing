@@ -434,7 +434,7 @@ Plot Area Foreground Color = ${this.plotAreaFgColor}
     (g: G2D) => {
       val p = this.mousePosition
       val (x, y) = this.coordScreenToReal((p._1.toInt, p._2.toInt))
-      g.drawString(s"Xr = ${x} Yr = ${y}", xp.toFloat, yp.toFloat)
+      g.drawString("Xr = %.3f Yr = %.3f".format(x, y), xp.toFloat, yp.toFloat)
     }
 
 
