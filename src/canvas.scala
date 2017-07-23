@@ -356,6 +356,15 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
 
+  def coordRangeToScreen(p: Point) = this.coordRealToScreen(p)
+  // def coordRangeToScreen = (p: Point) => {
+  //   val origin = this.getCoordBottomLeft()
+  //   val size   = (comp.getWidth(), comp.getHeight())
+  //   DrawUtils.coordRangeToScreen(this.pmin, this.pmax, origin, size, offset)(p._1, p._2)
+  // }
+
+
+
   /** Plot a function setting the range automatically. */
   def plotFunRange(
     fn: Double => Double,
