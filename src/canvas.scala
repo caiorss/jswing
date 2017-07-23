@@ -805,6 +805,7 @@ class Canvas extends JPanel {
       java.awt.RenderingHints.KEY_ANTIALIASING,
       java.awt.RenderingHints.VALUE_ANTIALIAS_ON
     )
+    this.ctx.drawPlotArea(g2d)
 
 
     drawCmdList foreach {cmd => cmd(g2d)}
