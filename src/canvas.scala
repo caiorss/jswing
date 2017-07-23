@@ -186,6 +186,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   // Border offset from left and top
   private var offset = offs
 
+  private var marginL = 30  // Left  margin
+  private var marginR = 40  // Right margin
+  private var marginT = 20  // Top margin
+  private var marginB = 20  // Bottom margin
+
   // Origin of chart - Relative to the bottom left of drawing screen  
   private var origin: OriginType = OriginBL
 
