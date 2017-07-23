@@ -1015,6 +1015,10 @@ class Canvas extends javax.swing.JPanel {
     this.draw(ctx.plotHVLine(x, y))
   }
 
+  def drawShape(shape: java.awt.Shape) = {
+    this.draw(ctx.drawShape(shape))
+  }
+
   def getImage() = {
     val image = new java.awt.image.BufferedImage(
       this.getWidth(),
