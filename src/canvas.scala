@@ -530,16 +530,14 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
     // Draw axis at bottom left
     //
-    val xo = this.marginL
     val yo = comp.getHeight() - marginB
 
     DrawUtils.withContextA(g, 1.5, java.awt.Color.BLUE){
       // draw horizontal line
-      //g.drawLine(offset, yo, comp.getWidth() - offset, yo)
-      g.drawLine(marginB, yo, comp.getWidth() - marginR, yo)
+      g.drawLine(marginL, yo, comp.getWidth() - marginR, yo)
 
       // draw vertical line
-      g.drawLine(marginR, marginT, marginR, yo)
+      g.drawLine(marginL, marginT, marginL, yo)
     }
   }
 
