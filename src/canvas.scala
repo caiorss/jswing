@@ -1019,6 +1019,18 @@ class Canvas extends javax.swing.JPanel {
     this.draw(ctx.drawShape(shape))
   }
 
+  def showMousePosition(xp: Double = 40, yp: Double = 40.0){
+    this.draw(ctx.showMousePositionScreen(xp, yp))
+  }
+
+  def showMousePositionOrigin(xp: Double = 40, yp: Double = 60){
+    this.draw(ctx.showMousePositionOrigin(xp, yp))
+  }
+
+  def showMousePositionReal(xp: Double = 40, yp: Double = 100){
+    this.draw(ctx.showMousePositionReal(xp, yp))
+  }
+
   def getImage() = {
     val image = new java.awt.image.BufferedImage(
       this.getWidth(),
