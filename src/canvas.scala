@@ -250,10 +250,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
   // Get coordinate of bottom left screen
   /**
-     Get coordinates of bottom left screen in screen coordinates (upper left) corner. */
+     Get coordinates of bottom left screen in screen coordinates (upper left) corner.
+   */
   def getCoordBottomLeft() = {
-    val w   = comp.getWidth()
-    val h   = comp.getSize().height 
+    val w   = comp.getWidth().toDouble
+    val h   = comp.getSize().height.toDouble
     (offset, h -  offset)
   }
 
