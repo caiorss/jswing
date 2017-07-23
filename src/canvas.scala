@@ -183,9 +183,8 @@ object DrawUtils {
 
 
 class DrawCtx(comp: java.awt.Component, offs: Int = 0){
-  // Border offset from left and top
-  private var offset = offs
 
+  // Border Margins
   private var marginL = 30  // Left  margin
   private var marginR = 40  // Right margin
   private var marginT = 20  // Top margin
@@ -215,13 +214,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def setMarginTop(size: Int)     = { marginT = size }
   def setMarginBottom(size: Int)  = { marginB = size }
 
-
-  // def setGraphics(graphics: java.awt.Graphics) = { g = graphics}
-  def setOffset(offs: Int){
-    offset = offs
-  }
-
-  def getOffset() = offset
 
   def getOrigin() = origin
 
@@ -255,7 +247,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def getCoordBottomLeft() = {
     val w   = comp.getWidth().toDouble
     val h   = comp.getSize().height.toDouble
-    (offset, h -  offset)
+    (0.0, h)
   }
 
   /**
@@ -267,12 +259,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     (x, y)
   }
 
-
-  def getSize() = {
-    val w = comp.getSize().width  - 2 * offset
-    val h = comp.getSize().height - 2 * offset
-    (w, h)
-  }
 
   def getHeight() = comp.getHeight()
 
@@ -316,7 +302,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def coordBottomToScreen(p: PointInt): PointInt =  {
     val w   = comp.getSize().width
     val h   = comp.getSize().height 
-    (p._1 + offset, -1 * p._2 + h - offset)
+    (p._1, -1 * p._2 + h)
   }
 
   def coordRealToScreen(p: Point) = {
@@ -544,15 +530,16 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
     // Draw axis at bottom left
     //
-    val xo = offset
-    val yo = comp.getHeight() - offset
+    val xo = this.marginL
+    val yo = comp.getHeight() - marginB
 
     DrawUtils.withContextA(g, 1.5, java.awt.Color.BLUE){
       // draw horizontal line
-      g.drawLine(offset, yo, comp.getWidth() - offset, yo)
+      //g.drawLine(offset, yo, comp.getWidth() - offset, yo)
+      g.drawLine(marginB, yo, comp.getWidth() - marginR, yo)
 
       // draw vertical line
-      g.drawLine(offset, offset, offset, yo)
+      g.drawLine(marginR, marginT, marginR, yo)
     }
   }
 
@@ -594,11 +581,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
   def drawHLine(y: Int) = (g: G2D) => {    
-    drawLine2(0, y, comp.getWidth() - 2 * offset, y)(g)
+    drawLine2(0, y, comp.getWidth() - marginL - marginR, y)(g)
   }
 
   def drawVLine(x: Int) = (g: G2D) => {
-    drawLine2(x, 0, x, comp.getHeight() - 2 * offset)(g)
+    drawLine2(x, 0, x, comp.getHeight() - marginT - marginB)(g)
   }
 
   /** Draw horizontal line at screen's center from screen's left border to the right border. 
@@ -606,12 +593,12 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
    */
   def drawHLineCenter(g: G2D){
     val y = comp.getHeight() / 2 
-    g.drawLine(offset, y, comp.getWidth() - offset, y)
+    g.drawLine(0, y, comp.getWidth(), y)
   }
 
   def drawVLineCenter(g: G2D) {
     val x = comp.getWidth()  / 2 
-    g.drawLine(x, offset, x, comp.getHeight() - offset)
+    g.drawLine(x, 0, x, comp.getHeight())
   }
 
   def drawCenterLines(g: G2D){
@@ -729,10 +716,6 @@ class Canvas extends JPanel {
     plotColor = color
   }
 
-  def setOffset(offset: Int) = {
-    this.ctx.setOffset(offset)
-    this.refresh()
-  }
 
   def setRange(xmin: Double, ymin: Double, xmax: Double, ymax: Double) {
     ctx.setRange(xmin, ymin, xmax, ymax)
@@ -741,19 +724,7 @@ class Canvas extends JPanel {
 
 
   override def paint(g: java.awt.Graphics){
-    val offset = this.ctx.getOffset()
 
-    // Set background color 
-    g.setColor(bgColor)        
-    g.fillRect(
-      offset,
-      offset,
-      this.getSize().width  - 2 * offset - 1,
-      this.getSize().height - 2 * offset -1
-    )
-
-    // Set foreground color 
-    g.setColor(fgColor)    
     val g2d = g.asInstanceOf[java.awt.Graphics2D]
 
     g2d.setRenderingHint(
