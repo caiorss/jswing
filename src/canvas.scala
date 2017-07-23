@@ -676,9 +676,16 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
       Place a string with point coordinates at some (x, y) position.
       It is useful to debugging. 
     */
-  def pointMark(p: PointInt, label: String = "") = 
-    this.drawString((p._1 + 5, p._2 + 5), s"${label} (x = ${p._1}, y = ${p._2})")
+  def pointMark(p: Point, label: String = "") = {
+    val dotSize = 3
+    val d = 2 * dotSize
 
+    (g: G2D) => {
+      val (x, y) = this.coordOriginToScreen(p._1, p._2)
+      g.drawString(s"${label} (x = ${p._1}, y = ${p._2})", (x + 5).toFloat, (y - 5).toFloat)
+      g.fillOval(x.toInt - dotSize, y.toInt - dotSize, d, d)
+    }
+  }
 
   def pointMark2(x: Int, y: Int, label: String = "") =  
     this.pointMark((x, y), label)      
