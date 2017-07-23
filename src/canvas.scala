@@ -639,19 +639,17 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
 
   def drawPlotArea(g: G2D) {
-    // @TODO: Change hardcoded color
-    //val col = g.getColor()
-    g.setColor(java.awt.Color.GREEN)
+    g.setColor(this.bgColor)
     g.fillRect(0, 0, comp.getWidth(), comp.getHeight())
 
-    g.setColor(java.awt.Color.WHITE)
+    g.setColor(this.plotAreaBgColor)
     g.fillRect(
       this.marginL,  // x from top
       this.marginT,  // y
       comp.getWidth() - this.marginR - this.marginL,
       comp.getHeight() - this.marginB - this.marginT
     )
-    g.setColor(java.awt.Color.BLACK)
+    g.setColor(this.plotAreaFgColor)
   }
 
 
