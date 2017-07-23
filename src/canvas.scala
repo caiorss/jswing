@@ -753,6 +753,32 @@ class Canvas extends JPanel {
     this.refresh()
   }
 
+  def setMargins(left: Int, right: Int, top: Int, bottom: Int) {
+    ctx.setMargins(left, right, top, bottom)
+    this.repaint()
+  }
+
+  def setMarginLeft(size: Int) = {
+    this.ctx.setMarginLeft(size)
+    this.repaint()
+  }
+
+  def setMarginRight(size: Int) = {
+    this.ctx.setMarginRight(size)
+    this.repaint()
+  }
+
+  def setMarginTop(size: Int) = {
+    ctx.setMarginTop(size)
+    this.repaint()
+  }
+
+  def setMarginBottom(size: Int) = {
+    ctx.setMarginBottom(size)
+    this.repaint()
+  }
+
+
   /** Set default plot color */
   def setPlotColor(color: java.awt.Color){
     plotColor = color
