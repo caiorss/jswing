@@ -826,11 +826,8 @@ class Canvas extends JPanel {
         }
 
         override def mouseMoved(me: java.awt.event.MouseEvent){
-          //mousePositon = (me.getX(), me.getY())
           ctx.setMousePosition(me.getX(), me.getY())
           canvas.repaint()
-          //println(s"Mouse Positon Screen(x, y) = ${x} y = ${y} " )
-          //println(s"Mouse Real Positon p = " + ctx.coordScreenToReal((x, y)))
       }
 
     })
