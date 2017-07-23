@@ -319,7 +319,22 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     (p._1 + offset, -1 * p._2 + h - offset)
   }
 
+  def coordRealToScreen(p: Point) = {
+    val (xRmin, yRmin) = this.pmin
+    val (xRmax, yRmax) = this.pmax
 
+    val w = comp.getWidth()
+    val h = comp.getHeight()
+
+    val sx = (w - this.marginL - this.marginR).toDouble / ( xRmax - xRmin)
+    val kx = - sx * xRmin + marginL
+
+    val sy = - (h - this.marginT - this.marginB).toDouble / (yRmax - yRmin)
+    val ky = h - sy * yRmin - marginB
+
+    val x = sx * p._1 + kx
+    val y = sy * p._2 + ky
+    (x, y)
   }
 
   def coordScreenToReal(p: PointInt) = {
