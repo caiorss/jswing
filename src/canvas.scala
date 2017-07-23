@@ -319,6 +319,32 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   }
 
 
+  override def toString() = {
+    s"""
+Drawing Area Size:
+ - Width  = ${comp.getWidth()}
+ - Height = ${comp.getHeight()}
+
+Margins:
+ - Left   = ${this.marginL}
+ - Right  = ${this.marginR}
+ - Top    = ${this.marginT}
+ - Bottom = ${this.marginB}
+
+Current Origin:
+  - Origin = ${this.getOriginCoord()}
+
+Real Coordinates Range:
+ - Xmin = ${this.pmin._1}  - Xmax = ${this.pmax._1}
+ - Ymin = ${this.pmin._2}  - Ymax = ${this.pmax._2}
+ - step = ${this.step}
+
+Background Color           = ${this.bgColor}
+Plot Area Background Color = ${this.plotAreaBgColor}
+Plot Area Foreground Color = ${this.plotAreaFgColor}
+"""
+  }
+
   /**  Converts coordinate centered at some origin (x - positive from left to right, y - positive upward)
        to screen's coordinates with origin at top left and  (x - positive from left to right and y
        positive downward.
