@@ -283,9 +283,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     (x, y)
   }
 
-  def getHeight() = comp.getHeight()
-
-  def getWidth()  = comp.getWidth()
 
   /** Get origin coordinate relative to top left corner of screen */
   def getOriginCoord() = origin match {
