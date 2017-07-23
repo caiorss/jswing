@@ -1,29 +1,37 @@
-import javax.swing._
+//package jswing.canvas
+
+//import javax.swing._
 import scala.collection.mutable.ListBuffer
 
-type G2D = java.awt.Graphics2D
+object CanvasTypes {
 
-/** Drawing Command executed by class Canvas paint method. */
-type DrawCmd = java.awt.Graphics2D => Unit
+  type G2D = java.awt.Graphics2D
 
-type G = java.awt.Graphics
+  /** Drawing Command executed by class Canvas paint method. */
+  type DrawCmd = java.awt.Graphics2D => Unit
 
-/** 2D Point */
-type Point = (Double, Double)
+  type G = java.awt.Graphics
 
-type PointInt = (Int, Int)
+  /** 2D Point */
+  type Point = (Double, Double)
 
-case class DrawRange(pmin: (Double, Double), pmax: (Double, Double))
+  type PointInt = (Int, Int)
 
-/** Strategy to set the origin of Canvas coordinate system */
-abstract sealed class OriginType
-case class OriginXY(x: Double, y: Double)  extends OriginType
-case       object OriginBL                 extends OriginType
-case       object OriginC                  extends OriginType
+  case class DrawRange(pmin: (Double, Double), pmax: (Double, Double))
+
+  /** Strategy to set the origin of Canvas coordinate system */
+  abstract sealed class OriginType
+  case class OriginXY(x: Double, y: Double)  extends OriginType
+  case       object OriginBL                 extends OriginType
+  case       object OriginC                  extends OriginType
+
+}
 
 
 /** General drawing helper functions. */
 object DrawUtils {
+
+  import CanvasTypes._
 
   def coordToScreen(origin: Point, point: Point) : Point = {
     (point._1 + origin._1, -1 * point._2 + origin._2)
@@ -183,6 +191,8 @@ object DrawUtils {
 
 
 class DrawCtx(comp: java.awt.Component, offs: Int = 0){
+
+  import CanvasTypes._
 
   // Border Margins
   private var marginL = 30  // Left  margin
@@ -800,8 +810,10 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 }
 
 
+class Canvas extends javax.swing.JPanel {
 
-class Canvas extends JPanel {
+  import CanvasTypes._
+
   private var bgColor  = java.awt.Color.WHITE
   private var fgColor  = java.awt.Color.BLACK
 
