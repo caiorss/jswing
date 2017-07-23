@@ -330,6 +330,24 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     DrawUtils.coordRangeToScreen(pmin, pmax, origin, size, offset)
   }
 
+  def coordScreenToReal(p: PointInt) = {
+    val (xRmin, yRmin) = this.pmin
+    val (xRmax, yRmax) = this.pmax
+
+    val w = comp.getWidth()
+    val h = comp.getHeight()
+
+    val sx = (w - this.marginL - this.marginR).toDouble / ( xRmax - xRmin)
+    val kx = - sx * xRmin + marginL
+
+    val sy = - (h - this.marginT - this.marginB).toDouble / (yRmax - yRmin)
+    val ky = h - sy * yRmin - marginB
+
+    val x = (p._1 - kx) / sx
+    val y = (p._2 - ky) / sy
+    (x, y)
+  }
+
 
   /** Plot a function setting the range automatically. */
   def plotFunRange(
