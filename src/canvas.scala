@@ -931,12 +931,6 @@ class Canvas extends javax.swing.JPanel {
   }
 
 
-  /** Set default plot color */
-  def setPlotColor(color: java.awt.Color){
-    plotColor = color
-  }
-
-
   def setRange(xmin: Double, ymin: Double, xmax: Double, ymax: Double) {
     ctx.setRange(xmin, ymin, xmax, ymax)
     this.repaint()
