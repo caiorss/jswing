@@ -687,32 +687,68 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     }
   }
 
-  def pointMark2(x: Int, y: Int, label: String = "") =  
-    this.pointMark((x, y), label)      
-
-
-  def drawCircle(p: PointInt, radius: Int) = (g: G2D) => {
-    val (xs, ys) = this.coordOriginToScreen(p._1 - radius, p._2 + radius)
-    g.drawOval(xs, ys, 2 * radius, 2 * radius)
+  def drawCircle(p: Point, radius: Double) = {
+    //val (xs, ys) = this.coordOriginToScreen(p._1 - radius, p._2 + radius)
+    val shape = new java.awt.geom.Ellipse2D.Double(0, 0, 2 * radius, 2 * radius)
+    (g: G2D) => {
+      val (x, y) = this.coordOriginToScreen(p._1, p._2)
+      shape.x = x - radius
+      shape.y = y - radius
+      g.draw(shape)
+    }
   }
 
-  def drawCircle2(x: Int, y: Int, radius: Int) = 
-    this.drawCircle((x, y), radius)
 
-  def drawRect(p: PointInt, width: Int, height: Int) = (g: G2D) => {
-    val (x, y) = this.coordOriginToScreen(p._1 - width / 2, p._2 + height / 2)
-    g.drawRect(x, y, width, height)
+  def drawRect(p: Point, width: Double, height: Double) = {
+    //val (x, y) = this.coordOriginToScreen(p._1 - width / 2, p._2 + height / 2)
+    //g.drawRect(x, y, width, height)
+    val shape = new java.awt.geom.Rectangle2D.Double(
+      0,
+      0,
+      width,
+      height
+    )
+   (g: G2D) => {
+      val (x, y) = this.coordOriginToScreen(p._1, p._2)
+      shape.x = x - width  / 2.0
+      shape.y = y - height / 2.0
+      g.draw(shape)
+    }
   }
 
-  def fillCircle(p: PointInt, radius: Int) = (g: G2D) => {
-    val (xs, ys) = this.coordOriginToScreen(p._1 - radius, p._2 + radius)    
-    g.fillOval(xs, ys, 2 * radius, 2 * radius)
+  def fillCircle(p: Point, radius: Double, color: java.awt.Color = null) = {
+    //val shape = new java.awt.geom.Ellipse2D.Double(p._1 - radius, p._2 - radius, 2 * radius, 2 * radius)
+    val shape = new java.awt.geom.Ellipse2D.Double(0, 0, 2 * radius, 2 * radius)
+
+    (g: G2D) => {
+      val (x, y) = this.coordOriginToScreen(p._1, p._2)
+      shape.x = x - radius
+      shape.y = y - radius
+      val col = g.getColor()
+      g.setColor(color)
+      g.fill(shape)
+      g.setColor(col)
+    }
   }
 
-  def fillRect(p: PointInt, width: Int, height: Int) = (g: G2D) => {
-    val (x, y) = this.coordOriginToScreen(p._1 - width / 2, p._2 + height / 2)
-    g.fillRect(x, y, width, height)
-  }
+  def fillRect(p: Point, width: Double, height: Double, color: java.awt.Color = null) = {
+    val shape = new java.awt.geom.Rectangle2D.Double(
+      0.0,
+      0.0,
+      width,
+      height
+    )
+    (g: G2D) => {
+      val (x, y) = this.coordOriginToScreen(p._1, p._2)
+      shape.x = x - width / 2.0
+      shape.y = y - height / 2.0
+      val col = g.getColor()
+      g.setColor(color)
+      g.fill(shape)
+      g.setColor(col)
+    }
+
+  } // End of fillRect
 
 }
 
