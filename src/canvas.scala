@@ -619,11 +619,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     drawVLineCenter(g)
   }
 
-  def drawLineAngle(p: PointInt, radius: Double, angleDeg: Double) = {
+  def drawLineAngle(p: Point, radius: Double, angleDeg: Double) = {
     val ang = angleDeg / 180.0 * Math.PI
     val xmax = p._1 + radius * Math.cos(ang)
     val ymax = p._1 + radius * Math.sin(ang)
-    this.drawLine(p, (xmax.toInt, ymax.toInt))
+    this.drawLine(p, (xmax, ymax))
   }
 
   def drawString(p: PointInt, msg: String) = (g: G2D) => {
