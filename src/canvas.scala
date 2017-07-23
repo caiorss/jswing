@@ -686,6 +686,7 @@ Plot Area Foreground Color = ${this.plotAreaFgColor}
       comp.getHeight() - this.marginB - this.marginT
     )
     g.setColor(this.plotAreaFgColor)
+    g.drawOval(-1, -1, 1, 1)
   }
 
 
