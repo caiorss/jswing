@@ -705,6 +705,9 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     g.drawString(msg, xs.toFloat, ys.toFloat)
   }
 
+  def drawShape(shape: java.awt.Shape) =
+    (g: G2D) => g.draw(shape)
+
 
   /** 
       Place a string with point coordinates at some (x, y) position.
