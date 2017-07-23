@@ -958,6 +958,7 @@ class Canvas extends javax.swing.JPanel {
     this.repaint()
   }
 
+  def setPlotBgColor(color: java.awt.Color) = {
     ctx.setPlotAreaBgColor(color)
     this.repaint()
   }
