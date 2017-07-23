@@ -389,7 +389,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
       while (x < xmax) {
         //println(s"p1 = ${p1} p2 = ${p2}")
 
-        g.drawLine(p1._1, p1._2, p2._1, p2._2)
+        g.drawLine(p1._1.toInt, p1._2.toInt, p2._1.toInt, p2._2.toInt)
         x = x + step
         //println(s"x = ${x} y = ${fn(x)}")
 
