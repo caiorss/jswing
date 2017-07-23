@@ -550,7 +550,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
     g.setColor(java.awt.Color.WHITE)
     g.fillRect(
-      this.marginR,  // x from top
+      this.marginL,  // x from top
       this.marginT,  // y
       comp.getWidth() - this.marginR - this.marginL,
       comp.getHeight() - this.marginB - this.marginT
