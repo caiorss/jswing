@@ -482,7 +482,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
   def plotVLine(x: Double) = (g: G2D) => {
     val (xx, _) = this.coordRangeToScreen((x, 0.0))
-    g.drawLine(xx, offset, xx, comp.getHeight() - offset)
+    val line = new java.awt.geom.Line2D.Double(
+      xx, marginT, xx, comp.getHeight() - marginB
+    )
+    g.draw(line)
+    //g.drawLine(xx, offset, xx, comp.getHeight() - offset)
   }
 
   def plotHVLine(x: Double, y: Double) = (g: G2D) => {
