@@ -964,8 +964,8 @@ class Canvas extends javax.swing.JPanel {
     this.repaint()
   }
 
-  def setFgColor(col: java.awt.Color) = {
-    fgColor = col
+  def setFgColor(color: java.awt.Color) = {
+    ctx.setPlotAreaFgColor(color)
     this.repaint()
   }
 
