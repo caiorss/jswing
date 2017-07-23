@@ -573,7 +573,9 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def drawLine2(xmin: Int, ymin: Int, xmax: Int, ymax: Int) = (g: G2D) => {
     val (xsMin, ysMin) = this.coordOriginToScreen(xmin, ymin)
     val (xsMax, ysMax) = this.coordOriginToScreen(xmax, ymax)
-    g.drawLine(xsMin, ysMin, xsMax, ysMax)
+    val shape = new java.awt.geom.Line2D.Double(xsMin, ysMin, xsMax, ysMax)
+    g.draw(shape)
+    //g.drawLine(xsMin, ysMin, xsMax, ysMax)
   }
 
   def drawHLine(y: Int) = (g: G2D) => {    
