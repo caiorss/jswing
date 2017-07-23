@@ -523,7 +523,6 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
       xx, marginT, xx, comp.getHeight() - marginB
     )
     g.draw(line)
-    //g.drawLine(xx, offset, xx, comp.getHeight() - offset)
   }
 
   def plotHVLine(x: Double, y: Double) = (g: G2D) => {
