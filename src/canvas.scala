@@ -259,6 +259,12 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     (x, y)
   }
 
+  /** Get coordinates of center of plot area in top left coordinates. */
+  def getCoordPlotAreaCenter() = {
+    val x = this.marginL +  (comp.getWidth()  - this.marginL - this.marginR) / 2
+    val y = this.marginT +  (comp.getHeight() - this.marginB - this.marginT) / 2
+    (x, y)
+  }
 
   def getHeight() = comp.getHeight()
 
