@@ -427,6 +427,27 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     g.setTransform(t)
   }
 
+
+  /** Draw a string setting its position around its center.*/
+  def drawStringHCenter(
+    p:         Point,
+    text:      String,
+    angle:     Double = 0,
+    offsetXY:  (Int, Int) = (0, 0)
+
+  ) = (g: G2D) => {
+    val angleRad = Math.toRadians(angle)
+    val t = g.getTransform()
+    val (w, h) = DrawUtils.getTextSize(g, text)
+    val (x, y) = p //this.coordBottomToScreen(p)
+    val xx = x - w/2 + offsetXY._1
+    val yy = y + h/2 + offsetXY._2
+    g.rotate(angleRad, xx, yy)
+    g.drawString(text, xx.toFloat, yy.toFloat)
+    // Restore context
+    g.setTransform(t)
+  }
+
   def plotPoint(x: Double, y: Double) = (g: G2D) => {
     val radius = this.pointMarkSize
     val (xx, yy) = this.coordRangeToScreen((x, y))
