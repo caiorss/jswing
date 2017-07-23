@@ -556,7 +556,7 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
       //this.plotString((x, ymin), "%.2f".format(x))(g)
 
-      this.plotStringAngle((x, ymin), "%.2f".format(x), 90.0, offsetXY = (-20, 10))(g)
+      this.plotStringAngle((x, ymin), "%.2f".format(x), 0.0, offsetXY = (-20, 10))(g)
 
       // DrawUtils.withRoationA(g, 90.0){
       //   this.plotString((x, ymin), "%.2f".format(x))(g)
