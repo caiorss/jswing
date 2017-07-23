@@ -352,6 +352,43 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
 
   def coordRangeToScreen(p: Point) = this.coordRealToScreen(p)
 
+  /// Set mouse position in Screen coordinates
+  def setMousePosition(x: Int, y: Int) = {
+    mousePosition = (x, y)
+  }
+
+  // Get mouse position in Bottom Left coordinates
+  def getMousePosition() = this.mousePosition
+
+  def getMousePostionOrigin() = {
+    val (x, y) = this.mousePosition
+    this.coordOriginToScreen(x, y)
+  }
+
+  /** Show mouse position in screen coordinates */
+  def showMousePositionScreen(xp: Double, yp: Double) =
+    (g: G2D) => {
+      val (x, y) = this.mousePosition
+      g.drawString(s"Xs = ${x} Ys = ${y}", xp.toFloat, yp.toFloat)
+    }
+
+
+  /** Show mouse position in origin coordianates */
+  def showMousePositionOrigin(xp: Double, yp: Double) =
+    (g: G2D) => {
+      val (x, y) =  this.coordOriginToScreen(this.mousePosition)
+      g.drawString(s"Xo = ${x} Yo = ${y}", xp.toFloat, yp.toFloat)
+    }
+
+
+  /** Show mouse position in real coordinates */
+  def showMousePositionReal(xp: Double, yp: Double) =
+    (g: G2D) => {
+      val p = this.mousePosition
+      val (x, y) = this.coordScreenToReal((p._1.toInt, p._2.toInt))
+      g.drawString(s"Xr = ${x} Yr = ${y}", xp.toFloat, yp.toFloat)
+    }
+
 
 
   /** Plot a function setting the range automatically. */
