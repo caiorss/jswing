@@ -462,10 +462,17 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     val radius = this.pointMarkSize
     for ((x, y) <- plist) {
       val (xx, yy) = this.coordRangeToScreen((x, y))
-      g.drawString(s"(${x}, ${y})", xx, yy)
+      g.drawString(s"(${x}, ${y})", xx.toFloat, yy.toFloat)
       val col = g.getColor()
       g.setColor(this.pointMarkColor)
-      g.fillOval(xx - radius, yy - radius, 2 * radius, 2 * radius)
+
+      g.fillOval(
+        (xx - radius).toInt,
+        (yy - radius).toInt,
+        (2 * radius).toInt,
+        (2 * radius).toInt
+      )
+
       g.setColor(col)
     }
   }
