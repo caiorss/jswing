@@ -626,10 +626,9 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     this.drawLine(p, (xmax, ymax))
   }
 
-  def drawString(p: PointInt, msg: String) = (g: G2D) => {
+  def drawString(p: Point, msg: String) = (g: G2D) => {
     val (x, y) = this.coordOriginToScreen(p)
-    //println(s"Draw String s = '${msg}'\t\t\tx = ${x} y = ${y} ")
-    g.drawString(msg, x, y)
+    g.drawString(msg, x.toFloat, y.toFloat)
   }
 
   def drawString2(x: Int, y: Int, msg: String) = (g: G2D) => {
