@@ -202,6 +202,8 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   private var pointMarkColor = java.awt.Color.BLUE
 
 
+  private var mousePosition: (Double, Double) = (0, 0)
+
   def setMargins(left: Int, right: Int, top: Int, bottom: Int) = {
     marginL = left
     marginR = right
