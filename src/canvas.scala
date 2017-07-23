@@ -17,15 +17,15 @@ case class DrawRange(pmin: (Double, Double), pmax: (Double, Double))
 
 /** Strategy to set the origin of Canvas coordinate system */
 abstract sealed class OriginType
-case class OriginXY(x: Int, y: Int)  extends OriginType
-case       object OriginBL           extends OriginType
-case       object OriginC            extends OriginType
+case class OriginXY(x: Double, y: Double)  extends OriginType
+case       object OriginBL                 extends OriginType
+case       object OriginC                  extends OriginType
 
 
 /** General drawing helper functions. */
 object DrawUtils {
 
-  def coordToScreen(origin: PointInt, point: PointInt) = {
+  def coordToScreen(origin: Point, point: Point) : Point = {
     (point._1 + origin._1, -1 * point._2 + origin._2)
   }
 
@@ -268,28 +268,26 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     // Origin at screen's bottom left.
     case OriginBL
         => {
-          val xo = offset
-          val yo = comp.getHeight() - offset
+          val xo = 0.0
+          val yo = comp.getHeight().toDouble
           (xo, yo)
         }
 
     // Origin at screen's center
     case OriginC
         => {
-          val xo = comp.getWidth()  / 2
-          val yo = comp.getHeight() / 2
+          val xo = comp.getWidth().toDouble  / 2
+          val yo = comp.getHeight().toDouble / 2
           (xo, yo)
         }
   }
 
 
-  /**
-       Converts coordinate centered at some origin (x - positive from left to right, y - positive upward)
+  /**  Converts coordinate centered at some origin (x - positive from left to right, y - positive upward)
        to screen's coordinates with origin at top left and  (x - positive from left to right and y
        positive downward.
-
     */
-  def coordOriginToScreen(p: PointInt): PointInt = {
+  def coordOriginToScreen(p: Point) = {
     val o = this.getOriginCoord()
     DrawUtils.coordToScreen(o, p)
   }
