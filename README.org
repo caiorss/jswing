@@ -102,36 +102,36 @@ You selected item: = /sbin
 * Demonstrations 
 ** Button Listener 
 
-file: [[file:scripts/demoButtonListener.scala][file:scripts/demoButtonListener.scala]]  
+file: [[file:demo/demoButtonListener.scala][file:demo/demoButtonListener.scala]]  
  
  [[file:images/demoButtonListener.png][file:images/demoButtonListener.png]]  
 
 ** Text Editor with XML Layout 
 
- - file:  [[file:scripts/demoGUILayout-editor.scala][file:scripts/demoGUILayout-editor.scala]] 
+ - file:  [[file:demo/demoGUILayout-editor.scala][file:demo/demoGUILayout-editor.scala]] 
 
 Xml Layout:
 
- - file: [[file:scripts/gui-borderlayout1.xml][file:scripts/gui-borderlayout1.xml]]
+ - file: [[file:demo/gui-borderlayout1.xml][file:demo/gui-borderlayout1.xml]]
 
  [[file:images/demoGUILayout-editor.png][file:images/demoGUILayout-editor.png]]
 
 ** List View 
 
-file: [[file:scripts/demoListView.scala][file:scripts/demoListView.scala]]
+file: [[file:demo/demoListView.scala][file:demo/demoListView.scala]]
  
  [[file:images/demoListView.png][file:images/demoListView.png]] 
 
 ** Table with Exchange Rates 
 
-file: [[file:scripts/demoTableExrates.scala][file:scripts/demoTableExrates.scala]]
+file: [[file:demo/demoTableExrates.scala][file:demo/demoTableExrates.scala]]
  
  [[file:images/demoTableExrates.png][file:images/demoTableExrates.png]] 
 
 ** Image Viewer 
 
 
-file: [[file:scripts/demoImageViewer1.scala][file:scripts/demoImageViewer1.scala]]
+file: [[file:demo/demoImageViewer1.scala][file:demo/demoImageViewer1.scala]]
  
  [[file:images/demoImageViewer1.png][file:images/demoImageViewer1.png]]
 
