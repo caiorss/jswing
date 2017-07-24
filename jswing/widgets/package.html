@@ -83,7 +83,7 @@
       </a>
     </span>
       <p class="shortcomment cmt">Modified JPanel with BorderPanel</p>
-    </li><li name="jswing.widgets.Button" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="jswing.widgets.Button" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ButtonextendsJButton"></a>
       <a id="Button:Button"></a>
       <h4 class="signature">
@@ -99,7 +99,36 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">JButton class extension with better initialization and Scala-friendly
+    method to add event handlers (aka Java's listeners)</p><div class="fullcomment"><div class="comment cmt"><p>JButton class extension with better initialization and Scala-friendly
+    method to add event handlers (aka Java's listeners)</p><p>    Example:</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">import</span> jswing.widgets.Button
+<span class="kw">import</span> jswing.Dialog
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Hello world"</span>)
+frame.setSize(<span class="num">400</span>, <span class="num">300</span>)
+frame.setLayout(<span class="kw">new</span> java.awt.FlowLayout())
+
+<span class="kw">val</span> button1 = <span class="kw">new</span> Button(
+  <span class="lit">"Click me!"</span>,
+  <span class="cmt">// Optional parameters</span>
+  fgColor = java.awt.Color.RED,  <span class="cmt">// Foreground color</span>
+  bgColor = java.awt.Color.GRAY, <span class="cmt">// Background color</span>
+  toolTip = <span class="lit">"Please click at me"</span>
+)
+
+<span class="kw">val</span> button2 = <span class="kw">new</span> Button(<span class="lit">"Button Exit"</span>)
+
+frame.add(button1)
+frame.add(button2)
+frame.setVisible(<span class="kw">true</span>)
+
+button1.onClick{
+  println(<span class="lit">"Button 1 clicked"</span>)
+  Dialog.showAlert(<span class="lit">"Alert"</span>, <span class="lit">"Button 1 clicked"</span>)
+}
+
+button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
     </li><li name="jswing.widgets.CheckBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CheckBoxextendsJCheckBox"></a>
       <a id="CheckBox:CheckBox"></a>
@@ -195,8 +224,8 @@ frame.onWindowClose{ println(<span class="lit">"I was closed"</span>) }</pre></d
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Useful table JTable model (AbstractTableModel) useful for displaying
-Scala Case classes or algebraic data types.</p><div class="fullcomment"><div class="comment cmt"><p>Useful table JTable model (AbstractTableModel) useful for displaying
+      <p class="shortcomment cmt">Useful JTable model (AbstractTableModel) for displaying
+Scala Case classes or algebraic data types.</p><div class="fullcomment"><div class="comment cmt"><p>Useful JTable model (AbstractTableModel) for displaying
 Scala Case classes or algebraic data types.</p><p>Important methods:</p><ul><li>.addItem(A): Unit</li><li>.addItems(Seq[A]): Unit</li><li>.clear(): Unit</li></ul><p>Example:</p><pre><span class="kw">import</span> jswing.widgets.MTableModel
 <span class="kw">import</span> javax.swing.{JFrame, JPanel, JTable, JScrollPane}
 

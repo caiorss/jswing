@@ -517,6 +517,29 @@
       </a>
     </span>
       <p class="shortcomment cmt">Subscribes to button click event</p>
+    </li><li name="jswing.Event#onResize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onResize(comp:java.awt.Component)(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onResize(Component)(⇒Unit):EventDispose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onResize</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.Event$@onResize(comp:java.awt.Component)(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Subscribe to component resize event.</p><div class="fullcomment"><div class="comment cmt"><p>Subscribe to component resize event.</p><p>      Example: It will display the JFrame's dimensions whenever it is resized.</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Hello world"</span>)
+frame.setSize(<span class="num">500</span>, <span class="num">400</span>)
+frame.setVisible(<span class="kw">true</span>)
+jswing.Event.onResize(frame){
+   println(s<span class="lit">"New dimensions ${frame.getWidth()} ${frame.getHeight()}"</span>)
+}</pre></div></div>
     </li><li name="jswing.Event#onSpinnerChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="onSpinnerChange(spinner:javax.swing.JSpinner)(handler:=&gt;Unit):jswing.EventDispose"></a>
       <a id="onSpinnerChange(JSpinner)(⇒Unit):EventDispose"></a>
@@ -585,6 +608,27 @@
       </a>
     </span>
       
+    </li><li name="jswing.Event#printDimensions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printDimensions(comp:java.awt.Component):jswing.EventDispose"></a>
+      <a id="printDimensions(Component):EventDispose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">printDimensions</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="result">: <a href="EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.Event$@printDimensions(comp:java.awt.Component):jswing.EventDispose" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Prints Java Swing component dimensions when it is resized.</p><div class="fullcomment"><div class="comment cmt"><p>Prints Java Swing component dimensions when it is resized.</p><p>      Example:</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Hello world"</span>)
+frame.setSize(<span class="num">500</span>, <span class="num">400</span>)
+frame.setVisible(<span class="kw">true</span>)
+jswing.Event.printDimensions(frame)</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
