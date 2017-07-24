@@ -310,6 +310,13 @@ object Builder {
     makeFromXML(xml)
   }
 
+  /** Build GUI out of the GUI layout and show all JFrame */
+  def makeFromStringShow(xmlstr: String, exitOnClose: Boolean = false) = {
+    val xml = scala.xml.XML.loadString(xmlstr)
+    makeFromXML(xml, showFrames = true, exitOnClose = exitOnClose)
+  }
+
+
   def getJComponent[A](hmap:CompMap, name: String) = hmap(name).asInstanceOf[A]
 
   def getJButton(hmap: CompMap, name: String) =
