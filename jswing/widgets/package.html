@@ -66,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="jswing.widgets.BorderPanel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="jswing.widgets.BorderPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BorderPanelextendsJPanel"></a>
       <a id="BorderPanel:BorderPanel"></a>
       <h4 class="signature">
@@ -82,7 +82,36 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Modified JPanel with BorderPanel</p>
+      <p class="shortcomment cmt">Modified JPanel with layout set to BorderLayout.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JPanel with layout set to BorderLayout.</p><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{Frame, Button, BorderPanel, FlowPanel}
+
+<span class="kw">val</span> button1 = <span class="kw">new</span> Button(
+  text = <span class="lit">"button1"</span>,
+  bgColor = java.awt.Color.BLUE,
+  onClick = { println(<span class="lit">"You clicked at button 1"</span>) }
+)
+
+<span class="kw">val</span> button2 = <span class="kw">new</span> Button(
+  text    = <span class="lit">"button2"</span>,
+  bgColor = java.awt.Color.BLUE,
+  onClick = { println(<span class="lit">"You clicked at button 2"</span>) }
+)
+
+<span class="kw">val</span> button3 = <span class="kw">new</span> Button(<span class="lit">"Click me"</span>)
+button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
+
+<span class="kw">val</span> textArea = <span class="kw">new</span> javax.swing.JTextArea()
+
+<span class="kw">val</span> frame = <span class="kw">new</span> Frame(
+  title       = <span class="lit">"Test Border Panel"</span>,
+  size        = (<span class="num">692</span>, <span class="num">441</span>),
+  exitOnClose = <span class="kw">true</span>,
+  visible     = <span class="kw">true</span>,
+  pane        = <span class="kw">new</span> BorderPanel(
+    top          = <span class="kw">new</span> FlowPanel(button1, button2),
+    bottom       = button3,
+    centerScroll = textArea
+  )
+)</pre></div></div>
     </li><li name="jswing.widgets.Button" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ButtonextendsJButton"></a>
       <a id="Button:Button"></a>
@@ -146,6 +175,35 @@ button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">Enhanced Java swing checkbox.</p>
+    </li><li name="jswing.widgets.FlowPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FlowPanelextendsJPanel"></a>
+      <a id="FlowPanel:FlowPanel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowPanel.html"><span class="name">FlowPanel</span></a><span class="result"> extends <span class="extype" name="javax.swing.JPanel">JPanel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@FlowPanelextendsJPanel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Modified JPanel with FlowLayout, but with better initialization.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JPanel with FlowLayout, but with better initialization.</p><p>    Example:</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">import</span> jswing.widgets.FlowPanel
+
+<span class="kw">val</span> panel = <span class="kw">new</span> FlowPanel(
+  <span class="kw">new</span> JButton(<span class="lit">"Click me"</span>),
+  <span class="kw">new</span> JComboBox(),
+  <span class="kw">new</span> JButton(<span class="lit">"Button 2"</span>)
+)
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame()
+frame.setSize(<span class="num">400</span>, <span class="num">300</span>)
+frame.setContentPane(panel)
+frame.setVisible(<span class="kw">true</span>)</pre></div></div>
     </li><li name="jswing.widgets.FormBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FormBuilderextendsAnyRef"></a>
       <a id="FormBuilder:FormBuilder"></a>
