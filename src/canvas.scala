@@ -1,6 +1,5 @@
-//package jswing.canvas
+package jswing.canvas
 
-//import javax.swing._
 import scala.collection.mutable.ListBuffer
 
 object CanvasTypes {
