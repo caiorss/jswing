@@ -43,7 +43,44 @@ object WidgetUtils {
 
 }
 
+/** JButton class extension with better initialization and Scala-friendly 
+    method to add event handlers (aka Java's listeners)
 
+    Example: 
+
+    {{{
+    import javax.swing._ 
+    import jswing.widgets.Button
+    import jswing.Dialog
+
+    val frame = new JFrame("Hello world")
+    frame.setSize(400, 300)
+    frame.setLayout(new java.awt.FlowLayout())
+
+    val button1 = new Button(
+      "Click me!",
+      // Optional parameters 
+      fgColor = java.awt.Color.RED,  // Foreground color 
+      bgColor = java.awt.Color.GRAY, // Background color 
+      toolTip = "Please click at me"  
+    )
+
+    val button2 = new Button("Button Exit")
+
+    frame.add(button1)
+    frame.add(button2)
+    frame.setVisible(true)
+
+    button1.onClick{
+      println("Button 1 clicked")
+      Dialog.showAlert("Alert", "Button 1 clicked")
+    }
+
+    button2.onClick{ System.exit(0)}
+    }}}
+
+
+  */
 class Button(
   text:    String,
   enabled: Boolean        = true,
@@ -51,6 +88,7 @@ class Button(
   fgColor: java.awt.Color = null,
   bgName:  String         = null,
   fgName:  String         = null,
+  toolTip: String         = null,
   onClick: => Unit        = ()
 ) extends javax.swing.JButton {
 
@@ -65,6 +103,8 @@ class Button(
     if (bgColor != null) this.setBackground(bgColor)
     if (fgColor != null) this.setForeground(fgColor)
 
+    if (toolTip != null) this.setToolTipText(toolTip)
+
     if (bgName != null)
     jswing.JUtils.invokeLater{ this.setBackground(jswing.JUtils.getColorOrNull(bgName))}
 
@@ -74,8 +114,6 @@ class Button(
     this.onClick{ onClick }
   }
 
-
-  /** Subscribes to button click event */
   def onClick (handler: => Unit)  = {
     jswing.Event.onButtonClick(this){handler}
   }
