@@ -124,7 +124,7 @@ object Main{
 
       case Array("-layout-gui")
           => {
-            val gui = new GUIBuilder(jswing.builder.Builder.makeFromString)
+            val gui = new GUIBuilder(str => { jswing.builder.Builder.makeFromStringShow(str) ; () })
             gui.setVisible(true)
           }
 
