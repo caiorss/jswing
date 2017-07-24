@@ -941,6 +941,11 @@ class Canvas extends javax.swing.JPanel {
     this.repaint()
   }
 
+  def pan(dx: Double, dy: Double){
+    ctx.pan(dx, dy)
+    this.repaint()
+  }
+
 
   override def paint(g: java.awt.Graphics){
 
