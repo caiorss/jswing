@@ -77,14 +77,7 @@ class Button(
 
   /** Subscribes to button click event */
   def onClick (handler: => Unit)  = {
-    val listener = new java.awt.event.ActionListener(){
-      def actionPerformed(evt: java.awt.event.ActionEvent) = {
-        handler
-      }
-    }
-    this.addActionListener(listener)
-    // Returns function that when executed disposes the event handler
-    () => this.removeActionListener(listener)
+    jswing.Event.onButtonClick(this){handler}
   }
 }
 
