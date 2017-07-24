@@ -242,6 +242,11 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
   def setMarginBottom(size: Int)  = { marginB = size }
 
 
+  def pan(dx: Double, dy: Double) = {
+    pmin = (pmin._1 + dx, pmin._2 + dy)
+    pmax = (pmax._1 + dx, pmax._2 + dy)
+  }
+
   def getOrigin() = origin
 
   def setOrigin(o: OriginType) = {
