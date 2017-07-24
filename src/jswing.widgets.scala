@@ -460,7 +460,7 @@ class Table(
 
 
 /** 
-Useful table JTable model (AbstractTableModel) useful for displaying
+Useful JTable model (AbstractTableModel) for displaying
 Scala Case classes or algebraic data types.
  
 Important methods: 
