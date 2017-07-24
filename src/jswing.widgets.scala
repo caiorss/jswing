@@ -662,6 +662,36 @@ class TrayIcon(
 }
 
 
+/** Modified JPanel with FlowLayout, but with better initialization.
+
+    Example:
+
+    {{{
+    import javax.swing._
+    import jswing.widgets.FlowPanel
+
+    val panel = new FlowPanel(
+      new JButton("Click me"),
+      new JComboBox(),
+      new JButton("Button 2")
+    )
+
+    val frame = new JFrame()
+    frame.setSize(400, 300)
+    frame.setContentPane(panel)
+    frame.setVisible(true)
+    }}}
+
+*/
+class FlowPanel(contents: java.awt.Component*) extends javax.swing.JPanel{
+  init()
+
+  private def init(){
+    for (item <- contents) { this.add(item) }
+  }
+}
+
+
 
 /** Modified JPanel with BorderPanel */
 class BorderPanel extends javax.swing.JPanel {
