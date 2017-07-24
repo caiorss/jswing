@@ -247,6 +247,12 @@ class DrawCtx(comp: java.awt.Component, offs: Int = 0){
     pmax = (pmax._1 + dx, pmax._2 + dy)
   }
 
+  def zoom(p: Double) = {
+    val k = 1.0 - p / 100.0
+    pmin = (pmin._1 * k, pmin._2 * k)
+    pmax = (pmax._1 * k, pmax._2 * k)
+  }
+
   def getOrigin() = origin
 
   def setOrigin(o: OriginType) = {
