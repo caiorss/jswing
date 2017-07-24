@@ -585,6 +585,35 @@ object Event{
     )
   }
     
+  /** Subscribe to component resize event.
+
+      Example: It will display the JFrame's dimensions whenever it is resized.
+      {{{
+        import javax.swing._
+        val frame = new JFrame("Hello world")
+        frame.setSize(500, 400)
+        frame.setVisible(true)
+        jswing.Event.onResize(frame){
+           println(s"New dimensions ${frame.getWidth()} ${frame.getHeight()}")
+        }
+      }}}
+
+    */
+  def onResize(comp: java.awt.Component)(handler: => Unit) = {
+    var enabled = true
+    val listener = new java.awt.event.ComponentAdapter(){
+      override def componentResized(evt: java.awt.event.ComponentEvent){
+        handler
+      }
+    }
+    comp.addComponentListener(listener)
+    EventDispose(
+      run      = () => handler,
+      dispose  = () => comp.removeComponentListener(listener),
+      setEnabled = (flag: Boolean) => { enabled = flag }
+    )
+  }
+
 
 } // ------ End of object Event ------- // 
 
