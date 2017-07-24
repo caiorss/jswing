@@ -692,32 +692,114 @@ class FlowPanel(contents: java.awt.Component*) extends javax.swing.JPanel{
 }
 
 
+/** Modified JPanel with layout set to BorderLayout.
 
-/** Modified JPanel with BorderPanel */
-class BorderPanel extends javax.swing.JPanel {
+    Example: 
+
+    {{{
+    import jswing.widgets.{Frame, Button, BorderPanel, FlowPanel}
+
+    val button1 = new Button(
+      text = "button1",
+      bgColor = java.awt.Color.BLUE,
+      onClick = { println("You clicked at button 1") }
+    )
+
+    val button2 = new Button(
+      text    = "button2",
+      bgColor = java.awt.Color.BLUE,
+      onClick = { println("You clicked at button 2") }
+    )
+
+    val button3 = new Button("Click me")
+    button3.onClick{println("You clicked at button3")}
+
+    val textArea = new javax.swing.JTextArea()
+
+    val frame = new Frame(
+      title       = "Test Border Panel",
+      size        = (692, 441),
+      exitOnClose = true,
+      visible     = true,
+      pane        = new BorderPanel(
+        top          = new FlowPanel(button1, button2),
+        bottom       = button3,
+        centerScroll = textArea
+      )
+    )
+    }}}
+
+ */
+class BorderPanel(
+  top:    java.awt.Component = null,
+  bottom: java.awt.Component = null,
+  left:   java.awt.Component = null,
+  right:  java.awt.Component = null,
+  center: java.awt.Component = null,
+  centerScroll: java.awt.Component = null
+) extends javax.swing.JPanel {
+  private var itemT: java.awt.Component = null
+  private var itemB: java.awt.Component = null
+  private var itemL: java.awt.Component = null
+  private var itemR: java.awt.Component = null
+  private var itemC: java.awt.Component = null
+
   init()
 
   private def init(){
-    this.setLayout(new java.awt.BorderLayout())    
+    this.setLayout(new java.awt.BorderLayout())
+
+    if (top    != null) this.addTop(top)
+    if (bottom != null) this.addBottom(bottom)
+    if (left   != null) this.addCenter(left)
+    if (right  != null) this.addRight(right)
+    if (center != null) this.addCenter(center)    
+    if (centerScroll != null) this.addCenterScrollPane(centerScroll)
   }
 
+  def getTop()    = itemT
+  def getBottom() = itemB
+  def getLeft()   = itemL
+  def getRight()  = itemR
+  def getCenter() = itemC
+
   def addTop(comp: java.awt.Component){
+    itemT = comp 
     this.add(comp,  java.awt.BorderLayout.NORTH)
   }
 
+  def addTopItems(items: java.awt.Component*){
+    val panel = new javax.swing.JPanel()
+    itemT = panel
+    for (i <- items) { panel.add(i) }
+    this.add(panel,  java.awt.BorderLayout.NORTH)
+  }
+
   def addBottom(comp: java.awt.Component){
+    itemB = comp 
     this.add(comp,  java.awt.BorderLayout.SOUTH)
   }
 
+  def addBottomItems(items: java.awt.Component*){
+    val panel = new javax.swing.JPanel()
+    itemB = panel
+    for (i <- items) { panel.add(i) }
+    this.add(panel,  java.awt.BorderLayout.SOUTH)
+  }
+
+
   def addRight(comp: java.awt.Component){
+    itemR = comp 
     this.add(comp,  java.awt.BorderLayout.EAST)
   }
 
   def addLeft(comp: java.awt.Component){
+    itemL = comp 
     this.add(comp,  java.awt.BorderLayout.WEST)
   }
 
   def addCenter(comp: java.awt.Component){
+    itemC = comp 
     this.add(comp,  java.awt.BorderLayout.CENTER)
   }
   
@@ -729,7 +811,8 @@ class BorderPanel extends javax.swing.JPanel {
 
   def addCenterScrollPane(comp: java.awt.Component){
     val scroll = new javax.swing.JScrollPane(comp)
-    this.addCenter(scroll)    
+    this.addCenter(scroll)
+    itemC = scroll
   }
 
 }
