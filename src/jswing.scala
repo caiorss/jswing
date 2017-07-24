@@ -614,6 +614,23 @@ object Event{
     )
   }
 
+  /** Prints Java Swing component dimensions when it is resized.
+
+      Example:
+      {{{
+        import javax.swing._
+        val frame = new JFrame("Hello world")
+        frame.setSize(500, 400)
+        frame.setVisible(true)
+        jswing.Event.printDimensions(frame)
+      }}}
+  */
+  def printDimensions(comp: java.awt.Component) = {
+    onResize(comp){
+      println(s"Component dimensions w = ${comp.getHeight()} h = ${comp.getWidth()} ")
+    }
+  }
+
 
 } // ------ End of object Event ------- // 
 
