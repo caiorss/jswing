@@ -198,7 +198,7 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
 
   init()
 
-  def init(){
+  private def init(){
     this.setModel(model)
   }
 
