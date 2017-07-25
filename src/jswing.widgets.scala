@@ -120,6 +120,75 @@ class Button(
 }
 
 
+
+
+case class ComboItem[A](label: String, value: A) {
+  override def toString() = label
+}
+
+
+/** Modified JComboBox which each item displayed can have 
+    a label and an associated value.
+
+    Example: 
+
+    {{{
+        import javax.swing._
+        import jswing.widgets.ComboBoxValue
+        import jswing.Event
+
+        val frame = new JFrame("Combo Box Demo")
+        frame.setSize(500, 300)
+        frame.setLayout(new java.awt.FlowLayout())
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+        val display = new JLabel("Currency = ")
+        val combo = new ComboBoxValue[String]
+
+        frame.add(combo)
+        frame.add(display)
+        frame.setVisible(true)
+
+        combo.onSelect {
+          val item = combo.getSelectedValue()
+          display.setText("Currency = " + item)
+        }
+
+        combo.addItem("USD", "United States Dollar")
+        combo.addItem("HKD", "Hong Kong Dollar")
+        combo.addItem("AUD", "Australian Dollar")
+        combo.addItem("EUR", "Euro")
+        combo.addItem("JPY", "Japanese Yen")
+        combo.addItem("CNY", "Chinese Yuan/Renminbi")
+
+    }}}
+
+*/
+class ComboBoxValue[A] extends javax.swing.JComboBox[ComboItem[A]] {
+  private val model = new javax.swing.DefaultComboBoxModel[ComboItem[A]]()
+
+  init()
+
+  private def init(){
+    this.setModel(model)
+  }
+
+  def addItem(label: String, value: A) = {
+    model.addElement(ComboItem(label, value))
+  }
+
+  def getSelectedValue() = {
+    val item = this.getSelectedItem()
+    item.asInstanceOf[ComboItem[A]].value 
+  }
+
+  def onSelect(action: => Unit) = {
+    jswing.Event.onComboBoxSelect(this){action}
+  }
+}
+
+
+
 /**
   * Enhanced JFrame class that provides better initialization.
   *
