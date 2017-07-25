@@ -25,7 +25,7 @@ case "$1" in
         SCRIPT_JAR="${2%.*}.jar"
         OUTPUT_JAR=out/$(basename "${SCRIPT_JAR%.*}.jar")
 
-        build-fat-jar.sh -scala $OUTPUT_JAR \
+        jar-tools.sh -scala-build-jar $OUTPUT_JAR \
                          $SCRIPT_JAR \
                          bin/jswing.jar \
                          /home/archbox/opt/scala-2.11.8/lib/scala-xml_2.11-1.0.4.jar
