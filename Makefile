@@ -52,10 +52,10 @@ load: lib
 	scala -cp $(lib)
 
 doc: $(libsrc)
-	scaladoc $(libsrc) -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -d ./docs 
+	scaladoc $(libsrc) -author -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -doc-source-url "https://github.com/caiorss/jswing" -d ./docs 
 
 doc-upload: $(libsrc)
-	scaladoc $(libsrc) -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -d ./docs
+	scaladoc $(libsrc) -author -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -doc-source-url "https://github.com/caiorss/jswing"  -d ./docs
 	cd docs && git add * && git commit -a -m "Update docs" && git push
 
 $(scalalib): $(SCALA_HOME)/lib/scala-library.jar
