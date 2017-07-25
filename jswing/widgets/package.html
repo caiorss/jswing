@@ -175,6 +175,68 @@ button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">Enhanced Java swing checkbox.</p>
+    </li><li name="jswing.widgets.ComboBoxValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ComboBoxValue[A]extendsJComboBox[jswing.widgets.ComboItem[A]]"></a>
+      <a id="ComboBoxValue[A]:ComboBoxValue[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ComboBoxValue.html"><span class="name">ComboBoxValue</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBoxValue.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@ComboBoxValue[A]extendsJComboBox[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Modified JComboBox which each item displayed can have
+    a label and an associated value.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JComboBox which each item displayed can have
+    a label and an associated value.</p><p>    Example:</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">import</span> jswing.widgets.ComboBoxValue
+<span class="kw">import</span> jswing.Event
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Combo Box Demo"</span>)
+frame.setSize(<span class="num">500</span>, <span class="num">300</span>)
+frame.setLayout(<span class="kw">new</span> java.awt.FlowLayout())
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+<span class="kw">val</span> display = <span class="kw">new</span> JLabel(<span class="lit">"Currency = "</span>)
+<span class="kw">val</span> combo = <span class="kw">new</span> ComboBoxValue[<span class="std">String</span>]
+
+frame.add(combo)
+frame.add(display)
+frame.setVisible(<span class="kw">true</span>)
+
+combo.onSelect {
+  <span class="kw">val</span> item = combo.getSelectedValue()
+  display.setText(<span class="lit">"Currency = "</span> + item)
+}
+
+combo.addItem(<span class="lit">"USD"</span>, <span class="lit">"United States Dollar"</span>)
+combo.addItem(<span class="lit">"HKD"</span>, <span class="lit">"Hong Kong Dollar"</span>)
+combo.addItem(<span class="lit">"AUD"</span>, <span class="lit">"Australian Dollar"</span>)
+combo.addItem(<span class="lit">"EUR"</span>, <span class="lit">"Euro"</span>)
+combo.addItem(<span class="lit">"JPY"</span>, <span class="lit">"Japanese Yen"</span>)
+combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Renminbi"</span>)</pre></div></div>
+    </li><li name="jswing.widgets.ComboItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ComboItem[A]extendsProductwithSerializable"></a>
+      <a id="ComboItem[A]:ComboItem[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ComboItem.html"><span class="name">ComboItem</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="jswing.widgets.ComboItem.A">A</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@ComboItem[A]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="jswing.widgets.FlowPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FlowPanelextendsJPanel"></a>
       <a id="FlowPanel:FlowPanel"></a>
