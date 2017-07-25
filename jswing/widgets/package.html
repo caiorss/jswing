@@ -175,26 +175,26 @@ button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">Enhanced Java swing checkbox.</p>
-    </li><li name="jswing.widgets.ComboBoxValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ComboBoxValue[A]extendsJComboBox[jswing.widgets.ComboItem[A]]"></a>
-      <a id="ComboBoxValue[A]:ComboBoxValue[A]"></a>
+    </li><li name="jswing.widgets.ComboBox" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ComboBox[A]extendsJComboBox[jswing.widgets.ComboItem[A]]"></a>
+      <a id="ComboBox[A]:ComboBox[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ComboBoxValue.html"><span class="name">ComboBoxValue</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBoxValue.A">A</span>]]</span>
+        <a href="ComboBox.html"><span class="name">ComboBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.package@ComboBoxValue[A]extendsJComboBox[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.package@ComboBox[A]extendsJComboBox[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Modified JComboBox which each item displayed can have
     a label and an associated value.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JComboBox which each item displayed can have
     a label and an associated value.</p><p>    Example:</p><pre><span class="kw">import</span> javax.swing._
-<span class="kw">import</span> jswing.widgets.ComboBoxValue
+<span class="kw">import</span> jswing.widgets.ComboBox
 <span class="kw">import</span> jswing.Event
 
 <span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Combo Box Demo"</span>)
@@ -203,7 +203,7 @@ frame.setLayout(<span class="kw">new</span> java.awt.FlowLayout())
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
 <span class="kw">val</span> display = <span class="kw">new</span> JLabel(<span class="lit">"Currency = "</span>)
-<span class="kw">val</span> combo = <span class="kw">new</span> ComboBoxValue[<span class="std">String</span>]
+<span class="kw">val</span> combo = <span class="kw">new</span> ComboBox[<span class="std">String</span>]
 
 frame.add(combo)
 frame.add(display)
@@ -311,23 +311,71 @@ is closed.</p><pre><span class="kw">val</span> frame = <span class="kw">new</spa
  )
 
 frame.onWindowClose{ println(<span class="lit">"I was closed"</span>) }</pre></div></div>
-    </li><li name="jswing.widgets.ListBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ListBoxextendsJList[Nothing]"></a>
-      <a id="ListBox:ListBox"></a>
+    </li><li name="jswing.widgets.ListBox" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ListBox[A]extendsJList[jswing.widgets.ComboItem[A]]"></a>
+      <a id="ListBox[A]:ListBox[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ListBox.html"><span class="name">ListBox</span></a><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <a href="ListBox.html"><span class="name">ListBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.package@ListBoxextendsJList[Nothing]" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.package@ListBox[A]extendsJList[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">    JList extension that allows label and value items.</p><div class="fullcomment"><div class="comment cmt"><p>    JList extension that allows label and value items. This class also provides
+    type safe and null-safe methods to get selected label and selected items.</p><p>    Relevant methods:</p><ul><li>def addItem(label: String, value: A): Unit</li><li>def addItems(elemList: Seq[(String, A)]): Unit</li><li>def clear(): Unit</li><li>def getSelectedItem(): Option[ComboItem[A]]</li><li>def getSelectedItemLabel(): Option[String]</li><li>def getSelectedItemValue(): Option[A]</li><li>def onSelect(handler: ⇒ Unit): EventDispose</li><li>def removeItemAt(idx: Int): Unit</li><li>def removeSelectedItem(): Unit</li></ul><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{BorderPanel, ListBox}
+<span class="kw">import</span> jswing.{Event, Dialog}
+<span class="kw">import</span> javax.swing._
+
+<span class="kw">val</span> dirch = <span class="kw">new</span> Dialog.DirChooser().withHome()
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Listbox test"</span>)
+frame.setSize(<span class="num">500</span>, <span class="num">400</span>)
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+<span class="kw">val</span> buttonOpen = <span class="kw">new</span> JButton(<span class="lit">"Open"</span>)
+<span class="kw">val</span> buttonClear = <span class="kw">new</span> JButton(<span class="lit">"Clear"</span>)
+
+<span class="kw">val</span> display = <span class="kw">new</span> JLabel(<span class="lit">""</span>)
+<span class="kw">val</span> lbox = <span class="kw">new</span> ListBox[<span class="std">String</span>]()
+
+<span class="kw">val</span> panel = <span class="kw">new</span> BorderPanel()
+panel.addTopItems(buttonOpen, buttonClear)
+panel.addCenterScrollPane(lbox)
+panel.addBottomItems(display)
+
+<span class="kw">def</span> showFiles(path: <span class="std">String</span>){
+  lbox.clear()
+  display.setText(<span class="lit">""</span>)
+  jswing.JUtils.invokeLater{
+    <span class="kw">val</span> files = <span class="kw">new</span> java.io.File(path).listFiles()
+    files foreach {f <span class="kw">=&gt;</span> lbox.addItem(f.getName(), f.getAbsolutePath())}
+  }
+}
+
+Event.onButtonClick(buttonOpen){
+  dirch.run() foreach showFiles
+}
+
+Event.onButtonClick(buttonClear){
+  lbox.clear()
+  display.setText(<span class="lit">""</span>)
+}
+
+lbox.onSelect{
+  println(<span class="lit">"Selected label = "</span> + lbox.getSelectedItemLabel())
+  println(<span class="lit">"Selected value = "</span> + lbox.getSelectedItemValue())
+  lbox.getSelectedItemValue foreach display.setText
+}
+
+
+frame.setContentPane(panel)
+frame.setVisible(<span class="kw">true</span>)</pre></div></div>
     </li><li name="jswing.widgets.MTableModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MTableModel[A]extendsAbstractTableModel"></a>
       <a id="MTableModel[A]:MTableModel[A]"></a>

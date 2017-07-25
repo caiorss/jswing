@@ -45,13 +45,61 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">ListBox</span><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <span class="name">ListBox</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>    JList extension that allows label and value items. This class also provides
+    type safe and null-safe methods to get selected label and selected items.</p><p>    Relevant methods:</p><ul><li>def addItem(label: String, value: A): Unit</li><li>def addItems(elemList: Seq[(String, A)]): Unit</li><li>def clear(): Unit</li><li>def getSelectedItem(): Option[ComboItem[A]]</li><li>def getSelectedItemLabel(): Option[String]</li><li>def getSelectedItemValue(): Option[A]</li><li>def onSelect(handler: ⇒ Unit): EventDispose</li><li>def removeItemAt(idx: Int): Unit</li><li>def removeSelectedItem(): Unit</li></ul><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{BorderPanel, ListBox}
+<span class="kw">import</span> jswing.{Event, Dialog}
+<span class="kw">import</span> javax.swing._
+
+<span class="kw">val</span> dirch = <span class="kw">new</span> Dialog.DirChooser().withHome()
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame(<span class="lit">"Listbox test"</span>)
+frame.setSize(<span class="num">500</span>, <span class="num">400</span>)
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+<span class="kw">val</span> buttonOpen = <span class="kw">new</span> JButton(<span class="lit">"Open"</span>)
+<span class="kw">val</span> buttonClear = <span class="kw">new</span> JButton(<span class="lit">"Clear"</span>)
+
+<span class="kw">val</span> display = <span class="kw">new</span> JLabel(<span class="lit">""</span>)
+<span class="kw">val</span> lbox = <span class="kw">new</span> ListBox[<span class="std">String</span>]()
+
+<span class="kw">val</span> panel = <span class="kw">new</span> BorderPanel()
+panel.addTopItems(buttonOpen, buttonClear)
+panel.addCenterScrollPane(lbox)
+panel.addBottomItems(display)
+
+<span class="kw">def</span> showFiles(path: <span class="std">String</span>){
+  lbox.clear()
+  display.setText(<span class="lit">""</span>)
+  jswing.JUtils.invokeLater{
+    <span class="kw">val</span> files = <span class="kw">new</span> java.io.File(path).listFiles()
+    files foreach {f <span class="kw">=&gt;</span> lbox.addItem(f.getName(), f.getAbsolutePath())}
+  }
+}
+
+Event.onButtonClick(buttonOpen){
+  dirch.run() foreach showFiles
+}
+
+Event.onButtonClick(buttonClear){
+  lbox.clear()
+  display.setText(<span class="lit">""</span>)
+}
+
+lbox.onSelect{
+  println(<span class="lit">"Selected label = "</span> + lbox.getSelectedItemLabel())
+  println(<span class="lit">"Selected value = "</span> + lbox.getSelectedItemValue())
+  lbox.getSelectedItemValue foreach display.setText
+}
+
+
+frame.setContentPane(panel)
+frame.setVisible(<span class="kw">true</span>)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.widgets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="scala.Nothing">Nothing</span>], <span class="extype" name="javax.accessibility.Accessible">Accessible</span>, <span class="extype" name="javax.swing.Scrollable">Scrollable</span>, <span class="extype" name="javax.swing.JComponent">JComponent</span>, <span class="extype" name="javax.swing.TransferHandler.HasGetTransferHandler">HasGetTransferHandler</span>, <span class="extype" name="java.awt.Container">Container</span>, <span class="extype" name="java.awt.Component">Component</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="java.awt.MenuContainer">MenuContainer</span>, <span class="extype" name="java.awt.image.ImageObserver">ImageObserver</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="javax.swing.JList">JList</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]], <span class="extype" name="javax.accessibility.Accessible">Accessible</span>, <span class="extype" name="javax.swing.Scrollable">Scrollable</span>, <span class="extype" name="javax.swing.JComponent">JComponent</span>, <span class="extype" name="javax.swing.TransferHandler.HasGetTransferHandler">HasGetTransferHandler</span>, <span class="extype" name="java.awt.Container">Container</span>, <span class="extype" name="java.awt.Component">Component</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="java.awt.MenuContainer">MenuContainer</span>, <span class="extype" name="java.awt.image.ImageObserver">ImageObserver</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -89,8 +137,8 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="jswing.widgets.ListBox#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():jswing.widgets.ListBox"></a>
-      <a id="&lt;init&gt;:ListBox"></a>
+      <a id="&lt;init&gt;():jswing.widgets.ListBox[A]"></a>
+      <a id="&lt;init&gt;:ListBox[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
@@ -100,7 +148,7 @@
         <span class="name">ListBox</span><span class="params">()</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@&lt;init&gt;():jswing.widgets.ListBox" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.ListBox@&lt;init&gt;():jswing.widgets.ListBox[A]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -440,40 +488,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Container</dd></dl></div>
-    </li><li name="jswing.widgets.ListBox#addElement" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addElement(elem:String):Unit"></a>
-      <a id="addElement(String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addElement</span><span class="params">(<span name="elem">elem: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@addElement(elem:String):Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="jswing.widgets.ListBox#addElements" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addElements(elemList:Array[String]):Unit"></a>
-      <a id="addElements(Array[String]):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addElements</span><span class="params">(<span name="elemList">elemList: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@addElements(elemList:Array[String]):Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="java.awt.Component#addFocusListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addFocusListener(x$1:java.awt.event.FocusListener):Unit"></a>
       <a id="addFocusListener(FocusListener):Unit"></a>
@@ -559,6 +573,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
+    </li><li name="jswing.widgets.ListBox#addItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addItem(label:String,value:A):Unit"></a>
+      <a id="addItem(String,A):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addItem</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="jswing.widgets.ListBox.A">A</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@addItem(label:String,value:A):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ListBox#addItems" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addItems(elemList:Seq[(String,A)]):Unit"></a>
+      <a id="addItems(Seq[(String,A)]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addItems</span><span class="params">(<span name="elemList">elemList: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="jswing.widgets.ListBox.A">A</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@addItems(elemList:Seq[(String,A)]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Component#addKeyListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addKeyListener(x$1:java.awt.event.KeyListener):Unit"></a>
       <a id="addKeyListener(KeyListener):Unit"></a>
@@ -712,23 +760,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
-    </li><li name="jswing.widgets.ListBox#addTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addTo(wdg:javax.swing.JComponent):java.awt.Component"></a>
-      <a id="addTo(JComponent):Component"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addTo</span><span class="params">(<span name="wdg">wdg: <span class="extype" name="javax.swing.JComponent">JComponent</span></span>)</span><span class="result">: <span class="extype" name="java.awt.Component">Component</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@addTo(wdg:javax.swing.JComponent):java.awt.Component" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="javax.swing.JComponent#addVetoableChangeListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addVetoableChangeListener(x$1:java.beans.VetoableChangeListener):Unit"></a>
       <a id="addVetoableChangeListener(VetoableChangeListener):Unit"></a>
@@ -1727,14 +1758,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
     </li><li name="javax.swing.JList#getCellRenderer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getCellRenderer():javax.swing.ListCellRenderer[_&gt;:E]"></a>
-      <a id="getCellRenderer():ListCellRenderer[_]"></a>
+      <a id="getCellRenderer():ListCellRenderer[_&gt;:ComboItem[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getCellRenderer</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_]</span>
+        <span class="name">getCellRenderer</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@getCellRenderer():javax.swing.ListCellRenderer[_&gt;:E]" title="Permalink" target="_top">
@@ -2813,14 +2844,14 @@
         </dd></dl></div>
     </li><li name="javax.swing.JList#getModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getModel():javax.swing.ListModel[E]"></a>
-      <a id="getModel():ListModel[Nothing]"></a>
+      <a id="getModel():ListModel[ComboItem[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getModel</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListModel">ListModel</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <span class="name">getModel</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListModel">ListModel</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@getModel():javax.swing.ListModel[E]" title="Permalink" target="_top">
@@ -3066,14 +3097,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
     </li><li name="javax.swing.JList#getPrototypeCellValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPrototypeCellValue():E"></a>
-      <a id="getPrototypeCellValue():Nothing"></a>
+      <a id="getPrototypeCellValue():ComboItem[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getPrototypeCellValue</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Nothing">Nothing</span></span>
+        <span class="name">getPrototypeCellValue</span><span class="params">()</span><span class="result">: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@getPrototypeCellValue():E" title="Permalink" target="_top">
@@ -3220,16 +3251,67 @@
                 <span class="name">@Transient</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="javax.swing.JList#getSelectedValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getSelectedValue():E"></a>
-      <a id="getSelectedValue():Nothing"></a>
+    </li><li name="jswing.widgets.ListBox#getSelectedItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getSelectedItem():Option[jswing.widgets.ComboItem[A]]"></a>
+      <a id="getSelectedItem():Option[ComboItem[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getSelectedValue</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Nothing">Nothing</span></span>
+        <span class="name">getSelectedItem</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@getSelectedItem():Option[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ListBox#getSelectedItemLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getSelectedItemLabel():Option[String]"></a>
+      <a id="getSelectedItemLabel():Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelectedItemLabel</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@getSelectedItemLabel():Option[String]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ListBox#getSelectedItemValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getSelectedItemValue():Option[A]"></a>
+      <a id="getSelectedItemValue():Option[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelectedItemValue</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@getSelectedItemValue():Option[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="javax.swing.JList#getSelectedValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSelectedValue():E"></a>
+      <a id="getSelectedValue():ComboItem[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelectedValue</span><span class="params">()</span><span class="result">: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@getSelectedValue():E" title="Permalink" target="_top">
@@ -3239,14 +3321,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
     </li><li name="javax.swing.JList#getSelectedValuesList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getSelectedValuesList():java.util.List[E]"></a>
-      <a id="getSelectedValuesList():List[Nothing]"></a>
+      <a id="getSelectedValuesList():List[ComboItem[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getSelectedValuesList</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <span class="name">getSelectedValuesList</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@getSelectedValuesList():java.util.List[E]" title="Permalink" target="_top">
@@ -3730,23 +3812,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
-    </li><li name="jswing.widgets.ListBox#init" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="init():Unit"></a>
-      <a id="init():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">init</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@init():Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="java.awt.Container#invalidate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="invalidate():Unit"></a>
       <a id="invalidate():Unit"></a>
@@ -4448,18 +4513,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="jswing.widgets.ListBox#onSelect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="onSelect(handler:=&gt;Unit):()=&gt;Unit"></a>
-      <a id="onSelect(⇒Unit):()⇒Unit"></a>
+      <a id="onSelect(handler:=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onSelect(⇒Unit):EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onSelect</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">onSelect</span><span class="params">(<span name="handler">handler: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="../EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@onSelect(handler:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.ListBox@onSelect(handler:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -5110,23 +5175,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent</dd></dl></div>
-    </li><li name="jswing.widgets.ListBox#removeAtSelected" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="removeAtSelected():Unit"></a>
-      <a id="removeAtSelected():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">removeAtSelected</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ListBox@removeAtSelected():Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="java.awt.Component#removeComponentListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeComponentListener(x$1:java.awt.event.ComponentListener):Unit"></a>
       <a id="removeComponentListener(ComponentListener):Unit"></a>
@@ -5382,6 +5430,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
+    </li><li name="jswing.widgets.ListBox#removeSelectedItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="removeSelectedItem():Unit"></a>
+      <a id="removeSelectedItem():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">removeSelectedItem</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ListBox@removeSelectedItem():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.JList#removeSelectionInterval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="removeSelectionInterval(x$1:Int,x$2:Int):Unit"></a>
       <a id="removeSelectionInterval(Int,Int):Unit"></a>
@@ -5758,14 +5823,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
     </li><li name="javax.swing.JList#setCellRenderer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setCellRenderer(x$1:javax.swing.ListCellRenderer[_&gt;:E]):Unit"></a>
-      <a id="setCellRenderer(ListCellRenderer[_]):Unit"></a>
+      <a id="setCellRenderer(ListCellRenderer[_&gt;:ComboItem[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setCellRenderer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setCellRenderer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@setCellRenderer(x$1:javax.swing.ListCellRenderer[_&gt;:E]):Unit" title="Permalink" target="_top">
@@ -6217,14 +6282,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
     </li><li name="javax.swing.JList#setListData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setListData(x$1:java.util.Vector[_&lt;:E]):Unit"></a>
-      <a id="setListData(Vector[_&lt;:Nothing]):Unit"></a>
+      <a id="setListData(Vector[_&lt;:ComboItem[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setListData</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.util.Vector">Vector</span>[_ &lt;: <span class="extype" name="scala.Nothing">Nothing</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setListData</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.util.Vector">Vector</span>[_ &lt;: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@setListData(x$1:java.util.Vector[_&lt;:E]):Unit" title="Permalink" target="_top">
@@ -6234,14 +6299,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JList</dd></dl></div>
     </li><li name="javax.swing.JList#setListData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setListData(x$1:Array[EwithObject]):Unit"></a>
-      <a id="setListData(Array[Nothing]):Unit"></a>
+      <a id="setListData(Array[ComboItem[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setListData</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setListData</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Array">Array</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@setListData(x$1:Array[EwithObject]):Unit" title="Permalink" target="_top">
@@ -6336,14 +6401,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
     </li><li name="javax.swing.JList#setModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setModel(x$1:javax.swing.ListModel[E]):Unit"></a>
-      <a id="setModel(ListModel[Nothing]):Unit"></a>
+      <a id="setModel(ListModel[ComboItem[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setModel</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListModel">ListModel</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setModel</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListModel">ListModel</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@setModel(x$1:javax.swing.ListModel[E]):Unit" title="Permalink" target="_top">
@@ -6404,14 +6469,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
     </li><li name="javax.swing.JList#setPrototypeCellValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPrototypeCellValue(x$1:E):Unit"></a>
-      <a id="setPrototypeCellValue(Nothing):Unit"></a>
+      <a id="setPrototypeCellValue(ComboItem[A]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setPrototypeCellValue</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Nothing">Nothing</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setPrototypeCellValue</span><span class="params">(<span name="arg0">arg0: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ListBox@setPrototypeCellValue(x$1:E):Unit" title="Permalink" target="_top">
@@ -7935,7 +8000,7 @@
 
         <div id="inheritedMembers">
         <div class="parent" name="javax.swing.JList">
-              <h3>Inherited from <span class="extype" name="javax.swing.JList">JList</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</h3>
+              <h3>Inherited from <span class="extype" name="javax.swing.JList">JList</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</h3>
             </div><div class="parent" name="javax.accessibility.Accessible">
               <h3>Inherited from <span class="extype" name="javax.accessibility.Accessible">Accessible</span></h3>
             </div><div class="parent" name="javax.swing.Scrollable">
