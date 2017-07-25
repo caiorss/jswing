@@ -263,10 +263,8 @@ class Frame(
 }
 
 
-class ListBox extends javax.swing.JList {
-  private val model  = new javax.swing.DefaultListModel[String]()
-  private val jlist  = new javax.swing.JList(model)
-  private val scroll = new javax.swing.JScrollPane(jlist)
+class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
+  private val model  = new javax.swing.DefaultListModel[ComboItem[A]]()
 
   // This flag avoids firing the event when an item is removed.
   // it also allows temporarily disabling events.
@@ -276,15 +274,27 @@ class ListBox extends javax.swing.JList {
   init()
 
   def init(){
+    this.setModel(model)
   }
 
-  // def getModel() = model
-  def addTo(wdg: javax.swing.JComponent) = scroll.add(this)
+  def addItem(label: String, value: A) =
+    model.addElement(ComboItem(label, value))
 
-  def addElement(elem: String) = model.addElement(elem)
+  def addItems(elemList: Seq[(String, A)])  = {
+    for ((label, value) <- elemList) 
+      model.addElement(ComboItem(label, value))    
+  }
 
-  def addElements(elemList: Array[String])  = {
-    elemList.foreach(model.addElement)
+  def getSelectedItem() = {
+    Option(this.getSelectedValue())
+  }
+
+  def getSelectedItemValue() = {
+    Option(this.getSelectedValue()) map (_.value)
+  }
+
+  def getSelectedItemLabel() = {
+    Option(this.getSelectedValue()) map (_.label)
   }
 
   def clear() = model.clear()
@@ -293,35 +303,23 @@ class ListBox extends javax.swing.JList {
     selectionEventFlag = flag
   }
 
-
   def removeItemAt(idx: Int){
     selectionEventFlag = false
     model.removeElementAt(idx)
     selectionEventFlag = true
   }
 
-  def removeAtSelected(){
+  def removeSelectedItem(){
     selectionEventFlag = false
     model.removeElementAt(this.getSelectedIndex())
     selectionEventFlag = true
   }
 
   /// Event that happens when user selects an item
-  def onSelect(handler: => Unit) = {
-    val listener = new javax.swing.event.ListSelectionListener(){
-      def valueChanged(args: javax.swing.event.ListSelectionEvent){
-        if (selectionEventFlag) handler
-      }
-    }
+  def onSelect(handler: => Unit) = 
+    jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
 
-    this.addListSelectionListener(listener)
-
-    // Return function that removes listener
-    () => { this.removeListSelectionListener(listener) }
-
-  } // End of onSelect
-
-} // ----- End of class ListView ------- //
+} // ----- End of ListBox class ------- //
 
 
 
@@ -881,7 +879,6 @@ class BorderPanel(
   def addCenterScrollPane(comp: java.awt.Component){
     val scroll = new javax.swing.JScrollPane(comp)
     this.addCenter(scroll)
-    itemC = scroll
   }
 
 }
