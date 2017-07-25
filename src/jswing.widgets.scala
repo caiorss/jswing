@@ -188,6 +188,65 @@ class ComboBoxValue[A] extends javax.swing.JComboBox[ComboItem[A]] {
 }
 
 
+class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
+  private val model  = new javax.swing.DefaultListModel[ComboItem[A]]()
+
+  // This flag avoids firing the event when an item is removed.
+  // it also allows temporarily disabling events.
+  //
+  private var selectionEventFlag = true
+
+  init()
+
+  def init(){
+    this.setModel(model)
+  }
+
+  def addItem(label: String, value: A) =
+    model.addElement(ComboItem(label, value))
+
+  def addItems(elemList: Seq[(String, A)])  = {
+    for ((label, value) <- elemList) 
+      model.addElement(ComboItem(label, value))    
+  }
+
+  def getSelectedItem() = {
+    Option(this.getSelectedValue())
+  }
+
+  def getSelectedItemValue() = {
+    Option(this.getSelectedValue()) map (_.value)
+  }
+
+  def getSelectedItemLabel() = {
+    Option(this.getSelectedValue()) map (_.label)
+  }
+
+  def clear() = model.clear()
+
+  def enableSelectionEvent(flag: Boolean){
+    selectionEventFlag = flag
+  }
+
+  def removeItemAt(idx: Int){
+    selectionEventFlag = false
+    model.removeElementAt(idx)
+    selectionEventFlag = true
+  }
+
+  def removeSelectedItem(){
+    selectionEventFlag = false
+    model.removeElementAt(this.getSelectedIndex())
+    selectionEventFlag = true
+  }
+
+  /// Event that happens when user selects an item
+  def onSelect(handler: => Unit) = 
+    jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
+
+} // ----- End of ListBox class ------- //
+
+
 
 /**
   * Enhanced JFrame class that provides better initialization.
@@ -261,65 +320,6 @@ class Frame(
   }
 
 }
-
-
-class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
-  private val model  = new javax.swing.DefaultListModel[ComboItem[A]]()
-
-  // This flag avoids firing the event when an item is removed.
-  // it also allows temporarily disabling events.
-  //
-  private var selectionEventFlag = true
-
-  init()
-
-  def init(){
-    this.setModel(model)
-  }
-
-  def addItem(label: String, value: A) =
-    model.addElement(ComboItem(label, value))
-
-  def addItems(elemList: Seq[(String, A)])  = {
-    for ((label, value) <- elemList) 
-      model.addElement(ComboItem(label, value))    
-  }
-
-  def getSelectedItem() = {
-    Option(this.getSelectedValue())
-  }
-
-  def getSelectedItemValue() = {
-    Option(this.getSelectedValue()) map (_.value)
-  }
-
-  def getSelectedItemLabel() = {
-    Option(this.getSelectedValue()) map (_.label)
-  }
-
-  def clear() = model.clear()
-
-  def enableSelectionEvent(flag: Boolean){
-    selectionEventFlag = flag
-  }
-
-  def removeItemAt(idx: Int){
-    selectionEventFlag = false
-    model.removeElementAt(idx)
-    selectionEventFlag = true
-  }
-
-  def removeSelectedItem(){
-    selectionEventFlag = false
-    model.removeElementAt(this.getSelectedIndex())
-    selectionEventFlag = true
-  }
-
-  /// Event that happens when user selects an item
-  def onSelect(handler: => Unit) = 
-    jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
-
-} // ----- End of ListBox class ------- //
 
 
 
