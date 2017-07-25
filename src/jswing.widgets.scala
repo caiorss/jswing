@@ -192,6 +192,27 @@ class ComboBoxValue[A] extends javax.swing.JComboBox[ComboItem[A]] {
     JList extension that allows label and value items. This class also provides 
     type safe and null-safe methods to get selected label and selected items.
 
+    Relevant methods: 
+
+    - def addItem(label: String, value: A): Unit 
+
+    - def addItems(elemList: Seq[(String, A)]): Unit
+
+    - def clear(): Unit
+
+    - def getSelectedItem(): Option[ComboItem[A]]
+
+    - def getSelectedItemLabel(): Option[String]
+
+    - def getSelectedItemValue(): Option[A]
+
+    - def onSelect(handler: ⇒ Unit): EventDispose
+
+    - def removeItemAt(idx: Int): Unit
+
+    - def removeSelectedItem(): Unit
+
+
     Example: 
 
     {{{
