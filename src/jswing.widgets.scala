@@ -134,7 +134,7 @@ case class ComboItem[A](label: String, value: A) {
 
     {{{
         import javax.swing._
-        import jswing.widgets.ComboBoxValue
+        import jswing.widgets.ComboBox
         import jswing.Event
 
         val frame = new JFrame("Combo Box Demo")
@@ -143,7 +143,7 @@ case class ComboItem[A](label: String, value: A) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
         val display = new JLabel("Currency = ")
-        val combo = new ComboBoxValue[String]
+        val combo = new ComboBox[String]
 
         frame.add(combo)
         frame.add(display)
@@ -164,7 +164,7 @@ case class ComboItem[A](label: String, value: A) {
     }}}
 
 */
-class ComboBoxValue[A] extends javax.swing.JComboBox[ComboItem[A]] {
+class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
   private val model = new javax.swing.DefaultComboBoxModel[ComboItem[A]]()
 
   init()
