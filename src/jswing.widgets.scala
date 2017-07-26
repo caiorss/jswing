@@ -487,21 +487,36 @@ class Frame(
      image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT)
    }
 
+   private def scaleImageFit(image: java.awt.image.BufferedImage) = {
+     val w  = this.getHeight().toDouble
+     val h  = this.getWidth().toDouble
+     val wi = image.getWidth().toDouble
+     val hi = image.getHeight().toDouble
+     val k = (w / wi) min (h / hi)
+
+     image.getScaledInstance(
+       (k * wi).toInt,
+       (k * hi).toInt,
+       java.awt.Image.SCALE_DEFAULT
+     )
+   }
+
+
  /** Set image from file. 
    *
    */
    def setImageFromFile(file: String) {
      val image  = javax.imageio.ImageIO.read(new java.io.File(file))
-     val ico = new javax.swing.ImageIcon(image)
+     val ico = new javax.swing.ImageIcon(this.scaleImageFit(image))
      this.setIcon(ico)
    }
 
-   def setImageFromFile(file: String, height: Int) {
-     val image0  = javax.imageio.ImageIO.read(new java.io.File(file))
-     val image   = scaleImage(image0, height)
-     val ico = new javax.swing.ImageIcon(image)
-     this.setIcon(ico)
-   }
+   // def setImageFromFile(file: String, height: Int) {
+   //   val image0  = javax.imageio.ImageIO.read(new java.io.File(file))
+   //   val image   = scaleImage(image0, height)
+   //   val ico = new javax.swing.ImageIcon(image)
+   //   this.setIcon(ico)
+   // }
 
    def setImage(image: java.awt.image.BufferedImage){
      val ico = new javax.swing.ImageIcon(image)
