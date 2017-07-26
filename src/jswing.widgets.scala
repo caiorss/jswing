@@ -185,6 +185,26 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
   def onSelect(action: => Unit) = {
     jswing.Event.onComboBoxSelect(this){action}
   }
+
+  def onSelectItem(handler: A => Unit) = {
+    var enabled = true
+
+    val combo = this
+
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        combo.getSelectedValue() foreach handler
+      }
+    }
+
+    this.addActionListener(listener)
+
+    jswing.EventDispose(
+      dispose    = () => this.removeActionListener(listener),
+      setEnabled = flag => { enabled = flag }
+    )
+  }
+
 }
 
 
