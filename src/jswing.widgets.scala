@@ -520,6 +520,12 @@ class Frame(
      (x, y)
    }
 
+   /** Clear current image */
+   def clear() = {
+     this.setIcon(null)
+     this.setBackground(java.awt.Color.WHITE)
+   }
+
 
    def onClick(handler: => Unit) = {
      this.addMouseListener( new java.awt.event.MouseAdapter {
