@@ -190,6 +190,9 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     (0 to this.getItemCount() - 1) map (i => this.getItemAt(i).label)
   }
 
+
+  def clear() = this.removeAllItems()
+
   def onSelectItem(handler: A => Unit) = {
     var enabled = true
 
