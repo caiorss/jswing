@@ -178,8 +178,10 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
   }
 
   def getSelectedValue() = {
-    val item = this.getSelectedItem()
-    item.asInstanceOf[ComboItem[A]].value 
+    val item = Option(this.getSelectedItem())
+    item map (_.asInstanceOf[ComboItem[A]].value)
+  }
+
   }
 
   def onSelect(action: => Unit) = {
