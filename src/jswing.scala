@@ -371,10 +371,9 @@ object JUtils{
     @param setEnabled - Enabled/disable event.
   */
 case class EventDispose(
-  /** Execute event handler */ 
-  run:        () => Unit,
   /** Dispose event handler */
   dispose:    () => Unit,
+  /** Enable or disable event */
   setEnabled: Boolean => Unit
 )
 
@@ -426,7 +425,6 @@ object Event{
     comp.addActionListener(listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => comp.removeActionListener(listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -444,7 +442,6 @@ object Event{
     button.addActionListener(listener)
     // Returns function that when executed disposes the event handler 
     EventDispose(
-      run        = () => handler,
       dispose    = () => button.removeActionListener(listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -489,7 +486,6 @@ object Event{
     chbox.addActionListener(listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => chbox.removeActionListener(listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -508,7 +504,6 @@ object Event{
     entry.getDocument().addDocumentListener(listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => entry.getDocument().removeDocumentListener(listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -526,7 +521,6 @@ object Event{
     entry.addPropertyChangeListener("value", listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => entry.removePropertyChangeListener("value", listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -543,7 +537,6 @@ object Event{
     frame.addWindowListener(listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => frame.removeWindowListener(listener),
       setEnabled = flag => { enabled = flag }
     )
@@ -563,7 +556,6 @@ object Event{
     jlist.addListSelectionListener(listener)
 
     EventDispose(
-      run        = () => handler,
       dispose    = () => { jlist.removeListSelectionListener(listener) },
       setEnabled = flag => { enabled = flag }
     )
@@ -579,7 +571,6 @@ object Event{
     }
     spinner.addChangeListener(listener)
     EventDispose(
-      run        = () => handler,
       dispose    = () => spinner.removeChangeListener(listener),
       setEnabled = (flag: Boolean) => { enabled = flag }
     )
@@ -607,8 +598,7 @@ object Event{
       }
     }
     comp.addComponentListener(listener)
-    EventDispose(
-      run      = () => handler,
+    EventDispose(  
       dispose  = () => comp.removeComponentListener(listener),
       setEnabled = (flag: Boolean) => { enabled = flag }
     )

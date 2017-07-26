@@ -339,7 +339,6 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
     jlist.addListSelectionListener(listener)
 
     jswing.EventDispose(
-      run        = () => (),
       dispose    = () => { jlist.removeListSelectionListener(listener) },
       setEnabled = flag => { enabled = flag }
     )
