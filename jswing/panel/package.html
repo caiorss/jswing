@@ -1,0 +1,229 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>panel - Jswing - Java Swing Wrapper 1.0 - jswing.panel</title>
+          <meta name="description" content="panel - Jswing - Java Swing Wrapper 1.0 - jswing.panel" />
+          <meta name="keywords" content="panel Jswing Java Swing Wrapper 1.0 jswing.panel" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'jswing.panel.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="jswing">jswing</a></p>
+        <h1>panel</h1><span class="permalink">
+      <a href="../../index.html#jswing.panel.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">panel</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="jswing.panel.BorderPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BorderPanelextendsJPanel"></a>
+      <a id="BorderPanel:BorderPanel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BorderPanel.html"><span class="name">BorderPanel</span></a><span class="result"> extends <span class="extype" name="javax.swing.JPanel">JPanel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.panel.package@BorderPanelextendsJPanel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Modified JPanel with layout set to BorderLayout.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JPanel with layout set to BorderLayout.</p><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{Frame, Button, BorderPanel, FlowPanel}
+
+<span class="kw">val</span> button1 = <span class="kw">new</span> Button(
+  text = <span class="lit">"button1"</span>,
+  bgColor = java.awt.Color.BLUE,
+  onClick = { println(<span class="lit">"You clicked at button 1"</span>) }
+)
+
+<span class="kw">val</span> button2 = <span class="kw">new</span> Button(
+  text    = <span class="lit">"button2"</span>,
+  bgColor = java.awt.Color.BLUE,
+  onClick = { println(<span class="lit">"You clicked at button 2"</span>) }
+)
+
+<span class="kw">val</span> button3 = <span class="kw">new</span> Button(<span class="lit">"Click me"</span>)
+button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
+
+<span class="kw">val</span> textArea = <span class="kw">new</span> javax.swing.JTextArea()
+
+<span class="kw">val</span> frame = <span class="kw">new</span> Frame(
+  title       = <span class="lit">"Test Border Panel"</span>,
+  size        = (<span class="num">692</span>, <span class="num">441</span>),
+  exitOnClose = <span class="kw">true</span>,
+  visible     = <span class="kw">true</span>,
+  pane        = <span class="kw">new</span> BorderPanel(
+    top          = <span class="kw">new</span> FlowPanel(button1, button2),
+    bottom       = button3,
+    centerScroll = textArea
+  )
+)</pre></div></div>
+    </li><li name="jswing.panel.FlowPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FlowPanelextendsJPanel"></a>
+      <a id="FlowPanel:FlowPanel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowPanel.html"><span class="name">FlowPanel</span></a><span class="result"> extends <span class="extype" name="javax.swing.JPanel">JPanel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.panel.package@FlowPanelextendsJPanel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Modified JPanel with FlowLayout, but with better initialization.</p><div class="fullcomment"><div class="comment cmt"><p>Modified JPanel with FlowLayout, but with better initialization.</p><p>    Example:</p><pre><span class="kw">import</span> javax.swing._
+<span class="kw">import</span> jswing.widgets.FlowPanel
+
+<span class="kw">val</span> panel = <span class="kw">new</span> FlowPanel(
+  <span class="kw">new</span> JButton(<span class="lit">"Click me"</span>),
+  <span class="kw">new</span> JComboBox(),
+  <span class="kw">new</span> JButton(<span class="lit">"Button 2"</span>)
+)
+
+<span class="kw">val</span> frame = <span class="kw">new</span> JFrame()
+frame.setSize(<span class="num">400</span>, <span class="num">300</span>)
+frame.setContentPane(panel)
+frame.setVisible(<span class="kw">true</span>)</pre></div></div>
+    </li><li name="jswing.panel.FlowPanelLeft" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlowPanelLeftextendsJPanel"></a>
+      <a id="FlowPanelLeft:FlowPanelLeft"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowPanelLeft.html"><span class="name">FlowPanelLeft</span></a><span class="result"> extends <span class="extype" name="javax.swing.JPanel">JPanel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.panel.package@FlowPanelLeftextendsJPanel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Flow panel with items aligned to the left.</p>
+    </li><li name="jswing.panel.FlowPanelRight" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlowPanelRightextendsJPanel"></a>
+      <a id="FlowPanelRight:FlowPanelRight"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowPanelRight.html"><span class="name">FlowPanelRight</span></a><span class="result"> extends <span class="extype" name="javax.swing.JPanel">JPanel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.panel.package@FlowPanelRightextendsJPanel" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Flow panel with items aligned to the right.</p>
+    </li><li name="jswing.panel.FormBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FormBuilderextendsAnyRef"></a>
+      <a id="FormBuilder:FormBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FormBuilder.html"><span class="name">FormBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.panel.package@FormBuilderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">    Class to build forms like JGoodies.</p><div class="fullcomment"><div class="comment cmt"><p>    Class to build forms like JGoodies. It leverages the GridbagLayout
+    hiding implementation details and providing an easy and high level
+    interface to the application developer.</p></div></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
