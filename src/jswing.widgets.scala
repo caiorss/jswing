@@ -177,6 +177,15 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     model.addElement(ComboItem(label, value))
   }
 
+  /** Add item if label doesn't exist. It doesn't allow repeated labels. */
+  def addItemUnique(label: String, value: A, selectLast: Boolean = false) = {
+    if (!this.labelExists(label))
+      model.addElement(ComboItem(label, value))
+
+    if (selectLast)
+      this.setSelectedIndex(this.getItemCount() - 1)
+  }
+
   def getSelectedValue() = {
     val item = Option(this.getSelectedItem())
     item map (_.asInstanceOf[ComboItem[A]].value)
