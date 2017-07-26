@@ -949,6 +949,10 @@ class BorderPanel(
     this.add(comp,  java.awt.BorderLayout.CENTER)
   }
   
+  /** Add item inside a scroll panel in the left side */
+  def addLeftScroll(comp: java.awt.Component){
+    val scroll = new javax.swing.JScrollPane(comp)
+    this.addLeft(scroll)
   }
 
 
