@@ -865,6 +865,15 @@ class FlowPanel(contents: java.awt.Component*) extends javax.swing.JPanel{
   }
 }
 
+/** Flow panel with items aligned to the left. */
+class FlowPanelLeft(contents: java.awt.Component*) extends javax.swing.JPanel{
+  init()
+  private def init(){
+    this.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT))
+    for (item <- contents) { this.add(item) }
+  }
+}
+
 
 /** Modified JPanel with layout set to BorderLayout.
 
