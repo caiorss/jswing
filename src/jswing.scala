@@ -617,7 +617,7 @@ object Event{
   */
   def printDimensions(comp: java.awt.Component) = {
     onResize(comp){
-      println(s"Component dimensions w = ${comp.getHeight()} h = ${comp.getWidth()} ")
+      println(s"Component dimensions w = ${comp.getWidth()} h = ${comp.getHeight()} ")
     }
   }
 
