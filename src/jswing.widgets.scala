@@ -186,6 +186,10 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     jswing.Event.onComboBoxSelect(this){action}
   }
 
+  def getLabels() = {
+    (0 to this.getItemCount() - 1) map (i => this.getItemAt(i).label)
+  }
+
   def onSelectItem(handler: A => Unit) = {
     var enabled = true
 
