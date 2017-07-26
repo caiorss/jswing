@@ -45,11 +45,11 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">EventDispose</span><span class="params">(<span name="run">run: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="dispose">dispose: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="setEnabled">setEnabled: (<span class="extype" name="scala.Boolean">Boolean</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">EventDispose</span><span class="params">(<span name="dispose">dispose: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="setEnabled">setEnabled: (<span class="extype" name="scala.Boolean">Boolean</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">run</dt><dd class="cmt"><p>- Function that runs the event handler.</p></dd><dt class="param">dispose</dt><dd class="cmt"><p>- Dispose event handler, remove event listener.</p></dd><dt class="param">setEnabled</dt><dd class="cmt"><p>- Enabled/disable event.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">dispose</dt><dd class="cmt"><p>- Dispose event handler, remove event listener.</p></dd><dt class="param">setEnabled</dt><dd class="cmt"><p>- Enabled/disable event.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -89,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="jswing.EventDispose#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(run:()=&gt;Unit,dispose:()=&gt;Unit,setEnabled:Boolean=&gt;Unit):jswing.EventDispose"></a>
+      <a id="&lt;init&gt;(dispose:()=&gt;Unit,setEnabled:Boolean=&gt;Unit):jswing.EventDispose"></a>
       <a id="&lt;init&gt;:EventDispose"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,14 +97,14 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">EventDispose</span><span class="params">(<span name="run">run: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="dispose">dispose: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="setEnabled">setEnabled: (<span class="extype" name="scala.Boolean">Boolean</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span>
+        <span class="name">EventDispose</span><span class="params">(<span name="dispose">dispose: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="setEnabled">setEnabled: (<span class="extype" name="scala.Boolean">Boolean</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.EventDispose@&lt;init&gt;(run:()=&gt;Unit,dispose:()=&gt;Unit,setEnabled:Boolean=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
+      <a href="../index.html#jswing.EventDispose@&lt;init&gt;(dispose:()=&gt;Unit,setEnabled:Boolean=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">run</dt><dd class="cmt"><p>- Function that runs the event handler.</p></dd><dt class="param">dispose</dt><dd class="cmt"><p>- Dispose event handler, remove event listener.</p></dd><dt class="param">setEnabled</dt><dd class="cmt"><p>- Enabled/disable event.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">dispose</dt><dd class="cmt"><p>- Dispose event handler, remove event listener.</p></dd><dt class="param">setEnabled</dt><dd class="cmt"><p>- Enabled/disable event.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -347,23 +347,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="jswing.EventDispose#run" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="run:()=&gt;Unit"></a>
-      <a id="run:()⇒Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">run</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.EventDispose@run:()=&gt;Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">- Function that runs the event handler.</p>
     </li><li name="jswing.EventDispose#setEnabled" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setEnabled:Boolean=&gt;Unit"></a>
       <a id="setEnabled:(Boolean)⇒Unit"></a>

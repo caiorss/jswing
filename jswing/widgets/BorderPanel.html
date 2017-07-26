@@ -118,7 +118,7 @@ button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="jswing.widgets.BorderPanel#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(top:java.awt.Component,bottom:java.awt.Component,left:java.awt.Component,right:java.awt.Component,center:java.awt.Component,centerScroll:java.awt.Component):jswing.widgets.BorderPanel"></a>
+      <a id="&lt;init&gt;(top:java.awt.Component,bottom:java.awt.Component,left:java.awt.Component,right:java.awt.Component,center:java.awt.Component,centerScroll:java.awt.Component,leftScroll:java.awt.Component,rightScroll:java.awt.Component):jswing.widgets.BorderPanel"></a>
       <a id="&lt;init&gt;:BorderPanel"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -126,10 +126,10 @@ button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BorderPanel</span><span class="params">(<span name="top">top: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="bottom">bottom: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="left">left: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="right">right: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="center">center: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="centerScroll">centerScroll: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span>
+        <span class="name">BorderPanel</span><span class="params">(<span name="top">top: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="bottom">bottom: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="left">left: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="right">right: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="center">center: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="centerScroll">centerScroll: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="leftScroll">leftScroll: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>, <span name="rightScroll">rightScroll: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.BorderPanel@&lt;init&gt;(top:java.awt.Component,bottom:java.awt.Component,left:java.awt.Component,right:java.awt.Component,center:java.awt.Component,centerScroll:java.awt.Component):jswing.widgets.BorderPanel" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.BorderPanel@&lt;init&gt;(top:java.awt.Component,bottom:java.awt.Component,left:java.awt.Component,right:java.awt.Component,center:java.awt.Component,centerScroll:java.awt.Component,leftScroll:java.awt.Component,rightScroll:java.awt.Component):jswing.widgets.BorderPanel" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -486,23 +486,23 @@ button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
       </a>
     </span>
       
-    </li><li name="jswing.widgets.BorderPanel#addCenterScrollPane" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addCenterScrollPane(comp:java.awt.Component):Unit"></a>
-      <a id="addCenterScrollPane(Component):Unit"></a>
+    </li><li name="jswing.widgets.BorderPanel#addCenterScroll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addCenterScroll(comp:java.awt.Component):Unit"></a>
+      <a id="addCenterScroll(Component):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addCenterScrollPane</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">addCenterScroll</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.BorderPanel@addCenterScrollPane(comp:java.awt.Component):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.BorderPanel@addCenterScroll(comp:java.awt.Component):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Add item inside a scroll panel in the center.</p>
     </li><li name="java.awt.Component#addComponentListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addComponentListener(x$1:java.awt.event.ComponentListener):Unit"></a>
       <a id="addComponentListener(ComponentListener):Unit"></a>
@@ -656,6 +656,23 @@ button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
       </a>
     </span>
       
+    </li><li name="jswing.widgets.BorderPanel#addLeftScroll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addLeftScroll(comp:java.awt.Component):Unit"></a>
+      <a id="addLeftScroll(Component):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addLeftScroll</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.BorderPanel@addLeftScroll(comp:java.awt.Component):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Add item inside a scroll panel in the left side</p>
     </li><li name="java.awt.Component#addMouseListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addMouseListener(x$1:java.awt.event.MouseListener):Unit"></a>
       <a id="addMouseListener(MouseListener):Unit"></a>
@@ -775,23 +792,23 @@ button3.onClick{println(<span class="lit">"You clicked at button3"</span>)}
       </a>
     </span>
       
-    </li><li name="jswing.widgets.BorderPanel#addStatusBar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addStatusBar():javax.swing.JLabel"></a>
-      <a id="addStatusBar():JLabel"></a>
+    </li><li name="jswing.widgets.BorderPanel#addRightScroll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addRightScroll(comp:java.awt.Component):Unit"></a>
+      <a id="addRightScroll(Component):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addStatusBar</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.JLabel">JLabel</span></span>
+        <span class="name">addRightScroll</span><span class="params">(<span name="comp">comp: <span class="extype" name="java.awt.Component">Component</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.BorderPanel@addStatusBar():javax.swing.JLabel" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.BorderPanel@addRightScroll(comp:java.awt.Component):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Add item inside a scroll panel in the right side</p>
     </li><li name="jswing.widgets.BorderPanel#addTop" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="addTop(comp:java.awt.Component):Unit"></a>
       <a id="addTop(Component):Unit"></a>
