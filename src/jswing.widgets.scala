@@ -882,7 +882,9 @@ class BorderPanel(
   left:   java.awt.Component = null,
   right:  java.awt.Component = null,
   center: java.awt.Component = null,
-  centerScroll: java.awt.Component = null
+  centerScroll:  java.awt.Component = null,
+  leftScroll :   java.awt.Component = null,
+  rightScroll:   java.awt.Component = null
 ) extends javax.swing.JPanel {
   private var itemT: java.awt.Component = null
   private var itemB: java.awt.Component = null
@@ -901,6 +903,9 @@ class BorderPanel(
     if (right  != null) this.addRight(right)
     if (center != null) this.addCenter(center)    
     if (centerScroll != null) this.addCenterScroll(centerScroll)
+    if (rightScroll  != null) this.addRightScroll(rightScroll)
+    if (leftScroll   != null) this.addLeftScroll(leftScroll)    
+
   }
 
   def getTop()    = itemT
