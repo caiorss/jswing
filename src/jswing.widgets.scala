@@ -949,10 +949,6 @@ class BorderPanel(
     this.add(comp,  java.awt.BorderLayout.CENTER)
   }
   
-  def addStatusBar() = {
-    val label = new javax.swing.JLabel()
-    this.addBottom(label)
-    label
   }
 
 
