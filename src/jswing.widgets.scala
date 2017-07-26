@@ -900,7 +900,7 @@ class BorderPanel(
     if (left   != null) this.addCenter(left)
     if (right  != null) this.addRight(right)
     if (center != null) this.addCenter(center)    
-    if (centerScroll != null) this.addCenterScrollPane(centerScroll)
+    if (centerScroll != null) this.addCenterScroll(centerScroll)
   }
 
   def getTop()    = itemT
@@ -955,7 +955,10 @@ class BorderPanel(
     label
   }
 
-  def addCenterScrollPane(comp: java.awt.Component){
+
+
+  /** Add item inside a scroll panel in the center. */
+  def addCenterScroll(comp: java.awt.Component){
     val scroll = new javax.swing.JScrollPane(comp)
     this.addCenter(scroll)
   }
