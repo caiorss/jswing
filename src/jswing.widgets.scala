@@ -323,6 +323,29 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
   def onSelect(handler: => Unit) = 
     jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
 
+  def onSelectItem(handler: A => Unit) = {
+
+    var enabled = true
+    val jlist = this
+
+    val listener = new javax.swing.event.ListSelectionListener(){
+      def valueChanged(args: javax.swing.event.ListSelectionEvent){
+        if (enabled) {
+          jlist.getSelectedItemValue() foreach handler
+        }
+      }
+    }
+
+    jlist.addListSelectionListener(listener)
+
+    jswing.EventDispose(
+      run        = () => (),
+      dispose    = () => { jlist.removeListSelectionListener(listener) },
+      setEnabled = flag => { enabled = flag }
+    )
+    
+  }
+
 } // ----- End of ListBox class ------- //
 
 
