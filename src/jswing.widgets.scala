@@ -347,6 +347,8 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
     Option(this.getSelectedValue()) map (_.label)
   }
 
+  def selectFirst() = this.setSelectedIndex(0)
+
   def clear() = model.clear()
 
   def enableSelectionEvent(flag: Boolean){
