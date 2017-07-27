@@ -188,11 +188,20 @@ case class ComboItem[A](label: String, value: A) {
 class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
   private val model = new javax.swing.DefaultComboBoxModel[ComboItem[A]]()
 
+  private val labelDict = scala.collection.mutable.Map[String, Int]()
+
+  // Flag that enables or disables all selection events to avoid accidental
+  // triggering.
+  //
+  private var enableSelect = true
+
   init()
 
   private def init(){
     this.setModel(model)
   }
+
+  def isSelectEventEnabled() = enableSelect
 
   def addItem(label: String, value: A) = {
     model.addElement(ComboItem(label, value))
@@ -200,15 +209,32 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
 
   /** Add item if label doesn't exist. It doesn't allow repeated labels. */
   def addItemUnique(label: String, value: A, selectLast: Boolean = false) = {
-    if (!this.labelExists(label))
+    if (!this.labelExists(label)){
       model.addElement(ComboItem(label, value))
+      labelDict += label -> (this.getItemCount() - 1)
+    }
+
+    enableSelect = false
 
     if (selectLast)
       this.setSelectedIndex(this.getItemCount() - 1)
+
+    enableSelect = true
   }
 
 
-  def selectFirst() = this.setSelectedIndex(0)
+  def selectFirst() = {
+    enableSelect = false
+    this.setSelectedIndex(0)
+    enableSelect = true
+  }
+
+  /** Select item which contains a given label. */
+  def selectLabel(label: String) = {
+    enableSelect = false
+    labelDict.get(label).foreach(this.setSelectedIndex)
+    enableSelect = true
+  }
 
   def getSelectedValue() = {
     val item = Option(this.getSelectedItem())
@@ -231,16 +257,20 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     this.getLabels() exists (_ == label)
   }
 
-  def clear() = this.removeAllItems()
+  def clear() = {
+    this.removeAllItems()
+    labelDict.clear()
+  }
 
-  def onSelectItem(handler: A => Unit) = {
+  def onSelectItem(handler: A => Unit) = {    
     var enabled = true
-
     val combo = this
 
-    val listener = new java.awt.event.ActionListener(){
+    val listener = new java.awt.event.ActionListener(){      
+
       def actionPerformed(event: java.awt.event.ActionEvent){
-        combo.getSelectedValue() foreach handler
+        if (enableSelect && enabled)
+          combo.getSelectedValue() foreach handler
       }
     }
 
