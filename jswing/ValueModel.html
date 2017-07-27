@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>Dialog - Jswing - Java Swing Wrapper 1.0 - jswing.Dialog</title>
-          <meta name="description" content="Dialog - Jswing - Java Swing Wrapper 1.0 - jswing.Dialog" />
-          <meta name="keywords" content="Dialog Jswing Java Swing Wrapper 1.0 jswing.Dialog" />
+          <title>ValueModel - Jswing - Java Swing Wrapper 1.0 - jswing.ValueModel</title>
+          <meta name="description" content="ValueModel - Jswing - Java Swing Wrapper 1.0 - jswing.ValueModel" />
+          <meta name="keywords" content="ValueModel Jswing Java Swing Wrapper 1.0 jswing.ValueModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
-            var hash = 'jswing.Dialog$';
+            var hash = 'jswing.ValueModel';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -26,14 +26,14 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img alt="Object" src="../lib/object_big.png" />
+        <img alt="Class" src="../lib/class_big.png" />
         <p id="owner"><a href="package.html" class="extype" name="jswing">jswing</a></p>
-        <h1>Dialog</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>ValueModel</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="jswing">package jswing</a>
           </div></span></h3><span class="permalink">
-      <a href="../index.html#jswing.Dialog$" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -42,14 +42,14 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Dialog</span>
+        <span class="name">ValueModel</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Java swing dialogs (aka Message boxes) to display information or warnings.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -69,7 +69,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="jswing.Dialog"><span>Dialog</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="jswing.ValueModel"><span>ValueModel</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,52 +86,29 @@
 
       <div id="template">
         <div id="allMembers">
-        
-
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="jswing.Dialog.DirChooser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="DirChooserextendsAnyRef"></a>
-      <a id="DirChooser:DirChooser"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="jswing.ValueModel#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(a:A):jswing.ValueModel[A]"></a>
+      <a id="&lt;init&gt;:ValueModel[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <a href="Dialog$$DirChooser.html"><span class="name">DirChooser</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">ValueModel</span><span class="params">(<span name="a">a: <span class="extype" name="jswing.ValueModel.A">A</span> = <span class="symbol">null</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@DirChooserextendsAnyRef" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"> Dialog to select directories.</p><div class="fullcomment"><div class="comment cmt"><p> Dialog to select directories.</p><p>Example:</p><pre>scala&gt; <span class="kw">val</span> chooser = <span class="kw">new</span> jswing.Dialog.DirChooser()
-
-scala&gt; chooser.run()
-res0: <span class="std">Option</span>[<span class="std">String</span>] = <span class="std">Some</span>(/home/archbox/Projects)
-
-scala&gt; chooser.run()
-res1: <span class="std">Option</span>[<span class="std">String</span>] = <span class="std">Some</span>(/home/archbox/Projects)</pre></div></div>
-    </li><li name="jswing.Dialog.FileChooser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FileChooserextendsAnyRef"></a>
-      <a id="FileChooser:FileChooser"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="Dialog$$FileChooser.html"><span class="name">FileChooser</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@FileChooserextendsAnyRef" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@&lt;init&gt;(a:A):jswing.ValueModel[A]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
     </li></ol>
             </div>
+
+        
 
         
 
@@ -149,7 +126,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -166,7 +143,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@##():Int" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@##():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -183,11 +160,45 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="jswing.ValueModel#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply(fn:A=&gt;A):Unit"></a>
+      <a id="apply((A)⇒A):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="fn">fn: (<span class="extype" name="jswing.ValueModel.A">A</span>) ⇒ <span class="extype" name="jswing.ValueModel.A">A</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@apply(fn:A=&gt;A):Unit" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.ValueModel#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply():A"></a>
+      <a id="apply():A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">()</span><span class="result">: <span class="extype" name="jswing.ValueModel.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@apply():A" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -200,62 +211,11 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="jswing.Dialog#chooseColor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="chooseColor(msg:String,default:java.awt.Color):Option[java.awt.Color]"></a>
-      <a id="chooseColor(String,Color):Option[Color]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">chooseColor</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;Choose a color&quot;</span></span>, <span name="default">default: <span class="extype" name="java.awt.Color">Color</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.awt.Color">Color</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@chooseColor(msg:String,default:java.awt.Color):Option[java.awt.Color]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Opens a JColorChooser color choosing dialog.</p>
-    </li><li name="jswing.Dialog#chooseDir" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="chooseDir(path:String,showHidden:Boolean):Option[String]"></a>
-      <a id="chooseDir(String,Boolean):Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">chooseDir</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;.&quot;</span></span>, <span name="showHidden">showHidden: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.String">String</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@chooseDir(path:String,showHidden:Boolean):Option[String]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="jswing.Dialog#chooseFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="chooseFile(path:String,showHidden:Boolean):Option[String]"></a>
-      <a id="chooseFile(String,Boolean):Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">chooseFile</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;.&quot;</span></span>, <span name="showHidden">showHidden: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.String">String</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@chooseFile(path:String,showHidden:Boolean):Option[String]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -268,7 +228,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@clone():Object" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@clone():Object" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -291,7 +251,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -308,7 +268,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -325,7 +285,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@finalize():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@finalize():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -336,6 +296,40 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="jswing.ValueModel#foreach" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="foreach(fn:()=&gt;Unit):Unit"></a>
+      <a id="foreach(()⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">foreach</span><span class="params">(<span name="fn">fn: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@foreach(fn:()=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.ValueModel#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="get():A"></a>
+      <a id="get():A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">()</span><span class="result">: <span class="extype" name="jswing.ValueModel.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@get():A" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -348,7 +342,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -365,7 +359,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@hashCode():Int" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@hashCode():Int" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -382,24 +376,24 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="jswing.Dialog#makeFileFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="makeFileFilter(description:String,extList:Array[String]):javax.swing.filechooser.FileFilter"></a>
-      <a id="makeFileFilter(String,Array[String]):FileFilter"></a>
+    </li><li name="jswing.ValueModel#logChanges" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="logChanges(label:String):()=&gt;Unit"></a>
+      <a id="logChanges(String):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">makeFileFilter</span><span class="params">(<span name="description">description: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="extList">extList: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="javax.swing.filechooser.FileFilter">FileFilter</span></span>
+        <span class="name">logChanges</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@makeFileFilter(description:String,extList:Array[String]):javax.swing.filechooser.FileFilter" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@logChanges(label:String):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -416,7 +410,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -433,7 +427,7 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@notify():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@notify():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -450,98 +444,79 @@ res1: <span class="std">Option</span>[<span class="std">String</span>] = <span c
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="jswing.Dialog#prompt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="prompt(title:String,message:String,parent:java.awt.Component):Option[String]"></a>
-      <a id="prompt(String,String,Component):Option[String]"></a>
+    </li><li name="jswing.ValueModel#onChange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onChange(fn:()=&gt;Unit):()=&gt;Unit"></a>
+      <a id="onChange(()⇒Unit):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">prompt</span><span class="params">(<span name="title">title: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="parent">parent: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.String">String</span>]</span>
+        <span class="name">onChange</span><span class="params">(<span name="fn">fn: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@prompt(title:String,message:String,parent:java.awt.Component):Option[String]" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@onChange(fn:()=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Prompt the user some question.</p><div class="fullcomment"><div class="comment cmt"><p>Prompt the user some question. Equivalent to JOptionPane.showInputDialog</p></div></div>
-    </li><li name="jswing.Dialog#questionYesNo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="questionYesNo(title:String,message:String,parent:java.awt.Component):Boolean"></a>
-      <a id="questionYesNo(String,String,Component):Boolean"></a>
+      
+    </li><li name="jswing.ValueModel#onChangeRun" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onChangeRun(action:=&gt;Unit):()=&gt;Unit"></a>
+      <a id="onChangeRun(⇒Unit):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">questionYesNo</span><span class="params">(<span name="title">title: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parent">parent: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">onChangeRun</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@questionYesNo(title:String,message:String,parent:java.awt.Component):Boolean" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@onChangeRun(action:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Yes or no message dialog.</p><div class="fullcomment"><div class="comment cmt"><p>Yes or no message dialog. If the user answer yes returns true and
-returns false otherwise.
-</p></div></div>
-    </li><li name="jswing.Dialog#showAlert" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="showAlert(title:String,message:String,parent:java.awt.Component):Unit"></a>
-      <a id="showAlert(String,String,Component):Unit"></a>
+      
+    </li><li name="jswing.ValueModel#onChangeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onChangeValue(fn:A=&gt;Unit):()=&gt;Unit"></a>
+      <a id="onChangeValue((A)⇒Unit):()⇒Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">showAlert</span><span class="params">(<span name="title">title: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parent">parent: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">onChangeValue</span><span class="params">(<span name="fn">fn: (<span class="extype" name="jswing.ValueModel.A">A</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@showAlert(title:String,message:String,parent:java.awt.Component):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@onChangeValue(fn:A=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">       Display a message dialog</p><div class="fullcomment"><div class="comment cmt"><p>       Display a message dialog</p><ul><li>JOptionPane.WARNING_MESSAGE</li></ul><p>       Example:</p><pre>jswing.Dialog.showAlert(<span class="lit">"title"</span>,<span class="lit">"Message body"</span>)</pre></div></div>
-    </li><li name="jswing.Dialog#showError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="showError(title:String,message:String,parent:java.awt.Component):Unit"></a>
-      <a id="showError(String,String,Component):Unit"></a>
+      
+    </li><li name="jswing.ValueModel#set" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="set(a:A):Unit"></a>
+      <a id="set(A):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">showError</span><span class="params">(<span name="title">title: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parent">parent: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">set</span><span class="params">(<span name="a">a: <span class="extype" name="jswing.ValueModel.A">A</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@showError(title:String,message:String,parent:java.awt.Component):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@set(a:A):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">       Displays an error dialog</p><div class="fullcomment"><div class="comment cmt"><p>       Displays an error dialog</p><ul><li>JOptionPane.ERROR_MESSAGE</li></ul><p>       Example:</p><pre>jswing.Dialog.showInfo(<span class="lit">"title"</span>,<span class="lit">"Message body"</span>)</pre></div></div>
-    </li><li name="jswing.Dialog#showInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="showInfo(title:String,message:String,parent:java.awt.Component):Unit"></a>
-      <a id="showInfo(String,String,Component):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">showInfo</span><span class="params">(<span name="title">title: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parent">parent: <span class="extype" name="java.awt.Component">Component</span> = <span class="symbol">null</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@showInfo(title:String,message:String,parent:java.awt.Component):Unit" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">       Displays an information dialog</p><div class="fullcomment"><div class="comment cmt"><p>       Displays an information dialog</p><ul><li>JOptionPane.INFORMATION_MESSAGE</li></ul><p>       Example:</p><pre>jswing.Dialog.showInfo(<span class="lit">"title"</span>,<span class="lit">"Message body"</span>)</pre></div></div>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -554,7 +529,7 @@ returns false otherwise.
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -571,11 +546,45 @@ returns false otherwise.
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@toString():String" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@toString():String" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="jswing.ValueModel#trigger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trigger():Unit"></a>
+      <a id="trigger():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trigger</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@trigger():Unit" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.ValueModel#update" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="update(a:A):Unit"></a>
+      <a id="update(A):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">update</span><span class="params">(<span name="a">a: <span class="extype" name="jswing.ValueModel.A">A</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ValueModel@update(a:A):Unit" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -588,7 +597,7 @@ returns false otherwise.
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@wait():Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@wait():Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -611,7 +620,7 @@ returns false otherwise.
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -634,7 +643,7 @@ returns false otherwise.
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#jswing.Dialog$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../index.html#jswing.ValueModel@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

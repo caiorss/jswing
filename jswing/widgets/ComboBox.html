@@ -671,6 +671,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComboBox → ItemSelectable</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#addItemUnique" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addItemUnique(label:String,value:A,selectLast:Boolean):Unit"></a>
+      <a id="addItemUnique(String,A,Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addItemUnique</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="jswing.widgets.ComboBox.A">A</span></span>, <span name="selectLast">selectLast: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@addItemUnique(label:String,value:A,selectLast:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Add item if label doesn't exist.</p><div class="fullcomment"><div class="comment cmt"><p>Add item if label doesn't exist. It doesn't allow repeated labels.</p></div></div>
     </li><li name="java.awt.Component#addKeyListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addKeyListener(x$1:java.awt.event.KeyListener):Unit"></a>
       <a id="addKeyListener(KeyListener):Unit"></a>
@@ -909,6 +926,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#clear" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="clear():Unit"></a>
+      <a id="clear():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clear</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@clear():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -2693,6 +2727,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComboBox</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#getLabels" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getLabels():scala.collection.immutable.IndexedSeq[String]"></a>
+      <a id="getLabels():IndexedSeq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLabels</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.immutable.IndexedSeq">IndexedSeq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@getLabels():scala.collection.immutable.IndexedSeq[String]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Container#getLayout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLayout():java.awt.LayoutManager"></a>
       <a id="getLayout():LayoutManager"></a>
@@ -3211,18 +3262,35 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComboBox → ItemSelectable</dd></dl></div>
     </li><li name="jswing.widgets.ComboBox#getSelectedValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getSelectedValue():A"></a>
-      <a id="getSelectedValue():A"></a>
+      <a id="getSelectedValue():Option[A]"></a>
+      <a id="getSelectedValue():Option[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getSelectedValue</span><span class="params">()</span><span class="result">: <span class="extype" name="jswing.widgets.ComboBox.A">A</span></span>
+        <span class="name">getSelectedValue</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.ComboBox@getSelectedValue():A" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.ComboBox@getSelectedValue():Option[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ComboBox#getSelectedValueOrError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getSelectedValueOrError():A"></a>
+      <a id="getSelectedValueOrError():A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelectedValueOrError</span><span class="params">()</span><span class="result">: <span class="extype" name="jswing.widgets.ComboBox.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@getSelectedValueOrError():A" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -4162,6 +4230,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#isSelectEventEnabled" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isSelectEventEnabled():Boolean"></a>
+      <a id="isSelectEventEnabled():Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isSelectEventEnabled</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@isSelectEventEnabled():Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Component#isShowing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isShowing():Boolean"></a>
       <a id="isShowing():Boolean"></a>
@@ -4233,6 +4318,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
                 <span class="name">@Transient</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#labelExists" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="labelExists(label:String):Boolean"></a>
+      <a id="labelExists(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">labelExists</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@labelExists(label:String):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Container#list" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="list(x$1:java.io.PrintWriter,x$2:Int):Unit"></a>
       <a id="list(PrintWriter,Int):Unit"></a>
@@ -4382,6 +4484,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@onSelect(action:=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ComboBox#onSelectItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onSelectItem(handler:A=&gt;Unit):jswing.EventDispose"></a>
+      <a id="onSelectItem((A)⇒Unit):EventDispose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onSelectItem</span><span class="params">(<span name="handler">handler: (<span class="extype" name="jswing.widgets.ComboBox.A">A</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="../EventDispose.html" class="extype" name="jswing.EventDispose">EventDispose</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@onSelectItem(handler:A=&gt;Unit):jswing.EventDispose" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -5576,6 +5695,40 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#selectFirst" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="selectFirst():Unit"></a>
+      <a id="selectFirst():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">selectFirst</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@selectFirst():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.ComboBox#selectLabel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="selectLabel(label:String):Unit"></a>
+      <a id="selectLabel(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">selectLabel</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@selectLabel(label:String):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Select item which contains a given label.</p>
     </li><li name="javax.swing.JComboBox#selectWithKeyChar" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="selectWithKeyChar(x$1:Char):Boolean"></a>
       <a id="selectWithKeyChar(Char):Boolean"></a>
