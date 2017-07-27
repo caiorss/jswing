@@ -3,15 +3,18 @@ import jswing.Dialog.DirChooser
 import jswing.widgets.{Frame, Button, ListBox, PictureBox, ComboBox}
 
 
+val dirModel = new jswing.ValueModel[Option[String]](None)
+
 val chooser = new DirChooser(title="Select a directory with images.")
   .withHome()
 
-val buttonOpen  = new Button("Open")
-val buttonClose = new Button("Close")
+val buttonOpen   = new Button("Open", toolTip = "Open a directory containing images")
+val buttonClose  = new Button("Close", toolTip = "Close current directory.")
+val buttonRename = new Button("Rename", toolTip = "Rename selected file.")
 
-//val currentDir  = new javax.swing.JTextField(50)
-val currentDir = new ComboBox[String]()
-currentDir.addItem("None", "None")
+//val dirComboBox  = new javax.swing.JTextField(50)
+val dirComboBox = new ComboBox[String]()
+dirComboBox.addItem("None", "None")
 
 
 val filesListBox = new ListBox[String]()
@@ -28,7 +31,8 @@ val frame = new Frame(
     top =  new jswing.panel.FlowPanelLeft(
       buttonOpen,
       buttonClose,
-      currentDir
+      buttonRename,
+      dirComboBox
     ),
     centerScroll  = pictureBox,
     leftScroll    = filesListBox
@@ -39,10 +43,23 @@ val frame = new Frame(
 
 val imageExtensions = Array(".png", ".jpg", ".jpeg", ".gif", ".tiff", ".PNG", ".JPEG", ".JPG")
 
+def renameFileInDir(file: String, newName: String){
+  val f = new java.io.File(file)
+  f.renameTo(new java.io.File(f.getParent(), newName))
+}
+
+def getFileName(file: String) = {
+  new java.io.File(file).getName()
+}
+
 def fileHasExtension(exts: Array[String]) = (file: String) =>
   exts.exists(e => file.endsWith(e))
 
 val isIMageFile = fileHasExtension(imageExtensions)
+
+def isDirectory(path: String) =
+  new java.io.File(path).isDirectory()
+
 
 def getImageFiles(path: String) = {
   new java.io.File(path).listFiles()
@@ -50,8 +67,7 @@ def getImageFiles(path: String) = {
 }
 
 def showDirectory(path: String){
-  filesListBox.clear()
-  currentDir.addItemUnique(path, path, selectLast = true)
+  filesListBox.clear()  
 
   jswing.JUtils.invokeLater{
     val files = getImageFiles(path)
@@ -66,22 +82,57 @@ def showDirectory(path: String){
 def clear() {
   filesListBox.clear()
   pictureBox.clear()
-  currentDir.setSelectedIndex(0)
-  //currentDir.clear()
+  dirComboBox.setSelectedIndex(0)
+  //dirComboBox.clear()
 }
+
+//-------- Set up events ---------------- //
+
+dirModel logChanges ("Current path = ")
+
+
+dirModel onChangeValue( path =>  path match {
+
+  case Some(p) if !isDirectory(p) => ()
+
+  case Some(p)
+      => {
+        showDirectory(p)
+        dirComboBox.addItemUnique(p, p, selectLast = true)
+        dirComboBox.selectLabel(p)
+        chooser.setDirectory(p)
+      }
+  case None    => clear()
+})
+
 
 buttonOpen.onClick {
-  chooser.run() foreach showDirectory
+  chooser.run() foreach { file => dirModel() = Some(file) }
 }
 
-buttonClose.onClick { clear() }
+buttonClose.onClick {
+  dirModel() = None
+}
 
-
-currentDir.onSelectItem{ path =>
+val dispComboBox = dirComboBox.onSelectItem{ path =>
+  println("ComboBox event")
   path match {
-    case "None" => clear()
-    case  p     => showDirectory(p)
+    case "None" => dirModel() = None
+    case  p     => dirModel() = Some(p)
   }
 }
 
+// dispComboBox.setEnabled(false)
+
 filesListBox.onSelectItem { pictureBox.setImageFromFile }
+
+
+buttonRename.onClick {
+  for {
+    file <- filesListBox.getSelectedItemValue()
+    name <- jswing.Dialog.prompt("New name", getFileName(file))
+  } renameFileInDir(file, name)
+
+  dirModel.trigger()
+}
+
