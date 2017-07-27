@@ -243,6 +243,16 @@ object Dialog {
       this
     }
 
+    /** Set current directory */
+    def setDirectory(path: String) = {
+      fch.setCurrentDirectory(new java.io.File(path))
+    }
+
+    /** Get current directory */
+    def getDirectory(path: String) = {
+      fch.getCurrentDirectory().getPath()
+    }
+
    /**  Run file selection dialog and returning 
     *  the selected directory or None if no directory 
     *  is selected.
