@@ -75,6 +75,12 @@ object Dialog {
      )
   }
 
+  /** Prompt the user some question. Equivalent to JOptionPane.showInputDialog */
+  def prompt(title: String, message: String = "", parent: Component = null) = {
+    val resp = JOptionPane.showInputDialog(parent, title, message)
+    Option(resp)
+  }
+
   /** 
     * Yes or no message dialog. If the user answer yes returns true and
     * returns false otherwise. 
