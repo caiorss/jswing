@@ -75,6 +75,20 @@ object Dialog {
      )
   }
 
+  /** 
+    * Yes or no message dialog. If the user answer yes returns true and
+    * returns false otherwise. 
+    */
+  def questionYesNo(title: String, message: String, parent: Component = null) = {
+    val resp = JOptionPane.showConfirmDialog(
+      parent,
+      message,
+      title,
+      JOptionPane.YES_NO_OPTION
+    )
+    resp == 0 
+  }
+
    /** Opens a JColorChooser color choosing dialog.  */
    def chooseColor(msg: String = "Choose a color", default: java.awt.Color = null) = {
     val col = javax.swing.JColorChooser.showDialog(null, msg, default)
