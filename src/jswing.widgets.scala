@@ -92,12 +92,15 @@ class Button(
   onClick: => Unit        = ()
 ) extends javax.swing.JButton {
 
+  import java.awt.event.KeyEvent
+  import javax.swing.JComponent
+  import javax.swing.KeyStroke
+
   init()
 
   private def init(){
     this.setText(text)
     this.setEnabled(enabled)
-
 
 
     if (bgColor != null) this.setBackground(bgColor)
@@ -112,6 +115,24 @@ class Button(
     jswing.JUtils.invokeLater { this.setForeground(jswing.JUtils.getColorOrNull(fgName))}
 
     this.onClick{ onClick }
+
+    // Focus and run button's action when user hit "return", aka "Enter", key
+    //
+    this.registerKeyboardAction(
+      this.getActionForKeyStroke(
+        KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, false)),
+      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false),
+      JComponent.WHEN_FOCUSED
+    )
+
+    this.registerKeyboardAction(
+      this.getActionForKeyStroke(
+        KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true)),
+      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true),
+      JComponent.WHEN_FOCUSED
+    )
+
+
   }
 
   def onClick (handler: => Unit)  = {
