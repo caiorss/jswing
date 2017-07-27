@@ -22,3 +22,5 @@ dev/*
 dev-notes-images/*
 *.project
 *.pdf
+scratch*
+draft*
