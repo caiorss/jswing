@@ -186,6 +186,9 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
       this.setSelectedIndex(this.getItemCount() - 1)
   }
 
+
+  def selectFirst() = this.setSelectedIndex(0)
+
   def getSelectedValue() = {
     val item = Option(this.getSelectedItem())
     item map (_.asInstanceOf[ComboItem[A]].value)
