@@ -5,12 +5,11 @@
   */
 package jswing
 
-import javax.swing.JOptionPane
-
-
 
 /** Java swing dialogs (aka Message boxes) to display information or warnings. */
 object Dialog {
+  import javax.swing.JOptionPane
+  import java.awt.Component
 
   /** 
        Display a message dialog
@@ -24,9 +23,9 @@ object Dialog {
     }}}
       
    */
-  def showAlert(title: String, message: String){
+  def showAlert(title: String, message: String, parent: Component = null){
     JOptionPane.showMessageDialog(
-         null
+         parent
         ,message
         ,title
         ,JOptionPane.WARNING_MESSAGE
@@ -45,9 +44,9 @@ object Dialog {
         jswing.Dialog.showInfo("title","Message body")
     }}}
     */
-  def showInfo(title: String, message: String){
+  def showInfo(title: String, message: String, parent: Component = null){
     JOptionPane.showMessageDialog(
-         null
+         parent
         ,message
         ,title
         ,JOptionPane.INFORMATION_MESSAGE
@@ -67,9 +66,9 @@ object Dialog {
     }}}
 
     */
-  def showError(title: String, message: String){
+  def showError(title: String, message: String, parent: Component = null){
     JOptionPane.showMessageDialog(
-         null
+         parent
         ,message
         ,title
         ,JOptionPane.ERROR_MESSAGE
