@@ -661,6 +661,33 @@ object Event{
   }
 
 
+  /** Run some action when the JVM shutdowns using the Shutdowns Hook API.
+
+      See: 
+
+      - [[https://docs.oracle.com/javase/8/docs/technotes/guides/lang/hook-design.html]]
+
+
+      - [[https://stackoverflow.com/questions/914666/how-to-capture-system-exit-event]]
+
+     Example: It will print the message 'Exit application' when the
+     JVM shutdowns the program ends its execution.
+
+     {{{
+         jswing.Event.onAppExit{ println("Exit application") }
+     }}}
+   */
+  def onAppExit(action: => Unit) = {
+    val thread = new java.lang.Thread(){
+      override def run() = action
+    }
+    val runtime = java.lang.Runtime.getRuntime()
+    runtime.addShutdownHook(thread)
+    () => runtime.removeShutdownHook(thread)
+  }
+
+  
+
 } // ------ End of object Event ------- // 
 
 
