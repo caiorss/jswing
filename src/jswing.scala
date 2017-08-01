@@ -277,6 +277,17 @@ object Dialog {
       Option(fch.getSelectedFile()).foreach{ file => fn(file.getPath()) }
     }
 
+    def onSelect(action: Option[String] => Unit)  = {
+      val listener = new java.awt.event.ActionListener{
+        def actionPerformed(evt: java.awt.event.ActionEvent){
+          val file = Option(fch.getSelectedFile()).map(_.getPath())
+          action(file)
+        }
+      }
+      fch.addActionListener(listener)
+      () => fch.removeActionListener(listener)
+    }
+
     def run() = select()
 
   } // End of class DirChooser
