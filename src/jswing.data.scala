@@ -129,6 +129,8 @@ class ListModel[A]{
     this.triggerOnChange()
   }
 
+  def update(seq: Seq[A]) = this.setFrom(seq)
+
   def apply(index: Int) = list(index)
 
   def clear() = {
