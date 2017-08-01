@@ -123,6 +123,12 @@ class ListModel[A]{
     this.triggerOnChange()
   }
 
+  def setFromArray(seq: Array[A]) = {
+    list.clear()
+    list.appendAll(seq)
+    this.triggerOnChange()
+  }
+
   def apply(index: Int) = list(index)
 
   def clear() = {
