@@ -743,9 +743,31 @@ class ValueCell[A](value: => A){
 
 
 
+object ValueCell {
+
+  def bind[A, B](a: ValueCell[A])(action: => B) = {
+    val z = new ValueCell(action)
+    a onChange z.compute
+    z
   }
 
+  def bind2[A, B, C](a: ValueCell[A], b: ValueCell[B])(action: => C) =  {
+    val z = new ValueCell(action)
+    a onChange z.compute
+    b onChange z.compute
+    z
   }
 
+  def bindDouble(cells: ValueCell[Double]*)(action: => Double) = {
+    val r = new ValueCell(action)
+    for (c <- cells) { c onChange r.compute }
+    r
+  }
+
+  def bindInt(cells: ValueCell[Int]*)(action: => Int) = {
+    val r = new ValueCell(action)
+    for (c <- cells) { c onChange r.compute }
+    r
+  }
 
 }
