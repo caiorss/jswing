@@ -143,7 +143,7 @@ class Button(
 
 
 
-case class ItemAdapater[A](label: String, value: A) {
+case class ItemAdapter[A](label: String, value: A) {
   override def toString() = label
 }
 
@@ -185,8 +185,8 @@ case class ItemAdapater[A](label: String, value: A) {
     }}}
 
 */
-class ComboBox[A] extends javax.swing.JComboBox[ItemAdapater[A]] {
-  private val model = new javax.swing.DefaultComboBoxModel[ItemAdapater[A]]()
+class ComboBox[A] extends javax.swing.JComboBox[ItemAdapter[A]] {
+  private val model = new javax.swing.DefaultComboBoxModel[ItemAdapter[A]]()
 
   private val labelDict = scala.collection.mutable.Map[String, Int]()
 
@@ -204,13 +204,13 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapater[A]] {
   def isSelectEventEnabled() = enableSelect
 
   def addItem(label: String, value: A) = {
-    model.addElement(ItemAdapater(label, value))
+    model.addElement(ItemAdapter(label, value))
   }
 
   /** Add item if label doesn't exist. It doesn't allow repeated labels. */
   def addItemUnique(label: String, value: A, selectLast: Boolean = false) = {
     if (!this.labelExists(label)){
-      model.addElement(ItemAdapater(label, value))
+      model.addElement(ItemAdapter(label, value))
       labelDict += label -> (this.getItemCount() - 1)
     }
 
@@ -238,7 +238,7 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapater[A]] {
 
   def getSelectedValue() = {
     val item = Option(this.getSelectedItem())
-    item map (_.asInstanceOf[ItemAdapater[A]].value)
+    item map (_.asInstanceOf[ItemAdapter[A]].value)
   }
 
   def getSelectedValueOrError() = {
@@ -364,8 +364,8 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapater[A]] {
     }}}
 
   */
-class ListBox[A] extends javax.swing.JList[ItemAdapater[A]] {
-  private val model  = new javax.swing.DefaultListModel[ItemAdapater[A]]()
+class ListBox[A] extends javax.swing.JList[ItemAdapter[A]] {
+  private val model  = new javax.swing.DefaultListModel[ItemAdapter[A]]()
 
   // This flag avoids firing the event when an item is removed.
   // it also allows temporarily disabling events.
@@ -379,11 +379,11 @@ class ListBox[A] extends javax.swing.JList[ItemAdapater[A]] {
   }
 
   def addItem(label: String, value: A) =
-    model.addElement(ItemAdapater(label, value))
+    model.addElement(ItemAdapter(label, value))
 
   def addItems(elemList: Seq[(String, A)])  = {
     for ((label, value) <- elemList) 
-      model.addElement(ItemAdapater(label, value))    
+      model.addElement(ItemAdapter(label, value))
   }
 
   def getSelectedItem() = {
