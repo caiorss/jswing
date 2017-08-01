@@ -80,6 +80,23 @@ object ValueModel {
   }
 
 
+  def bindSpinner[A](valm: ValueModel[A], spinner: javax.swing.JSpinner) = {
+    // Set initial widget value
+    spinner.setValue(valm.get())
+    // Subscribe widget to change event
+    valm.onChange {() => spinner.setValue(valm.get())}
+
+    val listener = new javax.swing.event.ChangeListener{
+      def stateChanged(evt: javax.swing.event.ChangeEvent){
+        valm.set( spinner.getValue().asInstanceOf[A])
+      }
+    }
+
+    // Subscribe value model to widget evet
+    spinner.addChangeListener(listener)
+  }
+
+
 
 class ListModel[A]{
   private var changeObservers: Set[() => Unit] = Set()
