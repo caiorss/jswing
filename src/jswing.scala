@@ -267,10 +267,18 @@ object Dialog {
     *  the selected directory or None if no directory 
     *  is selected.
     */         
-    def run() = {
+    def select() = {
       fch.showOpenDialog(null)
       Option(fch.getSelectedFile()).map(_.getPath())
     }
+
+    def selectRun(fn: String => Unit) = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).foreach{ file => fn(file.getPath()) }
+    }
+
+    def run() = select()
+
   } // End of class DirChooser
   
 
