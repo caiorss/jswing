@@ -297,7 +297,7 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapter[A]] {
 
     - def clear(): Unit
 
-    - def getSelectedItem(): Option[ItemAdapater[A]]
+    - def getSelectedItem(): Option[ItemAdapter[A]]
 
     - def getSelectedItemLabel(): Option[String]
 
