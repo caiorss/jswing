@@ -422,6 +422,20 @@ class ListBox[A] extends javax.swing.JList[ItemAdapter[A]] {
   def onSelect(handler: => Unit) = 
     jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
 
+
+  def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
+    val update = () => {
+      jswing.JUtils.invokeLater { 
+        model.clear()
+        lmodel foreach { e =>
+          model.addElement(ItemAdapter[A](format(e), e))
+        }
+      }
+    }
+    update()
+    lmodel.onChange(update)
+  }
+
   def onSelectItem(handler: A => Unit) = {
 
     var enabled = true
