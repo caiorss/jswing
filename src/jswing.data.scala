@@ -1,7 +1,7 @@
 package jswing.data 
 
 
-class ValueCell[A](value: => A){
+class ValueModel[A](value: => A){
   private var observers: Set[() => Unit] = Set()
   private var state = value
 
@@ -52,29 +52,29 @@ class ValueCell[A](value: => A){
 
 
 
-object ValueCell {
+object ValueModel {
 
-  def bind[A, B](a: ValueCell[A])(action: => B) = {
-    val z = new ValueCell(action)
+  def bind[A, B](a: ValueModel[A])(action: => B) = {
+    val z = new ValueModel(action)
     a onChange z.compute
     z
   }
 
-  def bind2[A, B, C](a: ValueCell[A], b: ValueCell[B])(action: => C) =  {
-    val z = new ValueCell(action)
+  def bind2[A, B, C](a: ValueModel[A], b: ValueModel[B])(action: => C) =  {
+    val z = new ValueModel(action)
     a onChange z.compute
     b onChange z.compute
     z
   }
 
-  def bindDouble(cells: ValueCell[Double]*)(action: => Double) = {
-    val r = new ValueCell(action)
+  def bindDouble(cells: ValueModel[Double]*)(action: => Double) = {
+    val r = new ValueModel(action)
     for (c <- cells) { c onChange r.compute }
     r
   }
 
-  def bindInt(cells: ValueCell[Int]*)(action: => Int) = {
-    val r = new ValueCell(action)
+  def bindInt(cells: ValueModel[Int]*)(action: => Int) = {
+    val r = new ValueModel(action)
     for (c <- cells) { c onChange r.compute }
     r
   }
