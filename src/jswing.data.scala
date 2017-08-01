@@ -118,7 +118,8 @@ class ListModel[A]{
   }
 
   def setFrom(seq: Seq[A]) = {
-    for (s <- seq) list.append(s)
+    list.clear()
+    list.appendAll(seq)
     this.triggerOnChange()
   }
 
