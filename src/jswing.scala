@@ -195,6 +195,16 @@ object Dialog {
       Option(fch.getSelectedFile()).map(_.getPath())
     }
 
+    def select() = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).map(_.getPath())
+    }
+
+    def selectRun(fn: String => Unit) = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).foreach{ file => fn(file.getPath()) }
+    }
+
   } // End of class DirChooser
 
 
