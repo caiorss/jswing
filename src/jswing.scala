@@ -288,6 +288,17 @@ object Dialog {
       () => fch.removeActionListener(listener)
     }
 
+    def bindData(path: jswing.data.ValueModel[Option[String]]) = {
+      path.get() foreach this.setDirectory
+      path.onChangeRun { path.get() foreach this.setDirectory}
+      this.onSelect{
+        fileOpt => fileOpt match {
+          case Some(file)  => path() = Some(file)
+          case None        => ()
+        }
+      }
+    }
+
     def run() = select()
 
   } // End of class DirChooser
