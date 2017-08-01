@@ -282,6 +282,20 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapter[A]] {
     )
   }
 
+
+  def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
+    val update = () => {
+      jswing.JUtils.invokeLater {
+        this.removeAllItems()
+        lmodel foreach { e =>
+          model.addElement(ItemAdapter[A](format(e), e))
+        }
+      }
+    }
+    update()
+    lmodel.onChange(update)
+  }
+
 }
 
 
