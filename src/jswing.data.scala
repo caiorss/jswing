@@ -97,6 +97,27 @@ object ValueModel {
   }
 
 
+  def bindFTextField[A](valm: ValueModel[A], entry: javax.swing.JFormattedTextField) = {
+    // Set initial widget value
+    entry.setValue(valm.get())
+    // Subscribe widget to change event
+    valm.onChange{ () => entry.setValue(valm.get()) }
+
+    val listener = new java.beans.PropertyChangeListener{
+      def propertyChange(evt: java.beans.PropertyChangeEvent){
+        valm.set(entry.getValue.asInstanceOf[A])
+      }
+    }
+    entry.addPropertyChangeListener("value", listener)
+  }
+
+
+  //def bindTextFieldAsOutput[A](valm: ValueModel[A], tfield: 
+
+
+} // End of ValueModel 
+
+
 
 class ListModel[A]{
   private var changeObservers: Set[() => Unit] = Set()
