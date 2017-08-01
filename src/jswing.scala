@@ -692,15 +692,9 @@ object Event{
 
 
 
-class ValueModel[A](a: A = null){
   private var observers: Set[() => Unit] = Set()
-  private var state: A = a
 
 
-  def onChangeRun(action: => Unit) = {
-    val f = () => action 
-    observers += f
-    () => observers -= f
   }
 
   def onChange(fn: () => Unit) = {
@@ -708,36 +702,14 @@ class ValueModel[A](a: A = null){
     () => observers -= fn
   }
 
-  def onChangeValue(fn: A => Unit) = {
-    this.onChangeRun{ fn(this.get()) }
-  }
   
-  def trigger() =
-    for (fn <- observers) { fn()}
 
-  def foreach(fn: () => Unit) = {
-    observers += fn 
   }
 
-  def get() = state
 
-  def set(a: A) = {
-    state = a
-    this.trigger()
   }
 
-  def logChanges(label: String) = 
-    this.onChangeRun{ println(s"ValueModel ${label} changed to ${this.get}") }
-  
-  def update(a: A) = {
-    state = a
-    this.trigger()
   }
 
-  def apply() =
-    this.get()
 
-  def apply(fn: A => A) = 
-    this.update(fn(this.get()))
-  
 }
