@@ -79,4 +79,62 @@ object ValueModel {
     r
   }
 
+
+
+class ListModel[A]{
+  private var changeObservers: Set[() => Unit] = Set()
+  private var appendObservers: Set[A => Unit] = Set()
+  private val list = scala.collection.mutable.ListBuffer[A]()
+
+  override def toString() = list.toString()
+
+  private def triggerOnChange() =
+    for (fn <- changeObservers) { fn()}
+
+  private def triggerOnAppend(value: A) =
+    for (fn <- appendObservers) { fn(value)}
+
+  def getListBuffer() = list
+
+  def foreach(fn: A => Unit) = list foreach fn
+
+  def onChange(fn: () => Unit) = {
+    changeObservers += fn
+    () => changeObservers -= fn
+  }
+
+  def onAppend(fn: A=> Unit) = {
+    appendObservers += fn
+    () => appendObservers -= fn
+  }
+
+  def onChangeRun(fn: => Unit) =
+    this.onChange(() => fn)
+
+  def append(value: A) = {
+    list.append(value)
+    this.triggerOnChange()
+    this.triggerOnAppend(value)
+  }
+
+  def setFrom(seq: Seq[A]) = {
+    for (s <- seq) list.append(s)
+    this.triggerOnChange()
+  }
+
+  def apply(index: Int) = list(index)
+
+  def clear() = {
+    list.clear()
+    this.triggerOnChange()
+  }
+
+  def last() = this.list.last
+
+  def head() = this.list.head
+
+  def logAppend() = this.onAppend{ elem =>
+    println("Last element = " + elem)
+  }
+
 }
