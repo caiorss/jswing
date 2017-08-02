@@ -132,6 +132,11 @@ class ListModel[A]{
   private def triggerOnAppend(value: A) =
     for (fn <- appendObservers) { fn(value)}
 
+
+  def contains(elem: A) = {
+    list.contains(elem)
+  }
+
   def getListBuffer() = list
 
   def foreach(fn: A => Unit) = list foreach fn
