@@ -45,7 +45,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">ComboBox</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
+        <span class="name">ComboBox</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
       </span>
       </h4>
       
@@ -78,7 +78,7 @@ combo.addItem(<span class="lit">"EUR"</span>, <span class="lit">"Euro"</span>)
 combo.addItem(<span class="lit">"JPY"</span>, <span class="lit">"Japanese Yen"</span>)
 combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Renminbi"</span>)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.widgets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]], <span class="extype" name="javax.accessibility.Accessible">Accessible</span>, <span class="extype" name="java.awt.event.ActionListener">ActionListener</span>, <span class="extype" name="javax.swing.event.ListDataListener">ListDataListener</span>, <span class="extype" name="java.util.EventListener">EventListener</span>, <span class="extype" name="java.awt.ItemSelectable">ItemSelectable</span>, <span class="extype" name="javax.swing.JComponent">JComponent</span>, <span class="extype" name="javax.swing.TransferHandler.HasGetTransferHandler">HasGetTransferHandler</span>, <span class="extype" name="java.awt.Container">Container</span>, <span class="extype" name="java.awt.Component">Component</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="java.awt.MenuContainer">MenuContainer</span>, <span class="extype" name="java.awt.image.ImageObserver">ImageObserver</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]], <span class="extype" name="javax.accessibility.Accessible">Accessible</span>, <span class="extype" name="java.awt.event.ActionListener">ActionListener</span>, <span class="extype" name="javax.swing.event.ListDataListener">ListDataListener</span>, <span class="extype" name="java.util.EventListener">EventListener</span>, <span class="extype" name="java.awt.ItemSelectable">ItemSelectable</span>, <span class="extype" name="javax.swing.JComponent">JComponent</span>, <span class="extype" name="javax.swing.TransferHandler.HasGetTransferHandler">HasGetTransferHandler</span>, <span class="extype" name="java.awt.Container">Container</span>, <span class="extype" name="java.awt.Component">Component</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="java.awt.MenuContainer">MenuContainer</span>, <span class="extype" name="java.awt.image.ImageObserver">ImageObserver</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -639,14 +639,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       
     </li><li name="javax.swing.JComboBox#addItem" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addItem(x$1:E):Unit"></a>
-      <a id="addItem(ComboItem[A]):Unit"></a>
+      <a id="addItem(ItemAdapter[A]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addItem</span><span class="params">(<span name="arg0">arg0: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">addItem</span><span class="params">(<span name="arg0">arg0: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@addItem(x$1:E):Unit" title="Permalink" target="_top">
@@ -892,6 +892,23 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="jswing.widgets.ComboBox#bindData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bindData(lmodel:jswing.data.ListModel[A])(format:A=&gt;String):()=&gt;Unit"></a>
+      <a id="bindData(ListModel[A])((A)⇒String):()⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bindData</span><span class="params">(<span name="lmodel">lmodel: <a href="../data/ListModel.html" class="extype" name="jswing.data.ListModel">ListModel</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>)</span><span class="params">(<span name="format">format: (<span class="extype" name="jswing.widgets.ComboBox.A">A</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.ComboBox@bindData(lmodel:jswing.data.ListModel[A])(format:A=&gt;String):()=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Component#checkImage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkImage(x$1:java.awt.Image,x$2:Int,x$3:Int,x$4:java.awt.image.ImageObserver):Int"></a>
       <a id="checkImage(Image,Int,Int,ImageObserver):Int"></a>
@@ -2644,14 +2661,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Container</dd></dl></div>
     </li><li name="javax.swing.JComboBox#getItemAt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getItemAt(x$1:Int):E"></a>
-      <a id="getItemAt(Int):ComboItem[A]"></a>
+      <a id="getItemAt(Int):ItemAdapter[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getItemAt</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>
+        <span class="name">getItemAt</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@getItemAt(x$1:Int):E" title="Permalink" target="_top">
@@ -2905,14 +2922,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
         </dd></dl></div>
     </li><li name="javax.swing.JComboBox#getModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getModel():javax.swing.ComboBoxModel[E]"></a>
-      <a id="getModel():ComboBoxModel[ComboItem[A]]"></a>
+      <a id="getModel():ComboBoxModel[ItemAdapter[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getModel</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ComboBoxModel">ComboBoxModel</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
+        <span class="name">getModel</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ComboBoxModel">ComboBoxModel</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@getModel():javax.swing.ComboBoxModel[E]" title="Permalink" target="_top">
@@ -3141,14 +3158,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
     </li><li name="javax.swing.JComboBox#getPrototypeDisplayValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPrototypeDisplayValue():E"></a>
-      <a id="getPrototypeDisplayValue():ComboItem[A]"></a>
+      <a id="getPrototypeDisplayValue():ItemAdapter[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getPrototypeDisplayValue</span><span class="params">()</span><span class="result">: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>
+        <span class="name">getPrototypeDisplayValue</span><span class="params">()</span><span class="result">: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@getPrototypeDisplayValue():E" title="Permalink" target="_top">
@@ -3175,14 +3192,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent</dd></dl></div>
     </li><li name="javax.swing.JComboBox#getRenderer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getRenderer():javax.swing.ListCellRenderer[_&gt;:E]"></a>
-      <a id="getRenderer():ListCellRenderer[_&gt;:ComboItem[A]]"></a>
+      <a id="getRenderer():ListCellRenderer[_&gt;:ItemAdapter[A]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getRenderer</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
+        <span class="name">getRenderer</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@getRenderer():javax.swing.ListCellRenderer[_&gt;:E]" title="Permalink" target="_top">
@@ -3671,14 +3688,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component → ImageObserver</dd></dl></div>
     </li><li name="javax.swing.JComboBox#insertItemAt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="insertItemAt(x$1:E,x$2:Int):Unit"></a>
-      <a id="insertItemAt(ComboItem[A],Int):Unit"></a>
+      <a id="insertItemAt(ItemAdapter[A],Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">insertItemAt</span><span class="params">(<span name="arg0">arg0: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">insertItemAt</span><span class="params">(<span name="arg0">arg0: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@insertItemAt(x$1:E,x$2:Int):Unit" title="Permalink" target="_top">
@@ -6462,14 +6479,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
     </li><li name="javax.swing.JComboBox#setModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setModel(x$1:javax.swing.ComboBoxModel[E]):Unit"></a>
-      <a id="setModel(ComboBoxModel[ComboItem[A]]):Unit"></a>
+      <a id="setModel(ComboBoxModel[ItemAdapter[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setModel</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ComboBoxModel">ComboBoxModel</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setModel</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ComboBoxModel">ComboBoxModel</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@setModel(x$1:javax.swing.ComboBoxModel[E]):Unit" title="Permalink" target="_top">
@@ -6547,14 +6564,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
     </li><li name="javax.swing.JComboBox#setPrototypeDisplayValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPrototypeDisplayValue(x$1:E):Unit"></a>
-      <a id="setPrototypeDisplayValue(ComboItem[A]):Unit"></a>
+      <a id="setPrototypeDisplayValue(ItemAdapter[A]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setPrototypeDisplayValue</span><span class="params">(<span name="arg0">arg0: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setPrototypeDisplayValue</span><span class="params">(<span name="arg0">arg0: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@setPrototypeDisplayValue(x$1:E):Unit" title="Permalink" target="_top">
@@ -6564,14 +6581,14 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComboBox</dd></dl></div>
     </li><li name="javax.swing.JComboBox#setRenderer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setRenderer(x$1:javax.swing.ListCellRenderer[_&gt;:E]):Unit"></a>
-      <a id="setRenderer(ListCellRenderer[_&gt;:ComboItem[A]]):Unit"></a>
+      <a id="setRenderer(ListCellRenderer[_&gt;:ItemAdapter[A]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setRenderer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setRenderer</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="javax.swing.ListCellRenderer">ListCellRenderer</span>[_ &gt;: <a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#jswing.widgets.ComboBox@setRenderer(x$1:javax.swing.ListCellRenderer[_&gt;:E]):Unit" title="Permalink" target="_top">
@@ -7954,7 +7971,7 @@ combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Re
 
         <div id="inheritedMembers">
         <div class="parent" name="javax.swing.JComboBox">
-              <h3>Inherited from <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</h3>
+              <h3>Inherited from <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</h3>
             </div><div class="parent" name="javax.accessibility.Accessible">
               <h3>Inherited from <span class="extype" name="javax.accessibility.Accessible">Accessible</span></h3>
             </div><div class="parent" name="java.awt.event.ActionListener">

@@ -130,7 +130,7 @@ button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
     </span>
       <p class="shortcomment cmt">Enhanced Java swing checkbox.</p>
     </li><li name="jswing.widgets.ComboBox" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ComboBox[A]extendsJComboBox[jswing.widgets.ComboItem[A]]"></a>
+      <a id="ComboBox[A]extendsJComboBox[jswing.widgets.ItemAdapter[A]]"></a>
       <a id="ComboBox[A]:ComboBox[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -138,10 +138,10 @@ button2.onClick{ System.exit(<span class="num">0</span>)}</pre></div></div>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ComboBox.html"><span class="name">ComboBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
+        <a href="ComboBox.html"><span class="name">ComboBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JComboBox">JComboBox</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ComboBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.package@ComboBox[A]extendsJComboBox[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.package@ComboBox[A]extendsJComboBox[jswing.widgets.ItemAdapter[A]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -174,23 +174,6 @@ combo.addItem(<span class="lit">"AUD"</span>, <span class="lit">"Australian Doll
 combo.addItem(<span class="lit">"EUR"</span>, <span class="lit">"Euro"</span>)
 combo.addItem(<span class="lit">"JPY"</span>, <span class="lit">"Japanese Yen"</span>)
 combo.addItem(<span class="lit">"CNY"</span>, <span class="lit">"Chinese Yuan/Renminbi"</span>)</pre></div></div>
-    </li><li name="jswing.widgets.ComboItem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ComboItem[A]extendsProductwithSerializable"></a>
-      <a id="ComboItem[A]:ComboItem[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="ComboItem.html"><span class="name">ComboItem</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="jswing.widgets.ComboItem.A">A</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.package@ComboItem[A]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="jswing.widgets.Frame" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FrameextendsJFrame"></a>
       <a id="Frame:Frame"></a>
@@ -217,8 +200,25 @@ is closed.</p><pre><span class="kw">val</span> frame = <span class="kw">new</spa
  )
 
 frame.onWindowClose{ println(<span class="lit">"I was closed"</span>) }</pre></div></div>
+    </li><li name="jswing.widgets.ItemAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ItemAdapter[A]extendsProductwithSerializable"></a>
+      <a id="ItemAdapter[A]:ItemAdapter[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ItemAdapter.html"><span class="name">ItemAdapter</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="label">label: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="jswing.widgets.ItemAdapter.A">A</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.package@ItemAdapter[A]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="jswing.widgets.ListBox" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ListBox[A]extendsJList[jswing.widgets.ComboItem[A]]"></a>
+      <a id="ListBox[A]extendsJList[jswing.widgets.ItemAdapter[A]]"></a>
       <a id="ListBox[A]:ListBox[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -226,15 +226,15 @@ frame.onWindowClose{ println(<span class="lit">"I was closed"</span>) }</pre></d
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ListBox.html"><span class="name">ListBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<a href="ComboItem.html" class="extype" name="jswing.widgets.ComboItem">ComboItem</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
+        <a href="ListBox.html"><span class="name">ListBox</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="javax.swing.JList">JList</span>[<a href="ItemAdapter.html" class="extype" name="jswing.widgets.ItemAdapter">ItemAdapter</a>[<span class="extype" name="jswing.widgets.ListBox.A">A</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.package@ListBox[A]extendsJList[jswing.widgets.ComboItem[A]]" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.package@ListBox[A]extendsJList[jswing.widgets.ItemAdapter[A]]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">    JList extension that allows label and value items.</p><div class="fullcomment"><div class="comment cmt"><p>    JList extension that allows label and value items. This class also provides
-    type safe and null-safe methods to get selected label and selected items.</p><p>    Relevant methods:</p><ul><li>def addItem(label: String, value: A): Unit</li><li>def addItems(elemList: Seq[(String, A)]): Unit</li><li>def clear(): Unit</li><li>def getSelectedItem(): Option[ComboItem[A]]</li><li>def getSelectedItemLabel(): Option[String]</li><li>def getSelectedItemValue(): Option[A]</li><li>def onSelect(handler: ⇒ Unit): EventDispose</li><li>def removeItemAt(idx: Int): Unit</li><li>def removeSelectedItem(): Unit</li></ul><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{BorderPanel, ListBox}
+    type safe and null-safe methods to get selected label and selected items.</p><p>    Relevant methods:</p><ul><li>def addItem(label: String, value: A): Unit</li><li>def addItems(elemList: Seq[(String, A)]): Unit</li><li>def clear(): Unit</li><li>def getSelectedItem(): Option[ItemAdapter[A]]</li><li>def getSelectedItemLabel(): Option[String]</li><li>def getSelectedItemValue(): Option[A]</li><li>def onSelect(handler: ⇒ Unit): EventDispose</li><li>def removeItemAt(idx: Int): Unit</li><li>def removeSelectedItem(): Unit</li></ul><p>    Example:</p><pre><span class="kw">import</span> jswing.widgets.{BorderPanel, ListBox}
 <span class="kw">import</span> jswing.{Event, Dialog}
 <span class="kw">import</span> javax.swing._
 
@@ -313,17 +313,17 @@ Scala Case classes or algebraic data types.</p><p>Important methods:</p><ul><li>
   InventoryItem(<span class="lit">"Beans"</span>, <span class="num">5.0</span>, <span class="num">600</span>)
 )
 
-
-<span class="kw">def</span> itemToCol(item: InventoryItem, col: <span class="std">Int</span>) = col <span class="kw">match</span> {
-  <span class="kw">case</span> <span class="num">0</span> <span class="kw">=&gt;</span> item.name.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> <span class="num">1</span> <span class="kw">=&gt;</span> item.price.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> <span class="num">2</span> <span class="kw">=&gt;</span> item.number.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> _ <span class="kw">=&gt;</span> error(<span class="lit">"Error: Column number out of range."</span>)
-}
-
 <span class="kw">val</span> tableModel = <span class="kw">new</span> MTableModel[InventoryItem](
+
   columns   = <span class="std">Array</span>(<span class="lit">"Name"</span>, <span class="lit">"Price"</span>, <span class="lit">"Quantity"</span>),
-  columnsFn = itemToCol
+
+  <span class="cmt">// Function that converts each item into a row</span>
+  itemToRow = (item: InventoryItem, col: <span class="std">Int</span>) <span class="kw">=&gt;</span> col <span class="kw">match</span> {
+    <span class="kw">case</span> <span class="num">0</span> <span class="kw">=&gt;</span> item.name
+    <span class="kw">case</span> <span class="num">1</span> <span class="kw">=&gt;</span> item.price
+    <span class="kw">case</span> <span class="num">2</span> <span class="kw">=&gt;</span> item.number
+    <span class="kw">case</span> _ <span class="kw">=&gt;</span> error(<span class="lit">"Error: Column number out of range."</span>)
+  }
 )
 
 tableModel.addItems(products)

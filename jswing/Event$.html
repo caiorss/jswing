@@ -415,6 +415,24 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="jswing.Event#onAppExit" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onAppExit(action:=&gt;Unit):()=&gt;Boolean"></a>
+      <a id="onAppExit(⇒Unit):()⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onAppExit</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.Event$@onAppExit(action:=&gt;Unit):()=&gt;Boolean" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Run some action when the JVM shutdowns using the Shutdowns Hook API.</p><div class="fullcomment"><div class="comment cmt"><p>Run some action when the JVM shutdowns using the Shutdowns Hook API.</p><p>      See:</p><ul><li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/lang/hook-design.html" target="_blank">https://docs.oracle.com/javase/8/docs/technotes/guides/lang/hook-design.html</a></li><li><a href="https://stackoverflow.com/questions/914666/how-to-capture-system-exit-event" target="_blank">https://stackoverflow.com/questions/914666/how-to-capture-system-exit-event</a></li></ul><p>     Example: It will print the message 'Exit application' when the
+     JVM shutdowns the program ends its execution.</p><pre>jswing.Event.onAppExit{ println(<span class="lit">"Exit application"</span>) }</pre></div></div>
     </li><li name="jswing.Event#onButtonClick" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="onButtonClick(button:javax.swing.JButton)(handler:=&gt;Unit):jswing.EventDispose"></a>
       <a id="onButtonClick(JButton)(⇒Unit):EventDispose"></a>

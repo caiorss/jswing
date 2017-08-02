@@ -63,17 +63,17 @@ Scala Case classes or algebraic data types.</p><p>Important methods:</p><ul><li>
   InventoryItem(<span class="lit">"Beans"</span>, <span class="num">5.0</span>, <span class="num">600</span>)
 )
 
-
-<span class="kw">def</span> itemToCol(item: InventoryItem, col: <span class="std">Int</span>) = col <span class="kw">match</span> {
-  <span class="kw">case</span> <span class="num">0</span> <span class="kw">=&gt;</span> item.name.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> <span class="num">1</span> <span class="kw">=&gt;</span> item.price.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> <span class="num">2</span> <span class="kw">=&gt;</span> item.number.asInstanceOf[<span class="std">Object</span>]
-  <span class="kw">case</span> _ <span class="kw">=&gt;</span> error(<span class="lit">"Error: Column number out of range."</span>)
-}
-
 <span class="kw">val</span> tableModel = <span class="kw">new</span> MTableModel[InventoryItem](
+
   columns   = <span class="std">Array</span>(<span class="lit">"Name"</span>, <span class="lit">"Price"</span>, <span class="lit">"Quantity"</span>),
-  columnsFn = itemToCol
+
+  <span class="cmt">// Function that converts each item into a row</span>
+  itemToRow = (item: InventoryItem, col: <span class="std">Int</span>) <span class="kw">=&gt;</span> col <span class="kw">match</span> {
+    <span class="kw">case</span> <span class="num">0</span> <span class="kw">=&gt;</span> item.name
+    <span class="kw">case</span> <span class="num">1</span> <span class="kw">=&gt;</span> item.price
+    <span class="kw">case</span> <span class="num">2</span> <span class="kw">=&gt;</span> item.number
+    <span class="kw">case</span> _ <span class="kw">=&gt;</span> error(<span class="lit">"Error: Column number out of range."</span>)
+  }
 )
 
 tableModel.addItems(products)
@@ -128,7 +128,7 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="jswing.widgets.MTableModel#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(columns:Array[String],columnsFn:(A,Int)=&gt;Object,items:Seq[A]):jswing.widgets.MTableModel[A]"></a>
+      <a id="&lt;init&gt;(columns:Array[String],itemToRow:(A,Int)=&gt;Any,items:Seq[A]):jswing.widgets.MTableModel[A]"></a>
       <a id="&lt;init&gt;:MTableModel[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -136,14 +136,14 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">MTableModel</span><span class="params">(<span name="columns">columns: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="columnsFn">columnsFn: (<span class="extype" name="jswing.widgets.MTableModel.A">A</span>, <span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="items">items: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="jswing.widgets.MTableModel.A">A</span>] = <span class="symbol">Seq()</span></span>)</span>
+        <span class="name">MTableModel</span><span class="params">(<span name="columns">columns: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="itemToRow">itemToRow: (<span class="extype" name="jswing.widgets.MTableModel.A">A</span>, <span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="items">items: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="jswing.widgets.MTableModel.A">A</span>] = <span class="symbol">Seq()</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.MTableModel@&lt;init&gt;(columns:Array[String],columnsFn:(A,Int)=&gt;Object,items:Seq[A]):jswing.widgets.MTableModel[A]" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.MTableModel@&lt;init&gt;(columns:Array[String],itemToRow:(A,Int)=&gt;Any,items:Seq[A]):jswing.widgets.MTableModel[A]" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">columns</dt><dd class="cmt"><p>- Array containing the column names.</p></dd><dt class="param">columnsFn</dt><dd class="cmt"><p>- Function that maps the algebraic data type into the column.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">columns</dt><dd class="cmt"><p>- Array containing the column names.</p></dd><dt class="param">itemToRow</dt><dd class="cmt"><p>- Function that maps the algebraic data type into a row</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -312,23 +312,6 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="jswing.widgets.MTableModel#data" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="data:scala.collection.mutable.ListBuffer[A]"></a>
-      <a id="data:ListBuffer[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">data</span><span class="result">: <span class="extype" name="scala.collection.mutable.ListBuffer">ListBuffer</span>[<span class="extype" name="jswing.widgets.MTableModel.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.MTableModel@data:scala.collection.mutable.ListBuffer[A]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -607,6 +590,23 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractTableModel</dd></dl></div>
+    </li><li name="jswing.widgets.MTableModel#getRowAt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getRowAt(row:Int):A"></a>
+      <a id="getRowAt(Int):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getRowAt</span><span class="params">(<span name="row">row: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="jswing.widgets.MTableModel.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.MTableModel@getRowAt(row:Int):A" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="jswing.widgets.MTableModel#getRowCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getRowCount():Int"></a>
       <a id="getRowCount():Int"></a>
@@ -624,6 +624,23 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="jswing.widgets.MTableModel">MTableModel</a> → TableModel</dd></dl></div>
+    </li><li name="jswing.widgets.MTableModel#getRows" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getRows():List[A]"></a>
+      <a id="getRows():List[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getRows</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.immutable.List">List</span>[<span class="extype" name="jswing.widgets.MTableModel.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.MTableModel@getRows():List[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.table.AbstractTableModel#getTableModelListeners" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTableModelListeners():Array[javax.swing.event.TableModelListener]"></a>
       <a id="getTableModelListeners():Array[TableModelListener]"></a>
@@ -777,6 +794,40 @@ frame.setVisible(<span class="kw">true</span>)</pre><p>     It will display a ta
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractTableModel → TableModel</dd></dl></div>
+    </li><li name="jswing.widgets.MTableModel#setEditable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setEditable(flag:Boolean):Unit"></a>
+      <a id="setEditable(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEditable</span><span class="params">(<span name="flag">flag: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.MTableModel@setEditable(flag:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.MTableModel#setItems" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setItems(items:Seq[A]):Unit"></a>
+      <a id="setItems(Seq[A]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setItems</span><span class="params">(<span name="items">items: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="jswing.widgets.MTableModel.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.MTableModel@setItems(items:Seq[A]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.table.AbstractTableModel#setValueAt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setValueAt(x$1:Any,x$2:Int,x$3:Int):Unit"></a>
       <a id="setValueAt(Any,Int,Int):Unit"></a>
