@@ -846,15 +846,21 @@ frame.setVisible(true)
  */
 class MTableModel[A](
   columns:   Array[String],
-  columnsFn: (A, Int) => Object,
+  itemToRow: (A, Int)    => Any,
+  rowToItem: Seq[Object] => A, 
   items:     Seq[A]   = Seq()
 )extends javax.swing.table.AbstractTableModel {
-  val data = scala.collection.mutable.ListBuffer[A]()
+  private val data = scala.collection.mutable.ListBuffer[A]()
+  private var editable = false
 
   init()
 
   private def init(){
     this.addItems(items)
+  }
+
+  def setEditable(flag: Boolean) = {
+    editable = flag 
   }
 
   // Required by  AbstractTableModel  
@@ -865,7 +871,7 @@ class MTableModel[A](
 
   // Required by  AbstractTableModel
   def getValueAt(row: Int, col: Int): Object =  {
-    columnsFn(data(row), col)
+    itemToRow(data(row), col).asInstanceOf[Object]
   }
   
   override def getColumnName(col: Int) = {
@@ -891,7 +897,18 @@ class MTableModel[A](
     this.fireTableDataChanged()
   }
 
-  override def isCellEditable(row: Int, col: Int) = false
+  def getRowAt(row: Int) = {
+    val cols = this.getColumnCount()
+    val rowValues = for (c <- 0 to cols - 1) yield this.getValueAt(row, c)
+    rowToItem(rowValues)
+  }
+
+  def getRows() = {
+    val rows = this.getRowCount()
+    for (r <- 1 to rows - 1) yield this.getRowAt(r)
+  }
+
+  override def isCellEditable(row: Int, col: Int) = editable
 }
 
 
