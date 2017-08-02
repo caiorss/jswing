@@ -790,6 +790,7 @@ Important methods:
 Example:   
 
     {{{ 
+
 import jswing.widgets.MTableModel
 import javax.swing.{JFrame, JPanel, JTable, JScrollPane}
 
@@ -803,17 +804,26 @@ val products = Array(
   InventoryItem("Beans", 5.0, 600)
 )
 
-
-def itemToCol(item: InventoryItem, col: Int) = col match {
-  case 0 => item.name.asInstanceOf[Object]
-  case 1 => item.price.asInstanceOf[Object]
-  case 2 => item.number.asInstanceOf[Object]
-  case _ => error("Error: Column number out of range.")
-}
-
 val tableModel = new MTableModel[InventoryItem](
+
   columns   = Array("Name", "Price", "Quantity"),
-  columnsFn = itemToCol
+
+  // Function that converts each item into a row 
+  itemToRow = (item: InventoryItem, col: Int) => col match {
+    case 0 => item.name
+    case 1 => item.price
+    case 2 => item.number
+    case _ => error("Error: Column number out of range.")
+  },
+
+  // Function that converts a row into a item 
+  rowToItem = (row: Seq[Object]) => {
+    InventoryItem(
+      row(0).asInstanceOf[String],
+      row(1).asInstanceOf[Double],
+      row(2).asInstanceOf[Int]
+    )
+  }
 )
 
 tableModel.addItems(products)
@@ -841,7 +851,8 @@ frame.setVisible(true)
   }}}
  
      @param columns    - Array containing the column names.
-     @param columnsFn  - Function that maps the algebraic data type into the column.
+     @param itemToRow  - Function that maps the algebraic data type into a row 
+     @param rowToitem  - Function that converts a row into a item 
   *  
  */
 class MTableModel[A](
