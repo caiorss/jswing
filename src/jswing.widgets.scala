@@ -622,87 +622,122 @@ class Frame(
 
 
 
-/**
-  * Widget to show pictures and with facilitate to
-  * manipulate and display image.
-  * 
-  */  
- class PictureBox extends javax.swing.JLabel {
-   //init()
+class PictureBox(
+  zoomWheel: Boolean    = true,
+  autoFit:  Boolean     = false,
+  zoomIncrement: Double = 5.0
+) extends javax.swing.JLabel {
+  private var image:        java.awt.image.BufferedImage = null
+  private var zoom:         Double   = 0.0
+  private var autoFitFlag:  Boolean  = autoFit
+  private var zoomInc:      Double = zoomIncrement
+  private var wheelListener: java.awt.event.MouseWheelListener = null
 
-   private def scaleImage(image: java.awt.image.BufferedImage, height: Int) = {
-     val w = image.getWidth().toFloat
-     val h = image.getHeight().toFloat
-     val width = (height.toFloat / h * w).toInt
-     image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT)
-   }
+  import jswing.ImageUtils
 
-   private def scaleImageFit(image: java.awt.image.BufferedImage) = {
-     val w  = this.getHeight().toDouble
-     val h  = this.getWidth().toDouble
-     val wi = image.getWidth().toDouble
-     val hi = image.getHeight().toDouble
-     val k = (w / wi) min (h / hi)
+  init()
 
-     image.getScaledInstance(
-       (k * wi).toInt,
-       (k * hi).toInt,
-       java.awt.Image.SCALE_DEFAULT
-     )
-   }
+  private def init(){
 
+    val pbox = this
 
- /** Set image from file. 
-   *
-   */
-   def setFile(file: String) {
-     val image  = javax.imageio.ImageIO.read(new java.io.File(file))
-     val ico = new javax.swing.ImageIcon(this.scaleImageFit(image))
-     this.setIcon(ico)
-   }
-
-   // def setImageFromFile(file: String, height: Int) {
-   //   val image0  = javax.imageio.ImageIO.read(new java.io.File(file))
-   //   val image   = scaleImage(image0, height)
-   //   val ico = new javax.swing.ImageIcon(image)
-   //   this.setIcon(ico)
-   // }
-
-   def setBuffImage(image: java.awt.image.BufferedImage){
-     val ico = new javax.swing.ImageIcon(image)
-     this.setIcon(ico)    
-   }
-
-   def setImage(image: java.awt.Image){
-     val ico = new javax.swing.ImageIcon(image)
-     this.setIcon(ico)    
-   }
-
-   def getImageSize() = {
-     val ico = this.getIcon()
-     val x = ico.getIconWidth()
-     val y = ico.getIconHeight()
-     (x, y)
-   }
-
-   /** Clear current image */
-   def clear() = {
-     this.setIcon(null)
-     this.setBackground(java.awt.Color.WHITE)
-   }
+    var wheelListener =
+      new java.awt.event.MouseWheelListener(){
+        def mouseWheelMoved(e: java.awt.event.MouseWheelEvent){
+          val notches = e.getWheelRotation()
+          if (notches < 0)
+            // Mouse Wheel Moved up
+            pbox.incrementZoom(pbox.zoomInc)
+          else
+            // Mouse Wheel Moved down
+            pbox.incrementZoom(-pbox.zoomInc)
+        }
+      }
 
 
-   def onClick(handler: => Unit) = {
-     this.addMouseListener( new java.awt.event.MouseAdapter {
-       override def mouseClicked(arg: java.awt.event.MouseEvent){
-         handler
-       }
-     }
-     )
-   }
+    if (zoomWheel)
+      this.addMouseWheelListener(wheelListener)
+    else
+      this.removeMouseWheelListener(wheelListener)
 
+    // Add Resize Listener
+    val resizeListener = new java.awt.event.ComponentAdapter(){
+      override def componentResized(evt: java.awt.event.ComponentEvent){
+        pbox.updateImage()
+      }
+    }
+    this.addComponentListener(resizeListener)
+  }
 
-} // --- End of Class Picturebox --- //
+  def getZoom() = this.zoom
+
+  def setZoom(z: Double) = {
+    this.zoom = z
+    this.updateImage()
+  }
+
+  def setZoomWheel(flag: Boolean) = {
+    if (flag)
+      this.addMouseWheelListener(this.wheelListener)
+    else
+      this.removeMouseWheelListener(this.wheelListener)
+  }
+
+  def incrementZoom(z: Double) = {
+    this.zoom = this.zoom + z
+    this.updateImage()
+  }
+
+  def setImage(image: java.awt.image.BufferedImage){
+    this.image = image
+    this.updateImage()
+  }
+
+  def setImageFile(file: String){
+    val image = ImageUtils.readFile(file)
+    this.image = image
+    this.updateImage()
+  }
+
+  def clear() = {
+    this.image = null
+    this.updateImage()
+  }
+
+  def setAutoFit(flag: Boolean) = {
+    this.autoFitFlag = flag
+    this.updateImage()
+  }
+
+  def getImage() = image
+
+  def updateImage(){
+    if (this.image != null){
+      val parent = this.getParent()
+
+      if (this.autoFitFlag){
+        // Always scale image to fit container dimensions.
+        val img = ImageUtils.scaleContainer(image, parent, zoom)
+        this.setIcon(new javax.swing.ImageIcon(img))
+      }
+      else {
+        // Scala image to fit container if it is larger than it.
+        val img = ImageUtils.scaleContainerIfLarger(image, parent, zoom)
+        this.setIcon(new javax.swing.ImageIcon(img))
+      }
+    }
+    else
+      this.setIcon(null)
+  }
+
+  def onClick(handler: => Unit) = {
+    this.addMouseListener( new java.awt.event.MouseAdapter {
+      override def mouseClicked(arg: java.awt.event.MouseEvent){
+        handler
+      }
+    })
+  }
+}
 
 
 
