@@ -903,6 +903,11 @@ class MTableModel[A](
     rowToItem(rowValues)
   }
 
+  def getColumnAt[B](col: Int) = {
+    val rows = this.getRowCount()
+    for (r <- 0 to rows - 1) yield this.getValueAt(r, col).asInstanceOf[B]
+  }
+
   def getRows() = {
     val rows = this.getRowCount()
     for (r <- 1 to rows - 1) yield this.getRowAt(r)
