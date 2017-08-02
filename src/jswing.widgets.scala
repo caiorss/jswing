@@ -439,11 +439,9 @@ class ListBox[A] extends javax.swing.JList[ItemAdapter[A]] {
 
   def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
     val update = () => {
-      jswing.JUtils.invokeLater { 
-        model.clear()
-        lmodel foreach { e =>
-          model.addElement(ItemAdapter[A](format(e), e))
-        }
+      model.clear()
+      lmodel foreach { e =>
+        model.addElement(ItemAdapter[A](format(e), e))
       }
     }
     update()
