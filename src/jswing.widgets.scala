@@ -814,15 +814,6 @@ val tableModel = new MTableModel[InventoryItem](
     case 1 => item.price
     case 2 => item.number
     case _ => error("Error: Column number out of range.")
-  },
-
-  // Function that converts a row into a item 
-  rowToItem = (row: Seq[Object]) => {
-    InventoryItem(
-      row(0).asInstanceOf[String],
-      row(1).asInstanceOf[Double],
-      row(2).asInstanceOf[Int]
-    )
   }
 )
 
@@ -858,7 +849,6 @@ frame.setVisible(true)
 class MTableModel[A](
   columns:   Array[String],
   itemToRow: (A, Int)    => Any,
-  rowToItem: Seq[Object] => A, 
   items:     Seq[A]   = Seq()
 )extends javax.swing.table.AbstractTableModel {
   private val data = scala.collection.mutable.ListBuffer[A]()
@@ -898,8 +888,14 @@ class MTableModel[A](
   /** Add rows to the table model. */
   def addItems(items: Seq[A]) {
     //for (i < - items) { data.append(i) }
-    items foreach (i => data.append(i) )
+    data.appendAll(items)
     this.fireTableDataChanged()
+  }
+
+  def setItems(items: Seq[A]){
+    data.clear()
+    data.appendAll(items)
+    this.fireTableDataChanged()    
   }
 
   /** Removes all items. */
@@ -908,21 +904,9 @@ class MTableModel[A](
     this.fireTableDataChanged()
   }
 
-  def getRowAt(row: Int) = {
-    val cols = this.getColumnCount()
-    val rowValues = for (c <- 0 to cols - 1) yield this.getValueAt(row, c)
-    rowToItem(rowValues)
-  }
+  def getRowAt(row: Int) = this.data(row)
 
-  def getColumnAt[B](col: Int) = {
-    val rows = this.getRowCount()
-    for (r <- 0 to rows - 1) yield this.getValueAt(r, col).asInstanceOf[B]
-  }
-
-  def getRows() = {
-    val rows = this.getRowCount()
-    for (r <- 1 to rows - 1) yield this.getRowAt(r)
-  }
+  def getRows() = this.data.toList
 
   override def isCellEditable(row: Int, col: Int) = editable
 }
