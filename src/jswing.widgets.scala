@@ -143,7 +143,7 @@ class Button(
 
 
 
-case class ComboItem[A](label: String, value: A) {
+case class ItemAdapter[A](label: String, value: A) {
   override def toString() = label
 }
 
@@ -185,8 +185,8 @@ case class ComboItem[A](label: String, value: A) {
     }}}
 
 */
-class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
-  private val model = new javax.swing.DefaultComboBoxModel[ComboItem[A]]()
+class ComboBox[A] extends javax.swing.JComboBox[ItemAdapter[A]] {
+  private val model = new javax.swing.DefaultComboBoxModel[ItemAdapter[A]]()
 
   private val labelDict = scala.collection.mutable.Map[String, Int]()
 
@@ -204,13 +204,13 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
   def isSelectEventEnabled() = enableSelect
 
   def addItem(label: String, value: A) = {
-    model.addElement(ComboItem(label, value))
+    model.addElement(ItemAdapter(label, value))
   }
 
   /** Add item if label doesn't exist. It doesn't allow repeated labels. */
   def addItemUnique(label: String, value: A, selectLast: Boolean = false) = {
     if (!this.labelExists(label)){
-      model.addElement(ComboItem(label, value))
+      model.addElement(ItemAdapter(label, value))
       labelDict += label -> (this.getItemCount() - 1)
     }
 
@@ -238,7 +238,7 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
 
   def getSelectedValue() = {
     val item = Option(this.getSelectedItem())
-    item map (_.asInstanceOf[ComboItem[A]].value)
+    item map (_.asInstanceOf[ItemAdapter[A]].value)
   }
 
   def getSelectedValueOrError() = {
@@ -282,6 +282,20 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     )
   }
 
+
+  def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
+    val update = () => {
+      jswing.JUtils.invokeLater {
+        this.removeAllItems()
+        lmodel foreach { e =>
+          model.addElement(ItemAdapter[A](format(e), e))
+        }
+      }
+    }
+    update()
+    lmodel.onChange(update)
+  }
+
 }
 
 
@@ -297,7 +311,7 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
 
     - def clear(): Unit
 
-    - def getSelectedItem(): Option[ComboItem[A]]
+    - def getSelectedItem(): Option[ItemAdapter[A]]
 
     - def getSelectedItemLabel(): Option[String]
 
@@ -364,8 +378,8 @@ class ComboBox[A] extends javax.swing.JComboBox[ComboItem[A]] {
     }}}
 
   */
-class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
-  private val model  = new javax.swing.DefaultListModel[ComboItem[A]]()
+class ListBox[A] extends javax.swing.JList[ItemAdapter[A]] {
+  private val model  = new javax.swing.DefaultListModel[ItemAdapter[A]]()
 
   // This flag avoids firing the event when an item is removed.
   // it also allows temporarily disabling events.
@@ -379,11 +393,11 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
   }
 
   def addItem(label: String, value: A) =
-    model.addElement(ComboItem(label, value))
+    model.addElement(ItemAdapter(label, value))
 
   def addItems(elemList: Seq[(String, A)])  = {
     for ((label, value) <- elemList) 
-      model.addElement(ComboItem(label, value))    
+      model.addElement(ItemAdapter(label, value))
   }
 
   def getSelectedItem() = {
@@ -421,6 +435,20 @@ class ListBox[A] extends javax.swing.JList[ComboItem[A]] {
   /// Event that happens when user selects an item
   def onSelect(handler: => Unit) = 
     jswing.Event.onListSelect(this){ if (selectionEventFlag) handler }
+
+
+  def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
+    val update = () => {
+      jswing.JUtils.invokeLater { 
+        model.clear()
+        lmodel foreach { e =>
+          model.addElement(ItemAdapter[A](format(e), e))
+        }
+      }
+    }
+    update()
+    lmodel.onChange(update)
+  }
 
   def onSelectItem(handler: A => Unit) = {
 
@@ -762,6 +790,7 @@ Important methods:
 Example:   
 
     {{{ 
+
 import jswing.widgets.MTableModel
 import javax.swing.{JFrame, JPanel, JTable, JScrollPane}
 
@@ -775,17 +804,17 @@ val products = Array(
   InventoryItem("Beans", 5.0, 600)
 )
 
-
-def itemToCol(item: InventoryItem, col: Int) = col match {
-  case 0 => item.name.asInstanceOf[Object]
-  case 1 => item.price.asInstanceOf[Object]
-  case 2 => item.number.asInstanceOf[Object]
-  case _ => error("Error: Column number out of range.")
-}
-
 val tableModel = new MTableModel[InventoryItem](
+
   columns   = Array("Name", "Price", "Quantity"),
-  columnsFn = itemToCol
+
+  // Function that converts each item into a row 
+  itemToRow = (item: InventoryItem, col: Int) => col match {
+    case 0 => item.name
+    case 1 => item.price
+    case 2 => item.number
+    case _ => error("Error: Column number out of range.")
+  }
 )
 
 tableModel.addItems(products)
@@ -813,20 +842,26 @@ frame.setVisible(true)
   }}}
  
      @param columns    - Array containing the column names.
-     @param columnsFn  - Function that maps the algebraic data type into the column.
+     @param itemToRow  - Function that maps the algebraic data type into a row 
+     @param rowToitem  - Function that converts a row into a item 
   *  
  */
 class MTableModel[A](
   columns:   Array[String],
-  columnsFn: (A, Int) => Object,
+  itemToRow: (A, Int)    => Any,
   items:     Seq[A]   = Seq()
 )extends javax.swing.table.AbstractTableModel {
-  val data = scala.collection.mutable.ListBuffer[A]()
+  private val data = scala.collection.mutable.ListBuffer[A]()
+  private var editable = false
 
   init()
 
   private def init(){
     this.addItems(items)
+  }
+
+  def setEditable(flag: Boolean) = {
+    editable = flag 
   }
 
   // Required by  AbstractTableModel  
@@ -837,7 +872,7 @@ class MTableModel[A](
 
   // Required by  AbstractTableModel
   def getValueAt(row: Int, col: Int): Object =  {
-    columnsFn(data(row), col)
+    itemToRow(data(row), col).asInstanceOf[Object]
   }
   
   override def getColumnName(col: Int) = {
@@ -853,8 +888,14 @@ class MTableModel[A](
   /** Add rows to the table model. */
   def addItems(items: Seq[A]) {
     //for (i < - items) { data.append(i) }
-    items foreach (i => data.append(i) )
+    data.appendAll(items)
     this.fireTableDataChanged()
+  }
+
+  def setItems(items: Seq[A]){
+    data.clear()
+    data.appendAll(items)
+    this.fireTableDataChanged()    
   }
 
   /** Removes all items. */
@@ -863,7 +904,11 @@ class MTableModel[A](
     this.fireTableDataChanged()
   }
 
-  override def isCellEditable(row: Int, col: Int) = false
+  def getRowAt(row: Int) = this.data(row)
+
+  def getRows() = this.data.toList
+
+  override def isCellEditable(row: Int, col: Int) = editable
 }
 
 

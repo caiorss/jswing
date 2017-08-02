@@ -195,6 +195,16 @@ object Dialog {
       Option(fch.getSelectedFile()).map(_.getPath())
     }
 
+    def select() = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).map(_.getPath())
+    }
+
+    def selectRun(fn: String => Unit) = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).foreach{ file => fn(file.getPath()) }
+    }
+
   } // End of class DirChooser
 
 
@@ -257,10 +267,40 @@ object Dialog {
     *  the selected directory or None if no directory 
     *  is selected.
     */         
-    def run() = {
+    def select() = {
       fch.showOpenDialog(null)
       Option(fch.getSelectedFile()).map(_.getPath())
     }
+
+    def selectRun(fn: String => Unit) = {
+      fch.showOpenDialog(null)
+      Option(fch.getSelectedFile()).foreach{ file => fn(file.getPath()) }
+    }
+
+    def onSelect(action: Option[String] => Unit)  = {
+      val listener = new java.awt.event.ActionListener{
+        def actionPerformed(evt: java.awt.event.ActionEvent){
+          val file = Option(fch.getSelectedFile()).map(_.getPath())
+          action(file)
+        }
+      }
+      fch.addActionListener(listener)
+      () => fch.removeActionListener(listener)
+    }
+
+    def bindData(path: jswing.data.ValueModel[Option[String]]) = {
+      path.get() foreach this.setDirectory
+      path.onChangeRun { path.get() foreach this.setDirectory}
+      this.onSelect{
+        fileOpt => fileOpt match {
+          case Some(file)  => path() = Some(file)
+          case None        => ()
+        }
+      }
+    }
+
+    def run() = select()
+
   } // End of class DirChooser
   
 
@@ -690,54 +730,3 @@ object Event{
 
 } // ------ End of object Event ------- // 
 
-
-
-class ValueModel[A](a: A = null){
-  private var observers: Set[() => Unit] = Set()
-  private var state: A = a
-
-
-  def onChangeRun(action: => Unit) = {
-    val f = () => action 
-    observers += f
-    () => observers -= f
-  }
-
-  def onChange(fn: () => Unit) = {
-    observers += fn
-    () => observers -= fn
-  }
-
-  def onChangeValue(fn: A => Unit) = {
-    this.onChangeRun{ fn(this.get()) }
-  }
-  
-  def trigger() =
-    for (fn <- observers) { fn()}
-
-  def foreach(fn: () => Unit) = {
-    observers += fn 
-  }
-
-  def get() = state
-
-  def set(a: A) = {
-    state = a
-    this.trigger()
-  }
-
-  def logChanges(label: String) = 
-    this.onChangeRun{ println(s"ValueModel ${label} changed to ${this.get}") }
-  
-  def update(a: A) = {
-    state = a
-    this.trigger()
-  }
-
-  def apply() =
-    this.get()
-
-  def apply(fn: A => A) = 
-    this.update(fn(this.get()))
-  
-}

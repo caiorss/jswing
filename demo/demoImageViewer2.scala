@@ -1,9 +1,10 @@
 import jswing.Dialog.DirChooser
-
+import jswing.ValueCell
 import jswing.widgets.{Frame, Button, ListBox, PictureBox, ComboBox}
 
 
-val dirModel = new jswing.ValueModel[Option[String]](None)
+val dirModel = new ValueCell[Option[String]](None)
+
 
 val chooser = new DirChooser(title="Select a directory with images.")
   .withHome()
