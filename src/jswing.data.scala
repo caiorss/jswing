@@ -160,6 +160,14 @@ class ListModel[A]{
     this.triggerOnAppend(value)
   }
 
+  def appendUnique(value: A) = {
+    if (!list.contains(value)){
+      list.append(value)
+      this.triggerOnChange()
+      this.triggerOnAppend(value)
+    }
+  }
+
   def setFrom(seq: Seq[A]) = {
     list.clear()
     list.appendAll(seq)
