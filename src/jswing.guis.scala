@@ -39,9 +39,9 @@ class PictureFrame(
   // def setImageFromFile(file: String)                = pbox.setImageFromFile(file)
 
   /** Set picture from file scaling to a height*/
-  def setImageFromFile(file: String)   = pbox.setImageFromFile(file)
+  def setImageFromFile(file: String)   = pbox.setFile(file)
 
-  def setImage(image: java.awt.image.BufferedImage) = pbox.setImage(image)
+  def setImage(image: java.awt.image.BufferedImage) = pbox.setBuffImage(image)
   def setImage(image: java.awt.Image)               = pbox.setImage(image)
 
   def onClick(handler: => Unit){

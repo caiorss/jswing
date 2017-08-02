@@ -630,7 +630,7 @@ class Frame(
  /** Set image from file. 
    *
    */
-   def setImageFromFile(file: String) {
+   def setFile(file: String) {
      val image  = javax.imageio.ImageIO.read(new java.io.File(file))
      val ico = new javax.swing.ImageIcon(this.scaleImageFit(image))
      this.setIcon(ico)
@@ -643,7 +643,7 @@ class Frame(
    //   this.setIcon(ico)
    // }
 
-   def setImage(image: java.awt.image.BufferedImage){
+   def setBuffImage(image: java.awt.image.BufferedImage){
      val ico = new javax.swing.ImageIcon(image)
      this.setIcon(ico)    
    }
