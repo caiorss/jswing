@@ -43,6 +43,31 @@ object WidgetUtils {
 
 }
 
+
+class Label(text: String = "") extends javax.swing.JLabel {
+  init()
+
+  private def init(){
+    this.setText(text)
+  }
+
+  def bindToString(model: jswing.data.ValueModel[String]){
+    this.setText(model.get())
+    model.onChangeRun{
+      this.setText(model.get())
+    }
+  }
+
+  def bindToData[A](model: jswing.data.ValueModel[A])(format: A => String){
+    this.setText(format(model.get()))
+    model.onChangeRun{
+      this.setText(format(model.get()))
+    }
+  }
+
+}
+
+
 /** JButton class extension with better initialization and Scala-friendly 
     method to add event handlers (aka Java's listeners)
 
