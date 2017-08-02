@@ -730,3 +730,66 @@ object Event{
 
 } // ------ End of object Event ------- // 
 
+
+
+object ImageUtils{
+
+  import java.awt.image.BufferedImage
+
+  /** Scale a BufferedImage with a zoom factor increment in percent. */
+  def scaleZoom(image: BufferedImage, zoom: Double) = {
+     val z = 1.0 + zoom / 100.0
+     val wm = (z * image.getWidth().toDouble).toInt
+     val hm = (z * image.getHeight().toDouble).toInt     
+     image.getScaledInstance(wm, hm, java.awt.Image.SCALE_DEFAULT)  
+  }
+
+  /** Scale a BufferedImage to the container size with a zoom factor in percent. */  
+  def scaleFitZoom(image: BufferedImage, width: Int, height: Int, zoom: Double = 0.0) = {
+    val wi = image.getWidth().toDouble
+    val hi = image.getHeight().toDouble
+    val z = 1.0 + zoom / 100.0
+    val k = (width.toDouble / wi * z) min (height.toDouble / hi * z)
+    // New image dimensions
+    val wm = (k * wi).toInt
+    val hm = (k * hi).toInt
+    //println(s" scaleFitZoom2 wm = ${wm} hm = ${hm} / wi = ${wi} hi = ${hi} / d = ${(width, height)} ")
+    image.getScaledInstance(wm, hm, java.awt.Image.SCALE_DEFAULT)
+  }
+
+  /** Scale a BufferedImage to fit the container size if it is larger than the container. */  
+  def scaleFitZoomIfLarger(image: BufferedImage, width: Int, height: Int, zoom: Double = 0.0) = {
+    val wi = image.getWidth()
+    val hi = image.getHeight()
+
+    //println(s"scaleFitZoomIfLarger wi = ${wi} hi = ${hi} / w = ${width} h = ${width}")
+
+    if (wi > width || hi > height)
+      scaleFitZoom(image, width, height, zoom)
+    else
+      scaleZoom(image, zoom)
+  }
+
+  def scaleContainer(image: BufferedImage, cont: java.awt.Container, zoom: Double = 0.0) = {
+    scaleFitZoom(image, cont.getWidth(), cont.getHeight(), zoom)
+  }
+
+  def scaleContainerIfLarger(image: BufferedImage, cont: java.awt.Container, zoom: Double = 0.0) = {
+    scaleFitZoomIfLarger(image, cont.getWidth(), cont.getHeight(), zoom)
+  }
+
+  /**  Read a BufferedImage from an image gile */
+  def readFile(file: String) = {
+    javax.imageio.ImageIO.read(new java.io.File(file))
+  }
+
+  def makeIconFromBimage(image: BufferedImage) = {
+    new javax.swing.ImageIcon(image)
+  }
+
+  def makeIconFromImage(image: java.awt.Image) = {
+    new javax.swing.ImageIcon(image)
+  }  
+
+
+}
