@@ -322,6 +322,16 @@ class ComboBox[A] extends javax.swing.JComboBox[ItemAdapter[A]] {
   }
 
 
+  def bindDataSelectionOpt(model: jswing.data.ValueModel[Option[A]]) = {
+    val combo = this
+    val listener = new java.awt.event.ActionListener(){
+      def actionPerformed(event: java.awt.event.ActionEvent){
+        if (enableSelect)
+          model.set(combo.getSelectedValue())
+      }
+    }
+    this.addActionListener(listener)
+  }
 
   def bindData(lmodel: jswing.data.ListModel[A])(format: A => String) = {
     val update = () => {
