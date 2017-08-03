@@ -747,6 +747,17 @@ class PictureBox(
     file onChange update
   }
 
+  def bindFileObj(file:  jswing.data.ValueModel[Option[java.io.File]]){
+    def update() = file() match {
+        case Some(f) => this.setImageFile(f.getAbsolutePath())
+        case None    => this.clear()
+    }
+    update()
+    file onChange update
+  }
+
+} //--------- End of class PictureBox ------------ //
+
 
 
 /** 
