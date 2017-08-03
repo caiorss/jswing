@@ -49,8 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Widget to show pictures and with facilitate to
-manipulate and display image.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.widgets.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.widgets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="javax.swing.JLabel">JLabel</span>, <span class="extype" name="javax.accessibility.Accessible">Accessible</span>, <span class="extype" name="javax.swing.SwingConstants">SwingConstants</span>, <span class="extype" name="javax.swing.JComponent">JComponent</span>, <span class="extype" name="javax.swing.TransferHandler.HasGetTransferHandler">HasGetTransferHandler</span>, <span class="extype" name="java.awt.Container">Container</span>, <span class="extype" name="java.awt.Component">Component</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="java.awt.MenuContainer">MenuContainer</span>, <span class="extype" name="java.awt.image.ImageObserver">ImageObserver</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -90,7 +89,7 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="jswing.widgets.PictureBox#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():jswing.widgets.PictureBox"></a>
+      <a id="&lt;init&gt;(zoomWheel:Boolean,autoFit:Boolean,zoomIncrement:Double):jswing.widgets.PictureBox"></a>
       <a id="&lt;init&gt;:PictureBox"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,10 +97,10 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">PictureBox</span><span class="params">()</span>
+        <span class="name">PictureBox</span><span class="params">(<span name="zoomWheel">zoomWheel: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="autoFit">autoFit: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="zoomIncrement">zoomIncrement: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">5.0</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.PictureBox@&lt;init&gt;():jswing.widgets.PictureBox" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.PictureBox@&lt;init&gt;(zoomWheel:Boolean,autoFit:Boolean,zoomIncrement:Double):jswing.widgets.PictureBox" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -713,6 +712,40 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#bindFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bindFile(file:jswing.data.ValueModel[Option[String]]):Unit"></a>
+      <a id="bindFile(ValueModel[Option[String]]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bindFile</span><span class="params">(<span name="file">file: <a href="../data/ValueModel.html" class="extype" name="jswing.data.ValueModel">ValueModel</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@bindFile(file:jswing.data.ValueModel[Option[String]]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.PictureBox#bindFileObj" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bindFileObj(file:jswing.data.ValueModel[Option[java.io.File]]):Unit"></a>
+      <a id="bindFileObj(ValueModel[Option[File]]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bindFileObj</span><span class="params">(<span name="file">file: <a href="../data/ValueModel.html" class="extype" name="jswing.data.ValueModel">ValueModel</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.io.File">File</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@bindFileObj(file:jswing.data.ValueModel[Option[java.io.File]]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.JLabel#checkHorizontalKey" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkHorizontalKey(x$1:Int,x$2:String):Int"></a>
       <a id="checkHorizontalKey(Int,String):Int"></a>
@@ -797,7 +830,7 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Clear current image</p>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -2228,19 +2261,19 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
-    </li><li name="jswing.widgets.PictureBox#getImageSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getImageSize():(Int,Int)"></a>
-      <a id="getImageSize():(Int,Int)"></a>
+    </li><li name="jswing.widgets.PictureBox#getImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getImage():java.awt.image.BufferedImage"></a>
+      <a id="getImage():BufferedImage"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getImageSize</span><span class="params">()</span><span class="result">: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>
+        <span class="name">getImage</span><span class="params">()</span><span class="result">: <span class="extype" name="java.awt.image.BufferedImage">BufferedImage</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.PictureBox@getImageSize():(Int,Int)" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.PictureBox@getImage():java.awt.image.BufferedImage" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -3150,6 +3183,23 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#getZoom" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getZoom():Double"></a>
+      <a id="getZoom():Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getZoom</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@getZoom():Double" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.JComponent#grabFocus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="grabFocus():Unit"></a>
       <a id="grabFocus():Unit"></a>
@@ -3218,6 +3268,23 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JLabel → Component → ImageObserver</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#incrementZoom" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="incrementZoom(z:Double):Unit"></a>
+      <a id="incrementZoom(Double):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">incrementZoom</span><span class="params">(<span name="z">z: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@incrementZoom(z:Double):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="java.awt.Container#invalidate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="invalidate():Unit"></a>
       <a id="invalidate():Unit"></a>
@@ -5023,6 +5090,23 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#setAutoFit" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setAutoFit(flag:Boolean):Unit"></a>
+      <a id="setAutoFit(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAutoFit</span><span class="params">(<span name="flag">flag: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@setAutoFit(flag:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.JComponent#setAutoscrolls" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setAutoscrolls(x$1:Boolean):Unit"></a>
       <a id="setAutoscrolls(Boolean):Unit"></a>
@@ -5540,23 +5624,6 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Component</dd></dl></div>
     </li><li name="jswing.widgets.PictureBox#setImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="setImage(image:java.awt.Image):Unit"></a>
-      <a id="setImage(Image):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setImage</span><span class="params">(<span name="image">image: <span class="extype" name="java.awt.Image">Image</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.PictureBox@setImage(image:java.awt.Image):Unit" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="jswing.widgets.PictureBox#setImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setImage(image:java.awt.image.BufferedImage):Unit"></a>
       <a id="setImage(BufferedImage):Unit"></a>
       <h4 class="signature">
@@ -5573,23 +5640,23 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       
-    </li><li name="jswing.widgets.PictureBox#setImageFromFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="setImageFromFile(file:String):Unit"></a>
-      <a id="setImageFromFile(String):Unit"></a>
+    </li><li name="jswing.widgets.PictureBox#setImageFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setImageFile(file:String):Unit"></a>
+      <a id="setImageFile(String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setImageFromFile</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setImageFile</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#jswing.widgets.PictureBox@setImageFromFile(file:String):Unit" title="Permalink" target="_top">
+      <a href="../../index.html#jswing.widgets.PictureBox@setImageFile(file:String):Unit" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Set image from file.</p>
+      
     </li><li name="javax.swing.JComponent#setInheritsPopupMenu" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInheritsPopupMenu(x$1:Boolean):Unit"></a>
       <a id="setInheritsPopupMenu(Boolean):Unit"></a>
@@ -6015,6 +6082,40 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Component</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#setZoom" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setZoom(z:Double):Unit"></a>
+      <a id="setZoom(Double):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setZoom</span><span class="params">(<span name="z">z: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@setZoom(z:Double):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="jswing.widgets.PictureBox#setZoomWheel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setZoomWheel(flag:Boolean):Unit"></a>
+      <a id="setZoomWheel(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setZoomWheel</span><span class="params">(<span name="flag">flag: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@setZoomWheel(flag:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -6151,6 +6252,23 @@ manipulate and display image.</p></div><dl class="attributes block"> <dt>Source<
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JComponent → Container → Component</dd></dl></div>
+    </li><li name="jswing.widgets.PictureBox#updateImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="updateImage():Unit"></a>
+      <a id="updateImage():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateImage</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#jswing.widgets.PictureBox@updateImage():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="javax.swing.JLabel#updateUI" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateUI():Unit"></a>
       <a id="updateUI():Unit"></a>
