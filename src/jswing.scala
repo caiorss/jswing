@@ -452,6 +452,25 @@ object JUtils{
     val desk = java.awt.Desktop.getDesktop()
     desk.open(new java.io.File(file))
   }
+
+  /** Open URL with default browser
+
+      Example:
+      {{{
+         scala> jswing.JUtils.openUrl("http://www.yandex.com")
+      }}}
+   */
+  def openUrl(uri: String){
+    import java.awt.Desktop
+    import java.io.IOException
+    import java.net.URI
+    import java.net.URISyntaxException
+    val u = new URI(uri)
+    val desktop = Desktop.getDesktop()
+    desktop.browse(u)
+  }
+
+
 } // ------ End of Module JUtils ------ // 
 
 
