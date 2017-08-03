@@ -441,6 +441,17 @@ object JUtils{
     (dim.getWidth(), dim.getHeight())
   }
 
+  /** Open file with default desktop application.
+
+      Example: It will open this PDF file with default system application.
+      {{{
+         scala> jswing.JUtils.openFile("/home/archbox/Desktop/functional-gui.pdf")
+      }}}
+    */
+  def openFile(file: String){
+    val desk = java.awt.Desktop.getDesktop()
+    desk.open(new java.io.File(file))
+  }
 } // ------ End of Module JUtils ------ // 
 
 
