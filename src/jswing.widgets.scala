@@ -737,7 +737,15 @@ class PictureBox(
       }
     })
   }
-}
+
+  def bindFile(file: jswing.data.ValueModel[Option[String]]){
+    def update() = file() match {
+        case Some(f) => this.setImageFile(f)
+        case None    => this.clear()
+    }
+    update()
+    file onChange update
+  }
 
 
 
