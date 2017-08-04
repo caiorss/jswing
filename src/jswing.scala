@@ -832,7 +832,7 @@ object ImageUtils{
     scaleFitZoomIfLarger(image, cont.getWidth(), cont.getHeight(), zoom)
   }
 
-  /**  Read a BufferedImage from an image gile */
+  /**  Read a BufferedImage from an image file.*/
   def readFile(file: String) = {
     javax.imageio.ImageIO.read(new java.io.File(file))
   }
