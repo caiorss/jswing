@@ -837,14 +837,38 @@ object ImageUtils{
     javax.imageio.ImageIO.read(new java.io.File(file))
   }
 
-  /** Read image from resource file */
+  /** Read image from resource file 
+       
+      Note: If during development the property repl is set to "true"
+      it will read the image file from the relative path instead of reading it 
+      from resource.   
+
+      In order to this function work in the Scala REPL during development run: 
+
+      {{{
+          scala -cp bin/jswing.jar -Drepl=true 
+      }}}
+
+      Example: 
+      
+      {{{
+         scala> val image = jswing.ImageUtils.readResourceImage("icons/scalaIcon.png")
+         image: java.awt.image.BufferedImage = BufferedImage@68f7aae2: type = 6 ColorModel: ...
+      }}}
+
+    */
   def readResourceImage(file: String) = {
-    val img = for {
-      file   <-  Option(getClass().getResource(file))
-      image  = javax.imageio.ImageIO.read(file)
-    } yield image
-    assert(!img.isEmpty, s"Error: resource image file ${file} not found.")
-    img.get
+    if (System.getProperty("repl") == "true")
+      readFile(file)
+    else
+      {
+        val img = for {
+          file   <-  Option(getClass().getResource(file))
+          image  = javax.imageio.ImageIO.read(file)
+        } yield image
+        assert(!img.isEmpty, s"Error: resource image file ${file} not found.")
+        img.get
+      }
   }
 
   /** Read icon from resource file */
