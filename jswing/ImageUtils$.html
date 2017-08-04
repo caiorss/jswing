@@ -49,7 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Collection of functions to manipulate images.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/caiorss/jswing" target="_blank">jswing.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -293,40 +293,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="jswing.ImageUtils#makeIconFromBimage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="makeIconFromBimage(image:java.awt.image.BufferedImage):javax.swing.ImageIcon"></a>
-      <a id="makeIconFromBimage(BufferedImage):ImageIcon"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">makeIconFromBimage</span><span class="params">(<span name="image">image: <span class="extype" name="java.awt.image.BufferedImage">BufferedImage</span></span>)</span><span class="result">: <span class="extype" name="javax.swing.ImageIcon">ImageIcon</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.ImageUtils$@makeIconFromBimage(image:java.awt.image.BufferedImage):javax.swing.ImageIcon" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="jswing.ImageUtils#makeIconFromImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="makeIconFromImage(image:java.awt.Image):javax.swing.ImageIcon"></a>
-      <a id="makeIconFromImage(Image):ImageIcon"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">makeIconFromImage</span><span class="params">(<span name="image">image: <span class="extype" name="java.awt.Image">Image</span></span>)</span><span class="result">: <span class="extype" name="javax.swing.ImageIcon">ImageIcon</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#jswing.ImageUtils$@makeIconFromImage(image:java.awt.Image):javax.swing.ImageIcon" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -394,7 +360,41 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"> Read a BufferedImage from an image gile</p>
+      <p class="shortcomment cmt"> Read a BufferedImage from an image file.</p>
+    </li><li name="jswing.ImageUtils#readResourceIcon" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="readResourceIcon(file:String):javax.swing.ImageIcon"></a>
+      <a id="readResourceIcon(String):ImageIcon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readResourceIcon</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="javax.swing.ImageIcon">ImageIcon</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ImageUtils$@readResourceIcon(file:String):javax.swing.ImageIcon" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Read icon from resource file</p>
+    </li><li name="jswing.ImageUtils#readResourceImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="readResourceImage(file:String):java.awt.image.BufferedImage"></a>
+      <a id="readResourceImage(String):BufferedImage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readResourceImage</span><span class="params">(<span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="java.awt.image.BufferedImage">BufferedImage</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#jswing.ImageUtils$@readResourceImage(file:String):java.awt.image.BufferedImage" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Read image from resource file</p>
     </li><li name="jswing.ImageUtils#scaleContainer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="scaleContainer(image:java.awt.image.BufferedImage,cont:java.awt.Container,zoom:Double):java.awt.Image"></a>
       <a id="scaleContainer(BufferedImage,Container,Double):Image"></a>
