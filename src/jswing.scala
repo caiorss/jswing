@@ -837,13 +837,7 @@ object ImageUtils{
     javax.imageio.ImageIO.read(new java.io.File(file))
   }
 
-  def makeIconFromBimage(image: BufferedImage) = {
-    new javax.swing.ImageIcon(image)
   }
-
-  def makeIconFromImage(image: java.awt.Image) = {
-    new javax.swing.ImageIcon(image)
-  }  
 
 
 }
