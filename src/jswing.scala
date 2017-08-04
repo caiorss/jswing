@@ -785,7 +785,7 @@ object Event{
 } // ------ End of object Event ------- // 
 
 
-
+/** Collection of functions to manipulate images. */
 object ImageUtils{
 
   import java.awt.image.BufferedImage
