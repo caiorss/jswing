@@ -1026,17 +1026,18 @@ class MTableModel[A](
 
 
 class TrayIcon(
-  file: String,
+  image:   java.awt.Image,
+  frame:   javax.swing.JFrame,
   toolTip: String = "Tray Icon app",
-  offset: Int     = 0
+  offset:  Int     = 0
 ) {
-  private val tray = java.awt.SystemTray.getSystemTray()
-  private val toolkit = java.awt.Toolkit.getDefaultToolkit()
-  private val image  = toolkit.getImage(file)
+  private val tray     = java.awt.SystemTray.getSystemTray()
+  private val toolkit  = java.awt.Toolkit.getDefaultToolkit()
+  //private val image    = toolkit.getImage(file)
   private val popuMenu = new java.awt.PopupMenu()
-  private val icon   = new java.awt.TrayIcon(image)
-  private val frame = new javax.swing.JFrame("")
-  private var offsetY = offset
+  private val icon     = new java.awt.TrayIcon(image)
+  //private val frame  = new javax.swing.JFrame("")
+  private var offsetY  = offset
 
   init()
 
@@ -1045,17 +1046,17 @@ class TrayIcon(
     icon.setToolTip(toolTip)
     icon.setImageAutoSize(true)
 
-    frame.setUndecorated(true)
-    frame.setResizable(false)
-    frame.setVisible(true)  
-    frame.setVisible(true)
-    frame.add(popuMenu)
+    // frame.setUndecorated(true)
+    // frame.setResizable(false)
+    // frame.setVisible(true)  
+    // frame.setVisible(true)
 
+    frame.add(popuMenu)
 
     icon.addMouseListener(new java.awt.event.MouseAdapter(){
       override def mouseClicked(evt: java.awt.event.MouseEvent){
         if (evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
-          popuMenu.show(frame, evt.getXOnScreen(), evt.getYOnScreen() - offsetY)          
+          // popuMenu.show(frame, evt.getXOnScreen(), evt.getYOnScreen() - offsetY)          
         }
       }
     })
