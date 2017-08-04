@@ -471,7 +471,7 @@ object JUtils{
   }
 
   /** Read resource file */
-  def readResourceFile(file: String): String = {
+  def readResourceFile(cls: Class[_], file: String): String = {
     def readBufferedReader(bf: java.io.BufferedReader) = {
       val builder = new StringBuilder()
       var line = ""
@@ -484,7 +484,7 @@ object JUtils{
     }
     val txt = for {
       //s = getClass().getResourceAsStream(file)
-      st    <- Option(getClass().getResourceAsStream(file))
+      st    <- Option(cls.getResourceAsStream(file))
       is    = new java.io.InputStreamReader(st)
       bf    = new java.io.BufferedReader(is)
       text  = readBufferedReader(bf)
@@ -857,13 +857,13 @@ object ImageUtils{
       }}}
 
     */
-  def readResourceImage(file: String) = {
+  def readResourceImage(cls: Class[_], file: String) = {
     if (System.getProperty("repl") == "true")
       readFile(file)
     else
       {
         val img = for {
-          file   <-  Option(getClass().getResource(file))
+          file   <-  Option(cls.getResource(file))
           image  = javax.imageio.ImageIO.read(file)
         } yield image
         assert(!img.isEmpty, s"Error: resource image file ${file} not found.")
@@ -872,13 +872,17 @@ object ImageUtils{
   }
 
   /** Read icon from resource file */
-  def readResourceIcon(file: String) = {
-    val ico = for {
-      uri  <- Option(getClass().getResource(file))
-      icon =  new javax.swing.ImageIcon(uri)
-    } yield icon
-    assert(!ico.isEmpty, s"Error: resource image file ${file} not found.")
-    ico.get
+  def readResourceIcon(cls: Class[_], file: String) = {
+    if (System.getProperty("repl") == "true")
+      new javax.swing.ImageIcon(file)
+    else {
+      val ico = for {
+        uri  <- Option(cls.getResource(file))
+        icon =  new javax.swing.ImageIcon(uri)
+      } yield icon
+      assert(!ico.isEmpty, s"Error: resource image file ${file} not found.")
+      ico.get
+    }
   }
 
 
