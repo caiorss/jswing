@@ -470,6 +470,30 @@ object JUtils{
     desktop.browse(u)
   }
 
+  /** Read resource file */
+  def readResourceFile(file: String): String = {
+    def readBufferedReader(bf: java.io.BufferedReader) = {
+      val builder = new StringBuilder()
+      var line = ""
+      while(line != null){
+        line = bf.readLine()
+        builder.append(line + "\n")
+      }
+      bf.close()
+      builder.toString()
+    }
+    val txt = for {
+      //s = getClass().getResourceAsStream(file)
+      st    <- Option(getClass().getResourceAsStream(file))
+      is    = new java.io.InputStreamReader(st)
+      bf    = new java.io.BufferedReader(is)
+      text  = readBufferedReader(bf)
+    } yield text
+
+    assert(!txt.isEmpty, s"Error: Resource file ${file} not found.")
+    txt.get
+  }
+
 
 } // ------ End of Module JUtils ------ // 
 
