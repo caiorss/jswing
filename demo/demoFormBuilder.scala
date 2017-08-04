@@ -2,7 +2,8 @@
 
   */
 
-import jswing.widgets.{Frame, FormBuilder}
+import jswing.widgets.Frame
+import jswing.panel.FormBuilder
 import javax.swing.JButton
 
 val builder = new FormBuilder()

@@ -1,5 +1,6 @@
 import jswing.{Event, Dialog}
-import jswing.widgets.{Frame, BorderPanel}
+import jswing.widgets.Frame
+import jswing.panel.BorderPanel
 import javax.swing._
 
 val fdialog = new jswing.Dialog.FileChooser().withHome()
@@ -11,7 +12,6 @@ val openButton  = new JButton("Open")
 val clearButton = new JButton("Clear")
 val exitButton  = new JButton("Exit")
 
-
 topPanel.add(openButton)
 topPanel.add(clearButton)
 topPanel.add(exitButton)
@@ -19,7 +19,7 @@ topPanel.add(exitButton)
 panel.addTop(topPanel)
 
 val tarea = new JTextArea()
-panel.addCenterScrollPane(tarea)
+panel.addCenterScroll(tarea)
 
 val statusBar = new JLabel("Status bar")
 panel.addBottom(statusBar)

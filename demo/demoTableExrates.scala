@@ -17,7 +17,7 @@ def getExchangeRates() = {
 }
 
 
-def itemToCol(item: RowType, col: Int) = col match {
+def itemToRow(item: RowType, col: Int) = col match {
   case 0 => item._1.asInstanceOf[Object]
   case 1 => item._2.formatted("%.3f").asInstanceOf[Object]
   case _ => error("Error: Column number out of range")
@@ -25,7 +25,7 @@ def itemToCol(item: RowType, col: Int) = col match {
 
 val model = new MTableModel[RowType](
   columns   = Array("Currency", "Exchange Rate"),
-  columnsFn = itemToCol
+  itemToRow = itemToRow
   //items     = getExchangeRates()
 )
 

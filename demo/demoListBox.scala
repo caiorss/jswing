@@ -1,4 +1,5 @@
-import jswing.widgets.{BorderPanel, ListBox}
+import jswing.widgets.ListBox
+import jswing.panel.BorderPanel
 import jswing.{Event, Dialog}
 import javax.swing._
 
@@ -16,7 +17,7 @@ val lbox = new ListBox[String]()
 
 val panel = new BorderPanel()
 panel.addTopItems(buttonOpen, buttonClear)
-panel.addCenterScrollPane(lbox)
+panel.addCenterScroll(lbox)
 panel.addBottomItems(display)
 
 

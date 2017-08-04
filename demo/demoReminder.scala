@@ -1,5 +1,6 @@
 import jswing.Event
-import jswing.widgets.{Frame, FormBuilder, Button}
+import jswing.widgets.{Frame, Button}
+import jswing.panel.FormBuilder
 import javax.swing.{JSpinner, JTextField, JList, JButton, DefaultListModel}
 
 
