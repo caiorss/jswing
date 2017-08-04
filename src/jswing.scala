@@ -453,7 +453,7 @@ object JUtils{
     desk.open(new java.io.File(file))
   }
 
-  /** Open URL with default browser
+  /** Open URL with default browser.
 
       Example:
       {{{
@@ -835,6 +835,16 @@ object ImageUtils{
   /**  Read a BufferedImage from an image file.*/
   def readFile(file: String) = {
     javax.imageio.ImageIO.read(new java.io.File(file))
+  }
+
+  /** Read image from resource file */
+  def readResourceImage(file: String) = {
+    val img = for {
+      file   <-  Option(getClass().getResource(file))
+      image  = javax.imageio.ImageIO.read(file)
+    } yield image
+    assert(!img.isEmpty, s"Error: resource image file ${file} not found.")
+    img.get
   }
 
   }
