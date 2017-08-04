@@ -3,12 +3,6 @@ import jswing.widgets.{Frame, Button}
 import jswing.panel.FormBuilder
 import javax.swing.{JSpinner, JTextField, JList, JButton, DefaultListModel}
 
-
-val tray = new jswing.widgets.TrayIcon("", "Timer Reminder Application")
-tray.addMenuItem("Close"){ System.exit(0) }
-tray.onClick{ frame.setVisible(!frame.isVisible) }
-tray.show()
-
 val form = new FormBuilder()
 val hourTf = new JSpinner()
 //hourTf.setColumns(10)
@@ -19,7 +13,6 @@ val minTf  = new JSpinner()
 val secTf  = new JSpinner()
 //secTf.setColumns(10)
 
-
 form.add("Hour", hourTf)
 form.nextRow()
 form.add("Minutes", minTf)
@@ -29,11 +22,32 @@ form.nextRow()
 val reminderTf = form.addTextField("Reminder", columns = 20)
 form.nextRow()
 
+
 val btnRun    = new Button("Run")
 val btnClear  = new Button("Clear")
 val btnCancel = new Button("Cancel")
 val btnExit   = new Button("Exit")
 form.addRowComponents(Array(btnRun, btnClear, btnCancel, btnExit))
+
+
+val frame = new Frame(
+  title       = "Reminder app.",
+ // size        = (600, 500),
+  pane        = form.getPanel(),
+  pack        = true,
+  visible     = true
+  //exitOnClose = true
+)
+
+val image = jswing.ImageUtils.readResourceImage(getClass(), "icons/scalaIcon.png")
+val tray = new jswing.widgets.TrayIcon(image, frame, "Timer Reminder Application")
+tray.addMenuItem("Close"){ System.exit(0) }
+tray.onClick{ frame.setVisible(!frame.isVisible) }
+tray.show()
+
+frame.setIconImage(image)
+
+
 
 
 // Get delay in Milliseconds
@@ -56,12 +70,14 @@ def runReminder() = {
   val text = reminderTf.getText()
   val time = getDelayMs()
   jswing.JUtils.runDelay(time) { 
-    jswing.Dialog.showInfo("Reminder", text)
-    cleanGUI()
+    tray.showInfo("Reminder", text)
+    //jswing.Dialog.showInfo("Reminder", text)
+    // cleanGUI()
     btnRun.setEnabled(true)
-    frame.setVisible(true)
+    //frame.setVisible(true)
   }
 }
+
 
 
 var dispose: () => Unit = null
@@ -82,14 +98,3 @@ btnCancel.onClick{
 }
 
 btnExit.onClick{ System.exit(0) }
-
-val frame = new Frame(
-  title       = "Reminder app.",
- // size        = (600, 500),
-  pane        = form.getPanel(),
-  pack        = true,
-  visible     = true
-  //exitOnClose = true
-)
-
-
