@@ -847,6 +847,14 @@ object ImageUtils{
     img.get
   }
 
+  /** Read icon from resource file */
+  def readResourceIcon(file: String) = {
+    val ico = for {
+      uri  <- Option(getClass().getResource(file))
+      icon =  new javax.swing.ImageIcon(uri)
+    } yield icon
+    assert(!ico.isEmpty, s"Error: resource image file ${file} not found.")
+    ico.get
   }
 
 
