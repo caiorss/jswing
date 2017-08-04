@@ -49,7 +49,7 @@ $(lib): $(libsrc)
 	$(CC) $(libsrc) -d $(lib)
 
 load: lib
-	scala -cp $(lib)
+	scala -cp .:icons:$(lib) -Drepl=true
 
 doc: $(libsrc)
 	scaladoc $(libsrc) -author -doc-title "Jswing - Java Swing Wrapper" -doc-version "1.0" -doc-source-url "https://github.com/caiorss/jswing" -d ./docs 
