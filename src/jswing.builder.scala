@@ -15,7 +15,7 @@ private object XmlLayout {
           case Some("true")  => boolFn(true)
           case Some("false") => boolFn(false)
           case None          => ()
-          case _             => error("Error: Invalid boolean value")
+          case _             => throw new Exception("Error: Invalid boolean value")
         }
 
 
@@ -27,7 +27,7 @@ private object XmlLayout {
           case "west"   => frame.add(comp, java.awt.BorderLayout.WEST)
           case "east"   => frame.add(comp, java.awt.BorderLayout.EAST)
           case "center" => frame.add(comp, java.awt.BorderLayout.CENTER)
-          case _        => error("Error: Invalid layout position")
+          case _        => throw new Exception("Error: Invalid layout position")
         }
 
 
@@ -103,7 +103,7 @@ private object XmlLayout {
             => frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE)
         case Some("false") => ()
         case None          => ()
-        case _             => error("Invalid boolean value")
+        case _             => throw new Exception("Invalid boolean value")
       }
 
       val h = attr("height").map(_.toInt)
@@ -117,7 +117,7 @@ private object XmlLayout {
       attr("size") match {
         case Some(tupleIntRe(h, w)) => frame.setSize(w.toInt, h.toInt)
         case None                   => ()
-        case _                      => error("Error: invalid size")
+        case _                      => throw new Exception("Error: invalid size")
       }
 
       attr("layout") foreach { p => setLayout(p, frame)}
@@ -216,7 +216,7 @@ private object XmlLayout {
       attr("size") match {
         case Some(tupleIntRe(h, w)) => comp.setSize(w.toInt, h.toInt)
         case None                   => ()
-        case _                      => error("Error: invalid size")
+        case _                      => throw new Exception("Error: invalid size")
       }
 
       getNodeChild(node) foreach {c => comp.add(cont(c))}
@@ -238,7 +238,7 @@ private object XmlLayout {
         case "jtextArea"      => makeJTextArea(node)
         case "jpanel"         => makeContainer(node, new javax.swing.JPanel(), createComponent)
         case "jscroll"        => makeJScrollPane(node, createComponent)          
-        case _                => error("Invalid java jswing component: " + node.label )
+        case _                => throw new Exception("Invalid java jswing component: " + node.label )
       }
     }
 
@@ -274,7 +274,7 @@ object Builder {
     exitOnClose: Boolean = false
   ) = {
     if (node.label != "jswing")
-      error("Error: invalid jswing xml layout Expected jswing tag.")
+      throw new Exception("Error: invalid jswing xml layout Expected jswing tag.")
 
     val hmap =  scala.collection.mutable.Map[String, java.awt.Component]()
 
